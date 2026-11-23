@@ -460,6 +460,7 @@ body[data-view="topic"] h1 { font-size: clamp(2rem, 5vh, 2.9rem); max-width: 22c
 body[data-view="topics"] .lead,
 body[data-view="topic"] .lead { font-size: .98rem; margin-bottom: clamp(8px, 1.4vh, 14px); }
 
+.topic-mix-row { margin: 0 0 4px; }
 .topic-areas {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 import rawAreas from '../src/data/topic-groups.json';
 import rawRules from '../src/data/rules.json';
 import rawWords from '../src/data/words.json';
-import { createSession } from '../src/lib/session';
+import { wordVariant } from '../src/lib/learning';
+import { createSession, finishExercise, nextExercise } from '../src/lib/session';
 import { freshState } from '../src/lib/storage';
 import type { Rule, TopicArea, Word } from '../src/lib/types';
 import { topicView, topicsView } from '../src/ui/views';
@@ -51,11 +52,54 @@ describe('Themen', () => {
     expect(html).toContain('20 Wörter');
   });
 
+  it('bietet in der Übersicht einen bewusst themenübergreifenden Start', () => {
+    const html = topicsView(areas, rules, words, {});
+    expect(html).toContain('Alle Themen mischen');
+    expect(html).toContain('data-action="start"');
+  });
+
   it('bildet eine Übung nur aus den Wörtern des gewählten Themas', () => {
     const topicWords = words.filter((word) => word.ruleId === 'ai-ei');
-    const session = createSession(topicWords, rules, {}, freshState().settings, () => 0.5);
+    const session = createSession(topicWords, rules, {}, freshState().settings, () => 0.5, Date.now(), 'ai-ei');
     const ids = new Set(topicWords.map((word) => word.id));
     expect(session.queue.length).toBeGreaterThan(0);
     expect(session.queue.every((id) => ids.has(id))).toBe(true);
+    expect(session.poolIds.every((id) => ids.has(id))).toBe(true);
+  });
+
+  it('misst innerhalb jeder Themenrunde verschiedene Varianten, sofern vorhanden', () => {
+    const settings = { ...freshState().settings, sessionLength: 8 };
+    for (const rule of rules) {
+      const topicWords = words.filter((word) => word.ruleId === rule.id);
+      const available = new Set(topicWords.map(wordVariant));
+      if (available.size < 2) continue;
+
+      let session = createSession(topicWords, rules, {}, settings, () => 0.5);
+      const seen = new Set<string>();
+      for (let index = 0; index < 20 && session.current; index += 1) {
+        seen.add(session.current.word.id);
+        session = nextExercise(finishExercise(session, true), topicWords, rules, () => 0.5);
+      }
+      const variants = new Set(
+        [...seen].map((id) => wordVariant(topicWords.find((word) => word.id === id)!)),
+      );
+      expect(variants.size, `${rule.id}: nur ${[...variants].join(', ')}`).toBeGreaterThan(1);
+    }
+  });
+
+  it('verwendet quellengeprüfte Formulierungen ohne bekannte Fehler', () => {
+    const text = JSON.stringify(rules);
+    expect(text).toContain('Das h macht den Vokal nicht erst lang');
+    expect(text).toContain('In der Schweiz und in Liechtenstein');
+    expect(text).toContain('-ie, -ier und -ieren');
+    expect(text).toContain('in der Regel lang: Oase, Idee, Museum');
+    expect(text).toContain('Möglichkeit, Freundlichkeit, Wichtigkeit');
+    expect(text).toContain('Eigennamen, Substantive und Substantivierungen');
+    expect(text).not.toContain('Uhu');
+    expect(text).not.toContain('Ohne das h wäre der Vokal kurz');
+    expect(text).not.toContain('Schnelligkeit');
+    expect(text).not.toContain('Eigennamen, Zusammensetzungen');
+    expect(words.some((word) => word.word === 'Uhu')).toBe(false);
+    expect(words.some((word) => word.word === 'Sohn')).toBe(true);
   });
 });

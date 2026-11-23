@@ -54,11 +54,13 @@ Die Wörter sind über `ruleId` den 16 Themen zugeordnet. `src/data/topic-groups
 - **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, -ig/-lich, -heit/-keit
 - **Wörter im Satz:** das/dass, als/wie, Großschreibung
 
-Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas. Die Texte sind kindgerecht formuliert und fachlich an den gängigen Regeln ausgerichtet, unter anderem an [Dehnungs-h](https://de.wikipedia.org/wiki/Dehnungs-h), [ß](https://de.wikipedia.org/wiki/%C3%9F) und [Doppelkonsonant](https://de.wikipedia.org/wiki/Doppelkonsonant).
+Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas; Wiederholungen und adaptive Ergänzungen bleiben ebenfalls im Thema. „Alle Themen mischen“ in der Themenübersicht (und „Übung starten“ auf der Startseite) mischt bewusst über alle Themen hinweg. Innerhalb einer Runde werden verschiedene Varianten eines Themas gemischt, zum Beispiel bei ei/ai beide Schreibweisen.
+
+Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024.pdf) des Rats für deutsche Rechtschreibung geprüft; die Online-Fassung liegt bei [grammis/IDS](https://grammis.ids-mannheim.de/rechtschreibung). Ergänzend dienten die [Duden-Regeln zur Laut-Buchstaben-Zuordnung](https://www.duden.de/sprachwissen/rechtschreibregeln/laut-buchstaben-zuordnung) und zur [Groß- und Kleinschreibung](https://www.duden.de/sprachwissen/rechtschreibregeln/gross-und-kleinschreibung). Korrekturen betreffen unter anderem: Das Dehnungs-h kennzeichnet die Vokallänge, es erzeugt sie nicht; in der Schweiz und in Liechtenstein ist generell `ss` statt `ß` zulässig; fremdsprachige Endungen `-ie`, `-ier`, `-ieren` werden mit `ie` geschrieben; `äu` hat neben `au`-Grundwörtern ein paar Merkwörter. `Uhu` wurde als Beispiel für ein stummes h entfernt.
 
 ### Übungsablauf
 
-1. Wörter nach Leitner-Fach und Fälligkeit auswählen; falsche Wörter kommen nach zwei anderen Wörtern wieder. Aus der Themenübersicht kann die Auswahl auf ein Thema eingegrenzt werden.
+1. Wörter nach Leitner-Fach und Fälligkeit auswählen, dabei Varianten des Themas mischen; falsche Wörter kommen nach zwei anderen Wörtern wieder. Der Pool der Runde steht fest: In einer Themenrunde tauchen keine Wörter anderer Themen auf, auch nicht nach einer Erfolgsserie.
 2. Übungstyp wählen: Hördiktat (~60 %), Abschreiben, Auswahl. Nach zwei Fehlern in Folge erscheinen mehr Hilfen und leichtere Wörter; nach fünf Richtigen wird die Stufe erhöht.
 3. Handschrift auf dem Canvas schreiben → PNG (nur der beschriebene Bereich) → Gemini.
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
@@ -166,7 +168,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 37 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl, Trainingsplan, Tagesserie, Sitzungsablauf, Themen-Lernseiten sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 43 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan, Tagesserie, Themen-Lernseiten sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

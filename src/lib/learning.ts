@@ -90,6 +90,80 @@ export function shuffle<T>(items: readonly T[], rng: () => number = Math.random)
   return result;
 }
 
+/**
+ * Klassifiziert ein Wort innerhalb seines Themas. So kann eine Runde gezielt
+ * verschiedene Varianten enthalten (z. B. ai und ei), statt nur eine Schreibweise zu zeigen.
+ */
+export function wordVariant(word: Word): string {
+  switch (word.ruleId) {
+    case 'ie-i':
+      if (/ie/i.test(word.word)) return 'ie';
+      if (/i/i.test(word.word)) return 'i';
+      return 'allgemein';
+    case 'ss-oesz':
+      if (/ß/.test(word.word)) return 'ß';
+      if (/ss/i.test(word.word)) return 'ss';
+      return 's';
+    case 'ai-ei':
+      if (/ai/i.test(word.word)) return 'ai';
+      if (/ei/i.test(word.word)) return 'ei';
+      return 'allgemein';
+    case 'aeu-eu':
+      if (/äu/i.test(word.word)) return 'äu';
+      if (/eu/i.test(word.word)) return 'eu';
+      return 'allgemein';
+    case 'dehnung':
+      if (/(aa|ee|oo)/i.test(word.word)) return 'doppelvokal';
+      if (/ie/i.test(word.word)) return 'ie';
+      return 'offene-silbe';
+    case 'dehnungs-h':
+      return /h[lmnr]/i.test(word.word) ? 'h-vor-lmnr' : 'sonstiges-h';
+    case 'doppelkonsonant':
+      if (/ck/i.test(word.word)) return 'ck';
+      if (/([b-df-hj-np-tv-z])\1/i.test(word.word)) return 'doppelkonsonant';
+      return 'einfach';
+    case 'sch-s':
+      if (/sch/i.test(word.word)) return 'sch';
+      if (/(st|sp)/i.test(word.word)) return 'st/sp';
+      return 's';
+    case 'das-dass':
+      if (/^dass/i.test(word.word)) return 'dass';
+      if (/^das$/i.test(word.word)) return 'das';
+      if (/^da/i.test(word.word)) return 'da-wort';
+      return 'de-wort';
+    case 'als-wie':
+      if (/^als$/i.test(word.word)) return 'als';
+      if (/wie/i.test(word.word)) return 'wie';
+      if (/(mehr|weniger|anders|desto|verglichen|entsprechend)/i.test(word.word)) return 'vergleich';
+      if (/(so|immer|nie|genauso|ebenso)/i.test(word.word)) return 'gleichheit';
+      return 'allgemein';
+    case 'wieder-wider':
+      if (/wieder/i.test(word.word)) return 'wieder';
+      if (/wider/i.test(word.word)) return 'wider';
+      return 'allgemein';
+    case 'ver-vor':
+      if (/^ver/i.test(word.word)) return 'ver';
+      if (/^vor/i.test(word.word)) return 'vor';
+      return 'allgemein';
+    case 'emp-ent':
+      if (/^emp/i.test(word.word)) return 'emp';
+      if (/^ent/i.test(word.word)) return 'ent';
+      return 'allgemein';
+    case 'ig-lich':
+      if (/ig$/i.test(word.word)) return 'ig';
+      if (/lich$/i.test(word.word)) return 'lich';
+      return 'allgemein';
+    case 'heit-keit':
+      if (/heit$/i.test(word.word)) return 'heit';
+      if (/keit$/i.test(word.word)) return 'keit';
+      return 'allgemein';
+    case 'grossschreibung':
+      return word.word.length >= 10 ? 'zusammengesetzt' : 'einfach';
+    default:
+      return 'allgemein';
+  }
+}
+
 export interface SelectionOptions {
   now?: number;
   difficulty?: number;
@@ -97,6 +171,46 @@ export interface SelectionOptions {
   /** Wörter aus der laufenden Einheit, die noch einmal dran sind. */
   retryIds?: string[];
   rng?: () => number;
+}
+
+/** Ersetzt Mehrfach-Varianten durch fehlende Varianten, damit eine Runde gemischt bleibt. */
+function balanceVariants(
+  chosen: Word[],
+  pool: readonly Word[],
+  count: number,
+  retryIds: readonly string[],
+  score: (word: Word) => number,
+): Word[] {
+  const inPool = new Set(pool.map(wordVariant));
+  if (inPool.size <= 1) return chosen;
+
+  const counts = new Map<string, number>();
+  for (const word of chosen) counts.set(wordVariant(word), (counts.get(wordVariant(word)) ?? 0) + 1);
+
+  for (const variant of inPool) {
+    if ((counts.get(variant) ?? 0) > 0) continue;
+    const candidate = pool
+      .filter((word) => !chosen.some((item) => item.id === word.id) && wordVariant(word) === variant)
+      .sort((a, b) => score(a) - score(b))[0];
+    if (!candidate) continue;
+
+    if (chosen.length < count) {
+      chosen.push(candidate);
+      counts.set(variant, 1);
+      continue;
+    }
+
+    const replaceable = chosen
+      .filter((word) => !retryIds.includes(word.id) && (counts.get(wordVariant(word)) ?? 0) > 1)
+      .sort((a, b) => score(b) - score(a))[0];
+    if (!replaceable) continue;
+
+    const previousVariant = wordVariant(replaceable);
+    counts.set(previousVariant, (counts.get(previousVariant) ?? 1) - 1);
+    chosen[chosen.indexOf(replaceable)] = candidate;
+    counts.set(variant, 1);
+  }
+  return chosen;
 }
 
 /** Wählt fällige und fehlerhafte Wörter zuerst aus – das ist die Leitner-Logik. */
@@ -144,7 +258,7 @@ export function selectWords(
   take(due, false);
   take(rest.filter((word) => !recentIds.includes(word.id)), true);
   take(rest, false);
-  return chosen.slice(0, count);
+  return balanceVariants(chosen, pool, count, retryIds, score).slice(0, count);
 }
 
 /** Adaptive Schwierigkeit: nach Fehlern leichter, nach einer Erfolgsserie schwerer. */

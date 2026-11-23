@@ -17,7 +17,7 @@ import {
 } from './lib/learning';
 import { hashPin, newSalt, verifyPin } from './lib/pin';
 import { speak } from './lib/speech';
-import { createSession, finishExercise, isSessionFinished, nextExercise, type SessionState } from './lib/session';
+import { createSession, finishExercise, isSessionFinished, nextExercise, refillWords, sessionWords, type SessionState } from './lib/session';
 import { clearState, freshState, loadState, saveState } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
 import { feedbackView, homeView, parentGateView, parentView, practiceView, topicView, topicsView, type FeedbackView } from './ui/views';
@@ -146,13 +146,12 @@ function parentStats(): { seen: number; correctRate: number; streak: number; sta
 }
 
 function startSession(ruleId = ''): void {
-  const pool = allWords();
-  const words = ruleId ? pool.filter((word) => word.ruleId === ruleId) : pool;
-  if (words.length === 0) {
+  const pool = ruleId ? allWords().filter((word) => word.ruleId === ruleId) : allWords();
+  if (pool.length === 0) {
     notice(ruleId ? 'Für dieses Thema sind keine Wörter vorhanden.' : 'Es sind keine Wörter vorhanden.');
     return;
   }
-  session = createSession(words, rules, data.progress, data.settings);
+  session = createSession(pool, rules, data.progress, data.settings, Math.random, Date.now(), ruleId);
   topicId = ruleId;
   feedback = null;
   checking = false;
@@ -167,14 +166,16 @@ function goNext(): void {
     render();
     return;
   }
-  session = nextExercise(session, allWords(), rules);
+  session = nextExercise(session, sessionWords(session, allWords()), rules);
   checking = false;
   helpVisible = false;
   if (isSessionFinished(session)) {
+    const last = feedbackContext?.exercise;
     feedback = {
       kind: 'summary',
-      word: session.current?.word ?? builtinWords[0],
-      rule: findRule(session.current?.word.ruleId ?? ''),
+      word: last?.word ?? builtinWords[0],
+      rule: last?.rule ?? findRule(''),
+      ruleId: session.ruleId,
       message: `${session.correct} von ${session.total} Wörtern in dieser Runde richtig.`,
     };
     route = 'feedback';
@@ -210,21 +211,12 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
   if (session) {
     const before = session.difficulty;
     session = finishExercise(session, correct);
-    // Erfolgsserie: ein paar schwerere Wörter in die laufende Runde holen.
+    // Erfolgsserie: ein paar schwerere Wörter in die laufende Runde holen – nur aus dem gewählten Thema.
     if (session.difficulty > before && session.queue.length < 4) {
-      const wordIds = new Set([...session.queue, ...session.retries, ...session.recentIds]);
-      const harder = allWords()
-        .filter((candidate) => candidate.level <= session!.difficulty && !wordIds.has(candidate.id) && !isFullyLearned(candidate.id))
-        .slice(0, 2)
-        .map((candidate) => candidate.id);
+      const harder = refillWords(session, allWords(), data.progress).map((candidate) => candidate.id);
       session = { ...session, queue: [...session.queue, ...harder], total: session.total + harder.length };
     }
   }
-}
-
-function isFullyLearned(wordId: string): boolean {
-  const state = data.progress[wordId];
-  return !!state && state.box >= 5 && state.due > Date.now();
 }
 
 function showResult(view: FeedbackView): void {
@@ -496,7 +488,17 @@ app.addEventListener('click', (event) => {
     case 'undo': pad?.undo(); break;
     case 'check': void checkWithAi(); break;
     case 'test-connection': void runConnectionTest(element); break;
-    case 'self-check': showResult({ kind: 'fallback', word: feedbackContext?.exercise.word ?? session?.current?.word ?? builtinWords[0], rule: feedbackContext?.exercise.rule ?? findRule(''), message: 'Vergleiche dein Wort mit der Lösung und entscheide selbst.' }); feedbackContext ??= { exercise: session!.current! }; break;
+    case 'self-check': {
+      const exercise = session?.current;
+      if (exercise) feedbackContext = { exercise, previousState: data.progress[exercise.word.id] };
+      showResult({
+        kind: 'fallback',
+        word: exercise?.word ?? feedbackContext?.exercise.word ?? builtinWords[0],
+        rule: exercise?.rule ?? feedbackContext?.exercise.rule ?? findRule(''),
+        message: 'Vergleiche dein Wort mit der Lösung und entscheide selbst.',
+      });
+      break;
+    }
     case 'choose': chooseOption(Number(element.dataset.index)); break;
     case 'tip':
       helpVisible = !helpVisible;

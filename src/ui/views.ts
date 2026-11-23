@@ -8,6 +8,8 @@ export interface FeedbackView {
   kind: 'success' | 'retry' | 'fallback' | 'summary';
   word: Word;
   rule: Rule;
+  /** Runs nach einer Themenrunde erneut im gleichen Thema starten. */
+  ruleId?: string;
   correct?: boolean;
   transcription?: string;
   confidence?: number;
@@ -92,7 +94,11 @@ export function topicsView(areas: readonly TopicArea[], rules: readonly Rule[], 
   return `${header(parentUnlocked, 'topics')}<main id="hauptinhalt" class="shell topics-shell" tabindex="-1">
     <p class="kicker">Lern-Themen</p>
     <h1>Wörter nach Themen</h1>
-    <p class="lead">Wähle ein Thema – mit Erklärung, Lernziel und Regeln.</p>
+    <p class="lead">Wähle ein Thema – oder lass alle Themen mischen.</p>
+    <div class="button-row topic-mix-row">
+      <button class="button primary" type="button" data-action="start">Alle Themen mischen <span aria-hidden="true">→</span></button>
+      <span class="panel-note">Dann kommen Wörter aus allen Themen in einer Runde vor.</span>
+    </div>
     <div class="topic-areas">${areaSections}</div>
   </main>`;
 }
@@ -219,6 +225,8 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
   }
 
   const showSolution = view.kind !== 'summary';
+  const againAttrs = view.ruleId ? `data-id="${escapeHtml(view.ruleId)}"` : '';
+  const againAction = view.ruleId ? 'practice-topic' : 'start';
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <section class="stage" style="max-width:760px">
       <p class="kicker">Rückmeldung</p>
@@ -229,7 +237,7 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
       ${differenceRows ? `<div class="table-wrap"><table><caption class="kicker" style="caption-side:top;text-align:left">Was war anders?</caption><thead><tr><th>Position</th><th>Erwartet</th><th>Geschrieben</th></tr></thead><tbody>${differenceRows}</tbody></table></div>` : ''}
       <div class="button-row stage-actions">
         ${view.kind === 'summary'
-          ? '<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="start">Noch eine Runde</button>'
+          ? `<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="${againAction}" ${againAttrs}>Noch eine Runde</button>`
           : `<button class="button primary" type="button" data-action="${view.kind === 'retry' ? 'retry-same' : 'next'}">${view.kind === 'retry' ? 'Noch einmal schreiben' : isLast ? 'Runde abschließen' : 'Weiter zum nächsten Wort'}</button>
              ${view.kind === 'fallback' || view.kind === 'retry' ? `<button class="button" type="button" data-action="self-correct" data-value="correct">Das war richtig</button><button class="button" type="button" data-action="self-correct" data-value="wrong">Nochmal üben</button>` : ''}
              ${view.kind === 'success' ? '<button class="button small" type="button" data-action="disagree">KI irrt – selbst bewerten</button>' : ''}`}

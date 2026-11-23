@@ -3,6 +3,10 @@ import type { Exercise, ExerciseKind, Rule, Word, WordState } from './types';
 import type { Settings } from './types';
 
 export interface SessionState {
+  /** Alle Wörter, die in dieser Runde vorkommen dürfen (Thema oder alle Themen). */
+  poolIds: string[];
+  /** Gewähltes Thema; leer bedeutet themenübergreifend. */
+  ruleId: string;
   queue: string[];
   retries: string[];
   recentIds: string[];
@@ -35,9 +39,14 @@ export function createSession(
   settings: Settings,
   rng: () => number = Math.random,
   now = Date.now(),
+  ruleId = '',
 ): SessionState {
-  const chosen = selectWords(words, progress, settings.sessionLength, { now, rng });
+  // Die Wortbank der Runde steht fest – adaptive Ergänzungen bleiben dadurch im gewählten Thema.
+  const pool = words.filter((word) => !ruleId || word.ruleId === ruleId);
+  const chosen = selectWords(pool, progress, settings.sessionLength, { now, rng });
   const initial: SessionState = {
+    poolIds: pool.map((word) => word.id),
+    ruleId,
     queue: chosen.map((word) => word.id),
     retries: [],
     recentIds: [],
@@ -54,6 +63,34 @@ export function createSession(
   return nextExercise(initial, words, rules, rng);
 }
 
+/** Wortbank der laufenden Runde – für Suche, Wiederholungen und adaptive Ergänzungen. */
+export function sessionWords(session: SessionState, words: readonly Word[]): Word[] {
+  const allowed = new Set(session.poolIds);
+  return words.filter((word) =>
+    (session.poolIds.length === 0 || allowed.has(word.id)) && (!session.ruleId || word.ruleId === session.ruleId));
+}
+
+/** Ergänzt nach einer Erfolgsserie höhere Stufen – ausschließlich aus dem Pool der Runde. */
+export function refillWords(
+  session: SessionState,
+  words: readonly Word[],
+  progress: Record<string, WordState>,
+  now = Date.now(),
+): Word[] {
+  const used = new Set([...session.queue, ...session.retries, ...session.recentIds]);
+  const candidates = sessionWords(session, words).filter((word) => {
+    const state = progress[word.id];
+    const fullyLearned = !!state && state.box >= 5 && state.due > now;
+    return word.level <= session.difficulty && !used.has(word.id) && !fullyLearned;
+  });
+  return selectWords(candidates, progress, 2, {
+    now,
+    difficulty: session.difficulty,
+    recentIds: session.recentIds,
+    retryIds: session.retries,
+  });
+}
+
 export function nextExercise(
   session: SessionState,
   words: readonly Word[],
@@ -66,8 +103,15 @@ export function nextExercise(
   const wordId = source[0];
   if (!wordId) return { ...session, current: null };
 
-  const word = words.find((candidate) => candidate.id === wordId);
-  if (!word) return nextExercise({ ...session, queue: session.queue.slice(1), retries: session.retries.slice(1) }, words, rules, rng);
+  const word = sessionWords(session, words).find((candidate) => candidate.id === wordId);
+  if (!word) {
+    const withoutMissing = {
+      ...session,
+      queue: useRetry ? session.queue : session.queue.slice(1),
+      retries: useRetry ? session.retries.slice(1) : session.retries,
+    };
+    return nextExercise(withoutMissing, words, rules, rng);
+  }
 
   const rule = rules.find((candidate) => candidate.id === word.ruleId) ?? {
     id: word.ruleId,

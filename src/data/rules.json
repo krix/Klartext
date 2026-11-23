@@ -2,76 +2,78 @@
   {
     "id": "ie-i",
     "title": "ie oder i – lang oder kurz?",
-    "tip": "Sprich das Wort lang: hörst du ein langes i, steht meist ie. Bei kurzem i schreibst du nur i.",
+    "tip": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
     "caseSensitive": false,
     "area": "laute",
-    "summary": "Das lange i steht oft als ie – das kurze i nur als i.",
-    "goal": "Du lernst, ein langes i von einem kurzen i zu unterscheiden und die passende Schreibweise zu wählen.",
+    "summary": "Das lange i steht in deutschen Wörtern meist als ie – Fremdwörter haben oft ein einfaches i.",
+    "goal": "Du lernst, ein langes oder kurzes i zu hören und die passende Schreibweise zu wählen – auch in Fremdwörtern.",
     "rules": [
-      "Sprich das Wort langsam: Klingt das i gedehnt, steht meist ie – zum Beispiel in Liebe, Wiese und Tier.",
-      "Ein kurzes i schreibst du mit einem i, zum Beispiel in bitte, Milch und Katze.",
-      "In Wörtern aus anderen Sprachen bleibt das i oft einfach: Antike, Geometrie, Philosophie.",
-      "Wenn du unsicher bist, denk an ein bekanntes Wort mit demselben Laut."
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil.",
+      "In fremdsprachigen Endungen wie -ie, -ier und -ieren steht aber ie: Geometrie, Philosophie, Batterie, marschieren."
     ],
     "examples": [
-      { "word": "Liebe", "note": "Das i ist lang – deshalb ie." },
-      { "word": "Biene", "note": "Gedehntes i: ie." },
-      { "word": "Milch", "note": "Kurzes i – nur ein i." },
-      { "word": "Antike", "note": "Fremdwort: das i bleibt einfach." }
+      { "word": "Liebe", "note": "Deutsches Wort mit langem i – deshalb ie." },
+      { "word": "Biene", "note": "Gedehntes i in einem deutschen Wort: ie." },
+      { "word": "Krise", "note": "Fremdwort mit langem i, aber nur einem i." },
+      { "word": "Geometrie", "note": "Die Endung -ie wird mit ie geschrieben." }
     ]
   },
   {
     "id": "ai-ei",
     "title": "ei oder ai?",
-    "tip": "Fast immer schreibst du ei, wie in Zeit und Wein. Nur in wenigen Wörtern wie Mai, Kai und Laie steht ai.",
+    "tip": "Fast immer schreibst du ei, wie in Zeit und Wein. Ai ist selten: Mai, Laie, Kaiser, Hai.",
     "caseSensitive": false,
     "area": "laute",
-    "summary": "Fast immer ei – ai nur in wenigen Wörtern wie Mai und Kai.",
+    "summary": "Fast immer ei – ai nur in wenigen Wörtern wie Mai, Laie und Kaiser.",
     "goal": "Du lernst die wenigen Wörter mit ai kennen und vertraust dich sonst auf das häufige ei.",
     "rules": [
-      "Der Laut ei wird fast immer mit ei geschrieben: Zeit, Wein, Seite, Weintraube.",
-      "ai kommt nur in wenigen Wörtern vor: Mai, Kai, Laie.",
-      "Auch Endungen wie -ei in Bäckerei und Metzgerei werden mit ei geschrieben.",
-      "Wenn du dir nicht sicher bist, probiere zuerst ei – es ist viel häufiger."
+      "Der Laut ei wird in deutschen Wörtern fast immer mit ei geschrieben: Zeit, Wein, Seite, Weintraube.",
+      "In wenigen Wörtern steht ai: Hai, Kaiser, Mai, Laie und der Name Kai.",
+      "Gleich lautende Wörter können verschieden geschrieben werden: Saite mit ai, aber Seite mit ei; Waise mit ai, aber Weise mit ei.",
+      "Auch Endungen wie -ei in Bäckerei und Metzgerei werden mit ei geschrieben."
     ],
     "examples": [
       { "word": "Zeit", "note": "Das häufige ei." },
       { "word": "Mai", "note": "Eines der wenigen Wörter mit ai." },
+      { "word": "Laie", "note": "Auch hier steht ai – anders als bei leihen." },
       { "word": "Bäckerei", "note": "Die Endung -ei wird mit ei geschrieben." }
     ]
   },
   {
     "id": "aeu-eu",
     "title": "äu oder eu?",
-    "tip": "Kommt das Wort von einem Wort mit au, schreibst du äu, zum Beispiel Häuser von Haus. In allen anderen Fällen steht eu, wie in heute und Freude.",
+    "tip": "Kommt das Wort von einem Wort mit au, schreibst du äu, zum Beispiel Häuser von Haus. Sonst meist eu, wie in heute und Freude.",
     "caseSensitive": false,
     "area": "laute",
-    "summary": "äu kommt von au, eu steht in allen anderen Fällen.",
-    "goal": "Du lernst, aus einem Grundwort mit au das äu abzuleiten und sonst eu zu schreiben.",
+    "summary": "äu kommt meist von au, eu steht in allen anderen Wörtern.",
+    "goal": "Du lernst, aus einem Grundwort mit au das äu abzuleiten, und merkst dir die wenigen Ausnahmen.",
     "rules": [
       "Gehört das Wort zu einem Wort mit au, schreibst du äu: das Haus – die Häuser, der Baum – die Bäume.",
-      "In allen anderen Wörtern steht eu: heute, Freude, Leute, Eule.",
-      "Äu und eu klingen gleich – die Herkunft entscheidet.",
-      "Denk bei äu immer an das Wort mit au dahinter."
+      "In allen anderen Wörtern steht meist eu: heute, Freude, Leute, Eule.",
+      "Ein paar Wörter lernst du als Ausnahmen mit äu: Knäuel, Säule, täuschen.",
+      "Äu und eu klingen gleich – die Herkunft oder das Merkwort entscheidet."
     ],
     "examples": [
       { "word": "Häuser", "note": "Kommt von Haus – deshalb äu." },
       { "word": "Bäume", "note": "Kommt von Baum – deshalb äu." },
-      { "word": "Freude", "note": "Kein au im Grundwort – deshalb eu." }
+      { "word": "Freude", "note": "Kein au im Grundwort – deshalb eu." },
+      { "word": "Säule", "note": "Ein Merkwort mit äu." }
     ]
   },
   {
     "id": "sch-s",
     "title": "sch oder s bei st und sp?",
-    "tip": "Am Wortanfang klingt st wie scht und sp wie schp, geschrieben wird aber nur s. Alle anderen sch-Laute schreibst du mit sch.",
+    "tip": "Am Anfang des Wortstamms vor p oder t klingt es wie schp oder scht, geschrieben wird aber nur sp oder st. Sonst steht sch.",
     "caseSensitive": false,
     "area": "laute",
     "summary": "st und sp klingen oft wie scht und schp, werden aber mit s geschrieben.",
     "goal": "Du lernst, den sch-Laut von st und sp zu unterscheiden und richtig zu schreiben.",
     "rules": [
-      "Am Anfang eines Wortes oder einer Silbe sprichst du st wie scht und sp wie schp, schreibst aber nur s: Stein, Spiel, verstehen.",
+      "Am Anfang eines Wortstamms vor p oder t schreibst du sp oder st: Spiel, Stein, Stunde, verspielen, verstehen.",
       "Alle anderen sch-Laute schreibst du mit sch: Schule, Schiff, Tasche, Wäsche.",
-      "In der Mitte eines Wortes hörst du bei st und sp meist den gewöhnlichen s-Laut, zum Beispiel in Fenster und Hosentasche.",
+      "Das gilt auch nach Vorsilben: verstehen, verspielen, entsprechen.",
       "Merke: Klingt es nach sch, heißt es trotzdem nicht immer sch."
     ],
     "examples": [
@@ -84,16 +86,16 @@
   {
     "id": "ss-oesz",
     "title": "ss oder ß – kurz oder lang?",
-    "tip": "Nach einem kurzen Vokal schreibst du ss, nach einem langen Vokal oder Doppellaut ß. Denk an das Wasser und die Straße.",
+    "tip": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
     "caseSensitive": false,
     "area": "laenge",
     "summary": "ss steht nach kurzem Vokal, ß nach langem Vokal oder Doppellaut.",
     "goal": "Du lernst, an der Länge des Vokals zu erkennen, ob ss oder ß richtig ist.",
     "rules": [
       "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
-      "Nach einem langen Vokal oder einem Doppellaut schreibst du ß: Straße, Fuß, weiß, groß.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
       "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss.",
-      "In der Schweiz schreibt man oft ss statt ß; hier lernst du die deutsche Standardform."
+      "In der Schweiz und in Liechtenstein darf man immer ss schreiben; hier lernst du die Form mit ß."
     ],
     "examples": [
       { "word": "Wasser", "note": "Kurzes a – deshalb ss." },
@@ -105,40 +107,40 @@
   {
     "id": "dehnung",
     "title": "Lange Vokale erkennen",
-    "tip": "Ein langer Vokal klingt gedehnt. Oft hilft ein doppelter Vokal wie aa, ee oder oo, manchmal auch eine offene Silbe.",
+    "tip": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
     "caseSensitive": false,
     "area": "laenge",
-    "summary": "Lange Vokale zeigen sich durch Doppelvokale, ein stummes h oder offene Silben.",
+    "summary": "Lange Vokale erkennst du an Doppelvokalen, einem stummen h oder an offenen Silben.",
     "goal": "Du lernst, lange Vokale zu hören und die gängigen Schreibweisen dafür zu erkennen.",
     "rules": [
       "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
-      "Oft zeigt ein doppelter Vokal die Länge an: aa, ee oder oo.",
-      "Manchmal übernimmt ein stummes h die Länge: Bahn, Uhr, Stuhl.",
-      "In offenen Silben ist der Vokal oft lang: Oase, Idee, Museum."
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl.",
+      "Folgt im Wortstamm auf den betonten Vokal kein Konsonant, ist er in der Regel lang: Oase, Idee, Museum."
     ],
     "examples": [
       { "word": "Haar", "note": "Doppelvokal aa." },
       { "word": "Boot", "note": "Doppelvokal oo." },
       { "word": "Oase", "note": "Offene Silbe – das o ist lang." },
-      { "word": "Bahn", "note": "Das stumme h macht das a lang." }
+      { "word": "Bahn", "note": "Das h kennzeichnet das lange a; es wird nicht gesprochen." }
     ]
   },
   {
     "id": "dehnungs-h",
     "title": "Das stumme h",
-    "tip": "Ein h nach einem Vokal macht ihn lang, wird aber nicht gesprochen. Denk an die Bahn und die Uhr.",
+    "tip": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
     "caseSensitive": false,
     "area": "laenge",
-    "summary": "Das h nach einem Vokal macht ihn lang, wird aber nicht gesprochen.",
+    "summary": "Das stumme h kennzeichnet die Länge, meist vor l, m, n oder r.",
     "goal": "Du lernst Wörter mit stummem h zu erkennen und das h an die richtige Stelle zu setzen.",
     "rules": [
-      "Das dehnungs-h steht meist vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle.",
-      "Ohne das h wäre der Vokal kurz – vergleiche Band und Bahn.",
-      "Ein paar Wörter merkst du dir einfach: Ruhe, Uhu.",
-      "Du hörst das h nicht, du siehst es nur mitten im Wort."
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter.",
+      "Ein paar Wörter merkst du dir einzeln: Ruhe, Sohn."
     ],
     "examples": [
-      { "word": "Bahn", "note": "Das h macht das a lang." },
+      { "word": "Bahn", "note": "Das h kennzeichnet das lange a." },
       { "word": "Stuhl", "note": "Das h steht vor l." },
       { "word": "Uhr", "note": "Das h steht vor r." },
       { "word": "Ruhe", "note": "Ein Merkwort mit stummem h." }
@@ -147,15 +149,15 @@
   {
     "id": "doppelkonsonant",
     "title": "Doppelkonsonant nach kurzem Vokal",
-    "tip": "Nach einem kurzen, betonten Vokal steht oft ein doppelter Konsonant. Denk an das Bett und die Sonne.",
+    "tip": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
     "caseSensitive": false,
     "area": "laenge",
-    "summary": "Nach einem kurzen betonten Vokal steht oft ein doppelter Konsonant.",
+    "summary": "Nach einem kurzen betonten Vokal wird ein einzelner Konsonant meist verdoppelt.",
     "goal": "Du lernst, kurze von langen Vokalen zu trennen und Konsonanten richtig zu verdoppeln.",
     "rules": [
-      "Nach einem kurzen Vokal schreibst du zwei Konsonanten: Bett, Sonne, Koffer.",
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
       "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
-      "Statt kk schreibt man ck: Jacke, Zucker, Decke.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz.",
       "Ein Doppelkonsonant ist ein Hinweis: Der Vokal davor ist kurz."
     ],
     "examples": [
@@ -168,7 +170,7 @@
   {
     "id": "wieder-wider",
     "title": "wieder oder wider?",
-    "tip": "Wieder heißt noch einmal, wie in wiederkommen. Wider heißt dagegen, wie in widersprechen.",
+    "tip": "wieder heißt noch einmal, wie in wiederkommen. wider heißt gegen oder dagegen, wie in widersprechen.",
     "caseSensitive": false,
     "area": "wortbau",
     "summary": "wieder heißt noch einmal, wider heißt dagegen.",
@@ -176,7 +178,7 @@
     "rules": [
       "wieder bedeutet noch einmal: wiederkommen, wiedersehen, wiederholen.",
       "wider bedeutet gegen oder dagegen: widersprechen, widerstehen, Widerstand.",
-      "wider steht fast immer in zusammengesetzten Wörtern.",
+      "wider findest du vor allem in zusammengesetzten Wörtern.",
       "Frag dich: Geht es um eine Wiederholung oder um Gegenwehr?"
     ],
     "examples": [
@@ -188,10 +190,10 @@
   {
     "id": "ver-vor",
     "title": "ver- oder vor-?",
-    "tip": "ver- heißt oft weg, falsch oder fertig, zum Beispiel verlieren. vor- heißt vorher oder vor jemandem, zum Beispiel vorstellen.",
+    "tip": "ver- heißt oft verändert, falsch oder weg, zum Beispiel verlieren. vor- heißt vorher oder vor jemandem, zum Beispiel vorstellen.",
     "caseSensitive": false,
     "area": "wortbau",
-    "summary": "ver- heißt oft weg oder falsch, vor- heißt vorher oder davor.",
+    "summary": "ver- heißt oft weg oder verändert, vor- heißt vorher oder davor.",
     "goal": "Du lernst, die beiden Vorsilben nach ihrer Bedeutung zu unterscheiden.",
     "rules": [
       "ver- kommt oft vor, wenn etwas sich verändert oder verloren geht: verlieren, verkaufen, verändern.",
@@ -217,28 +219,28 @@
       "emp- findest du vor allem in empfehlen, empfangen, empfinden und empören.",
       "ent- bedeutet oft weg, los oder beginnen: entdecken, entfernen, entstehen.",
       "ent- ist viel häufiger als emp-.",
-      "Wenn du ratest, probiere zuerst ent- – außer bei den vier Merkwörtern."
+      "Wenn du ratest, probiere zuerst ent- – außer bei den wenigen emp-Merkwörtern."
     ],
     "examples": [
       { "word": "empfehlen", "note": "Eines der wenigen emp-Wörter." },
       { "word": "empfangen", "note": "Ebenfalls mit emp-." },
-      { "word": "entdecken", "note": "Mit ent-: etwas findet statt oder kommt ans Licht." },
+      { "word": "entdecken", "note": "Mit ent-: etwas kommt ans Licht." },
       { "word": "entfernen", "note": "Mit ent-: etwas wird weggenommen." }
     ]
   },
   {
     "id": "ig-lich",
     "title": "-ig oder -lich?",
-    "tip": "Mit -ig beschreibst du oft ein Gefühl oder eine Eigenschaft, zum Beispiel mutig. Mit -lich meinst du 'wie' oder 'gehörend zu', zum Beispiel kindlich.",
+    "tip": "-ig und -lich machen Adjektive. -ig beschreibt oft eine Eigenschaft, -lich oft „wie“ oder „gehörend zu“.",
     "caseSensitive": false,
     "area": "wortbau",
-    "summary": "-ig beschreibt eine Eigenschaft, -lich heißt oft wie oder zugehörig.",
+    "summary": "-ig beschreibt oft eine Eigenschaft, -lich heißt oft wie oder zugehörig.",
     "goal": "Du lernst, welche Endung zu einem Adjektiv passt.",
     "rules": [
-      "Mit -ig beschreibst du eine Eigenschaft oder Stimmung: mutig, wichtig, hungrig.",
-      "Mit -lich meinst du wie oder gehörend zu: kindlich, freundlich, täglich.",
-      "-lich steckt auch in Wörtern für wiederkehrende Zeiten: täglich, wöchentlich, jährlich.",
-      "Manche Wörter lernst du als Ganzes: möglich, richtig, eigenartig."
+      "Mit -ig beschreibst du oft eine Eigenschaft oder Stimmung: mutig, wichtig, hungrig.",
+      "Mit -lich meinst du oft wie oder gehörend zu: kindlich, freundlich, brüderlich.",
+      "-lich steckt auch in Wörtern für wiederkehrende Zeiten: täglich, wöchentlich, jährlich, monatlich.",
+      "Die Bedeutung hilft, aber es gibt auch Merkwörter: möglich, richtig, eigenartig."
     ],
     "examples": [
       { "word": "mutig", "note": "Eine Eigenschaft – mit -ig." },
@@ -257,7 +259,7 @@
     "goal": "Du lernst, Nomen mit -heit und -keit richtig zu bilden und großzuschreiben.",
     "rules": [
       "Beide Endungen machen aus einem Adjektiv ein Nomen: schön – Schönheit, möglich – Möglichkeit.",
-      "Nach -ig und -lich steht meist -keit: Möglichkeit, Freundlichkeit, Schnelligkeit.",
+      "Nach -ig und -lich steht meist -keit: Möglichkeit, Freundlichkeit, Wichtigkeit.",
       "Bei vielen kurzen Adjektiven steht -heit: Klarheit, Neuheit, Wahrheit.",
       "Diese Nomen sind weiblich und werden großgeschrieben: die Gesundheit, die Klarheit."
     ],
@@ -285,7 +287,7 @@
     "examples": [
       { "word": "Das Buch", "note": "Artikel – mit das." },
       { "word": "… dass er kommt", "note": "Nebensatz – mit dass." },
-      { "word": "darum", "note": "Prönominaladverb – beginnt mit da." }
+      { "word": "darum", "note": "Ein Da-Wort – beginnt mit da." }
     ]
   },
   {
@@ -320,7 +322,7 @@
       "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
       "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
       "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen.",
-      "Eigennamen und Nomen aus anderen Wörtern werden ebenfalls großgeschrieben: Bahnhof, Schülerin, das Lesen."
+      "Eigennamen, Substantive und Substantivierungen werden ebenfalls großgeschrieben: Anna, Bahnhof, das Lesen."
     ],
     "examples": [
       { "word": "Hund", "note": "Nomen – immer groß." },
