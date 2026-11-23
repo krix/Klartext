@@ -1,14 +1,18 @@
 import { buildChoiceOptions, selectWords, shuffle, updateDifficulty } from './learning';
-import type { Exercise, ExerciseKind, Rule, Word, WordState } from './types';
+import type { AttemptSource, Difference, Exercise, ExerciseKind, Rule, Word, WordState } from './types';
 import type { Settings } from './types';
 
-/** Ein bearbeitetes Wort inklusive letztem Ergebnis für die Abschlussübersicht. */
+/** Ein bearbeitetes Wort inklusive Fehlerdetails für die Abschlussübersicht. */
 export interface SessionResult {
   wordId: string;
   word: string;
   ruleId: string;
   correct: boolean;
   sentence?: string;
+  /** Was das Kind geschrieben bzw. gewählt hat – nur für die Anzeige, nie an die KI. */
+  transcription?: string;
+  differences?: Difference[];
+  source?: AttemptSource;
 }
 
 export interface SessionState {
@@ -110,9 +114,15 @@ export function nextExercise(
   rng: () => number = Math.random,
 ): SessionState {
   // Fehlerhafte Wörter kommen erst nach zwei anderen Wörtern noch einmal dran.
-  const useRetry = session.retries.length > 0 && session.done >= session.retryAfter;
-  const source = useRetry ? session.retries : session.queue;
-  const wordId = source[0];
+  // Ist die Warteschlange aber leer, darf die Wiederholung nicht auf die Pause warten –
+  // sonst bleibt die Runde ohne Übung stehen und zeigt kein Rundenende an.
+  const retryReady = session.retries.length > 0 && session.done >= session.retryAfter;
+  let useRetry = retryReady;
+  let wordId = (useRetry ? session.retries : session.queue)[0];
+  if (!wordId && (useRetry ? session.queue : session.retries).length > 0) {
+    useRetry = !retryReady;
+    wordId = (useRetry ? session.retries : session.queue)[0];
+  }
   if (!wordId) return { ...session, current: null };
 
   const word = sessionWords(session, words).find((candidate) => candidate.id === wordId);
@@ -147,7 +157,11 @@ export function nextExercise(
   };
 }
 
-export function finishExercise(session: SessionState, correct: boolean): SessionState {
+export function finishExercise(
+  session: SessionState,
+  correct: boolean,
+  detail: Pick<SessionResult, 'transcription' | 'differences' | 'source'> = {},
+): SessionState {
   const current = session.current;
   const wordId = current?.word.id;
   const correctStreak = correct ? session.correctStreak + 1 : 0;
@@ -160,6 +174,9 @@ export function finishExercise(session: SessionState, correct: boolean): Session
         ruleId: current.word.ruleId,
         correct,
         sentence: current.word.sentence,
+        transcription: detail.transcription,
+        differences: detail.differences,
+        source: detail.source,
       }]
     : session.results;
   return {

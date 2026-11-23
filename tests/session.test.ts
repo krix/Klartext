@@ -34,6 +34,40 @@ describe('Übungssitzung', () => {
     expect(session.current?.word.id).toBe(firstId);
   });
 
+  it('behält Fehlerdetails für die Abschlussübersicht', () => {
+    let session = createSession(words, rules, {}, settings, () => 0.5);
+    const first = session.current!;
+    session = finishExercise(session, false, {
+      transcription: 'Libe',
+      differences: [{ position: 2, expected: 'e', written: '' }],
+      source: 'ai',
+    });
+    expect(session.results[0]).toMatchObject({
+      wordId: first.word.id,
+      word: first.word.word,
+      correct: false,
+      transcription: 'Libe',
+      differences: [{ position: 2, expected: 'e', written: '' }],
+      source: 'ai',
+    });
+  });
+
+  it('holt eine wartende Wiederholung, wenn die Warteschlange leer ist', () => {
+    const session = createSession(words, rules, {}, settings, () => 0.5);
+    const stalled: typeof session = {
+      ...session,
+      queue: [],
+      retries: [session.current!.word.id],
+      done: 1,
+      retryAfter: 99,
+      current: null,
+    };
+    const next = nextExercise(stalled, words, rules, () => 0.5);
+    expect(next.current).not.toBeNull();
+    expect(next.retries).toEqual([]);
+    expect(isSessionFinished({ ...next, current: null })).toBe(true);
+  });
+
   it('nutzt bei der Großschreibung eine sichtbare Übung', () => {
     const onlyNoun = [words[2]];
     const session = createSession(onlyNoun, rules, {}, settings, () => 0.5);

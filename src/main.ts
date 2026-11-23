@@ -59,6 +59,11 @@ function findRule(id: string): Rule {
   return rules.find((rule) => rule.id === id) ?? { id, title: id, tip: 'Schau auf die Stelle, die du unsicher bist.' };
 }
 
+/** Liest den gespeicherten Stand neu – sonst kann der Trainingsplan von einem anderen Tab alt sein. */
+function refreshState(): void {
+  data = loadState();
+}
+
 function notice(message: string): void {
   const toast = document.createElement('div');
   toast.className = 'notice';
@@ -87,6 +92,8 @@ function makeTestImage(): string {
 }
 
 function render(): void {
+  // Sicherheitsnetz: keine Übung mehr, aber noch auf der Übungsroute → Rundenende statt leerer Startseite.
+  if (route === 'practice' && session && !session.current) showSummary();
   document.body.dataset.theme = data.settings.theme;
   document.body.dataset.view = route;
   if (lastRenderedRoute !== route) {
@@ -101,7 +108,7 @@ function render(): void {
       app!.innerHTML = session ? practiceView(data, session, checking, helpVisible) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
       break;
     case 'feedback':
-      app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise()) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
+      app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise(), plan) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
       break;
     case 'parent':
       app!.innerHTML = parentView(data, plan, parentStats(), unlockedThemes(stars), connectionTest, connectionTesting);
@@ -168,6 +175,19 @@ function startSession(ruleId = ''): void {
   render();
 }
 
+function showSummary(): void {
+  const last = feedbackContext?.exercise;
+  feedback = {
+    kind: 'summary',
+    word: last?.word ?? builtinWords[0],
+    rule: last?.rule ?? findRule(''),
+    ruleId: session?.ruleId,
+    message: session ? `${session.correct} von ${session.total} Wörtern in dieser Runde richtig.` : 'Runde beendet.',
+    results: session?.results ?? [],
+  };
+  route = 'feedback';
+}
+
 function goNext(): void {
   if (!session) {
     route = 'home';
@@ -177,20 +197,8 @@ function goNext(): void {
   session = nextExercise(session, sessionWords(session, allWords()), rules);
   checking = false;
   helpVisible = false;
-  if (isSessionFinished(session)) {
-    const last = feedbackContext?.exercise;
-    feedback = {
-      kind: 'summary',
-      word: last?.word ?? builtinWords[0],
-      rule: last?.rule ?? findRule(''),
-      ruleId: session.ruleId,
-      message: `${session.correct} von ${session.total} Wörtern in dieser Runde richtig.`,
-      results: session.results,
-    };
-    route = 'feedback';
-  } else {
-    route = 'practice';
-  }
+  if (isSessionFinished(session) || !session.current) showSummary();
+  else route = 'practice';
   render();
 }
 
@@ -198,6 +206,9 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
   const word = exercise.word;
   const previousState = data.progress[word.id];
   feedbackContext = { exercise, previousState };
+  const differences = result?.differences ?? (result?.transcription
+    ? diffWords(word.word, result.transcription, exercise.rule.caseSensitive === true)
+    : []);
 
   const attempt: Attempt = {
     ts: Date.now(),
@@ -210,7 +221,7 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
     confidence: result?.confidence,
     transcription: result?.transcription,
     illegible: result?.illegible ?? false,
-    categories: correct ? [] : errorCategories(result?.differences ?? diffWords(word.word, result?.transcription ?? ''), word.ruleId),
+    categories: correct ? [] : errorCategories(differences, word.ruleId),
   };
   data.attempts.push(attempt);
   if (data.attempts.length > 3000) data.attempts = data.attempts.slice(-3000);
@@ -219,7 +230,7 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
 
   if (session) {
     const before = session.difficulty;
-    session = finishExercise(session, correct);
+    session = finishExercise(session, correct, { transcription: result?.transcription, differences, source });
     // Erfolgsserie: ein paar schwerere Wörter in die laufende Runde holen – nur aus dem gewählten Thema.
     if (session.difficulty > before && session.queue.length < 4) {
       const harder = refillWords(session, allWords(), data.progress).map((candidate) => candidate.id);
@@ -341,6 +352,7 @@ function chooseOption(index: number): void {
 }
 
 function goHome(): void {
+  refreshState();
   route = 'home';
   topicId = '';
   parentUnlocked = false;
@@ -577,6 +589,14 @@ app.addEventListener('input', (event) => {
   document.querySelectorAll(`[data-value-for="${target.name}"]`).forEach((label) => {
     label.textContent = target.value;
   });
+});
+
+// Mehrere Tabs teilen sich localStorage: ein Tab übt, der andere zeigt sonst einen leeren Plan.
+window.addEventListener('storage', (event) => {
+  if (event.key !== 'klartext.state.v1') return;
+  refreshState();
+  // Während einer Übung darf die Schreibfläche nicht mitten im Schreiben neu gezeichnet werden.
+  if (route !== 'practice') render();
 });
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {

@@ -70,19 +70,48 @@ describe('Rückmeldung', () => {
     expect(html).toContain('letter-wrong');
   });
 
-  it('zeigt am Rundenende alle geübten Wörter mit Ergebnis', () => {
+  it('zeigt am Rundenende alle geübten Wörter mit Ergebnis, Fehlerstelle und Trainingsplan', () => {
     const html = feedbackView({
       kind: 'summary', word: words[0], rule,
       message: '1 von 2 Wörtern in dieser Runde richtig.',
       results: [
-        { wordId: 'a', word: 'Liebe', ruleId: 'ie-i', correct: true },
-        { wordId: 'b', word: 'Wiese', ruleId: 'ie-i', correct: false },
+        { wordId: 'a', word: 'Liebe', ruleId: 'ie-i', correct: true, sentence: 'Liebe macht froh.' },
+        {
+          wordId: 'b', word: 'Wiese', ruleId: 'ie-i', correct: false,
+          sentence: 'Auf der Wiese blühen Blumen.',
+          transcription: ' Wiesse',
+          differences: [
+            { position: 0, expected: '', written: ' ' },
+            { position: 2, expected: 'e', written: 'a' },
+          ],
+          source: 'ai',
+        },
+      ],
+    }, true, [{
+      ruleId: 'ie-i', title: 'ie oder i', tip: 'Lang: ie.', errors: 2, total: 3, rate: 2 / 3,
+    }]);
+    expect(html).toContain('Deine Wörter in dieser Runde');
+    expect(html).toContain('Liebe macht froh.');
+    expect(html).toContain('Auf der Wiese blühen Blumen.');
+    expect(html).toContain('1 richtig · 1 noch üben');
+    expect(html).toContain('An Stelle 1 war <b>␣</b> zu viel.');
+    expect(html).toContain('An Stelle 3 muss <b>e</b> stehen, nicht <b>a</b>.');
+    expect(html).toContain('class="review-item is-wrong"');
+    expect(html).toContain('Dein Trainingsplan');
+    expect(html).toContain('2 × üben');
+  });
+
+  it('behält einen zunächst falschen Wortversuch in der Übersicht sichtbar', () => {
+    const html = feedbackView({
+      kind: 'summary', word: words[0], rule,
+      results: [
+        { wordId: 'a', word: 'Liebe', ruleId: 'ie-i', correct: false, source: 'self' },
+        { wordId: 'a', word: 'Liebe', ruleId: 'ie-i', correct: true, source: 'self' },
       ],
     }, true);
-    expect(html).toContain('Deine Wörter in dieser Runde');
-    expect(html).toContain('Liebe');
-    expect(html).toContain('Wiese');
-    expect(html).toContain('1 richtig · 1 noch üben');
+    expect(html).toContain('0 richtig · 1 noch üben');
+    expect(html).toContain('2×');
+    expect(html).toContain('Du hast selbst entschieden');
   });
 });
 

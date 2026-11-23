@@ -67,7 +67,8 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
 5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen.
 6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
-7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗. Nach einem Reload (z. B. durch Ziehen zum Aktualisieren) beginnt die Startseite wieder oben und behält trotz ein-/ausblendender Browserleiste ihre Höhe (`svh` statt `dvh`).
+7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗, den Beispielsatz und – bei KI- oder Auswahlfehlern – die markierte Fehlerstelle mit Position und richtiger Schreibweise. Der Trainingsplan steht dort bereits aktuell; die Startseite liest beim Zurückkehren und bei Änderungen in anderen Tabs neu aus dem Speicher. Wartende Wiederholungen dürfen das Rundenende nicht blockieren.
+8. Nach einem Reload (z. B. durch Ziehen zum Aktualisieren) beginnt die Startseite wieder oben und behält trotz ein-/ausblendender Browserleiste ihre Höhe (`svh` statt `dvh`).
 
 ---
 
@@ -86,12 +87,14 @@ Weitere Punkte: Service Worker mit versionsbasiertem Precache (außer Gemini all
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm test           # 37 Unit-Tests
+npm test           # Unit-Tests
 npm run build      # Typcheck + Build + Service Worker
 npm run preview    # Produktionsbuild lokal testen
+# In einem zweiten Terminal, während preview läuft:
+npm run test:e2e   # Playwright-Smoke-Test des Rundenablaufs (nutzt lokales Chrome)
 ```
 
-Node 20+ reicht. Die KI-Prüfung funktioniert auf `localhost` auch ohne HTTPS; für die installierte PWA auf dem Tablet ist HTTPS nötig.
+Node 20+ reicht. Der Playwright-Test verwendet das installierte Chrome (`CHROME_PATH` überschreibbar); es müssen keine zusätzlichen Browser heruntergeladen werden. Die KI-Prüfung funktioniert auf `localhost` auch ohne HTTPS; für die installierte PWA auf dem Tablet ist HTTPS nötig.
 
 ### Deployment
 
@@ -170,7 +173,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 50 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Sprachausgabe von Wort + Satz sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 53 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie Gemini-Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

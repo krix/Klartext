@@ -37,7 +37,7 @@ function visibleChar(value: string): string {
   return value.replace(/ /g, '␣');
 }
 
-function renderErrorDetail(expected: string, differences: readonly Difference[]): string {
+function renderErrorDetail(expected: string, differences: readonly Difference[], compact = false): string {
   if (differences.length === 0) return '';
   const wrongPositions = new Set(differences.filter((item) => item.expected).map((item) => item.position));
   const markedWord = [...expected]
@@ -60,35 +60,83 @@ function renderErrorDetail(expected: string, differences: readonly Difference[])
   }
   notes.sort((a, b) => a.position - b.position);
   const notesHtml = notes.map((note) => `<li>${note.html}</li>`).join('');
-  return `<section class="error-detail" aria-label="So war es richtig">
-    <p class="kicker">Genau hier war der Fehler</p>
+  return `<section class="error-detail${compact ? ' compact' : ''}" aria-label="So war es richtig">
+    ${compact ? '' : '<p class="kicker">Genau hier war der Fehler</p>'}
     <p class="marked-word" aria-hidden="true">${markedWord}</p>
     <ul class="error-list">${notesHtml}</ul>
   </section>`;
 }
 
-function renderSummaryOverview(results: readonly SessionResult[]): string {
-  const byWord = new Map<string, { word: string; correct: boolean; tries: number }>();
+/** Der Trainingsplan erscheint auf der Startseite und direkt im Rundenende. */
+function planBlock(plan: readonly PlanEntry[], hasAttempts: boolean): string {
+  if (plan.length === 0) {
+    return `<p class="panel-note">${hasAttempts
+      ? 'In den letzten Runden ist alles gut gelaufen. Weiter so!'
+      : 'Üb ein paar Wörter – dann zeige ich dir hier, was sich besonders lohnt.'}</p>`;
+  }
+  return `<ul class="plan-list">${plan.map((entry) => `<li><span>${escapeHtml(entry.title)}</span><small>${entry.errors} × üben</small></li>`).join('')}</ul>`;
+}
+
+interface ReviewEntry {
+  wordId: string;
+  word: string;
+  sentence?: string;
+  tries: number;
+  wrongTries: number;
+  lastError?: Pick<SessionResult, 'transcription' | 'differences' | 'source'>;
+}
+
+/**
+ * Rundenübersicht: jedes geübte Wort mit Ergebnis. Bei Fehlern stehen die
+ * markierte Stelle und die richtige Schreibweise direkt daneben. Ein Wort,
+ * das erst falsch und dann richtig war, bleibt als „noch üben“ sichtbar.
+ */
+function renderSummaryOverview(results: readonly SessionResult[], plan: readonly PlanEntry[]): string {
+  const byWord = new Map<string, ReviewEntry>();
   for (const result of results) {
-    const previous = byWord.get(result.wordId);
-    byWord.set(result.wordId, {
+    const entry = byWord.get(result.wordId) ?? {
+      wordId: result.wordId,
       word: result.word,
-      correct: result.correct,
-      tries: (previous?.tries ?? 0) + 1,
-    });
+      sentence: result.sentence,
+      tries: 0,
+      wrongTries: 0,
+    };
+    entry.tries += 1;
+    if (!result.correct) {
+      entry.wrongTries += 1;
+      entry.lastError = {
+        transcription: result.transcription,
+        differences: result.differences,
+        source: result.source,
+      };
+    }
+    byWord.set(result.wordId, entry);
   }
   const entries = [...byWord.values()];
   if (entries.length === 0) return '';
-  const right = entries.filter((entry) => entry.correct).length;
-  const list = entries.map((entry) => `<li class="review-item ${entry.correct ? 'is-right' : 'is-wrong'}" aria-label="${escapeHtml(entry.word)} ${entry.correct ? 'richtig' : 'noch üben'}">
-      <span class="review-mark" aria-hidden="true">${entry.correct ? '✓' : '✗'}</span>
-      <strong>${escapeHtml(entry.word)}</strong>
-      ${entry.tries > 1 ? `<small>${entry.tries}×</small>` : ''}
-    </li>`).join('');
+  const right = entries.filter((entry) => entry.wrongTries === 0).length;
+  const withDetails = entries.some((entry) => entry.wrongTries > 0);
+  const list = entries.map((entry) => {
+    const ok = entry.wrongTries === 0;
+    const detail = ok ? '' : renderErrorDetail(entry.word, entry.lastError?.differences ?? [], true);
+    const note = ok || detail ? '' : `<p class="review-note">${entry.lastError?.source === 'self'
+      ? 'Du hast selbst entschieden, dieses Wort noch einmal zu üben.'
+      : 'Vergleich dein Wort noch einmal mit der Lösung.'}</p>`;
+    const sentence = entry.sentence ? `<p class="review-sentence">${escapeHtml(entry.sentence)}</p>` : '';
+    const tries = entry.tries > 1 ? `<small>${entry.tries}×</small>` : '';
+    return `<li class="review-item ${ok ? 'is-right' : 'is-wrong'}" aria-label="${escapeHtml(entry.word)} ${ok ? 'richtig' : 'noch üben'}">
+      <span class="review-line"><span class="review-mark" aria-hidden="true">${ok ? '✓' : '✗'}</span><strong>${escapeHtml(entry.word)}</strong>${tries}</span>
+      ${sentence}${detail}${note}
+    </li>`;
+  }).join('');
   return `<section class="summary-overview" aria-labelledby="review-title">
     <h2 id="review-title">Deine Wörter in dieser Runde</h2>
-    <p class="panel-note">${right} richtig · ${entries.length - right} noch üben</p>
-    <ul class="word-review">${list}</ul>
+    <p class="panel-note">${right} richtig · ${entries.length - right} noch üben · ✓ sitzt, ✗ nochmal anschauen</p>
+    <ul class="word-review${withDetails ? ' with-details' : ''}">${list}</ul>
+    <section class="summary-plan panel" aria-label="Dein Trainingsplan">
+      <h3>Dein Trainingsplan</h3>
+      ${planBlock(plan, results.length > 0)}
+    </section>
   </section>`;
 }
 
@@ -117,17 +165,13 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
       <aside class="rail" aria-label="Lernübersicht">
         <section class="panel">
           <h2>Dein Trainingsplan</h2>
-          ${plan.length === 0
-            ? `<p class="panel-note">${data.attempts.length === 0
-                ? 'Üb ein paar Wörter – dann zeige ich dir hier, was sich besonders lohnt.'
-                : 'In den letzten Runden ist alles gut gelaufen. Weiter so!'}</p>`
-            : `<ul class="plan-list">${plan.map((entry) => `<li><span>${escapeHtml(entry.title)}</span><small>${entry.errors} × üben</small></li>`).join('')}</ul>`}
+          ${planBlock(plan, data.attempts.length > 0)}
           <div class="progress-track" role="progressbar" aria-label="Anteil der geübten Wörter" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${percent}%"></span></div>
           <p class="panel-note">${percent}% der Wortbank schon gesehen</p>
         </section>
         ${data.settings.privacyOptIn ? '' : `<section class="panel">
           <h3>${lockSymbol} Für die Eltern</h3>
-          <p class="panel-note">Bilder werden nur mit Zustimmung an die KI gesendet. Ohne Zustimmung funktioniert Klartext komplett offline mit Selbstprüfung.</p>
+          <p class="panel-note">Bilder nur mit Zustimmung an die KI. Sonst geht es komplett offline.</p>
           <button class="button small" type="button" data-action="parent">Einstellungen öffnen</button>
         </section>`}
       </aside>
@@ -275,7 +319,7 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
   </main>`;
 }
 
-export function feedbackView(view: FeedbackView, isLast: boolean): string {
+export function feedbackView(view: FeedbackView, isLast: boolean, plan: readonly PlanEntry[] = []): string {
   const { word, rule } = view;
   const differences = view.differences?.length
     ? view.differences
@@ -312,7 +356,7 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
       ${showSolution ? `<p class="prompt-hint">Gesucht war:</p><p class="result-word">${escapeHtml(word.word)}</p>${word.sentence ? `<p class="prompt-sentence">${escapeHtml(word.sentence)}</p>` : ''}` : ''}
       ${view.transcription ? `<p class="panel-note">Gelesen: ${escapeHtml(view.transcription)}${typeof view.confidence === 'number' ? ` · Sicherheit ${Math.round(view.confidence * 100)}%` : ''}</p>` : ''}
       ${showErrorDetail ? renderErrorDetail(word.word, differences) : ''}
-      ${view.kind === 'summary' ? renderSummaryOverview(view.results ?? []) : ''}
+      ${view.kind === 'summary' ? renderSummaryOverview(view.results ?? [], plan) : ''}
       <div class="button-row stage-actions">
         ${view.kind === 'summary'
           ? `<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="${againAction}" ${againAttrs}>Noch eine Runde</button>`
