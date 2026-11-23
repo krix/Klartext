@@ -23,12 +23,13 @@ export function brand(): string {
   </span>`;
 }
 
-export function header(parentUnlocked = false): string {
+export function header(parentUnlocked = false, active: 'topics' | '' = ''): string {
   return `<header class="topbar">
     <a class="brand" href="#" data-action="home" aria-label="Klartext – zur Startseite">
       ${brand()}<span>Klartext<small>Rechtschreibung üben</small></span>
     </a>
     <nav class="topnav" aria-label="Hauptnavigation">
+      <button class="link-button ${active === 'topics' ? 'is-active' : ''}" type="button" data-action="topics"${active === 'topics' ? ' aria-current="page"' : ''}>Themen</button>
       <button class="link-button" type="button" data-action="${parentUnlocked ? 'parent-home' : 'parent'}">${parentUnlocked ? 'Elternbereich' : 'Elternbereich 🔒'}</button>
     </nav>
   </header>`;

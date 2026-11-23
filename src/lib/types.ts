@@ -1,11 +1,32 @@
 /** Zentrale Datenmodelle der App. Alles liegt lokal im Browser, es gibt kein Backend. */
 
+export interface RuleExample {
+  word: string;
+  note: string;
+}
+
 export interface Rule {
   id: string;
   title: string;
   tip: string;
   /** Nur wenn die Übung Groß-/Kleinschreibung trainiert, wird sie bewertet. */
   caseSensitive?: boolean;
+  /** Themenbereich für die Lernseiten. */
+  area?: string;
+  /** Kurzbeschreibung auf der Themenübersicht. */
+  summary?: string;
+  /** Lernziel auf der Detailseite. */
+  goal?: string;
+  /** Merkregeln auf der Detailseite. */
+  rules?: string[];
+  /** Beispielwörter mit kurzer Erklärung. */
+  examples?: RuleExample[];
+}
+
+export interface TopicArea {
+  id: string;
+  title: string;
+  subtitle: string;
 }
 
 export interface Word {

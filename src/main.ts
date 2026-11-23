@@ -1,5 +1,6 @@
 import './styles.css';
 import rawRules from './data/rules.json';
+import rawTopicGroups from './data/topic-groups.json';
 import rawWords from './data/words.json';
 
 import { WritingPad } from './lib/canvas';
@@ -18,13 +19,14 @@ import { hashPin, newSalt, verifyPin } from './lib/pin';
 import { speak } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, type SessionState } from './lib/session';
 import { clearState, freshState, loadState, saveState } from './lib/storage';
-import type { AppData, Attempt, Difference, Exercise, Rule, Word, WordState } from './lib/types';
-import { feedbackView, homeView, parentGateView, parentView, practiceView, type FeedbackView } from './ui/views';
+import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
+import { feedbackView, homeView, parentGateView, parentView, practiceView, topicView, topicsView, type FeedbackView } from './ui/views';
 
 const rules = rawRules as unknown as Rule[];
+const topicAreas = rawTopicGroups as unknown as TopicArea[];
 const builtinWords = rawWords as unknown as Word[];
 
-type Route = 'home' | 'practice' | 'feedback' | 'parent' | 'gate';
+type Route = 'home' | 'practice' | 'feedback' | 'parent' | 'gate' | 'topics' | 'topic';
 
 let data: AppData = loadState();
 let route: Route = 'home';
@@ -38,6 +40,7 @@ let pinSetup = false;
 let pinError = '';
 let connectionTest: ConnectionTestResult | null = null;
 let connectionTesting = false;
+let topicId = '';
 /** Kontext der aktuellen Rückmeldung – für Wiederholung und „KI irrt“. */
 let feedbackContext: { exercise: Exercise; previousState?: WordState } | null = null;
 
@@ -98,6 +101,14 @@ function render(): void {
     case 'gate':
       app!.innerHTML = parentGateView(pinSetup, pinError);
       break;
+    case 'topics':
+      app!.innerHTML = topicsView(topicAreas, rules, allWords(), data.progress, parentUnlocked);
+      break;
+    case 'topic': {
+      const rule = findRule(topicId);
+      app!.innerHTML = topicView(rule, topicAreas.find((area) => area.id === rule.area), allWords(), data.progress, parentUnlocked);
+      break;
+    }
     default:
       app!.innerHTML = homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
   }
@@ -134,13 +145,15 @@ function parentStats(): { seen: number; correctRate: number; streak: number; sta
   };
 }
 
-function startSession(): void {
-  const words = allWords();
+function startSession(ruleId = ''): void {
+  const pool = allWords();
+  const words = ruleId ? pool.filter((word) => word.ruleId === ruleId) : pool;
   if (words.length === 0) {
-    notice('Es sind keine Wörter vorhanden.');
+    notice(ruleId ? 'Für dieses Thema sind keine Wörter vorhanden.' : 'Es sind keine Wörter vorhanden.');
     return;
   }
   session = createSession(words, rules, data.progress, data.settings);
+  topicId = ruleId;
   feedback = null;
   checking = false;
   helpVisible = false;
@@ -328,6 +341,7 @@ function chooseOption(index: number): void {
 
 function goHome(): void {
   route = 'home';
+  topicId = '';
   parentUnlocked = false;
   render();
 }
@@ -470,6 +484,9 @@ app.addEventListener('click', (event) => {
 
   switch (action) {
     case 'home': goHome(); break;
+    case 'topics': route = 'topics'; render(); break;
+    case 'topic': topicId = element.dataset.id ?? ''; route = 'topic'; render(); break;
+    case 'practice-topic': startSession(element.dataset.id ?? ''); break;
     case 'start': startSession(); break;
     case 'quit': goHome(); break;
     case 'speak':

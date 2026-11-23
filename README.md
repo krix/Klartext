@@ -25,7 +25,8 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 
 | Bildschirm | Inhalt |
 |---|---|
-| Start | Tagesziel, Sterne, Tagesserie, Trainingsplan, Startknopf, Elternbereich |
+| Start | Tagesziel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
+| Themen | Vier Bereiche mit 16 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
 | Übung | Regelthema, Fortschritt, Diktat (Sprachausgabe) / Abschreiben / Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
 | Rückmeldung | Richtig/Fast, Vergleichswort, Abweichungstabelle (Position / erwartet / geschrieben), kurzer Tipp, Wiederholung oder Selbstprüfung |
 | Elternbereich (PIN) | KI-Key und Datenschutz, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
@@ -44,9 +45,20 @@ AppData
 
 Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 320 Wörter und 16 Regelthemen liegen als JSON in `src/data/`.
 
+### Themen
+
+Die Wörter sind über `ruleId` den 16 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in vier Bereiche zusammen:
+
+- **Laute & Buchstaben:** ie/i, ei/ai, äu/eu, sch/st/sp
+- **Länge & Silben:** ss/ß, lange Vokale, Dehnungs-h, Doppelkonsonanten
+- **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, -ig/-lich, -heit/-keit
+- **Wörter im Satz:** das/dass, als/wie, Großschreibung
+
+Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas. Die Texte sind kindgerecht formuliert und fachlich an den gängigen Regeln ausgerichtet, unter anderem an [Dehnungs-h](https://de.wikipedia.org/wiki/Dehnungs-h), [ß](https://de.wikipedia.org/wiki/%C3%9F) und [Doppelkonsonant](https://de.wikipedia.org/wiki/Doppelkonsonant).
+
 ### Übungsablauf
 
-1. Wörter nach Leitner-Fach und Fälligkeit auswählen; falsche Wörter kommen nach zwei anderen Wörtern wieder.
+1. Wörter nach Leitner-Fach und Fälligkeit auswählen; falsche Wörter kommen nach zwei anderen Wörtern wieder. Aus der Themenübersicht kann die Auswahl auf ein Thema eingegrenzt werden.
 2. Übungstyp wählen: Hördiktat (~60 %), Abschreiben, Auswahl. Nach zwei Fehlern in Folge erscheinen mehr Hilfen und leichtere Wörter; nach fünf Richtigen wird die Stufe erhöht.
 3. Handschrift auf dem Canvas schreiben → PNG (nur der beschriebene Bereich) → Gemini.
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
@@ -70,7 +82,7 @@ Weitere Punkte: Service Worker mit versionsbasiertem Precache (außer Gemini all
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm test           # 19 Unit-Tests
+npm test           # 37 Unit-Tests
 npm run build      # Typcheck + Build + Service Worker
 npm run preview    # Produktionsbuild lokal testen
 ```
@@ -148,13 +160,13 @@ Biene|ie-i
 
 Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`.
 
-- Dauerhaft neue Wörter oder Regeln: Dateien `src/data/words.json` und `src/data/rules.json` erweitern. Jedes Wort braucht `id`, `word`, `ruleId`, `level` (1–3), `hint` und optional `sentence`. Danach `npm test && npm run build`.
+- Dauerhaft neue Wörter oder Regeln: Dateien `src/data/words.json` und `src/data/rules.json` erweitern. Jedes Wort braucht `id`, `word`, `ruleId`, `level` (1–3), `hint` und optional `sentence`. Ein neues Thema zusätzlich in `src/data/topic-groups.json` einem Bereich zuordnen und in `rules.json` die Felder `area`, `summary`, `goal`, `rules` und `examples` füllen – dann erscheint automatisch eine Lernseite dafür. Danach `npm test && npm run build`.
 
 ---
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 19 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl, Trainingsplan, Tagesserie, Sitzungsablauf sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 37 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl, Trainingsplan, Tagesserie, Sitzungsablauf, Themen-Lernseiten sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

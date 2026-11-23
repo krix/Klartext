@@ -1,6 +1,6 @@
 import { escapeHtml, header } from './html';
 import type { ConnectionTestResult } from '../lib/gemini';
-import type { AppData, Difference, Exercise, Rule, Word } from '../lib/types';
+import type { AppData, Difference, Exercise, Rule, TopicArea, Word } from '../lib/types';
 import type { PlanEntry } from '../lib/learning';
 import type { SessionState } from '../lib/session';
 
@@ -54,6 +54,87 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
           <p class="panel-note">Bilder werden nur mit Zustimmung an die KI gesendet. Ohne Zustimmung funktioniert Klartext komplett offline mit Selbstprüfung.</p>
           <button class="button small" type="button" data-action="parent">Einstellungen öffnen</button>
         </section>`}
+      </aside>
+    </div>
+  </main>`;
+}
+
+function topicStats(ruleId: string, words: readonly Word[], progress: AppData['progress']): { total: number; learned: number } {
+  const topicWords = words.filter((word) => word.ruleId === ruleId);
+  return {
+    total: topicWords.length,
+    learned: topicWords.filter((word) => progress[word.id] !== undefined).length,
+  };
+}
+
+/** Übersicht: die 16 Themen in vier Bereichen, jeweils mit Kurzbeschreibung und Lernstand. */
+export function topicsView(areas: readonly TopicArea[], rules: readonly Rule[], words: readonly Word[], progress: AppData['progress'], parentUnlocked = false): string {
+  const areaSections = areas.map((area) => {
+    const areaRules = rules.filter((rule) => rule.area === area.id);
+    if (areaRules.length === 0) return '';
+    return `<section class="panel topic-area" aria-labelledby="area-${escapeHtml(area.id)}">
+      <h2 id="area-${escapeHtml(area.id)}">${escapeHtml(area.title)}</h2>
+      <p class="panel-note">${escapeHtml(area.subtitle)}</p>
+      <ul class="topic-cards">
+        ${areaRules.map((rule) => {
+          const { total, learned } = topicStats(rule.id, words, progress);
+          const percent = total === 0 ? 0 : Math.round((learned / total) * 100);
+          return `<li><button class="topic-card" type="button" data-action="topic" data-id="${escapeHtml(rule.id)}" aria-label="Thema ${escapeHtml(rule.title)} öffnen">
+            <span class="topic-card-top"><strong>${escapeHtml(rule.title)}</strong><span aria-hidden="true">→</span></span>
+            <span class="panel-note">${escapeHtml(rule.summary ?? rule.tip)}</span>
+            <span class="topic-card-meta"><span class="mini-track" aria-hidden="true"><span style="width:${percent}%"></span></span>${learned}/${total} Wörter geübt</span>
+          </button></li>`;
+        }).join('')}
+      </ul>
+    </section>`;
+  }).join('');
+
+  return `${header(parentUnlocked, 'topics')}<main id="hauptinhalt" class="shell topics-shell" tabindex="-1">
+    <p class="kicker">Lern-Themen</p>
+    <h1>Wörter nach Themen</h1>
+    <p class="lead">Wähle ein Thema – mit Erklärung, Lernziel und Regeln.</p>
+    <div class="topic-areas">${areaSections}</div>
+  </main>`;
+}
+
+/** Detailseite: Erklärung, Lernziel, Regeln und Beispiele zu einem Thema. */
+export function topicView(rule: Rule, area: TopicArea | undefined, words: readonly Word[], progress: AppData['progress'], parentUnlocked = false): string {
+  const summary = rule.summary ?? rule.tip;
+  const goal = rule.goal ?? rule.tip;
+  const rules = rule.rules?.length ? rule.rules : [rule.tip];
+  const examples = rule.examples ?? [];
+  const areaTitle = area?.title ?? 'Rechtschreibung';
+  const { total, learned } = topicStats(rule.id, words, progress);
+
+  return `${header(parentUnlocked, 'topics')}<main id="hauptinhalt" class="shell topic-shell" tabindex="-1">
+    <button class="link-button topic-back" type="button" data-action="topics">← Alle Themen</button>
+    <p class="kicker">Thema · ${escapeHtml(areaTitle)}</p>
+    <h1>${escapeHtml(rule.title)}</h1>
+    <p class="lead">${escapeHtml(area?.subtitle ?? 'Regeln und Beispiele zum Nachschlagen.')}</p>
+    <div class="topic-detail-grid">
+      <section class="panel topic-main">
+        <h2>Worum geht’s?</h2>
+        <p>${escapeHtml(summary)}</p>
+        <h3 class="section-gap">Das lernst du</h3>
+        <p>${escapeHtml(goal)}</p>
+        <h3 class="section-gap">Regeln zum Merken</h3>
+        <ol class="rule-list">${rules.map((text) => `<li>${escapeHtml(text)}</li>`).join('')}</ol>
+        <p class="tip-box"><strong>Kurz gesagt:</strong> ${escapeHtml(rule.tip)}</p>
+      </section>
+      <aside class="topic-side">
+        ${examples.length ? `<section class="panel">
+          <h2>Beispiele</h2>
+          <ul class="example-list">
+            ${examples.map((example) => `<li><span class="example-word">${escapeHtml(example.word)}</span><span class="panel-note">${escapeHtml(example.note)}</span></li>`).join('')}
+          </ul>
+        </section>` : ''}
+        <section class="panel topic-cta">
+          <p class="panel-note"><strong>${total} Wörter</strong> in diesem Thema · ${learned} schon geübt</p>
+          <div class="button-row">
+            <button class="button primary" type="button" data-action="practice-topic" data-id="${escapeHtml(rule.id)}">Dieses Thema üben <span aria-hidden="true">→</span></button>
+            <button class="button small" type="button" data-action="topics">Alle Themen</button>
+          </div>
+        </section>
       </aside>
     </div>
   </main>`;

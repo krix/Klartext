@@ -1,0 +1,22 @@
+[
+  {
+    "id": "laute",
+    "title": "Laute & Buchstaben",
+    "subtitle": "Welcher Buchstabe gehört zu welchem Laut?"
+  },
+  {
+    "id": "laenge",
+    "title": "Länge & Silben",
+    "subtitle": "Kurz oder lang? Davon hängt oft die Schreibung ab."
+  },
+  {
+    "id": "wortbau",
+    "title": "Wortbau & Endungen",
+    "subtitle": "Vorsilben und Endungen verraten die Bedeutung."
+  },
+  {
+    "id": "satz",
+    "title": "Wörter im Satz",
+    "subtitle": "Hier entscheidet die Aufgabe im Satz über die Schreibung."
+  }
+]
