@@ -1,0 +1,30 @@
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
+import { createHash } from 'node:crypto';
+
+const dist = 'dist';
+const template = readFileSync('scripts/sw-template.js', 'utf8');
+
+function filesIn(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(directory, entry.name);
+    return entry.isDirectory() ? filesIn(path) : [path];
+  });
+}
+
+const assets = filesIn(dist)
+  .filter((path) => !path.endsWith(`${sep}sw.js`))
+  .map((path) => `./${relative(dist, path).split(sep).join('/')}`)
+  .sort();
+
+// Hash über die Dateiinhalte -> neuer Cache-Name bei jedem echten Update.
+const hash = createHash('sha256');
+for (const asset of assets) hash.update(readFileSync(join(dist, asset.slice(2))));
+const version = hash.digest('hex').slice(0, 12);
+
+const source = template
+  .replace('__VERSION__', version)
+  .replace('__PRECACHE__', JSON.stringify([...assets, './'], null, 2));
+
+writeFileSync(join(dist, 'sw.js'), source, 'utf8');
+console.log(`Service Worker geschrieben: ${assets.length} gecachte Dateien (${version}).`);

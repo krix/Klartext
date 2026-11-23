@@ -1,0 +1,95 @@
+/** Zentrale Datenmodelle der App. Alles liegt lokal im Browser, es gibt kein Backend. */
+
+export interface Rule {
+  id: string;
+  title: string;
+  tip: string;
+  /** Nur wenn die Übung Groß-/Kleinschreibung trainiert, wird sie bewertet. */
+  caseSensitive?: boolean;
+}
+
+export interface Word {
+  id: string;
+  word: string;
+  ruleId: string;
+  level: 1 | 2 | 3;
+  hint: string;
+  sentence?: string;
+  /** Eigene Wortlisten aus dem Elternbereich werden markiert. */
+  custom?: boolean;
+}
+
+export interface Difference {
+  /** Nullbasierter Index im Zielwort. */
+  position: number;
+  expected: string;
+  written: string;
+}
+
+export interface CheckResult {
+  transcription: string;
+  isCorrect: boolean;
+  confidence: number;
+  differences: Difference[];
+  feedback: string;
+  illegible: boolean;
+}
+
+export type AttemptSource = 'ai' | 'self' | 'choice';
+
+export interface Attempt {
+  ts: number;
+  wordId: string;
+  word: string;
+  ruleId: string;
+  correct: boolean;
+  source: AttemptSource;
+  selfAssessed: boolean;
+  confidence?: number;
+  transcription?: string;
+  illegible: boolean;
+  /** Fehlerkategorien, z. B. „ie/i" oder Regel-Titel. */
+  categories: string[];
+}
+
+export interface WordState {
+  /** Leitner-Fach 0 = neu/fehlerhaft, 5 = sicher. */
+  box: number;
+  /** Zeitpunkt (Epoch-ms), ab dem das Wort wieder fällig ist. */
+  due: number;
+  seen: number;
+  lapses: number;
+  lastCorrect?: boolean;
+}
+
+export type AppTheme = 'paper' | 'mint' | 'night';
+
+export interface Settings {
+  pinHash: string | null;
+  pinSalt: string | null;
+  apiKey: string;
+  model: string;
+  handColor: string;
+  handWidth: number;
+  ttsRate: number;
+  sessionLength: number;
+  privacyOptIn: boolean;
+  theme: AppTheme;
+}
+
+export interface AppData {
+  version: 1;
+  settings: Settings;
+  progress: Record<string, WordState>;
+  attempts: Attempt[];
+  customWords: Word[];
+}
+
+export type ExerciseKind = 'dictation' | 'copy' | 'choice';
+
+export interface Exercise {
+  word: Word;
+  rule: Rule;
+  kind: ExerciseKind;
+  options?: string[];
+}

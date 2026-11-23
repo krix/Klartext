@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ie-i",
+    "title": "ie oder i – lang oder kurz?",
+    "tip": "Sprich das Wort lang: hörst du ein langes i, steht meist ie. Bei kurzem i schreibst du nur i.",
+    "caseSensitive": false
+  },
+  {
+    "id": "ss-oesz",
+    "title": "ss oder ß – kurz oder lang?",
+    "tip": "Nach einem kurzen Vokal schreibst du ss, nach einem langen Vokal oder Doppellaut ß. Denk an das Wasser und die Straße.",
+    "caseSensitive": false
+  },
+  {
+    "id": "ai-ei",
+    "title": "ei oder ai?",
+    "tip": "Fast immer schreibst du ei, wie in Zeit und Wein. Nur in wenigen Wörtern wie Mai, Kai und Laie steht ai.",
+    "caseSensitive": false
+  },
+  {
+    "id": "aeu-eu",
+    "title": "äu oder eu?",
+    "tip": "Kommt das Wort von einem Wort mit au, schreibst du äu, zum Beispiel Häuser von Haus. In allen anderen Fällen steht eu, wie in heute und Freude.",
+    "caseSensitive": false
+  },
+  {
+    "id": "dehnung",
+    "title": "Lange Vokale erkennen",
+    "tip": "Ein langer Vokal klingt gedehnt. Oft hilft ein doppelter Vokal wie aa, ee oder oo, manchmal auch eine offene Silbe.",
+    "caseSensitive": false
+  },
+  {
+    "id": "dehnungs-h",
+    "title": "Das stumme h",
+    "tip": "Ein h nach einem Vokal macht ihn lang, wird aber nicht gesprochen. Denk an die Bahn und die Uhr.",
+    "caseSensitive": false
+  },
+  {
+    "id": "doppelkonsonant",
+    "title": "Doppelkonsonant nach kurzem Vokal",
+    "tip": "Nach einem kurzen, betonten Vokal steht oft ein doppelter Konsonant. Denk an das Bett und die Sonne.",
+    "caseSensitive": false
+  },
+  {
+    "id": "sch-s",
+    "title": "sch oder s bei st und sp?",
+    "tip": "Am Wortanfang klingt st wie scht und sp wie schp, geschrieben wird aber nur s. Alle anderen sch-Laute schreibst du mit sch.",
+    "caseSensitive": false
+  },
+  {
+    "id": "das-dass",
+    "title": "das oder dass?",
+    "tip": "Das ist ein Artikel oder Pronomen und lässt sich durch dieses ersetzen. Dass ist eine Konjunktion und leitet einen Nebensatz ein.",
+    "caseSensitive": false
+  },
+  {
+    "id": "als-wie",
+    "title": "als oder wie?",
+    "tip": "Bei Vergleichen mit mehr, weniger oder einem Vergleichswort steht als. Bei gleich oder so steht wie.",
+    "caseSensitive": false
+  },
+  {
+    "id": "wieder-wider",
+    "title": "wieder oder wider?",
+    "tip": "Wieder heißt noch einmal, wie in wiederkommen. Wider heißt dagegen, wie in widersprechen.",
+    "caseSensitive": false
+  },
+  {
+    "id": "ver-vor",
+    "title": "ver- oder vor-?",
+    "tip": "ver- heißt oft weg, falsch oder fertig, zum Beispiel verlieren. vor- heißt vorher oder vor jemandem, zum Beispiel vorstellen.",
+    "caseSensitive": false
+  },
+  {
+    "id": "emp-ent",
+    "title": "emp- oder ent-?",
+    "tip": "emp- kommt nur in wenigen Wörtern vor, zum Beispiel empfehlen und empfangen. ent- ist häufig und heißt oft weg oder los, zum Beispiel entdecken.",
+    "caseSensitive": false
+  },
+  {
+    "id": "ig-lich",
+    "title": "-ig oder -lich?",
+    "tip": "Mit -ig beschreibst du oft ein Gefühl oder eine Eigenschaft, zum Beispiel mutig. Mit -lich meinst du 'wie' oder 'gehörend zu', zum Beispiel kindlich.",
+    "caseSensitive": false
+  },
+  {
+    "id": "heit-keit",
+    "title": "-heit oder -keit?",
+    "tip": "Beide Endungen machen aus einem Adjektiv ein Nomen und werden großgeschrieben. Häufig ist -keit nach -ig und -lich, wie bei Möglichkeit und Höflichkeit.",
+    "caseSensitive": false
+  },
+  {
+    "id": "grossschreibung",
+    "title": "Nomen großschreiben",
+    "tip": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "caseSensitive": true
+  }
+]
