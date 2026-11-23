@@ -100,7 +100,7 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
       </div>`}
       ${helpVisible || session.showHelp ? `<p class="tip-box"><strong>Tipp:</strong> ${escapeHtml(exercise.rule.tip)} ${escapeHtml(exercise.word.hint)}</p>` : ''}
       <div class="button-row" style="margin-top:22px">
-        ${!isChoice && canUseAi ? `<button class="button primary" type="button" data-action="check" ${checking || 'disabled'}>${checking ? 'Klartext schaut nach …' : 'Prüfen lassen'}</button>` : ''}
+        ${!isChoice && canUseAi ? `<button class="button primary" type="button" data-action="check" ${checking ? 'disabled' : ''}>${checking ? 'Klartext schaut nach …' : 'Prüfen lassen'}</button>` : ''}
         <button class="button ${canUseAi || isChoice ? '' : 'primary'}" type="button" data-action="self-check">${isChoice ? ' Antwort kontrollieren' : 'Lösung zeigen & selbst prüfen'}</button>
         ${!isChoice && canUseAi ? '<button class="button small" type="button" data-action="clear">Löschen</button><button class="button small" type="button" data-action="undo">Rückgängig</button>' : ''}
         <button class="button small" type="button" data-action="tip">${helpVisible || session.showHelp ? 'Tipp ausblenden' : 'Tipp zeigen'}</button>
