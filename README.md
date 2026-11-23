@@ -79,7 +79,8 @@ Node 20+ reicht. Die KI-Prüfung funktioniert auf `localhost` auch ohne HTTPS; f
 
 ### Deployment
 
-- **GitHub Pages:** `npm run build` ausführen, Inhalt von `dist/` in den Branch `gh-pages` legen (oder eine GitHub-Action mit `upload-pages-artifact`). `base: './'` in `vite.config.ts` sorgt dafür, dass auch `https://user.github.io/klartext/` funktioniert.
+- **GitHub Pages:** Die Workflow-Datei `.github/workflows/deploy.yml` baut bei jedem Push auf `main` und veröffentlicht `dist/`. In den Repository-Einstellungen unter **Pages → Build and deployment → Source** einmal **GitHub Actions** auswählen. `base: './'` in `vite.config.ts` sorgt dafür, dass auch `https://user.github.io/klartext/` funktioniert.
+  > Wenn nur eine weiße Seite und der Link „Zum Inhalt springen“ erscheinen, wurde der Projekt-Root statt `dist/` ausgeliefert (dann wird die TypeScript-Quelldatei `src/main.ts` ausgeliefert). Pages auf GitHub Actions umstellen oder den Build erneut laufen lassen.
 - **Netlify / Cloudflare Pages:** Build-Befehl `npm run build`, Publish-Verzeichnis `dist`.
 - Danach einmal online öffnen, damit der Service Worker den Cache füllt. Danach funktioniert die App offline.
 
