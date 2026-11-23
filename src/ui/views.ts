@@ -70,7 +70,7 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
   }
   if (kind === 'dictation') {
     return `<p class="kicker">Hör dir das Wort an und schreib es auf</p>
-      <div class="button-row" style="margin-bottom:18px">
+      <div class="button-row prompt-actions">
         <button class="button accent" type="button" data-action="speak"><span aria-hidden="true">🔊</span> Wort anhören</button>
         ${showHelp ? `<span class="prompt-word">${escapeHtml(word.word)}</span>` : ''}
       </div>`;
@@ -99,13 +99,13 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
         <canvas id="schreibflaeche" aria-label="Schreibfläche für das gesuchte Wort" role="img"></canvas>
       </div>`}
       ${helpVisible || session.showHelp ? `<p class="tip-box"><strong>Tipp:</strong> ${escapeHtml(exercise.rule.tip)} ${escapeHtml(exercise.word.hint)}</p>` : ''}
-      <div class="button-row" style="margin-top:22px">
+      <div class="button-row stage-actions">
         ${!isChoice && canUseAi ? `<button class="button primary" type="button" data-action="check" ${checking ? 'disabled' : ''}>${checking ? 'Klartext schaut nach …' : 'Prüfen lassen'}</button>` : ''}
         <button class="button ${canUseAi || isChoice ? '' : 'primary'}" type="button" data-action="self-check">${isChoice ? ' Antwort kontrollieren' : 'Lösung zeigen & selbst prüfen'}</button>
         ${!isChoice && canUseAi ? '<button class="button small" type="button" data-action="clear">Löschen</button><button class="button small" type="button" data-action="undo">Rückgängig</button>' : ''}
         <button class="button small" type="button" data-action="tip">${helpVisible || session.showHelp ? 'Tipp ausblenden' : 'Tipp zeigen'}</button>
       </div>
-      ${!canUseAi ? `<p class="panel-note" style="margin-top:14px">${data.settings.apiKey.trim()
+      ${!canUseAi ? `<p class="panel-note note-gap">${data.settings.apiKey.trim()
         ? 'KI-Prüfung ist aus: Bitte im Elternbereich die Zustimmung anhaken.'
         : 'KI-Prüfung ist aus. Du vergleichst dein Wort selbst mit der Lösung.'}</p>` : ''}
     </section>
@@ -146,14 +146,14 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
       ${showSolution ? `<p class="prompt-hint">Gesucht war:</p><p class="result-word">${escapeHtml(word.word)}</p>` : ''}
       ${view.transcription ? `<p class="panel-note">Gelesen: ${escapeHtml(view.transcription)}${typeof view.confidence === 'number' ? ` · Sicherheit ${Math.round(view.confidence * 100)}%` : ''}</p>` : ''}
       ${differenceRows ? `<div class="table-wrap"><table><caption class="kicker" style="caption-side:top;text-align:left">Was war anders?</caption><thead><tr><th>Position</th><th>Erwartet</th><th>Geschrieben</th></tr></thead><tbody>${differenceRows}</tbody></table></div>` : ''}
-      <div class="button-row" style="margin-top:24px">
+      <div class="button-row stage-actions">
         ${view.kind === 'summary'
           ? '<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="start">Noch eine Runde</button>'
           : `<button class="button primary" type="button" data-action="${view.kind === 'retry' ? 'retry-same' : 'next'}">${view.kind === 'retry' ? 'Noch einmal schreiben' : isLast ? 'Runde abschließen' : 'Weiter zum nächsten Wort'}</button>
              ${view.kind === 'fallback' || view.kind === 'retry' ? `<button class="button" type="button" data-action="self-correct" data-value="correct">Das war richtig</button><button class="button" type="button" data-action="self-correct" data-value="wrong">Nochmal üben</button>` : ''}
              ${view.kind === 'success' ? '<button class="button small" type="button" data-action="disagree">KI irrt – selbst bewerten</button>' : ''}`}
       </div>
-      <p class="panel-note" style="margin-top:18px">Regel: ${escapeHtml(rule.tip)}</p>
+      <p class="panel-note note-gap">Regel: ${escapeHtml(rule.tip)}</p>
     </section>
   </main>`;
 }
@@ -193,20 +193,31 @@ export function parentView(
     <h1>Einstellungen & Fortschritt</h1>
     <p class="lead">Alles bleibt auf diesem Gerät. Es gibt kein Konto und keine Werbung.</p>
 
-    <section class="panel" aria-labelledby="ki-titel">
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-ki" checked />
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-writing" />
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-words" />
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-progress" />
+    <nav class="tab-bar" aria-label="Bereiche">
+      <label class="tab-label" for="parent-tab-ki">KI-Prüfung</label>
+      <label class="tab-label" for="parent-tab-writing">Schreiben</label>
+      <label class="tab-label" for="parent-tab-words">Eigene Wörter</label>
+      <label class="tab-label" for="parent-tab-progress">Fortschritt</label>
+    </nav>
+    <div class="parent-panels">
+    <section class="panel" id="panel-ki" aria-labelledby="ki-titel">
       <h2 id="ki-titel">KI-Prüfung</h2>
-      <p class="panel-note"><strong>Bitte lesen:</strong> Für die Handschriftprüfung werden das Bild der Schreibfläche und das Zielwort an Google Gemini gesendet. Keine Namen, keine Kontodaten. Aktiviere die Prüfung nur, wenn du damit einverstanden bist. Empfohlen: eigener API-Key mit täglichem Limit (Quota) in Google AI Studio.</p>
+      <p class="panel-note"><strong>Bitte lesen:</strong> Für die Prüfung gehen nur Schriftbild und Zielwort an Gemini – keine Namen. Nur mit Zustimmung aktivieren. Empfohlen: eigener Key mit Limit.</p>
       <form class="form-grid" data-form="settings">
         <div class="checkbox-line">
           <input id="privacy" name="privacy" type="checkbox" ${settings.privacyOptIn ? 'checked' : ''} />
           <div><label for="privacy">Ich willige ein, dass Schriftbilder zur Prüfung an Google gesendet werden.</label>
           <small>Ohne diesen Haken erscheint in der Übung kein „Prüfen lassen“-Button.</small></div>
         </div>
-        <div class="field"><label for="apiKey">Gemini API-Key</label>
-          <input id="apiKey" name="apiKey" type="password" value="${escapeHtml(settings.apiKey)}" autocomplete="off" spellcheck="false" placeholder="In Google AI Studio erstellen" />
-          <small>Der Key liegt im Browser (localStorage). Bei einem Gerät, das andere nutzen, lieber einen Proxy einsetzen – siehe README. Keys mit IP-/Website-Beschränkung und Quota sind empfehlenswert.</small>
-        </div>
         <div class="field-row">
+          <div class="field"><label for="apiKey">Gemini API-Key</label>
+            <input id="apiKey" name="apiKey" type="password" value="${escapeHtml(settings.apiKey)}" autocomplete="off" spellcheck="false" placeholder="In Google AI Studio erstellen" />
+            <small>Der Key liegt im Browser (localStorage). Bei geteilten Geräten lieber einen Proxy nutzen – siehe README. Key mit Quota ist empfehlenswert.</small>
+          </div>
           <div class="field"><label for="model">Modell</label>
             <input id="model" name="model" type="text" value="${escapeHtml(settings.model)}" spellcheck="false" />
             <small>Standard: gemini-3.5-flash-lite. Für schwierige Handschrift: gemini-4-hydrogen.</small>
@@ -217,11 +228,10 @@ export function parentView(
           <button class="button small" type="button" data-action="test-connection" ${connectionTesting ? 'disabled' : ''}>${connectionTesting ? 'Teste Verbindung …' : 'Verbindung testen'}</button>
         </div>
       </form>
-      ${connectionTest ? `<p class="tip-box ${connectionTest.ok ? 'test-ok' : ''}" role="status" style="margin-top:14px">${escapeHtml(connectionTest.message)}${connectionTest.detail ? `<br><small>${escapeHtml(connectionTest.detail)}</small>` : ''}</p>` : ''}
-      <p class="panel-note" style="margin-top:12px">Der Test sendet ein kleines Testwort an Gemini – sonst nichts. Er prüft auch, ob Key, Modell und Antwortformat zusammenpassen.</p>
+      ${connectionTest ? `<p class="tip-box note-gap ${connectionTest.ok ? 'test-ok' : ''}" role="status">${escapeHtml(connectionTest.message)}${connectionTest.detail ? `<br><small>${escapeHtml(connectionTest.detail)}</small>` : ''}</p>` : ''}
     </section>
 
-    <section class="panel" aria-labelledby="schreiben-titel">
+    <section class="panel" id="panel-writing" aria-labelledby="schreiben-titel">
       <h2 id="schreiben-titel">Schreiben & Vorlesen</h2>
       <form class="form-grid" data-form="writing">
         <div class="field-row">
@@ -235,7 +245,7 @@ export function parentView(
       </form>
     </section>
 
-    <section class="panel" aria-labelledby="woerter-titel">
+    <section class="panel" id="panel-words" aria-labelledby="woerter-titel">
       <h2 id="woerter-titel">Eigene Wortlisten</h2>
       <p class="panel-note">Eine Zeile pro Wort: <code>wort|regelId</code>. Verfügbare Regel-IDs stehen in <code>src/data/rules.json</code>. Beispiel: <code>Tisch|grossschreibung</code></p>
       <form class="form-grid" data-form="custom">
@@ -245,7 +255,7 @@ export function parentView(
       ${customList}
     </section>
 
-    <section class="panel" aria-labelledby="fortschritt-titel">
+    <section class="panel" id="panel-progress" aria-labelledby="fortschritt-titel">
       <h2 id="fortschritt-titel">Fortschritt</h2>
       <div class="stat-row">
         <div class="stat"><b>${stats.seen}</b><span>Wörter geübt</span></div>
@@ -253,16 +263,17 @@ export function parentView(
         <div class="stat"><b>${stats.streak}</b><span>Tage in Folge</span></div>
         <div class="stat"><b>${stats.stars}</b><span>Sterne</span></div>
       </div>
-      <h3 style="margin-top:26px">Fehler nach Kategorie</h3>
+      <h3 class="section-gap">Fehler nach Kategorie</h3>
       ${stats.byCategory.length ? `<ul class="category-list">${stats.byCategory.map((entry) => `<li><span>${escapeHtml(entry.name)}</span><small>${entry.errors} ×</small></li>`).join('')}</ul>` : '<p class="panel-note">Noch keine Fehler erfasst.</p>'}
-      <h3 style="margin-top:26px">Trainingsplan</h3>
+      <h3 class="section-gap">Trainingsplan</h3>
       ${plan.length ? `<ul class="plan-list">${plan.map((entry) => `<li><span>${escapeHtml(entry.title)}</span><small>${entry.errors} × üben</small></li>`).join('')}</ul>` : '<p class="panel-note">Noch zu wenige Daten.</p>'}
-      <div class="button-row" style="margin-top:24px">
+      <div class="button-row stage-actions">
         <button class="button" type="button" data-action="export">Daten als JSON exportieren</button>
         <button class="button danger" type="button" data-action="reset">Alle Daten zurücksetzen</button>
         <button class="button small" type="button" data-action="change-pin">PIN ändern</button>
         <button class="button small" type="button" data-action="parent-exit">Elternbereich verlassen</button>
       </div>
     </section>
+    </div>
   </main>`;
 }

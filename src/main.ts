@@ -81,6 +81,7 @@ function makeTestImage(): string {
 
 function render(): void {
   document.body.dataset.theme = data.settings.theme;
+  document.body.dataset.view = route;
   const stars = computeStars(data.attempts);
   const plan = buildTrainingPlan(data.attempts, rules);
 

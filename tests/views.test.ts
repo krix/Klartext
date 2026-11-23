@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createSession } from '../src/lib/session';
 import { freshState } from '../src/lib/storage';
 import type { Rule, Word } from '../src/lib/types';
-import { practiceView } from '../src/ui/views';
+import { parentView, practiceView } from '../src/ui/views';
 
 const rule: Rule = { id: 'ie-i', title: 'ie oder i', tip: 'Lang: ie.' };
 const words: Word[] = [{ id: 'a', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' }];
@@ -35,5 +35,21 @@ describe('Prüfen-Button', () => {
 
   it('erscheint ohne Key oder Zustimmung gar nicht', () => {
     expect(() => checkButton(renderPractice(false, false))).toThrow('Prüfen-Button fehlt.');
+  });
+});
+
+describe('Elternbereich', () => {
+  it('bietet vier Reiter für die Bereiche', () => {
+    const html = parentView(
+      freshState(),
+      [],
+      { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] },
+      [],
+    );
+    expect(html.match(/type="radio" name="parent-tab"/g)).toHaveLength(4);
+    for (const id of ['ki', 'writing', 'words', 'progress']) {
+      expect(html).toContain(`for="parent-tab-${id}"`);
+      expect(html).toContain(`id="panel-${id}"`);
+    }
   });
 });
