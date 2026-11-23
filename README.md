@@ -27,8 +27,9 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 |---|---|
 | Start | Tagesziel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
 | Themen | Vier Bereiche mit 16 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
-| Übung | Regelthema, Fortschritt, Diktat (Sprachausgabe) / Abschreiben / Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
-| Rückmeldung | Richtig/Fast, Vergleichswort, Abweichungstabelle (Position / erwartet / geschrieben), kurzer Tipp, Wiederholung oder Selbstprüfung |
+| Übung | Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt, Diktat (Wort **und** Beispielsatz vorgelesen, Satz mit Lücke), Abschreiben, Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
+| Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
+| Rundenende | Übersicht aller geübten Wörter mit ✓/✗, Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
 | Elternbereich (PIN) | KI-Key und Datenschutz, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
 
 ### Datenmodell (alles in `localStorage`, Schlüssel `klartext.state.v1`)
@@ -65,7 +66,8 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 3. Handschrift auf dem Canvas schreiben → PNG (nur der beschriebene Bereich) → Gemini.
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
 5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen.
-6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut.
+6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
+7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗. Die Startseite beginnt nach einem Reload (z. B. durch Ziehen zum Aktualisieren) wieder oben.
 
 ---
 
@@ -168,7 +170,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 43 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan, Tagesserie, Themen-Lernseiten sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 50 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Sprachausgabe von Wort + Satz sowie Gemini-Request/-Fallback und Fehlerzuordnung. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

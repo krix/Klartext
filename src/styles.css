@@ -157,6 +157,8 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+/* Die Übungsüberschrift enthält echte Schreibweise (ß) und darf nicht in Grossbuchstaben kippen. */
+#aufgabe.kicker { text-transform: none; letter-spacing: .02em; }
 
 h1 {
   margin: 0 0 clamp(6px, 1.3vh, 16px);
@@ -346,6 +348,12 @@ p { margin: 0 0 clamp(8px, 1.5vh, 16px); max-width: 62ch; }
 }
 
 .prompt-hint { color: var(--ink-soft); margin-bottom: clamp(8px, 1.5vh, 18px); }
+.prompt-sentence {
+  margin: clamp(4px, .8vh, 10px) 0 0;
+  font-family: var(--hand);
+  font-size: clamp(1.05rem, 2.4vh, 1.35rem);
+  color: var(--ink-soft);
+}
 
 .pad-wrap {
   position: relative;
@@ -413,6 +421,50 @@ p { margin: 0 0 clamp(8px, 1.5vh, 16px); max-width: 62ch; }
 table { border-collapse: collapse; width: 100%; max-width: 520px; }
 th, td { text-align: left; padding: clamp(5px, 1vh, 8px) 12px; border-bottom: 1px solid var(--line); }
 th { font-size: .85rem; color: var(--ink-soft); }
+
+.error-detail {
+  margin: clamp(8px, 1.4vh, 14px) 0 0;
+  padding: clamp(8px, 1.3vh, 12px) 14px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-deep);
+}
+.error-detail .kicker { margin-bottom: 4px; }
+.marked-word { display: flex; flex-wrap: wrap; gap: .16em; margin: 0 0 6px; font-family: var(--hand); font-size: clamp(1.7rem, 4.4vh, 2.3rem); font-weight: 700; }
+.letter { padding: 0 .02em; }
+.letter-wrong { color: var(--bad); border-bottom: 3px solid currentColor; }
+.error-list { margin: 0; padding-left: 1.15rem; font-size: .92rem; }
+.error-list li + li { margin-top: 3px; }
+
+.summary-overview { margin-top: clamp(8px, 1.4vh, 14px); }
+.summary-overview h2 { font-size: 1.05rem; margin-bottom: 1px; }
+.summary-overview .panel-note { margin-bottom: 6px; }
+.word-review {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 6px 10px;
+}
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 5px 10px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: .95rem;
+}
+.review-item strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review-item.is-right { border-color: color-mix(in srgb, var(--good) 70%, var(--line)); }
+.review-item.is-wrong { border-color: color-mix(in srgb, var(--bad) 70%, var(--line)); }
+.review-mark { font-weight: 900; }
+.review-item.is-right .review-mark { color: var(--good); }
+.review-item.is-wrong .review-mark { color: var(--bad); }
+.review-item small { margin-left: auto; color: var(--ink-soft); }
 
 .form-grid { display: grid; gap: clamp(10px, 1.8vh, 18px); max-width: 720px; }
 .field { display: grid; gap: 6px; }

@@ -2,6 +2,15 @@ import { buildChoiceOptions, selectWords, shuffle, updateDifficulty } from './le
 import type { Exercise, ExerciseKind, Rule, Word, WordState } from './types';
 import type { Settings } from './types';
 
+/** Ein bearbeitetes Wort inklusive letztem Ergebnis für die Abschlussübersicht. */
+export interface SessionResult {
+  wordId: string;
+  word: string;
+  ruleId: string;
+  correct: boolean;
+  sentence?: string;
+}
+
 export interface SessionState {
   /** Alle Wörter, die in dieser Runde vorkommen dürfen (Thema oder alle Themen). */
   poolIds: string[];
@@ -11,6 +20,8 @@ export interface SessionState {
   retries: string[];
   recentIds: string[];
   current: Exercise | null;
+  /** Alle bisherigen Ergebnisse der Runde – auch Wiederholungen. */
+  results: SessionResult[];
   done: number;
   total: number;
   correct: number;
@@ -51,6 +62,7 @@ export function createSession(
     retries: [],
     recentIds: [],
     current: null,
+    results: [],
     done: 0,
     total: chosen.length,
     correct: 0,
@@ -136,12 +148,23 @@ export function nextExercise(
 }
 
 export function finishExercise(session: SessionState, correct: boolean): SessionState {
-  const wordId = session.current?.word.id;
+  const current = session.current;
+  const wordId = current?.word.id;
   const correctStreak = correct ? session.correctStreak + 1 : 0;
   const errorStreak = correct ? 0 : session.errorStreak + 1;
   const done = session.done + 1;
+  const results = current
+    ? [...session.results, {
+        wordId: current.word.id,
+        word: current.word.word,
+        ruleId: current.word.ruleId,
+        correct,
+        sentence: current.word.sentence,
+      }]
+    : session.results;
   return {
     ...session,
+    results,
     done,
     correct: session.correct + (correct ? 1 : 0),
     correctStreak,

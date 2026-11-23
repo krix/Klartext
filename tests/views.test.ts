@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createSession } from '../src/lib/session';
 import { freshState } from '../src/lib/storage';
 import type { Rule, Word } from '../src/lib/types';
-import { parentView, practiceView } from '../src/ui/views';
+import { feedbackView, maskedSentence, parentView, practiceView } from '../src/ui/views';
 
 const rule: Rule = { id: 'ie-i', title: 'ie oder i', tip: 'Lang: ie.' };
 const words: Word[] = [{ id: 'a', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' }];
@@ -35,6 +35,54 @@ describe('Prüfen-Button', () => {
 
   it('erscheint ohne Key oder Zustimmung gar nicht', () => {
     expect(() => checkButton(renderPractice(false, false))).toThrow('Prüfen-Button fehlt.');
+  });
+});
+
+describe('Übungsansicht', () => {
+  it('zeigt den Beispielsatz mit Lücke und kündigt die Sprachausgabe an', () => {
+    const withSentence: Word[] = [{ ...words[0], sentence: 'Wir Liebe gern Obst.' }];
+    const data = freshState();
+    const session = createSession(withSentence, [rule], {}, data.settings, () => 0.1);
+    const html = practiceView(data, session, false, false);
+    expect(html).toContain('Wort und Satz anhören');
+    expect(html).toContain('Wir _____ gern Obst.');
+  });
+
+  it('verdeckt das Wort im Satz nur an seiner eigenen Stelle', () => {
+    expect(maskedSentence('essen', 'Wir essen gern Obst.')).toBe('Wir _____ gern Obst.');
+    expect(maskedSentence('Mai', 'Im Mai ist es schön.')).toBe('Im _____ ist es schön.');
+    expect(maskedSentence('Mai', 'Der Main fließt.')).toBe('');
+    expect(maskedSentence('weiß', 'Der Schnee ist weiß.')).toBe('Der Schnee ist _____.');
+    expect(maskedSentence('Äußerung', 'Das ist meine Äußerung.')).toBe('Das ist meine _____.');
+  });
+});
+
+describe('Rückmeldung', () => {
+  it('zeigt die genaue Fehlerstelle und die richtige Schreibweise', () => {
+    const html = feedbackView({
+      kind: 'success', word: words[0], rule, correct: false,
+      transcription: 'Libe',
+      differences: [{ position: 2, expected: 'e', written: '' }],
+      feedback: 'Fast!',
+    }, false);
+    expect(html).toContain('Genau hier war der Fehler');
+    expect(html).toContain('An Stelle 3 fehlt <b>e</b>.');
+    expect(html).toContain('letter-wrong');
+  });
+
+  it('zeigt am Rundenende alle geübten Wörter mit Ergebnis', () => {
+    const html = feedbackView({
+      kind: 'summary', word: words[0], rule,
+      message: '1 von 2 Wörtern in dieser Runde richtig.',
+      results: [
+        { wordId: 'a', word: 'Liebe', ruleId: 'ie-i', correct: true },
+        { wordId: 'b', word: 'Wiese', ruleId: 'ie-i', correct: false },
+      ],
+    }, true);
+    expect(html).toContain('Deine Wörter in dieser Runde');
+    expect(html).toContain('Liebe');
+    expect(html).toContain('Wiese');
+    expect(html).toContain('1 richtig · 1 noch üben');
   });
 });
 

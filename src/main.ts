@@ -16,7 +16,7 @@ import {
   unlockedThemes,
 } from './lib/learning';
 import { hashPin, newSalt, verifyPin } from './lib/pin';
-import { speak } from './lib/speech';
+import { speakWordAndSentence } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, refillWords, sessionWords, type SessionState } from './lib/session';
 import { clearState, freshState, loadState, saveState } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
@@ -27,6 +27,10 @@ const topicAreas = rawTopicGroups as unknown as TopicArea[];
 const builtinWords = rawWords as unknown as Word[];
 
 type Route = 'home' | 'practice' | 'feedback' | 'parent' | 'gate' | 'topics' | 'topic';
+
+// Nach dem Ziehen zum Aktualisieren soll die Startseite wieder oben beginnen.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+let lastRenderedRoute: Route | '' = '';
 
 let data: AppData = loadState();
 let route: Route = 'home';
@@ -85,6 +89,10 @@ function makeTestImage(): string {
 function render(): void {
   document.body.dataset.theme = data.settings.theme;
   document.body.dataset.view = route;
+  if (lastRenderedRoute !== route) {
+    window.scrollTo(0, 0);
+    lastRenderedRoute = route;
+  }
   const stars = computeStars(data.attempts);
   const plan = buildTrainingPlan(data.attempts, rules);
 
@@ -117,7 +125,7 @@ function render(): void {
     const canvas = document.querySelector<HTMLCanvasElement>('#schreibflaeche');
     if (canvas) {
       pad = new WritingPad(canvas, { color: data.settings.handColor, width: data.settings.handWidth });
-      if (session.current.kind === 'dictation') speak(session.current.word.word, data.settings.ttsRate);
+      if (session.current.kind === 'dictation') speakWordAndSentence(session.current.word.word, session.current.word.sentence, data.settings.ttsRate);
     }
   } else {
     pad = null;
@@ -177,6 +185,7 @@ function goNext(): void {
       rule: last?.rule ?? findRule(''),
       ruleId: session.ruleId,
       message: `${session.correct} von ${session.total} Wörtern in dieser Runde richtig.`,
+      results: session.results,
     };
     route = 'feedback';
   } else {
@@ -482,7 +491,7 @@ app.addEventListener('click', (event) => {
     case 'start': startSession(); break;
     case 'quit': goHome(); break;
     case 'speak':
-      if (session?.current) speak(session.current.word.word, data.settings.ttsRate);
+      if (session?.current) speakWordAndSentence(session.current.word.word, session.current.word.sentence, data.settings.ttsRate);
       break;
     case 'clear': pad?.clear(); break;
     case 'undo': pad?.undo(); break;

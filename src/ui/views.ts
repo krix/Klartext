@@ -1,8 +1,8 @@
 import { escapeHtml, header } from './html';
 import type { ConnectionTestResult } from '../lib/gemini';
 import type { AppData, Difference, Exercise, Rule, TopicArea, Word } from '../lib/types';
-import type { PlanEntry } from '../lib/learning';
-import type { SessionState } from '../lib/session';
+import { diffWords, type PlanEntry } from '../lib/learning';
+import type { SessionResult, SessionState } from '../lib/session';
 
 export interface FeedbackView {
   kind: 'success' | 'retry' | 'fallback' | 'summary';
@@ -16,9 +16,81 @@ export interface FeedbackView {
   differences?: Difference[];
   feedback?: string;
   message?: string;
+  /** Ergebnisse für die Abschlussübersicht. */
+  results?: SessionResult[];
 }
 
 const lockSymbol = '<span aria-hidden="true">🔒</span>';
+
+/** Zeigt den Beispielsatz mit Lücke, damit das Wort nicht einfach abgeschrieben wird. */
+export function maskedSentence(word: string, sentence?: string): string {
+  if (!sentence?.trim()) return '';
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // \\b wäre bei ß/Umlauten wirkungslos: hier zählen alle Buchstaben als Wortzeichen.
+  const match = new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, 'iu').exec(sentence);
+  if (!match) return '';
+  return `${sentence.slice(0, match.index)}_____${sentence.slice(match.index + match[0].length)}`;
+}
+
+function visibleChar(value: string): string {
+  if (!value) return 'nichts';
+  return value.replace(/ /g, '␣');
+}
+
+function renderErrorDetail(expected: string, differences: readonly Difference[]): string {
+  if (differences.length === 0) return '';
+  const wrongPositions = new Set(differences.filter((item) => item.expected).map((item) => item.position));
+  const markedWord = [...expected]
+    .map((char, index) => `<span class="letter${wrongPositions.has(index) ? ' letter-wrong' : ''}">${escapeHtml(visibleChar(char))}</span>`)
+    .join('');
+  const extras = new Map<number, string>();
+  const notes: Array<{ position: number; html: string }> = [];
+  for (const item of differences) {
+    const position = item.position + 1;
+    if (!item.expected && item.written) {
+      extras.set(position, (extras.get(position) ?? '') + item.written);
+    } else if (item.expected && item.written) {
+      notes.push({ position, html: `An Stelle ${position} muss <b>${escapeHtml(visibleChar(item.expected))}</b> stehen, nicht <b>${escapeHtml(visibleChar(item.written))}</b>.` });
+    } else if (item.expected) {
+      notes.push({ position, html: `An Stelle ${position} fehlt <b>${escapeHtml(visibleChar(item.expected))}</b>.` });
+    }
+  }
+  for (const [position, text] of extras) {
+    notes.push({ position, html: `An Stelle ${position} war <b>${escapeHtml(visibleChar(text))}</b> zu viel.` });
+  }
+  notes.sort((a, b) => a.position - b.position);
+  const notesHtml = notes.map((note) => `<li>${note.html}</li>`).join('');
+  return `<section class="error-detail" aria-label="So war es richtig">
+    <p class="kicker">Genau hier war der Fehler</p>
+    <p class="marked-word" aria-hidden="true">${markedWord}</p>
+    <ul class="error-list">${notesHtml}</ul>
+  </section>`;
+}
+
+function renderSummaryOverview(results: readonly SessionResult[]): string {
+  const byWord = new Map<string, { word: string; correct: boolean; tries: number }>();
+  for (const result of results) {
+    const previous = byWord.get(result.wordId);
+    byWord.set(result.wordId, {
+      word: result.word,
+      correct: result.correct,
+      tries: (previous?.tries ?? 0) + 1,
+    });
+  }
+  const entries = [...byWord.values()];
+  if (entries.length === 0) return '';
+  const right = entries.filter((entry) => entry.correct).length;
+  const list = entries.map((entry) => `<li class="review-item ${entry.correct ? 'is-right' : 'is-wrong'}" aria-label="${escapeHtml(entry.word)} ${entry.correct ? 'richtig' : 'noch üben'}">
+      <span class="review-mark" aria-hidden="true">${entry.correct ? '✓' : '✗'}</span>
+      <strong>${escapeHtml(entry.word)}</strong>
+      ${entry.tries > 1 ? `<small>${entry.tries}×</small>` : ''}
+    </li>`).join('');
+  return `<section class="summary-overview" aria-labelledby="review-title">
+    <h2 id="review-title">Deine Wörter in dieser Runde</h2>
+    <p class="panel-note">${right} richtig · ${entries.length - right} noch üben</p>
+    <ul class="word-review">${list}</ul>
+  </section>`;
+}
 
 export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars: number, totalWords: number): string {
   const learned = Object.keys(data.progress).length;
@@ -46,7 +118,9 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
         <section class="panel">
           <h2>Dein Trainingsplan</h2>
           ${plan.length === 0
-            ? '<p class="panel-note">Üb ein paar Wörter – dann zeige ich dir hier, was sich besonders lohnt.</p>'
+            ? `<p class="panel-note">${data.attempts.length === 0
+                ? 'Üb ein paar Wörter – dann zeige ich dir hier, was sich besonders lohnt.'
+                : 'In den letzten Runden ist alles gut gelaufen. Weiter so!'}</p>`
             : `<ul class="plan-list">${plan.map((entry) => `<li><span>${escapeHtml(entry.title)}</span><small>${entry.errors} × üben</small></li>`).join('')}</ul>`}
           <div class="progress-track" role="progressbar" aria-label="Anteil der geübten Wörter" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${percent}%"></span></div>
           <p class="panel-note">${percent}% der Wortbank schon gesehen</p>
@@ -156,11 +230,13 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
       </div>`;
   }
   if (kind === 'dictation') {
-    return `<p class="kicker">Hör dir das Wort an und schreib es auf</p>
+    const context = maskedSentence(word.word, word.sentence);
+    return `<p class="kicker">Hör dir das Wort und den Satz an</p>
       <div class="button-row prompt-actions">
-        <button class="button accent" type="button" data-action="speak"><span aria-hidden="true">🔊</span> Wort anhören</button>
+        <button class="button accent" type="button" data-action="speak"><span aria-hidden="true">🔊</span> Wort und Satz anhören</button>
         ${showHelp ? `<span class="prompt-word">${escapeHtml(word.word)}</span>` : ''}
-      </div>`;
+      </div>
+      ${context ? `<p class="prompt-sentence">${escapeHtml(context)}</p>` : ''}`;
   }
   return `<p class="kicker">Schreib das Wort ab – achte auf jede Stelle</p>
     <p class="prompt-word">${escapeHtml(word.word)}</p>`;
@@ -201,11 +277,12 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
 
 export function feedbackView(view: FeedbackView, isLast: boolean): string {
   const { word, rule } = view;
-  const differenceRows = (view.differences ?? []).map((difference) => `<tr>
-      <td>${difference.position + 1}</td>
-      <td>${escapeHtml(difference.expected || '—')}</td>
-      <td>${escapeHtml(difference.written || '—')}</td>
-    </tr>`).join('');
+  const differences = view.differences?.length
+    ? view.differences
+    : view.transcription
+      ? diffWords(word.word, view.transcription, rule.caseSensitive === true)
+      : [];
+  const showErrorDetail = view.kind !== 'summary' && view.correct !== true && differences.length > 0;
 
   let headline = '';
   let body = '';
@@ -232,9 +309,10 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
       <p class="kicker">Rückmeldung</p>
       <h1 class="result-word ${view.kind === 'success' && view.correct ? 'result-ok result-burst' : view.kind === 'success' ? 'result-no' : ''}">${escapeHtml(headline)}</h1>
       ${body}
-      ${showSolution ? `<p class="prompt-hint">Gesucht war:</p><p class="result-word">${escapeHtml(word.word)}</p>` : ''}
+      ${showSolution ? `<p class="prompt-hint">Gesucht war:</p><p class="result-word">${escapeHtml(word.word)}</p>${word.sentence ? `<p class="prompt-sentence">${escapeHtml(word.sentence)}</p>` : ''}` : ''}
       ${view.transcription ? `<p class="panel-note">Gelesen: ${escapeHtml(view.transcription)}${typeof view.confidence === 'number' ? ` · Sicherheit ${Math.round(view.confidence * 100)}%` : ''}</p>` : ''}
-      ${differenceRows ? `<div class="table-wrap"><table><caption class="kicker" style="caption-side:top;text-align:left">Was war anders?</caption><thead><tr><th>Position</th><th>Erwartet</th><th>Geschrieben</th></tr></thead><tbody>${differenceRows}</tbody></table></div>` : ''}
+      ${showErrorDetail ? renderErrorDetail(word.word, differences) : ''}
+      ${view.kind === 'summary' ? renderSummaryOverview(view.results ?? []) : ''}
       <div class="button-row stage-actions">
         ${view.kind === 'summary'
           ? `<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="${againAction}" ${againAttrs}>Noch eine Runde</button>`

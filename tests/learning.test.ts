@@ -97,6 +97,18 @@ describe('Lernlogik', () => {
     expect(computeStars(attempts)).toBe(1);
   });
 
+  it('nimmt auch selbst geprüfte Fehler in den Trainingsplan auf', () => {
+    const now = Date.now();
+    const attempts: Attempt[] = [
+      { ts: now, wordId: 'x', word: 'x', ruleId: 'ie-i', correct: false, source: 'self', selfAssessed: true, illegible: false, categories: [] },
+      { ts: now, wordId: 'y', word: 'y', ruleId: 'ie-i', correct: true, source: 'self', selfAssessed: true, illegible: false, categories: [] },
+    ];
+    const plan = buildTrainingPlan(attempts, [{ id: 'ie-i', title: 'ie oder i', tip: 'Lang gesprochen: ie.' }]);
+    expect(plan).toHaveLength(1);
+    expect(plan[0].errors).toBe(1);
+    expect(computeStars(attempts)).toBe(0);
+  });
+
   it('zählt Tagesserien bis gestern', () => {
     const now = Date.now();
     const attempts: Attempt[] = [1, 2, 3].map((days) => ({

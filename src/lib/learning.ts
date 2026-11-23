@@ -324,12 +324,16 @@ export interface PlanEntry {
   rate: number;
 }
 
-/** Persönlicher Trainingsplan aus den letzten 90 Tagen. */
+/**
+ * Persönlicher Trainingsplan aus den letzten 90 Tagen.
+ * Selbst geprüfte Fehler zählen mit – sonst bleibt der Plan ohne KI-Prüfung leer.
+ * Für Sterne und Elternstatistik werden Selbstprüfungen weiterhin nicht gewertet.
+ */
 export function buildTrainingPlan(attempts: readonly Attempt[], rules: readonly Rule[], limit = 3): PlanEntry[] {
   const cutoff = Date.now() - 90 * DAY;
   const stats = new Map<string, { errors: number; total: number }>();
   for (const attempt of attempts) {
-    if (attempt.ts < cutoff || attempt.selfAssessed) continue;
+    if (attempt.ts < cutoff) continue;
     const entry = stats.get(attempt.ruleId) ?? { errors: 0, total: 0 };
     entry.total += 1;
     if (!attempt.correct) entry.errors += 1;
