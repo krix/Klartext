@@ -267,32 +267,94 @@ export function unlockedThemes(stars: number): string[] {
     .map(([theme]) => theme);
 }
 
-const TRANSFORMS: Array<(word: string) => string> = [
-  (word) => word.replace(/ie/g, 'i').replace(/i(?![e])/g, 'ie'),
-  (word) => word.replace(/ß/g, 'ss').replace(/ss/g, 'ß'),
-  (word) => word.replace(/ei/g, 'ai').replace(/ai/g, 'ei'),
-  (word) => word.replace(/eu/g, 'äu').replace(/äu/g, 'eu'),
-  (word) => word.replace(/([b-df-hj-np-tv-z])\1/g, '$1'),
-  (word) => word.replace(/([b-df-hj-np-tv-z])(?![b-df-hj-np-tv-z])/g, '$1$1'),
+type Transform = (word: string) => string;
+type AlternativePair = readonly [string, string];
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Tauscht einen Regel-Laut gegen seinen Gegensatz – in einem Durchgang, damit nichts doppelt tauscht. */
+function swapAlternatives(word: string, pairs: readonly AlternativePair[], onlyFirst = false): string {
+  const variants = pairs.flat().sort((a, b) => b.length - a.length);
+  const regex = new RegExp(variants.map(escapeRegExp).join('|'), onlyFirst ? 'i' : 'gi');
+  return word.replace(regex, (match) => {
+    const lower = match.toLocaleLowerCase('de-DE');
+    const pair = pairs.find(([first, second]) =>
+      first.toLocaleLowerCase('de-DE') === lower || second.toLocaleLowerCase('de-DE') === lower);
+    if (!pair) return match;
+    const [first, second] = pair;
+    const next = lower === first.toLocaleLowerCase('de-DE') ? second : first;
+    if (match === match.toLocaleUpperCase('de-DE')) return next.toLocaleUpperCase('de-DE');
+    if (match[0] === match[0].toLocaleUpperCase('de-DE')) return next[0].toLocaleUpperCase('de-DE') + next.slice(1);
+    return next;
+  });
+}
+
+const both = (pair: AlternativePair): Transform => (word) => swapAlternatives(word, [pair]);
+const firstOnly = (pair: AlternativePair): Transform => (word) => swapAlternatives(word, [pair], true);
+
+/** Pro Regel zuerst die typischen Verwechslungen anbieten, nicht zufällige Buchstabenänderungen. */
+const RULE_TRANSFORMS: Record<string, Transform[]> = {
+  'ie-i': [both(['ie', 'i']), firstOnly(['ie', 'i'])],
+  'ss-oesz': [both(['ss', 'ß']), firstOnly(['ss', 'ß'])],
+  'ai-ei': [both(['ai', 'ei']), firstOnly(['ai', 'ei'])],
+  'aeu-eu': [both(['äu', 'eu']), firstOnly(['äu', 'eu'])],
+  'dehnung': [(word) => word.replace(/([aeiouäöü])/i, '$1$1')],
+  'dehnungs-h': [(word) => word.replace(/([aeiouäöü])h/i, '$1'), (word) => word.replace(/([aeiouäöü])/i, '$1h')],
+  'doppelkonsonant': [
+    (word) => word.replace(/([b-df-hj-np-tv-z])\1/i, '$1'),
+    (word) => word.replace(/([b-df-hj-np-tv-z])(?![b-df-hj-np-tv-z])/i, '$1$1'),
+  ],
+  'sch-s': [both(['sch', 's'])],
+  'das-dass': [both(['das', 'dass'])],
+  'als-wie': [both(['als', 'wie'])],
+  'wieder-wider': [both(['wieder', 'wider'])],
+  'ver-vor': [both(['ver', 'vor'])],
+  'emp-ent': [both(['emp', 'ent'])],
+  'ig-lich': [both(['ig', 'lich'])],
+  'heit-keit': [both(['heit', 'keit'])],
+  'grossschreibung': [
+    (word) => word.toLocaleLowerCase('de-DE'),
+    (word) => word.toLocaleUpperCase('de-DE'),
+  ],
+};
+
+const TRANSFORMS: Transform[] = [
+  both(['ie', 'i']),
+  both(['ss', 'ß']),
+  both(['ai', 'ei']),
+  both(['äu', 'eu']),
+  (word) => word.replace(/([b-df-hj-np-tv-z])\1/i, '$1'),
+  (word) => word.replace(/([b-df-hj-np-tv-z])(?![b-df-hj-np-tv-z])/i, '$1$1'),
   (word) => word.charAt(0).toLocaleUpperCase('de-DE') + word.slice(1),
   (word) => word.charAt(0).toLocaleLowerCase('de-DE') + word.slice(1),
 ];
 
-/** Drei Antwortmöglichkeiten für die Auswahlübung: eine richtig, zwei typische Fehler. */
-export function buildChoiceOptions(word: Word, rng: () => number = Math.random): string[] {
+/** Drei Antwortmöglichkeiten: eine richtig, zwei typische Fehler – möglichst genau zur Regel des Wortes. */
+export function buildChoiceOptions(word: Word, rng: () => number = Math.random, rule?: Rule): string[] {
   const options = new Set<string>([word.word]);
+  const add = (candidate: string): void => {
+    if (candidate && candidate !== word.word) options.add(candidate);
+  };
+
+  if (rule) {
+    for (const transform of shuffle(RULE_TRANSFORMS[rule.id] ?? [], rng)) {
+      if (options.size >= 3) break;
+      add(transform(word.word));
+    }
+  }
   for (const transform of shuffle(TRANSFORMS, rng)) {
     if (options.size >= 3) break;
-    const candidate = transform(word.word);
-    if (candidate && candidate !== word.word) options.add(candidate);
+    add(transform(word.word));
   }
   // fallback: falls kaum Varianten möglich sind, Buchstaben verdoppeln/entfernen.
   let index = 0;
   while (options.size < 3 && index < word.word.length) {
     const char = word.word[index];
-    options.add(`${word.word.slice(0, index)}${char}${char}${word.word.slice(index)}`);
+    add(`${word.word.slice(0, index)}${char}${char}${word.word.slice(index)}`);
     if (index > 0 && word.word[index - 1] === char) {
-      options.add(`${word.word.slice(0, index)}${word.word.slice(index + 1)}`);
+      add(`${word.word.slice(0, index)}${word.word.slice(index + 1)}`);
     }
     index += 1;
   }

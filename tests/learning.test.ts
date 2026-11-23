@@ -12,7 +12,7 @@ import {
   selectWords,
   updateDifficulty,
 } from '../src/lib/learning';
-import type { Attempt, Word, WordState } from '../src/lib/types';
+import type { Attempt, Rule, Word, WordState } from '../src/lib/types';
 
 const word = (id: string, level: 1 | 2 | 3 = 1, ruleId = 'ie-i'): Word => ({
   id, word: `wort-${id}`, ruleId, level, hint: 'Tipp', sentence: `Das ist wort-${id}.`,
@@ -114,5 +114,23 @@ describe('Lernlogik', () => {
     expect(options).toHaveLength(3);
     expect(new Set(options).size).toBe(3);
     expect(options).toContain('Liebe');
+  });
+
+  it('stellt bei ei/ai beide Schreibweisen zur Auswahl', () => {
+    const target: Word = { id: 'mai', word: 'Mai', ruleId: 'ai-ei', level: 1, hint: '' };
+    const rule: Rule = { id: 'ai-ei', title: 'ei oder ai', tip: 'ai wie Mai.' };
+    const options = buildChoiceOptions(target, () => 0.3, rule);
+    expect(options).toContain('Mai');
+    expect(options.some((option) => /ei/i.test(option))).toBe(true);
+  });
+
+  it('bietet bei ie/i und ss/ß die regelrichtige Variante an', () => {
+    const liebe: Word = { id: 'liebe', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: '' };
+    const ruleIe: Rule = { id: 'ie-i', title: 'ie oder i', tip: 'ie ist lang.' };
+    expect(buildChoiceOptions(liebe, () => 0.3, ruleIe)).toContain('Libe');
+
+    const strasse: Word = { id: 'strasse', word: 'Straße', ruleId: 'ss-oesz', level: 1, hint: '' };
+    const ruleSs: Rule = { id: 'ss-oesz', title: 'ss oder ß', tip: 'ß nach langem Vokal.' };
+    expect(buildChoiceOptions(strasse, () => 0.3, ruleSs)).toContain('Strasse');
   });
 });

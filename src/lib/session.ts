@@ -79,7 +79,7 @@ export function nextExercise(
     word,
     rule,
     kind,
-    options: kind === 'choice' ? buildChoiceOptions(word, rng) : undefined,
+    options: kind === 'choice' ? buildChoiceOptions(word, rng, rule) : undefined,
   };
 
   return {
