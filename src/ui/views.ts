@@ -28,14 +28,14 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
       <section class="hero">
         <p class="kicker">Deine Übung für heute</p>
         <h1>Worte kommen klar.</h1>
-        <div class="hero-word" aria-hidden="true">Liebe.</div>
+        <div class="hero-word" aria-hidden="true">Liebe.<span class="doodle-star">✦</span></div>
         <p class="lead">Hör dir ein Wort an, schreib es auf und bekomm eine freundliche Rückmeldung. Ganz ohne Druck.</p>
         <div class="button-row">
           <button class="button primary" type="button" data-action="start">Übung starten <span aria-hidden="true">→</span></button>
           <span class="panel-note">${hasKey ? 'KI-Prüfung ist bereit.' : 'Ohne KI geht es auch: mit dem Lösungswort selbst vergleichen.'}</span>
         </div>
         <div class="stat-row">
-          <div class="stat"><b>${stars}</b><span>Sterne gesammelt</span></div>
+          <div class="stat stat-stars"><b>${stars}</b><span>Sterne gesammelt</span></div>
           <div class="stat"><b>${streak}</b><span>Tage in Folge</span></div>
           <div class="stat"><b>${learned}</b><span>Wörter geübt</span></div>
         </div>
@@ -141,7 +141,7 @@ export function feedbackView(view: FeedbackView, isLast: boolean): string {
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <section class="stage" style="max-width:760px">
       <p class="kicker">Rückmeldung</p>
-      <h1 class="result-word ${view.kind === 'success' && view.correct ? 'result-ok' : view.kind === 'success' ? 'result-no' : ''}">${escapeHtml(headline)}</h1>
+      <h1 class="result-word ${view.kind === 'success' && view.correct ? 'result-ok result-burst' : view.kind === 'success' ? 'result-no' : ''}">${escapeHtml(headline)}</h1>
       ${body}
       ${showSolution ? `<p class="prompt-hint">Gesucht war:</p><p class="result-word">${escapeHtml(word.word)}</p>` : ''}
       ${view.transcription ? `<p class="panel-note">Gelesen: ${escapeHtml(view.transcription)}${typeof view.confidence === 'number' ? ` · Sicherheit ${Math.round(view.confidence * 100)}%` : ''}</p>` : ''}
