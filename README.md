@@ -67,7 +67,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
 5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen.
 6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
-7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗. Die Startseite beginnt nach einem Reload (z. B. durch Ziehen zum Aktualisieren) wieder oben.
+7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗. Nach einem Reload (z. B. durch Ziehen zum Aktualisieren) beginnt die Startseite wieder oben und behält trotz ein-/ausblendender Browserleiste ihre Höhe (`svh` statt `dvh`).
 
 ---
 
