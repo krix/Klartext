@@ -152,17 +152,46 @@ function parseResult(text: string): Omit<CheckResult, 'isCorrect'> {
   };
 }
 
+interface ApiErrorShape {
+  status?: string;
+  code?: string | number;
+  reason?: string;
+  message?: string;
+  details?: Array<{ reason?: string }>;
+}
+
+/** Die API liefert je nach Endpoint {error:...} oder [{error:...}] – beides verstehen. */
+function firstApiError(body: unknown): ApiErrorShape | undefined {
+  if (Array.isArray(body)) return body.length ? firstApiError(body[0]) : undefined;
+  if (!body || typeof body !== 'object') return undefined;
+  const error = (body as Record<string, unknown>).error;
+  return error && typeof error === 'object' ? error as ApiErrorShape : undefined;
+}
+
 async function readError(response: Response): Promise<CheckError> {
-  let status = '';
-  let message = `Die Anfrage schlug fehl (HTTP ${response.status}).`;
+  let apiCode = '';
+  let apiMessage = '';
+  const message = `Die Anfrage schlug fehl (HTTP ${response.status}).`;
   try {
-    const body = await response.json() as { error?: { status?: string; message?: string } };
-    status = body.error?.status ?? '';
-    if (body.error?.message) message = body.error.message;
+    const apiError = firstApiError(await response.json());
+    const detailReasons = Array.isArray(apiError?.details)
+      ? apiError!.details!.map((entry) => entry?.reason).filter(Boolean).map(String)
+      : [];
+    // Je nach Endpoint heißt der Code "status", "code" oder "reason" – für die Diagnose alles mitnehmen.
+    apiCode = [
+      apiError?.status,
+      apiError?.reason,
+      ...detailReasons,
+      apiError?.code != null ? String(apiError.code) : undefined,
+    ].filter(Boolean).join(' / ');
+    apiMessage = apiError?.message ?? '';
   } catch {
     // Manche Proxies liefern nur Klartext zurück.
   }
-  const code: CheckErrorCode = response.status === 401 || response.status === 403
+  const detail = [apiCode, apiMessage].filter(Boolean).join(' – ');
+  // Ein ungültiger Key kommt bei der Interactions-API als 400 mit API_KEY_INVALID zurück.
+  const authHint = /auth|api_key_invalid|unauthenticated|permission_denied/i.test(apiCode);
+  const code: CheckErrorCode = response.status === 401 || response.status === 403 || authHint
     ? 'auth'
     : response.status === 429
       ? 'rate-limit'
@@ -171,7 +200,7 @@ async function readError(response: Response): Promise<CheckError> {
         : response.status === 400
           ? 'bad-request'
           : 'unknown';
-  return new CheckError(code, message, response.status === 400 ? 400 : response.status, status || undefined);
+  return new CheckError(code, message, response.status, detail || undefined);
 }
 
 /** Ruft Gemini auf. Zuerst die aktuelle Interactions-API, bei 404/legacy-Modellen der klassische Endpoint. */
@@ -195,10 +224,11 @@ export async function checkHandwriting(request: CheckRequest): Promise<CheckResu
   signal?.addEventListener('abort', onAbort);
   const timer = setTimeout(() => controller.abort(), timeoutMs);
 
+  // Wichtig: Keine eigenen Header (z. B. "Api-Revision") ergänzen!
+  // Solche Header erzwingen einen CORS-Preflight, den die API mit 403 ablehnt.
   const headers = {
     'Content-Type': 'application/json',
     'x-goog-api-key': apiKey.trim(),
-    'Api-Revision': '2026-05-20',
   };
 
   try {
@@ -267,6 +297,77 @@ export async function checkHandwriting(request: CheckRequest): Promise<CheckResu
   } finally {
     clearTimeout(timer);
     signal?.removeEventListener('abort', onAbort);
+  }
+}
+
+/** Kleines Testbild, falls die Oberfläche kein Bild erzeugen kann. */
+const FALLBACK_TEST_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFAAH/q842iQAAAABJRU5ErkJggg==';
+
+export interface ConnectionTestRequest {
+  apiKey: string;
+  model: string;
+  /** Optional ein in der UI erzeugtes Testbild mit lesbarem Wort. */
+  imageDataUrl?: string;
+  timeoutMs?: number;
+  fetchImpl?: typeof fetch;
+}
+
+export interface ConnectionTestResult {
+  ok: boolean;
+  message: string;
+  /** Technischer Grund (HTTP-Status, API-Code) für die Eltern. */
+  detail?: string;
+}
+
+/** Wandelt Prüfungsfehler in eine diagnosesfreundliche Elternmeldung um. */
+function connectionErrorResult(error: unknown): ConnectionTestResult {
+  if (!(error instanceof CheckError)) {
+    return { ok: false, message: 'Der Verbindungstest ist fehlgeschlagen.', detail: String(error) };
+  }
+  const detail = [error.status ? `HTTP ${error.status}` : '', error.detail ?? ''].filter(Boolean).join(' – ') || undefined;
+  switch (error.code) {
+    case 'auth':
+      return { ok: false, message: 'Der API-Key wurde abgelehnt. Prüfe den Key und seine Beschränkungen in Google AI Studio.', detail };
+    case 'rate-limit':
+      return { ok: false, message: 'Das Limit ist erreicht. Warte kurz und versuche es erneut.', detail };
+    case 'timeout':
+      return { ok: false, message: 'Die Antwort hat zu lange gedauert. Prüfe deine Internetverbindung.', detail };
+    case 'offline':
+      return { ok: false, message: 'Keine Verbindung zum Prüfdienst erreichbar. Prüfe Internet und Firewall.', detail };
+    case 'bad-request':
+      return { ok: false, message: 'Die Anfrage wurde abgelehnt. Prüfe vor allem den Modellnamen.', detail };
+    case 'bad-response':
+      return { ok: false, message: 'Gemini antwortet, aber nicht im erwarteten Format. Versuche ein anderes Modell.', detail };
+    case 'server':
+      return { ok: false, message: 'Der Prüfdienst ist gerade nicht erreichbar. Bitte später erneut versuchen.', detail };
+    default:
+      return { ok: false, message: 'Der Verbindungstest ist fehlgeschlagen.', detail };
+  }
+}
+
+/**
+ * Testet Key, Modell, Endpoint und Antwortschema mit einem kleinen Bild.
+ * Läuft bewusst über denselben Codepfad wie die echte Handschriftprüfung,
+ * damit der Test auch CORS-, Schema- und Bildprobleme findet.
+ */
+export async function testGeminiConnection(request: ConnectionTestRequest): Promise<ConnectionTestResult> {
+  const { apiKey, model } = request;
+  if (!apiKey.trim()) {
+    return { ok: false, message: 'Bitte zuerst einen API-Key eintragen.' };
+  }
+  try {
+    await checkHandwriting({
+      imageDataUrl: request.imageDataUrl || FALLBACK_TEST_IMAGE,
+      targetWord: 'Test',
+      caseSensitive: false,
+      apiKey,
+      model,
+      timeoutMs: request.timeoutMs,
+      fetchImpl: request.fetchImpl,
+    });
+    return { ok: true, message: 'Verbindung OK – Gemini antwortet mit einer gültigen Prüfung.' };
+  } catch (error) {
+    return connectionErrorResult(error);
   }
 }
 

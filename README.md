@@ -90,8 +90,16 @@ Node 20+ reicht. Die KI-Prüfung funktioniert auf `localhost` auch ohne HTTPS; f
 
 1. In [Google AI Studio](https://aistudio.google.com/apikey) einen API-Key erzeugen.
 2. Den Key auf **„Restrict to Gemini API only“** beschränken, nach Möglichkeit auf die eigene Website (HTTP-Referrer) bzw. IP. Ein eigenes tägliches Limit (RPD) setzen und einen Billing-Alarm einrichten.
-3. In der App: Elternbereich 🔒 → PIN festlegen → KI-Prüfung → Zustimmung anhaken und Key eintragen.
-4. Datenbankseite testen. Bei `401/403`: Key oder Beschränkung prüfen. Bei `429`: Limit/Latenz abwarten.
+3. In der App: Elternbereich 🔒 → PIN festlegen → KI-Prüfung → **Zustimmung anhaken** und Key eintragen. Ohne den Haken erscheint in der Übung gar kein „Prüfen lassen“-Button.
+4. **„Verbindung testen“** klicken. Der Test benutzt den gerade eingegebenen Key und das Modell (auch vor dem Speichern), sendet ein kleines Testwort und zeigt bei Erfolg „Verbindung OK“. Bei Fehlern erscheinen HTTP-Status und API-Grund.
+
+**Häufige Ursachen, wenn die Prüfung nicht startet:**
+
+- `API_KEY_INVALID` / HTTP 400/401: Key kopiert oder gelöscht? In AI Studio einen neuen Key erzeugen.
+- HTTP 403: Die HTTP-Referrer-Beschränkung passt nicht zur Deploy-Adresse (für GitHub Pages `https://krix.github.io/*` zulassen).
+- `Failed to fetch` / CORS: Der Client darf **keine eigenen Header** wie `Api-Revision` mitschicken – die API lehnt den Preflight dann mit 403 ab. Es werden nur `Content-Type` und `x-goog-api-key` gesendet.
+- `NOT_FOUND` / 404: Modellnamen prüfen; der Client probiert anschließend automatisch den klassischen Endpoint.
+- HTTP 429: Minuten- oder Tageslimit erreicht, kurz warten.
 
 **Wichtig:** Der Key liegt im `localStorage` des Browsers und ist für technisch versuchte Nutzer auf diesem Gerät lesbar. Für Geräte, die auch Kinder oder Gäste nutzen, ist ein kleiner Proxy sicherer, z. B. ein Cloudflare Worker, der den Key serverseitig ergänzt und ein eigenes Limit setzt:
 
@@ -106,7 +114,6 @@ export default {
         headers: {
           'Content-Type': 'application/json',
           'x-goog-api-key': env.GEMINI_KEY,
-          'Api-Revision': '2026-05-20',
         },
         body: JSON.stringify({ ...body, store: false }),
       },

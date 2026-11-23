@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { CheckError, checkHandwriting } from '../src/lib/gemini';
+import { CheckError, checkHandwriting, testGeminiConnection } from '../src/lib/gemini';
 
 const PNG = 'data:image/png;base64,iVBORw0KGgo=';
 
@@ -68,5 +68,87 @@ describe('Gemini-Client', () => {
     const brokenFetch = vi.fn().mockResolvedValue(response({ steps: [{ content: [{ text: 'kein json' }] }] }));
     await expect(checkHandwriting({ ...baseRequest, fetchImpl: brokenFetch as unknown as typeof fetch }))
       .rejects.toBeInstanceOf(CheckError);
+  });
+});
+
+describe('Verbindungstest', () => {
+  const testRequest = {
+    apiKey: 'test-key',
+    model: 'gemini-3.5-flash-lite',
+    imageDataUrl: PNG,
+  };
+
+  it('meldet Erfolg bei einer gültigen Antwort über denselben Pfad wie die Prüfung', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response({
+      steps: [{ content: [{ text: aiJson }] }],
+    }));
+    const result = await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(true);
+    expect(result.message).toContain('OK');
+    const body = JSON.parse(String(fetchMock.mock.calls[0][1].body));
+    expect(body.store).toBe(false);
+    expect(body.input[1].mime_type).toBe('image/png');
+  });
+
+  it('gibt bei einem abgelehnten Key einen verständlichen Grund zurück', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response({
+      error: { status: 'UNAUTHENTICATED', message: 'API key not valid' },
+    }, 401));
+    const result = await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(false);
+    expect(result.message).toContain('API-Key');
+    expect(result.detail).toContain('HTTP 401');
+    expect(result.detail).toContain('API key not valid');
+  });
+
+  it('erkennt den Legacy-Fallback ebenfalls als erfolgreiche Verbindung', async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(response({ error: { code: 'not_found', message: 'model not found' } }, 404))
+      .mockResolvedValueOnce(response({ candidates: [{ content: { parts: [{ text: aiJson }] } }] }));
+    const result = await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('fragt ohne Key nicht erst das Netzwerk an', async () => {
+    const fetchMock = vi.fn();
+    const result = await testGeminiConnection({ ...testRequest, apiKey: '  ', fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(false);
+    expect(result.message).toContain('API-Key');
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('meldet ein fehlgeschlagenes Limit mit dem API-Code', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response({
+      error: { code: 429, reason: 'rate_limit_exceeded', message: 'Quota exceeded' },
+    }, 429));
+    const result = await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(false);
+    expect(result.message).toContain('Limit');
+    expect(result.detail).toContain('rate_limit_exceeded');
+  });
+
+  it('erkennt einen ungültigen Key auch im Array-Fehlerformat der Interactions-API', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response([{
+      error: {
+        code: 400,
+        status: 'INVALID_ARGUMENT',
+        message: 'API key not valid. Please pass a valid API key.',
+        details: [{ reason: 'API_KEY_INVALID' }],
+      },
+    }], 400));
+    const result = await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    expect(result.ok).toBe(false);
+    expect(result.message).toContain('API-Key');
+    expect(result.detail).toContain('API_KEY_INVALID');
+  });
+
+  it('sendet nur CORS-fähige Header – eigene Header brechen den Preflight', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response({
+      steps: [{ content: [{ text: aiJson }] }],
+    }));
+    await testGeminiConnection({ ...testRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    const headers = fetchMock.mock.calls[0][1].headers as Record<string, string>;
+    expect(Object.keys(headers).map((name) => name.toLowerCase()).sort()).toEqual(['content-type', 'x-goog-api-key']);
   });
 });

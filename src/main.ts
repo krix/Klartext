@@ -3,7 +3,7 @@ import rawRules from './data/rules.json';
 import rawWords from './data/words.json';
 
 import { WritingPad } from './lib/canvas';
-import { checkHandwriting, friendlyError } from './lib/gemini';
+import { checkHandwriting, friendlyError, testGeminiConnection, type ConnectionTestResult } from './lib/gemini';
 import {
   applyResult,
   buildTrainingPlan,
@@ -36,6 +36,8 @@ let pad: WritingPad | null = null;
 let parentUnlocked = false;
 let pinSetup = false;
 let pinError = '';
+let connectionTest: ConnectionTestResult | null = null;
+let connectionTesting = false;
 /** Kontext der aktuellen Rückmeldung – für Wiederholung und „KI irrt“. */
 let feedbackContext: { exercise: Exercise; previousState?: WordState } | null = null;
 
@@ -59,6 +61,24 @@ function notice(message: string): void {
   window.setTimeout(() => toast.remove(), 3600);
 }
 
+/** Erzeugt ein kleines Testbild mit lesbarem Wort für den Verbindungstest. */
+function makeTestImage(): string {
+  const canvas = document.createElement('canvas');
+  canvas.width = 320;
+  canvas.height = 120;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return '';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#d7dee0';
+  ctx.fillRect(0, 78, canvas.width, 2);
+  ctx.fillStyle = '#173b44';
+  ctx.font = 'bold 60px "Trebuchet MS", sans-serif';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Test', 24, 44);
+  return canvas.toDataURL('image/png');
+}
+
 function render(): void {
   document.body.dataset.theme = data.settings.theme;
   const stars = computeStars(data.attempts);
@@ -72,7 +92,7 @@ function render(): void {
       app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise()) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
       break;
     case 'parent':
-      app!.innerHTML = parentView(data, plan, parentStats(), unlockedThemes(stars));
+      app!.innerHTML = parentView(data, plan, parentStats(), unlockedThemes(stars), connectionTest, connectionTesting);
       break;
     case 'gate':
       app!.innerHTML = parentGateView(pinSetup, pinError);
@@ -312,6 +332,7 @@ function goHome(): void {
 }
 
 function openParent(): void {
+  connectionTest = null;
   if (parentUnlocked) {
     route = 'parent';
   } else {
@@ -364,8 +385,28 @@ function saveSettingsForm(form: HTMLFormElement): void {
   data.settings.apiKey = String(values.get('apiKey') ?? '').trim();
   data.settings.model = String(values.get('model') ?? 'gemini-3.5-flash-lite').trim() || 'gemini-3.5-flash-lite';
   saveState(data);
+  connectionTest = null;
   render();
-  notice('KI-Einstellungen gespeichert.');
+  notice(data.settings.apiKey && !data.settings.privacyOptIn
+    ? 'Key gespeichert. Bitte auch die Zustimmung anhaken – sonst bleibt die KI-Prüfung aus.'
+    : 'KI-Einstellungen gespeichert.');
+}
+
+async function runConnectionTest(button: HTMLElement): Promise<void> {
+  const form = button.closest('form');
+  const apiKey = String((form?.querySelector<HTMLInputElement>('#apiKey')?.value ?? data.settings.apiKey)).trim();
+  const model = String((form?.querySelector<HTMLInputElement>('#model')?.value ?? data.settings.model)).trim();
+  connectionTesting = true;
+  connectionTest = null;
+  render();
+  try {
+    connectionTest = await testGeminiConnection({ apiKey, model, imageDataUrl: makeTestImage() });
+  } catch (error) {
+    connectionTest = { ok: false, message: 'Der Verbindungstest ist fehlgeschlagen.', detail: String(error) };
+  } finally {
+    connectionTesting = false;
+    render();
+  }
 }
 
 function saveWritingForm(form: HTMLFormElement): void {
@@ -436,6 +477,7 @@ app.addEventListener('click', (event) => {
     case 'clear': pad?.clear(); break;
     case 'undo': pad?.undo(); break;
     case 'check': void checkWithAi(); break;
+    case 'test-connection': void runConnectionTest(element); break;
     case 'self-check': showResult({ kind: 'fallback', word: feedbackContext?.exercise.word ?? session?.current?.word ?? builtinWords[0], rule: feedbackContext?.exercise.rule ?? findRule(''), message: 'Vergleiche dein Wort mit der Lösung und entscheide selbst.' }); feedbackContext ??= { exercise: session!.current! }; break;
     case 'choose': chooseOption(Number(element.dataset.index)); break;
     case 'tip':

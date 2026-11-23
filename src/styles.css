@@ -301,6 +301,8 @@ p { margin: 0 0 16px; max-width: 62ch; }
   background: var(--paper-deep);
   border-radius: 0 10px 10px 0;
 }
+.test-ok { border-left-color: var(--good); color: var(--good); font-weight: 700; }
+.test-ok small { color: var(--ink-soft); font-weight: 400; }
 
 .result-word { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: .02em; }
 .result-ok { color: var(--good); }

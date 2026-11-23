@@ -1,4 +1,5 @@
 import { escapeHtml, header } from './html';
+import type { ConnectionTestResult } from '../lib/gemini';
 import type { AppData, Difference, Exercise, Rule, Word } from '../lib/types';
 import type { PlanEntry } from '../lib/learning';
 import type { SessionState } from '../lib/session';
@@ -104,7 +105,9 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
         ${!isChoice && canUseAi ? '<button class="button small" type="button" data-action="clear">Löschen</button><button class="button small" type="button" data-action="undo">Rückgängig</button>' : ''}
         <button class="button small" type="button" data-action="tip">${helpVisible || session.showHelp ? 'Tipp ausblenden' : 'Tipp zeigen'}</button>
       </div>
-      ${!canUseAi ? '<p class="panel-note" style="margin-top:14px">KI-Prüfung ist aus. Du vergleichst dein Wort selbst mit der Lösung.</p>' : ''}
+      ${!canUseAi ? `<p class="panel-note" style="margin-top:14px">${data.settings.apiKey.trim()
+        ? 'KI-Prüfung ist aus: Bitte im Elternbereich die Zustimmung anhaken.'
+        : 'KI-Prüfung ist aus. Du vergleichst dein Wort selbst mit der Lösung.'}</p>` : ''}
     </section>
   </main>`;
 }
@@ -177,6 +180,8 @@ export function parentView(
   plan: PlanEntry[],
   stats: { seen: number; correctRate: number; streak: number; stars: number; byCategory: Array<{ name: string; errors: number }> },
   unlockedThemes: string[],
+  connectionTest: ConnectionTestResult | null = null,
+  connectionTesting = false,
 ): string {
   const settings = data.settings;
   const customList = data.customWords.length
@@ -194,7 +199,8 @@ export function parentView(
       <form class="form-grid" data-form="settings">
         <div class="checkbox-line">
           <input id="privacy" name="privacy" type="checkbox" ${settings.privacyOptIn ? 'checked' : ''} />
-          <label for="privacy">Ich willige ein, dass Schriftbilder zur Prüfung an Google gesendet werden.</label>
+          <div><label for="privacy">Ich willige ein, dass Schriftbilder zur Prüfung an Google gesendet werden.</label>
+          <small>Ohne diesen Haken erscheint in der Übung kein „Prüfen lassen“-Button.</small></div>
         </div>
         <div class="field"><label for="apiKey">Gemini API-Key</label>
           <input id="apiKey" name="apiKey" type="password" value="${escapeHtml(settings.apiKey)}" autocomplete="off" spellcheck="false" placeholder="In Google AI Studio erstellen" />
@@ -206,8 +212,13 @@ export function parentView(
             <small>Standard: gemini-3.5-flash-lite. Für schwierige Handschrift: gemini-4-hydrogen.</small>
           </div>
         </div>
-        <button class="button primary" type="submit">Einstellungen speichern</button>
+        <div class="button-row">
+          <button class="button primary" type="submit">Einstellungen speichern</button>
+          <button class="button small" type="button" data-action="test-connection" ${connectionTesting ? 'disabled' : ''}>${connectionTesting ? 'Teste Verbindung …' : 'Verbindung testen'}</button>
+        </div>
       </form>
+      ${connectionTest ? `<p class="tip-box ${connectionTest.ok ? 'test-ok' : ''}" role="status" style="margin-top:14px">${escapeHtml(connectionTest.message)}${connectionTest.detail ? `<br><small>${escapeHtml(connectionTest.detail)}</small>` : ''}</p>` : ''}
+      <p class="panel-note" style="margin-top:12px">Der Test sendet ein kleines Testwort an Gemini – sonst nichts. Er prüft auch, ob Key, Modell und Antwortformat zusammenpassen.</p>
     </section>
 
     <section class="panel" aria-labelledby="schreiben-titel">
