@@ -148,7 +148,7 @@ Dafür müsste die Basis-URL in `src/lib/gemini.ts` auf die Worker-URL umgestell
 
 ## 6. Datenschutz
 
-- Es werden **nur das Canvas-Bild und das Zielwort** an Gemini gesendet – keine Namen, kein Fortschritt, keine Kontodaten. Zusätzlich nur das technische Flag, ob Groß-/Kleinschreibung geprüft wird.
+- Es wird **nur das Canvas-Bild** an Gemini gesendet – **auch das Zielwort nicht**. Das Modell transkribiert blind, die App vergleicht lokal. Keine Namen, kein Fortschritt, keine Kontodaten.
 - Die Prüfung ist standardmäßig aus. Einmaliger Opt-in im Elternbereich; ohne Opt-in läuft alles offline mit Selbstvergleich.
 - `store: false` verhindert das Speichern der Anfrage in den Google-Interaktions-Logs. Google verarbeitet den Bild-Input jedoch gemäß seiner Datenschutzerklärung; deshalb die Zustimmung.
 - Alle Lernfortschritte bleiben lokal. Export und Löschen jederzeit im Elternbereich möglich. Keine Accounts, keine Analyse-Skripte, keine externen Fonts.
@@ -173,7 +173,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 53 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie Gemini-Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 55 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 
@@ -183,4 +183,4 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 - Eigene Wörter werden aktuell auf Stufe 1 eingeordnet und nicht automatisch in Stufe 2/3 einsortiert.
 - Der Key ist im Browser nicht verschlüsselt (siehe Proxy-Hinweis). `localStorage` kann im privaten Modus voll sein; die App bleibt dann nutzbar, speichert aber nicht.
 - Lighthouse-PWA-Score wurde nicht automatisch gemessen; Manifest, Service Worker, Icons, Offline-Modus und Accessibility-Grundlagen sind vorhanden. Eine Messung auf HTTPS ist noch offen.
-- „Unsaubere Handschrift“ wird über `illegible`/`confidence` des Modells erkannt. Sehr unleserliche Schrift führt zu einer Wiederholungsbitte statt zu einem Fehler – das hängt von der Erkennungsqualität des gewählten Modells ab.
+- Kritzeln und unleserliche Schrift führen zu einer Wiederholungsbitte, nicht zu einem Fehler. Dafür wird blind transkribiert (das Zielwort geht gar nicht erst an das Modell), und Lesungen unter `MIN_CONFIDENCE = 0.7` sowie leere Lesungen werden lokal verworfen. Wie zuverlässig das bei sehr wirren Linien ist, hängt vom gewählten Modell ab.

@@ -119,6 +119,55 @@ console.log('homeDesktop=' + JSON.stringify(desktopMetrics));
 assert.ok(desktopMetrics.width <= desktopMetrics.innerWidth + 1, 'horizontaler Overflow auf Desktop');
 assert.ok(desktopMetrics.height <= desktopMetrics.innerHeight + 2, 'vertikaler Overflow auf Desktop');
 
+// Kritzel dürfen nie als richtige Lösung durchgehen: simulierte blinde Lesung ohne Wort.
+const scribbleContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+const scribblePage = await scribbleContext.newPage();
+scribblePage.on('pageerror', (error) => errors.push(String(error)));
+await scribblePage.route('**/v1beta/interactions', (route) => route.fulfill({
+  status: 200,
+  contentType: 'application/json',
+  body: JSON.stringify({
+    steps: [{ content: [{ text: JSON.stringify({
+      transcription: '', confidence: 0.2, illegible: true, feedback: 'Ich kann das nicht lesen.',
+    }) }] }],
+  }),
+}));
+await scribblePage.goto(BASE);
+await scribblePage.evaluate(() => {
+  localStorage.setItem('klartext.state.v1', JSON.stringify({
+    version: 1,
+    settings: { apiKey: 'test-key', privacyOptIn: true, sessionLength: 5 },
+    progress: {}, attempts: [], customWords: [],
+  }));
+});
+await scribblePage.reload();
+let dictationFound = false;
+for (let attempt = 0; attempt < 20; attempt += 1) {
+  await scribblePage.locator('[data-action="start"]').click();
+  if (await scribblePage.locator('#schreibflaeche').count()) { dictationFound = true; break; }
+  await scribblePage.locator('[data-action="quit"]').click();
+}
+assert.ok(dictationFound, 'keine Diktatübung gefunden');
+const padBox = await scribblePage.locator('#schreibflaeche').boundingBox();
+for (let line = 0; line < 6; line += 1) {
+  const y = padBox.y + 30 + line * 22;
+  await scribblePage.mouse.move(padBox.x + 20, y);
+  await scribblePage.mouse.down();
+  for (let point = 1; point <= 8; point += 1) {
+    await scribblePage.mouse.move(padBox.x + 20 + point * (padBox.width - 40) / 8, y + (point % 2 ? 14 : -14));
+  }
+  await scribblePage.mouse.up();
+}
+await scribblePage.locator('[data-action="check"]').click();
+await scribblePage.waitForFunction(() => document.body.dataset.view === 'feedback');
+const scribbleFeedback = await scribblePage.locator('main').innerText();
+console.log('scribbleFeedback=' + JSON.stringify(scribbleFeedback.slice(0, 160)));
+assert.match(scribbleFeedback, /Noch einmal, bitte/);
+assert.doesNotMatch(scribbleFeedback, /Genau richtig!/);
+const attemptsAfterScribble = await scribblePage.evaluate(() => JSON.parse(localStorage.getItem('klartext.state.v1')).attempts.length);
+assert.equal(attemptsAfterScribble, 0, 'Kritzel darf nicht als Fehler gewertet werden');
+await scribbleContext.close();
+
 assert.equal(errors.length, 0, 'keine Konsolenfehler: ' + errors.join(' | '));
 console.log('ALL PLAYWRIGHT CHECKS PASSED');
 await browser.close();

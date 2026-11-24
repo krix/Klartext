@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { CheckError, checkHandwriting, testGeminiConnection } from '../src/lib/gemini';
+import { CheckError, checkHandwriting, MIN_CONFIDENCE, RESULT_SCHEMA, testGeminiConnection } from '../src/lib/gemini';
 
 const PNG = 'data:image/png;base64,iVBORw0KGgo=';
 
@@ -36,6 +36,34 @@ describe('Gemini-Client', () => {
     expect(body.response_format.mime_type).toBe('application/json');
     expect(body.store).toBe(false);
     expect(body.input[1].mime_type).toBe('image/png');
+  });
+
+  it('fragt blind ab, damit das Modell das Zielwort nicht in Kritzeleien hineinliest', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response({
+      steps: [{ content: [{ text: aiJson }] }],
+    }));
+    await checkHandwriting({ ...baseRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+    const prompt = String(JSON.parse(String(fetchMock.mock.calls[0][1].body)).input[0].text);
+    expect(prompt).not.toContain(baseRequest.targetWord);
+    expect(prompt).toContain('kennst das gesuchte Wort NICHT');
+    expect(Object.keys(RESULT_SCHEMA.properties)).toEqual(['transcription', 'confidence', 'illegible', 'feedback']);
+  });
+
+  it('behandelt unlesbare oder unsichere Lesungen als Wiederholung, nicht als Fehler', async () => {
+    const cases = [
+      { transcription: '', confidence: 0.95, illegible: false },
+      { transcription: 'Liebe', confidence: MIN_CONFIDENCE - 0.1, illegible: false },
+      { transcription: 'Liebe', confidence: 0.95, illegible: true },
+    ];
+    for (const answer of cases) {
+      const fetchMock = vi.fn().mockResolvedValue(response({
+        steps: [{ content: [{ text: JSON.stringify({ ...answer, feedback: '', differences: [], isCorrect: true }) }] }],
+      }));
+      const result = await checkHandwriting({ ...baseRequest, fetchImpl: fetchMock as unknown as typeof fetch });
+      expect(result.illegible).toBe(true);
+      expect(result.isCorrect).toBe(false);
+      expect(result.differences).toEqual([]);
+    }
   });
 
   it('korrigiert ein zu nachsichtiges Modell', async () => {

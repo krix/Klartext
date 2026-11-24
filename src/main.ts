@@ -4,7 +4,7 @@ import rawTopicGroups from './data/topic-groups.json';
 import rawWords from './data/words.json';
 
 import { WritingPad } from './lib/canvas';
-import { checkHandwriting, friendlyError, testGeminiConnection, type ConnectionTestResult } from './lib/gemini';
+import { checkHandwriting, friendlyError, MIN_CONFIDENCE, testGeminiConnection, type ConnectionTestResult } from './lib/gemini';
 import {
   applyResult,
   buildTrainingPlan,
@@ -270,7 +270,7 @@ async function checkWithAi(): Promise<void> {
     checking = false;
 
     // Unleserliche Schrift oder niedrige Sicherheit ist kein Fehler, sondern eine Bitte um Wiederholung.
-    if (result.illegible || result.confidence < 0.6) {
+    if (result.illegible || result.transcription.trim() === '' || result.confidence < MIN_CONFIDENCE) {
       feedbackContext = { exercise };
       showResult({
         kind: 'retry',

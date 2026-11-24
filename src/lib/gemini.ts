@@ -27,41 +27,36 @@ export interface CheckRequest {
   signal?: AbortSignal;
 }
 
-/** Exakt das gewünschte Antwortschema (siehe README). */
+/**
+ * Mindest-Sicherheit für eine verwertbare Lesung. Alles darunter ist eine
+ * Wiederholungsbitte, kein Rechtschreibfehler.
+ */
+export const MIN_CONFIDENCE = 0.7;
+
+/** Das Modell liefert nur eine blinde Lesung; Richtigkeit und Abweichungen rechnet die App lokal aus. */
 export const RESULT_SCHEMA = {
   type: 'object',
   properties: {
-    transcription: { type: 'string', description: 'Das gelesene handschriftliche Wort' },
-    isCorrect: { type: 'boolean', description: 'true, wenn das gelesene Wort dem Zielwort entspricht' },
+    transcription: { type: 'string', description: 'Genau das gelesene Wort; leerer String, wenn nichts Lesbares zu erkennen ist' },
     confidence: { type: 'number', description: 'Sicherheit der Lesung zwischen 0 und 1' },
-    differences: {
-      type: 'array',
-      description: 'Abweichungen vom Zielwort',
-      items: {
-        type: 'object',
-        properties: {
-          position: { type: 'integer', description: 'Nullbasierter Index im Zielwort' },
-          expected: { type: 'string', description: 'Erwartetes Zeichen' },
-          written: { type: 'string', description: 'Gelesenes Zeichen, leer wenn nichts geschrieben wurde' },
-        },
-        required: ['position', 'expected', 'written'],
-      },
-    },
-    feedback: { type: 'string', description: 'Kurze deutsche Rückmeldung für ein Kind, maximal zwei Sätze' },
-    illegible: { type: 'boolean', description: 'true, wenn die Schrift nicht zuverlässig lesbar ist' },
+    illegible: { type: 'boolean', description: 'true, wenn die Zeichen kein eindeutig lesbares Wort ergeben' },
+    feedback: { type: 'string', description: 'Kurze deutsche Beschreibung der Lesbarkeit, maximal zwei Sätze' },
   },
-  required: ['transcription', 'isCorrect', 'confidence', 'differences', 'feedback', 'illegible'],
+  required: ['transcription', 'confidence', 'illegible', 'feedback'],
 } as const;
 
-function buildPrompt(targetWord: string, caseSensitive: boolean): string {
-  return `Du bist ein geduldiger Rechtschreib-Assistent für Kinder der 5./6. Klasse. Auf dem Bild steht handschriftlich genau EIN Wort.
+function buildPrompt(): string {
+  // Das Zielwort wird absichtlich NICHT genannt: sonst "erkennt" das Modell
+  // das gewünschte Wort auch in wirren Linien (Anchoring).
+  return `Du bist ein geduldiger Helfer für Kinder der 5./6. Klasse. Auf dem Bild steht handschriftlich genau EIN Wort.
+Du kennst das gesuchte Wort NICHT. Lies das Bild deshalb ganz neutral und schreibe in "transcription" genau das, was wirklich dasteht. Achte auf die tatsächliche Groß-/Kleinschreibung.
 
-Zielwort: ${targetWord}
-Groß-/Kleinschreibung bewerten: ${caseSensitive ? 'ja' : 'nein'}
+Ganz wichtig:
+- Wirre Linien, Kritzeln, Kreise oder Striche, die keine Buchstaben ergeben, sind KEIN Wort: transcription = "" und illegible = true.
+- Wenn du dir bei Buchstaben unsicher bist, setze illegible = true und eine niedrige confidence. Rate nicht.
+- Schiefe, unruhige oder leicht unsaubere, aber erkennbare Buchstaben sind normale Handschrift: transcription = gelesenes Wort, illegible = false.
 
-Lies nur das geschriebene Wort. Ignoriere schiefe, unruhige oder leicht unsaubere Striche: Das ist keine Rechtschreibfehler, sondern nur Handschrift. Setze "illegible" nur dann auf true, wenn ein Buchstabe wirklich nicht erkennbar ist; bei Unsicherheit lieber illegible=true und eine niedrige confidence.
-"differences" enthält pro abweichender Stelle position (nullbasierter Index), expected (Zeichen im Zielwort) und written (gelesenes Zeichen oder leerer String).
-"feedback" ist ein kurzer, freundlicher deutscher Satz (maximal zwei Sätze) ohne Tadel und ohne Note.
+"confidence" ist deine Sicherheit zwischen 0 und 1. "feedback" ist ein kurzer, freundlicher deutscher Satz nur zur Lesbarkeit, ohne Tadel und ohne Note.
 Antworte ausschließlich im vorgegebenen JSON-Format.`;
 }
 
@@ -218,7 +213,7 @@ export async function checkHandwriting(request: CheckRequest): Promise<CheckResu
   if (!apiKey.trim()) throw new CheckError('auth', 'Es ist kein API-Key eingetragen.');
 
   const data = base64FromDataUrl(imageDataUrl);
-  const prompt = buildPrompt(targetWord, caseSensitive);
+  const prompt = buildPrompt();
   const controller = new AbortController();
   const onAbort = () => controller.abort();
   signal?.addEventListener('abort', onAbort);
@@ -286,9 +281,18 @@ export async function checkHandwriting(request: CheckRequest): Promise<CheckResu
     }
 
     const parsed = parseResult(extractJson(await response.json() as unknown));
-    // Die Richtigkeit wird immer lokal nachgerechnet – das Modell darf hier nicht nachsichtig sein.
-    const evaluation = evaluateTranscription(targetWord, parsed.transcription, caseSensitive);
-    return { ...parsed, isCorrect: evaluation.correct, differences: evaluation.differences };
+    const transcription = parsed.transcription.trim();
+    // Auch ein überzeugtes Modell darf wirre Linien nicht als Wort durchgehen lassen.
+    const illegible = parsed.illegible || transcription.length === 0 || parsed.confidence < MIN_CONFIDENCE;
+    // Die Richtigkeit wird ausschließlich lokal aus der blinden Lesung berechnet.
+    const evaluation = evaluateTranscription(targetWord, transcription, caseSensitive);
+    return {
+      ...parsed,
+      transcription,
+      illegible,
+      isCorrect: !illegible && evaluation.correct,
+      differences: illegible ? [] : evaluation.differences,
+    };
   } catch (error) {
     if (error instanceof CheckError) throw error;
     if (signal?.aborted) throw new CheckError('offline', 'Die Prüfung wurde abgebrochen.');
