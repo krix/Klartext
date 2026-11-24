@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { CheckError, checkHandwriting, MIN_CONFIDENCE, RESULT_SCHEMA, testGeminiConnection } from '../src/lib/gemini';
+import { CheckError, checkHandwriting, isRetryableCheckError, MIN_CONFIDENCE, RESULT_SCHEMA, testGeminiConnection } from '../src/lib/gemini';
 
 const PNG = 'data:image/png;base64,iVBORw0KGgo=';
 
@@ -169,6 +169,13 @@ describe('Verbindungstest', () => {
     expect(result.ok).toBe(false);
     expect(result.message).toContain('API-Key');
     expect(result.detail).toContain('API_KEY_INVALID');
+  });
+
+  it('bietet nur bei vorübergehenden Fehlern einen zweiten Versuch an', () => {
+    expect(isRetryableCheckError(new CheckError('server', 'weg'))).toBe(true);
+    expect(isRetryableCheckError(new CheckError('rate-limit', 'zu viele'))).toBe(true);
+    expect(isRetryableCheckError(new CheckError('auth', 'falscher Key'))).toBe(false);
+    expect(isRetryableCheckError(new Error('unbekannt'))).toBe(false);
   });
 
   it('sendet nur CORS-fähige Header – eigene Header brechen den Preflight', async () => {

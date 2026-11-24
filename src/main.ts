@@ -4,7 +4,7 @@ import rawTopicGroups from './data/topic-groups.json';
 import rawWords from './data/words.json';
 
 import { WritingPad } from './lib/canvas';
-import { checkHandwriting, friendlyError, MIN_CONFIDENCE, testGeminiConnection, type ConnectionTestResult } from './lib/gemini';
+import { checkHandwriting, friendlyError, isRetryableCheckError, MIN_CONFIDENCE, testGeminiConnection, type ConnectionTestResult } from './lib/gemini';
 import {
   applyResult,
   buildTrainingPlan,
@@ -315,7 +315,7 @@ async function checkWithAi(storedImage?: string): Promise<void> {
       word: exercise.word,
       rule: exercise.rule,
       message: friendlyError(error),
-      canRetryCheck: true,
+      canRetryCheck: isRetryableCheckError(error),
     });
   }
 }

@@ -375,6 +375,12 @@ export async function testGeminiConnection(request: ConnectionTestRequest): Prom
   }
 }
 
+/** Nur vorübergehende Störungen verdienen einen zweiten Versuch. */
+export function isRetryableCheckError(error: unknown): boolean {
+  return error instanceof CheckError
+    && ['offline', 'rate-limit', 'timeout', 'server', 'bad-response', 'unknown'].includes(error.code);
+}
+
 /** Menschlich verständliche Fehlermeldungen für die Kinderoberfläche. */
 export function friendlyError(error: unknown): string {
   if (!(error instanceof CheckError)) return 'Die Prüfung hat gerade nicht geklappt. Du kannst das Wort selbst vergleichen.';
