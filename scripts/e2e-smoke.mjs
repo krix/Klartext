@@ -178,6 +178,63 @@ const attemptsAfterScribble = await scribblePage.evaluate(() => JSON.parse(local
 assert.equal(attemptsAfterScribble, 0, 'Kritzel darf nicht als Fehler gewertet werden');
 await scribbleContext.close();
 
+// Kurzer Dienstausfall: das bereits geschriebene Bild kann erneut geprüft werden.
+const outageContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+const outagePage = await outageContext.newPage();
+outagePage.on('pageerror', (error) => errors.push(String(error)));
+let checkCalls = 0;
+await outagePage.route('**/v1beta/interactions', (route) => {
+  checkCalls += 1;
+  if (checkCalls === 1) {
+    return route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ error: { message: 'Dienst nicht erreichbar' } }) });
+  }
+  return route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({
+      steps: [{ content: [{ text: JSON.stringify({
+        transcription: 'Liebe', confidence: 0.9, illegible: false,
+        feedback: 'Super gemacht!', isCorrect: true, differences: [],
+      }) }] }],
+    }),
+  });
+});
+await outagePage.goto(BASE);
+await outagePage.evaluate(() => {
+  localStorage.setItem('klartext.state.v1', JSON.stringify({
+    version: 1,
+    settings: { apiKey: 'test-key', privacyOptIn: true, sessionLength: 5 },
+    progress: {}, attempts: [], customWords: [],
+  }));
+});
+await outagePage.reload();
+let outageDictationFound = false;
+for (let attempt = 0; attempt < 20; attempt += 1) {
+  await outagePage.locator('[data-action="start"]').click();
+  if (await outagePage.locator('#schreibflaeche').count()) { outageDictationFound = true; break; }
+  await outagePage.locator('[data-action="quit"]').click();
+}
+assert.ok(outageDictationFound, 'keine Diktatübung für den Ausfall-Test gefunden');
+const outageBox = await outagePage.locator('#schreibflaeche').boundingBox();
+await outagePage.mouse.move(outageBox.x + 30, outageBox.y + 90);
+await outagePage.mouse.down();
+await outagePage.mouse.move(outageBox.x + outageBox.width - 30, outageBox.y + 90);
+await outagePage.mouse.up();
+await outagePage.locator('[data-action="check"]').click();
+await outagePage.waitForFunction(() => document.body.dataset.view === 'feedback');
+assert.equal(await outagePage.locator('[data-action="retry-check"]').count(), 1, 'Dienstausfall muss erneute Prüfung anbieten');
+const fallbackOverflow = await outagePage.evaluate(() => ({
+  width: document.documentElement.scrollWidth, innerWidth: window.innerWidth,
+}));
+assert.ok(fallbackOverflow.width <= fallbackOverflow.innerWidth + 1, 'horizontaler Overflow im Ausfall-Feedback');
+await outagePage.locator('[data-action="retry-check"]').click();
+await outagePage.waitForFunction(() => !document.querySelector('[data-action="retry-check"]'), null, { timeout: 5000 });
+assert.equal(checkCalls, 2, 'erneute Prüfung muss den Dienst ein zweites Mal aufrufen');
+const retryResult = await outagePage.locator('main').innerText();
+console.log('retryResult=' + JSON.stringify(retryResult.slice(0, 120)));
+assert.doesNotMatch(retryResult, /Selbst prüfen/);
+await outageContext.close();
+
 assert.equal(errors.length, 0, 'keine Konsolenfehler: ' + errors.join(' | '));
 console.log('ALL PLAYWRIGHT CHECKS PASSED');
 await browser.close();

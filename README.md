@@ -65,7 +65,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 2. Übungstyp wählen: Hördiktat (~60 %), Abschreiben, Auswahl. Nach zwei Fehlern in Folge erscheinen mehr Hilfen; nach fünf Richtigen wird die Stufe erhöht und ein noch kommendes Wort durch ein schwereres aus demselben Pool ersetzt. Die Anzahl der Wörter pro Runde bleibt fest; Wiederholungen werden in der Anzeige extra als solche gekennzeichnet.
 3. Handschrift auf dem Canvas schreiben → PNG (nur der beschriebene Bereich) → Gemini.
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,7: freundlich noch einmal schreiben bitten, **kein** Fehler.
-5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen.
+5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen. Bei einem kurzen Dienstausfall bleibt das geschriebene Bild erhalten; „Erneut prüfen“ startet denselben Check noch einmal, ohne dass neu geschrieben werden muss.
 6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
 7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗, den Beispielsatz und – bei KI- oder Auswahlfehlern – die markierte Fehlerstelle mit Position und richtiger Schreibweise. Der Trainingsplan steht dort bereits aktuell; die Startseite liest beim Zurückkehren und bei Änderungen in anderen Tabs neu aus dem Speicher. Wartende Wiederholungen dürfen das Rundenende nicht blockieren.
 8. Nach einem Reload (z. B. durch Ziehen zum Aktualisieren) beginnt die Startseite wieder oben und behält trotz ein-/ausblendender Browserleiste ihre Höhe (`svh` statt `dvh`).
@@ -173,7 +173,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 56 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 58 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

@@ -16,6 +16,8 @@ export interface FeedbackView {
   differences?: Difference[];
   feedback?: string;
   message?: string;
+  /** Nur bei einem Dienstfehler: das gespeicherte Bild erneut prüfen. */
+  canRetryCheck?: boolean;
   /** Ergebnisse für die Abschlussübersicht. */
   results?: SessionResult[];
 }
@@ -343,7 +345,8 @@ export function feedbackView(view: FeedbackView, isLast: boolean, plan: readonly
       <p class="panel-note">Unsaubere Striche sind kein Fehler – ich schaue nur auf die Buchstaben.</p>`;
   } else if (view.kind === 'fallback') {
     headline = 'Selbst prüfen';
-    body = `<p class="lead">${escapeHtml(view.message ?? 'Die KI ist gerade nicht da.')}</p>`;
+    body = `<p class="lead">${escapeHtml(view.message ?? 'Die KI ist gerade nicht da.')}</p>
+      ${view.canRetryCheck ? '<p class="panel-note">Dein geschriebenes Wort ist noch da. Du kannst es erneut prüfen lassen – oder selbst vergleichen.</p>' : ''}`;
   } else {
     headline = view.correct ? 'Genau richtig!' : 'Fast!';
     body = `<p>${escapeHtml(view.feedback ?? '')}</p>`;
@@ -352,6 +355,12 @@ export function feedbackView(view: FeedbackView, isLast: boolean, plan: readonly
   const showSolution = view.kind !== 'summary';
   const againAttrs = view.ruleId ? `data-id="${escapeHtml(view.ruleId)}"` : '';
   const againAction = view.ruleId ? 'practice-topic' : 'start';
+  const primaryAction = view.kind === 'retry' ? 'retry-same' : view.canRetryCheck ? 'retry-check' : 'next';
+  const primaryLabel = view.kind === 'retry'
+    ? 'Noch einmal schreiben'
+    : view.canRetryCheck
+      ? 'Erneut prüfen'
+      : isLast ? 'Runde abschließen' : 'Weiter zum nächsten Wort';
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <section class="stage" style="max-width:760px">
       <p class="kicker">Rückmeldung</p>
@@ -364,7 +373,8 @@ export function feedbackView(view: FeedbackView, isLast: boolean, plan: readonly
       <div class="button-row stage-actions">
         ${view.kind === 'summary'
           ? `<button class="button primary" type="button" data-action="home">Zur Startseite</button><button class="button" type="button" data-action="${againAction}" ${againAttrs}>Noch eine Runde</button>`
-          : `<button class="button primary" type="button" data-action="${view.kind === 'retry' ? 'retry-same' : 'next'}">${view.kind === 'retry' ? 'Noch einmal schreiben' : isLast ? 'Runde abschließen' : 'Weiter zum nächsten Wort'}</button>
+          : `<button class="button primary" type="button" data-action="${primaryAction}">${primaryLabel}</button>
+             ${view.canRetryCheck ? '<button class="button small" type="button" data-action="next">Weiter ohne Prüfung</button>' : ''}
              ${view.kind === 'fallback' || view.kind === 'retry' ? `<button class="button" type="button" data-action="self-correct" data-value="correct">Das war richtig</button><button class="button" type="button" data-action="self-correct" data-value="wrong">Nochmal üben</button>` : ''}
              ${view.kind === 'success' ? '<button class="button small" type="button" data-action="disagree">KI irrt – selbst bewerten</button>' : ''}`}
       </div>

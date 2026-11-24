@@ -101,6 +101,26 @@ describe('Rückmeldung', () => {
     expect(html).toContain('2 × üben');
   });
 
+  it('bietet bei einem Dienstfehler eine erneute Prüfung an', () => {
+    const html = feedbackView({
+      kind: 'fallback', word: words[0], rule,
+      message: 'Der Prüfdienst ist gerade nicht erreichbar.',
+      canRetryCheck: true,
+    }, false);
+    expect(html).toContain('data-action="retry-check"');
+    expect(html).toContain('Erneut prüfen');
+    expect(html).toContain('Dein geschriebenes Wort ist noch da.');
+  });
+
+  it('bietet bei der Selbstprüfung keine erneute KI-Prüfung an', () => {
+    const html = feedbackView({
+      kind: 'fallback', word: words[0], rule,
+      message: 'Vergleiche dein Wort mit der Lösung und entscheide selbst.',
+    }, false);
+    expect(html).not.toContain('data-action="retry-check"');
+    expect(html).toContain('Weiter zum nächsten Wort');
+  });
+
   it('behält einen zunächst falschen Wortversuch in der Übersicht sichtbar', () => {
     const html = feedbackView({
       kind: 'summary', word: words[0], rule,

@@ -39,6 +39,8 @@ let feedback: FeedbackView | null = null;
 let checking = false;
 let helpVisible = false;
 let pad: WritingPad | null = null;
+/** Letztes Bild für den Fall, dass der Prüfdienst kurzzeitig nicht erreichbar war. */
+let retryImageDataUrl: string | null = null;
 let parentUnlocked = false;
 let pinSetup = false;
 let pinError = '';
@@ -169,6 +171,7 @@ function startSession(ruleId = ''): void {
   session = createSession(pool, rules, data.progress, data.settings, Math.random, Date.now(), ruleId);
   topicId = ruleId;
   feedback = null;
+  retryImageDataUrl = null;
   checking = false;
   helpVisible = false;
   route = 'practice';
@@ -197,6 +200,7 @@ function goNext(): void {
     return;
   }
   session = nextExercise(session, sessionWords(session, allWords()), rules);
+  retryImageDataUrl = null;
   checking = false;
   helpVisible = false;
   if (isSessionFinished(session) || !session.current) showSummary();
@@ -244,18 +248,20 @@ function showResult(view: FeedbackView): void {
   render();
 }
 
-async function checkWithAi(): Promise<void> {
-  if (!session?.current || !pad) return;
-  if (pad.isEmpty()) {
+async function checkWithAi(storedImage?: string): Promise<void> {
+  if (!session?.current) return;
+  const exercise = session.current;
+  if (!storedImage && (!pad || pad.isEmpty())) {
     notice('Schreib zuerst das Wort auf.');
     return;
   }
-  const exercise = session.current;
-  const imageDataUrl = pad.toPngDataUrl();
+  const imageDataUrl = storedImage ?? pad?.toPngDataUrl();
   if (!imageDataUrl) {
     notice('Die Schreibfläche konnte nicht gelesen werden.');
     return;
   }
+  // Bild behalten, damit ein kurzer Dienstausfall nicht zum Neuschreiben zwingt.
+  retryImageDataUrl = imageDataUrl;
   checking = true;
   render();
   try {
@@ -271,6 +277,7 @@ async function checkWithAi(): Promise<void> {
     // Unleserliche Schrift oder niedrige Sicherheit ist kein Fehler, sondern eine Bitte um Wiederholung.
     if (result.illegible || result.transcription.trim() === '' || result.confidence < MIN_CONFIDENCE) {
       feedbackContext = { exercise };
+      retryImageDataUrl = null;
       showResult({
         kind: 'retry',
         word: exercise.word,
@@ -289,6 +296,7 @@ async function checkWithAi(): Promise<void> {
     const feedbackText = usableFeedback ? aiText : localFeedback(exercise.rule, result.isCorrect);
 
     recordAttempt(exercise, result.isCorrect, 'ai', result);
+    retryImageDataUrl = null;
     showResult({
       kind: 'success',
       word: exercise.word,
@@ -307,12 +315,14 @@ async function checkWithAi(): Promise<void> {
       word: exercise.word,
       rule: exercise.rule,
       message: friendlyError(error),
+      canRetryCheck: true,
     });
   }
 }
 
 function solveBySelf(correct: boolean, retry = false): void {
   if (!feedbackContext) return;
+  retryImageDataUrl = null;
   const { exercise } = feedbackContext;
   if (retry) {
     // Keine Bewertung: die Wiederholung ersetzt den unklaren Versuch.
@@ -507,6 +517,7 @@ app.addEventListener('click', (event) => {
     case 'clear': pad?.clear(); break;
     case 'undo': pad?.undo(); break;
     case 'check': void checkWithAi(); break;
+    case 'retry-check': void checkWithAi(retryImageDataUrl ?? undefined); break;
     case 'test-connection': void runConnectionTest(element); break;
     case 'self-check': {
       const exercise = session?.current;
