@@ -1,11 +1,51 @@
 /* Klartext – Heft-Optik mit Sticker-Laune: Linien tragen, kleine Details erfreuen.
    Alle Abstände skalieren mit der Fensterhöhe, damit die Lernansichten auf einem Bildschirm passen. */
+
+/* Alle Leseschriften liegen lokal im Projekt. Kein Font-Dienst, keine Verbindung nötig.
+   Die Dateien liegen unter public/fonts/ und werden mit dem Service Worker mitgecacht. */
+@font-face {
+  font-family: "Lexend";
+  src: url("/fonts/lexend-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-700-latin.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("/fonts/opendyslexic-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("/fonts/opendyslexic-700-latin.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --paper: #f4f7f1;
-  --paper-deep: #e6ebe4;
+  --font-ui: "Lexend", "Trebuchet MS", system-ui, sans-serif;
+  --paper: #fbf6ec;
+  --paper-deep: #f0e7d7;
   --ink: #173b44;
   --ink-soft: #4d686e;
-  --line: #b9c9c2;
+  --line: #c8bba3;
   --accent: #ffc94a;
   --accent-ink: #5a4210;
   --fun-coral: #ff7d63;
@@ -19,13 +59,19 @@
   color-scheme: light;
 }
 
-[data-theme="mint"] {
-  --paper: #e9f4ec;
-  --paper-deep: #d8e9dc;
-  --ink: #10463c;
-  --line: #9cbfad;
+[data-theme="sky"] {
+  --paper: #e8f2fa;
+  --paper-deep: #d3e5f2;
+  --ink: #123a52;
+  --ink-soft: #456579;
+  --line: #a6c2d4;
   --accent: #ffd166;
 }
+
+/* Schriftwechsel: jederzeit im Elternbereich umstellbar, ohne neue Dateien zu laden. */
+body[data-font="atkinson"] { --font-ui: "Atkinson", "Trebuchet MS", system-ui, sans-serif; }
+body[data-font="dyslexic"] { --font-ui: "OpenDyslexic", "Trebuchet MS", system-ui, sans-serif; }
+body[data-font="system"] { --font-ui: "Trebuchet MS", "Segoe UI", system-ui, sans-serif; }
 
 [data-theme="night"] {
   --paper: #12252b;
@@ -63,8 +109,10 @@ body {
     radial-gradient(color-mix(in srgb, var(--ink) 11%, transparent) 1.2px, transparent 1.3px) 0 0 / 26px 26px,
     var(--paper);
   color: var(--ink);
-  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-  font-size: 17px;
+  font-family: var(--font-ui);
+  /* Großzügiger Abstand erleichtert das Lesen bei LRS; Wörter bleiben klar getrennt. */
+  font-size: 18px;
+  letter-spacing: .015em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -124,7 +172,9 @@ a { color: inherit; }
   letter-spacing: 0;
 }
 
-.topnav { display: flex; align-items: center; gap: 10px; }
+.topnav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+.link-button[data-action="speak-page"] { white-space: nowrap; }
 
 .link-button {
   border: 0;
@@ -635,6 +685,7 @@ body[data-view="parent"] .checkbox-line small { font-size: .8rem; }
   .topbar { padding: 10px 16px; }
   .topnav { gap: 2px; }
   .link-button { padding: 5px 6px; font-size: .82rem; }
+  .speak-label { display: none; }
   body[data-view="home"] .topbar { padding-top: 8px; padding-bottom: 8px; }
   .brand small { display: none; }
   .stage { padding: 14px 18px; border-radius: 18px; }

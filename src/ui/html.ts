@@ -29,6 +29,7 @@ export function header(parentUnlocked = false, active: 'topics' | '' = ''): stri
       ${brand()}<span>Klartext<small>Rechtschreibung üben</small></span>
     </a>
     <nav class="topnav" aria-label="Hauptnavigation">
+      <button class="link-button" type="button" data-action="speak-page" aria-label="Text dieser Seite vorlesen" title="Text dieser Seite vorlesen"><span aria-hidden="true">🔊</span> <span class="speak-label">Vorlesen</span></button>
       <button class="link-button ${active === 'topics' ? 'is-active' : ''}" type="button" data-action="topics"${active === 'topics' ? ' aria-current="page"' : ''}>Themen</button>
       <button class="link-button" type="button" data-action="${parentUnlocked ? 'parent-home' : 'parent'}">${parentUnlocked ? 'Elternbereich' : 'Elternbereich 🔒'}</button>
     </nav>

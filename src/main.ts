@@ -16,7 +16,7 @@ import {
   unlockedThemes,
 } from './lib/learning';
 import { hashPin, newSalt, verifyPin } from './lib/pin';
-import { speakWordAndSentence } from './lib/speech';
+import { speakParts, speakWordAndSentence } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, sessionWords, upgradeQueue, type SessionState } from './lib/session';
 import { activeProfile, addProfile, clearState, deleteProfile, freshState, loadState, renameProfile, saveState, switchProfile } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
@@ -66,6 +66,18 @@ function refreshState(): void {
   data = loadState();
 }
 
+/** Liest allen sichtbaren Text der aktuellen Seite vor – für alle Bildschirme, nicht nur Diktate. */
+function speakPage(): void {
+  const main = document.querySelector<HTMLElement>('#hauptinhalt');
+  if (!main) return;
+  const lines = main.innerText
+    .replace(/[✦🔒✓✗]/g, ' ')
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 1 && !/^\d+ von \d+$/.test(line));
+  if (!speakParts(lines, data.settings.ttsRate)) notice('Dieser Browser kann nicht vorlesen.');
+}
+
 function notice(message: string): void {
   const toast = document.createElement('div');
   toast.className = 'notice';
@@ -97,6 +109,7 @@ function render(): void {
   // Sicherheitsnetz: keine Übung mehr, aber noch auf der Übungsroute → Rundenende statt leerer Startseite.
   if (route === 'practice' && session && !session.current) showSummary();
   document.body.dataset.theme = data.settings.theme;
+  document.body.dataset.font = data.settings.font;
   document.body.dataset.view = route;
   if (lastRenderedRoute !== route) {
     window.scrollTo(0, 0);
@@ -480,6 +493,8 @@ function saveWritingForm(form: HTMLFormElement): void {
   data.settings.sessionLength = [5, 8, 12, 16].includes(Number(values.get('sessionLength'))) ? Number(values.get('sessionLength')) : 8;
   const theme = String(values.get('theme') ?? 'paper');
   if (unlockedThemes(computeStars(activeProfile(data).attempts)).includes(theme)) data.settings.theme = theme as AppData['settings']['theme'];
+  const font = String(values.get('font') ?? 'lexend');
+  if (['lexend', 'atkinson', 'dyslexic', 'system'].includes(font)) data.settings.font = font as AppData['settings']['font'];
   saveState(data);
   render();
   notice('Darstellung gespeichert.');
@@ -586,6 +601,7 @@ app.addEventListener('click', (event) => {
     case 'practice-topic': startSession(element.dataset.id ?? ''); break;
     case 'start': startSession(); break;
     case 'quit': goHome(); break;
+    case 'speak-page': speakPage(); break;
     case 'speak':
       if (session?.current) speakWordAndSentence(session.current.word.word, session.current.word.sentence, data.settings.ttsRate);
       break;

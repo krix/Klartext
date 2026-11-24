@@ -170,4 +170,29 @@ describe('Elternbereich', () => {
     expect(html).toContain('data-form="add-profile"');
     expect(html).toContain('data-form="rename-profile"');
   });
+
+  it('bietet Lokalschriften und die drei Designs zur Auswahl an', () => {
+    const data = freshState();
+    data.settings.font = 'atkinson';
+    const html = parentView(
+      data,
+      [],
+      { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] },
+      ['paper', 'sky', 'night'],
+    );
+    for (const font of ['lexend', 'atkinson', 'dyslexic', 'system']) {
+      expect(html).toContain(`value="${font}"`);
+    }
+    for (const theme of ['paper', 'sky', 'night']) {
+      expect(html).toContain(`value="${theme}"`);
+    }
+    expect(html).not.toContain('value="mint"');
+  });
+
+  it('bietet auf jeder Seite einen Vorlese-Button an', () => {
+    for (const html of [homeView(freshState(), [], 0, 0, 320), parentView(freshState(), [], { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] }, [])]) {
+      expect(html).toContain('data-action="speak-page"');
+      expect(html).toContain('Text dieser Seite vorlesen');
+    }
+  });
 });

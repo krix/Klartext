@@ -515,7 +515,9 @@ export function parentView(
           <div class="field"><label for="ttsRate">Tempo der Sprachausgabe: <span data-value-for="ttsRate">${settings.ttsRate}</span></label><input id="ttsRate" name="ttsRate" type="range" min="0.5" max="1.3" step="0.05" value="${settings.ttsRate}" /></div>
           <div class="field"><label for="sessionLength">Wörter pro Runde</label><select id="sessionLength" name="sessionLength">${[5, 8, 12, 16].map((count) => `<option value="${count}" ${settings.sessionLength === count ? 'selected' : ''}>${count} Wörter</option>`).join('')}</select></div>
         </div>
-        <div class="field"><label for="theme">Design</label><select id="theme" name="theme">${['paper', 'mint', 'night'].map((theme) => `<option value="${theme}" ${settings.theme === theme ? 'selected' : ''} ${unlockedThemes.includes(theme) ? '' : 'disabled'}>${theme === 'paper' ? 'Papier' : theme === 'mint' ? 'Minze (ab 15 Sternen)' : 'Nacht (ab 40 Sternen)'}</option>`).join('')}</select></div>
+        <div class="field"><label for="font">Schrift</label><select id="font" name="font">${(['lexend', 'atkinson', 'dyslexic', 'system'] as const).map((font) => `<option value="${font}" ${settings.font === font ? 'selected' : ''}>${font === 'lexend' ? 'Lexend (empfohlen)' : font === 'atkinson' ? 'Atkinson Hyperlegible' : font === 'dyslexic' ? 'OpenDyslexic' : 'Geräteschrift'}</option>`).join('')}</select>
+          <small>Alle Schriften sind lokal gespeichert. Probier aus, welche für dich am besten lesbar ist.</small></div>
+        <div class="field"><label for="theme">Design</label><select id="theme" name="theme">${(['paper', 'sky', 'night'] as const).map((theme) => `<option value="${theme}" ${settings.theme === theme ? 'selected' : ''} ${unlockedThemes.includes(theme) ? '' : 'disabled'}>${theme === 'paper' ? 'Creme' : theme === 'sky' ? 'Hellblau (ab 15 Sternen)' : 'Dunkel (ab 40 Sternen)'}</option>`).join('')}</select></div>
         <button class="button primary" type="submit">Darstellung speichern</button>
       </form>
     </section>

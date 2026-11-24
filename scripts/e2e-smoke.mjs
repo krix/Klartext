@@ -20,6 +20,8 @@ page.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()
 page.on('pageerror', (error) => errors.push(String(error)));
 
 await page.goto(BASE);
+await page.evaluate(() => document.fonts.ready);
+assert.ok(await page.evaluate(() => document.fonts.check('18px Lexend')), 'lokale Leseschrift wurde nicht geladen');
 await page.evaluate(() => {
   localStorage.setItem('klartext.state.v1', JSON.stringify({
     version: 1, settings: { sessionLength: 5 }, progress: {}, attempts: [], customWords: [],

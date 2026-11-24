@@ -1,4 +1,4 @@
-import type { AppData, AppTheme, Attempt, Profile, Settings, Word, WordState } from './types';
+import type { AppData, AppFont, AppTheme, Attempt, Profile, Settings, Word, WordState } from './types';
 
 const STORAGE_KEY = 'klartext.state.v1';
 const MAX_ATTEMPTS = 3000;
@@ -16,6 +16,7 @@ export const DEFAULT_SETTINGS: Settings = {
   sessionLength: 8,
   privacyOptIn: false,
   theme: 'paper',
+  font: 'lexend',
 };
 
 function newProfileId(): string {
@@ -122,7 +123,9 @@ function cleanSettings(raw: unknown): Settings {
     ttsRate: typeof settingsRaw.ttsRate === 'number' ? settingsRaw.ttsRate : DEFAULT_SETTINGS.ttsRate,
     sessionLength: typeof settingsRaw.sessionLength === 'number' ? settingsRaw.sessionLength : DEFAULT_SETTINGS.sessionLength,
     privacyOptIn: settingsRaw.privacyOptIn === true,
-    theme: isTheme(settingsRaw.theme) ? settingsRaw.theme : 'paper',
+    // "mint" hieß das Hellblau-Thema in früheren Versionen.
+    theme: settingsRaw.theme === 'mint' ? 'sky' : isTheme(settingsRaw.theme) ? settingsRaw.theme : 'paper',
+    font: isFont(settingsRaw.font) ? settingsRaw.font : 'lexend',
   };
 }
 
@@ -159,7 +162,11 @@ export function loadState(): AppData {
 }
 
 function isTheme(value: unknown): value is AppTheme {
-  return value === 'paper' || value === 'mint' || value === 'night';
+  return value === 'paper' || value === 'sky' || value === 'night';
+}
+
+function isFont(value: unknown): value is AppFont {
+  return value === 'lexend' || value === 'atkinson' || value === 'dyslexic' || value === 'system';
 }
 
 export function saveState(state: AppData): void {

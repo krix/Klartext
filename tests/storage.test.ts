@@ -55,7 +55,8 @@ describe('Profile und Speicherung', () => {
     expect(data.version).toBe(2);
     expect(data.profiles).toHaveLength(1);
     expect(data.settings.sessionLength).toBe(5);
-    expect(data.settings.theme).toBe('mint');
+    expect(data.settings.theme).toBe('sky');
+    expect(data.settings.font).toBe('lexend');
     expect(activeProfile(data).progress['ie-i-01'].box).toBe(2);
     expect(activeProfile(data).attempts).toHaveLength(1);
   });
@@ -90,6 +91,29 @@ describe('Profile und Speicherung', () => {
     expect(activeProfile(loaded).name).toBe('Kind');
     expect(deleteProfile(loaded, first.id)).toBe(false);
     expect(loaded.profiles).toHaveLength(1);
+  });
+
+  it('übernimmt gültige Schriftarten und fällt bei Unbekanntem zurück', () => {
+    localStorage.setItem('klartext.state.v1', JSON.stringify({
+      version: 2,
+      settings: { font: 'dyslexic', theme: 'night' },
+      activeProfileId: 'kind-1',
+      profiles: [{ id: 'kind-1', name: 'Kind', progress: {}, attempts: [] }],
+      customWords: [],
+    }));
+    expect(loadState().settings.font).toBe('dyslexic');
+    expect(loadState().settings.theme).toBe('night');
+
+    localStorage.setItem('klartext.state.v1', JSON.stringify({
+      version: 2,
+      settings: { font: 'extern', theme: 'unbekannt' },
+      activeProfileId: 'kind-1',
+      profiles: [{ id: 'kind-1', name: 'Kind', progress: {}, attempts: [] }],
+      customWords: [],
+    }));
+    const safe = loadState().settings;
+    expect(safe.font).toBe('lexend');
+    expect(safe.theme).toBe('paper');
   });
 
   it('begrenzt Namen und fängt leere Namen ab', () => {

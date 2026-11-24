@@ -30,7 +30,7 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 | Übung | Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt, Diktat (Wort **und** Beispielsatz vorgelesen, Satz mit Lücke), Abschreiben, Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
 | Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
 | Rundenende | Übersicht aller geübten Wörter mit ✓/✗, Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
-| Elternbereich (PIN) | Profile anlegen/umbenennen/wechseln/löschen, KI-Key und Datenschutz, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
+| Elternbereich (PIN) | Profile anlegen/umbenennen/wechseln/löschen, KI-Key und Datenschutz, Schriftart, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
 
 ### Datenmodell (alles in `localStorage`, Schlüssel `klartext.state.v1`)
 
@@ -79,7 +79,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 
 **TypeScript + Vite ohne Framework.** Die App hat vier Bildschirme und wenige Zustände; ein Framework würde nur Bundle-Größe und Update-Komplexität hinzufügen. Vite liefert einen kleinen Production-Build (~96 kB JS inklusive Wortbank, ~27 kB gzip), der vollständig offline funktioniert. TypeScript verhindert Fehler im Datenmodell. `localStorage` reicht bei dieser Datenmenge aus und ist einfacher als IndexedDB; exportiert wird jederzeit als JSON.
 
-Weitere Punkte: Service Worker mit versionsbasiertem Precache (außer Gemini alles offline) und deutlichem Update-Hinweis mit „Aktualisieren“-Button, sobald eine neue Version bereitsteht, installierbares Manifest mit Icons, `prefers-reduced-motion`, Tastaturbedienung, ARIA-Labels, Skip-Link, klare Fokusmarkierung. Kommentare im Code erklären die kniffligen Stellen (Leitner-Logik, DPR-Canvas, API-Fallback, PIN-Hash).
+Weitere Punkte: drei wählbare Designs (Creme, Hellblau, Dunkel), vier lokal eingebundene Leseschriften (Lexend als Standard, Atkinson Hyperlegible, OpenDyslexic, Geräteschrift) mit großzügigem Buchstabenabstand, ein „Vorlesen“-Button für den gesamten sichtbaren Text auf jeder Seite, Service Worker mit versionsbasiertem Precache (auch der Schriftdateien; außer Gemini alles offline) und deutlichem Update-Hinweis mit „Aktualisieren“-Button, installierbares Manifest mit Icons, `prefers-reduced-motion`, Tastaturbedienung, ARIA-Labels, Skip-Link, klare Fokusmarkierung. Kommentare im Code erklären die kniffligen Stellen (Leitner-Logik, DPR-Canvas, API-Fallback, PIN-Hash).
 
 > **Hinweis zum Repo:** Im Ordner `alternate-vanilla/` liegt ein früherer Prototyp ohne Build-Schritt (Node-Server mit serverseitigem `GEMINI_API_KEY`, eigene Schriften und Themen). Er wird nicht ausgeliefert und ist nur als Referenz erhalten. Die aktive App ist die oben beschriebene TypeScript/Vite-Version.
 
@@ -176,7 +176,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 66 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 69 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

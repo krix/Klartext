@@ -377,7 +377,7 @@ export function computeStars(attempts: readonly Attempt[]): number {
   return attempts.filter((attempt) => attempt.correct && !attempt.selfAssessed).length;
 }
 
-export const THEME_UNLOCKS: Record<string, number> = { paper: 0, mint: 15, night: 40 };
+export const THEME_UNLOCKS: Record<string, number> = { paper: 0, sky: 15, night: 40 };
 
 export function unlockedThemes(stars: number): string[] {
   return Object.entries(THEME_UNLOCKS)

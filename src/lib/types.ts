@@ -83,7 +83,8 @@ export interface WordState {
   lastCorrect?: boolean;
 }
 
-export type AppTheme = 'paper' | 'mint' | 'night';
+export type AppTheme = 'paper' | 'sky' | 'night';
+export type AppFont = 'lexend' | 'atkinson' | 'dyslexic' | 'system';
 
 export interface Settings {
   pinHash: string | null;
@@ -96,6 +97,8 @@ export interface Settings {
   sessionLength: number;
   privacyOptIn: boolean;
   theme: AppTheme;
+  /** Lokal eingebundene Leseschrift – nie ein externer Font-Dienst. */
+  font: AppFont;
 }
 
 /** Lernstand eines Kindes. Einstellungen und eigene Wörter bleiben geräteweit gemeinsam. */
