@@ -38,6 +38,8 @@ export interface Word {
   sentence?: string;
   /** Eigene Wortlisten aus dem Elternbereich werden markiert. */
   custom?: boolean;
+  /** Wort aus einer der neun Interactive-Übungsformen. */
+  challenge?: boolean;
 }
 
 export interface Difference {
@@ -117,11 +119,48 @@ export interface AppData {
   customWords: Word[];
 }
 
-export type ExerciseKind = 'dictation' | 'copy' | 'choice';
+export type ExerciseKind =
+  | 'dictation'
+  | 'copy'
+  | 'choice'
+  | 'syllables-build'
+  | 'syllables-split'
+  | 'error'
+  | 'gap'
+  | 'derive'
+  | 'parts'
+  | 'memory';
+
+/** Eine der neun Übungsformen aus dem Referenz-Prototyp. */
+export interface Challenge {
+  id: string;
+  kind: ExerciseKind;
+  word: string;
+  ruleId: string;
+  prompt: string;
+  ruleText: string;
+  hints: string[];
+  syllables?: string[];
+  wordToSplit?: string;
+  /** Falsch geschriebene Form bei „Fehler finden“. */
+  wrong?: string;
+  options?: string[];
+  answer?: string;
+  before?: string;
+  after?: string;
+  errorIndex?: number;
+  from?: string;
+  piece?: string;
+  note?: string;
+  why?: string;
+}
 
 export interface Exercise {
   word: Word;
   rule: Rule;
   kind: ExerciseKind;
   options?: string[];
+  /** Erwartete Antwort bei Auswahl- und Tipp-Aufgaben. */
+  answer?: string;
+  challenge?: Challenge;
 }

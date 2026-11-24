@@ -291,14 +291,25 @@ export function topicView(rule: Rule, area: TopicArea | undefined, words: readon
   </main>`;
 }
 
+function choiceButtons(exercise: Exercise): string {
+  return `<div class="choice-grid" role="group" aria-label="Antwortmöglichkeiten">
+    ${(exercise.options ?? []).map((option, index) => `<button class="choice" type="button" data-action="choose" data-index="${index}" aria-label="Antwort ${escapeHtml(option)}">${escapeHtml(option)}</button>`).join('')}
+  </div>`;
+}
+
+function answerField(value: string, label: string): string {
+  return `<div class="field answer-field"><label for="antwort">${escapeHtml(label)}</label>
+    <input id="antwort" name="antwort" type="text" value="${escapeHtml(value)}" autocomplete="off" autocapitalize="off" spellcheck="false" />
+    <button class="button primary" type="button" data-action="check-answer">Antwort prüfen</button>
+  </div>`;
+}
+
 function promptBlock(exercise: Exercise, showHelp: boolean): string {
-  const { word, rule, kind } = exercise;
+  const { word, rule, kind, challenge } = exercise;
   if (kind === 'choice') {
     return `<p class="kicker">Welche Schreibung ist richtig?</p>
       <p class="prompt-hint">${escapeHtml(rule.title)} – ${escapeHtml(word.sentence ?? 'Wähle das Wort aus.')}</p>
-      <div class="choice-grid" role="group" aria-label="Antwortmöglichkeiten">
-        ${(exercise.options ?? []).map((option, index) => `<button class="choice" type="button" data-action="choose" data-index="${index}" aria-label="Antwort ${escapeHtml(option)}">${escapeHtml(option)}</button>`).join('')}
-      </div>`;
+      ${choiceButtons(exercise)}`;
   }
   if (kind === 'dictation') {
     const context = maskedSentence(word.word, word.sentence);
@@ -309,11 +320,59 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
       </div>
       ${context ? `<p class="prompt-sentence">${escapeHtml(context)}</p>` : ''}`;
   }
+  if (kind === 'syllables-build') {
+    const syllables = challenge?.syllables ?? [word.word];
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Setze das Wort zusammen.')}</p>
+      <p class="kicker-small">Zieh die Teile in die Kästchen – oder tippe sie an.</p>
+      <div class="syllable-slots" role="group" aria-label="Plätze für die Silben">
+        ${syllables.map((_, index) => `<span class="syllable-slot" data-slot="${index}" aria-label="Platz ${index + 1}"></span>`).join('')}
+      </div>
+      <div class="syllable-tiles" role="group" aria-label="Silben zum Anordnen">
+        ${syllables.map((part, index) => `<button class="syllable-tile" type="button" draggable="true" data-action="place-syllable" data-index="${index}">${escapeHtml(part)}</button>`).join('')}
+      </div>
+      <div class="button-row stage-actions"><button class="button primary" type="button" data-action="check-syllables">Wort prüfen</button>
+        <button class="button small" type="button" data-action="clear-syllables">Plätze leeren</button></div>`;
+  }
+  if (kind === 'syllables-split') {
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Wo trennst du das Wort?')}</p>
+      <p class="prompt-word syllable-arcs">${escapeHtml(challenge?.wordToSplit ?? word.word)}</p>
+      ${choiceButtons(exercise)}`;
+  }
+  if (kind === 'error') {
+    const shown = challenge?.wrong ?? word.word;
+    const characters = [...shown];
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Sieh dir das Wort an. Wo steckt der Fehler?')}</p>
+      <div class="error-letters" role="group" aria-label="Buchstaben des Wortes">
+        ${characters.map((char, index) => `<button class="error-letter" type="button" data-action="mark-error" data-index="${index}" aria-label="Stelle ${index + 1}: ${escapeHtml(char)}">${escapeHtml(char)}</button>`).join('')}
+      </div>
+      ${answerField(shown, 'Schreib das Wort richtig:')}`;
+  }
+  if (kind === 'gap') {
+    const blank = `<span class="gap-blank" aria-label="Lücke">_____</span>`;
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Welches Wort passt in die Lücke?')}</p>
+      <p class="prompt-sentence">${escapeHtml(challenge?.before ?? '')} ${blank} ${escapeHtml(challenge?.after ?? '')}</p>
+      ${choiceButtons(exercise)}`;
+  }
+  if (kind === 'derive') {
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Wie heißt die neue Form?')}</p>
+      <p class="prompt-word">${escapeHtml(challenge?.from ?? word.word)}</p>
+      ${answerField('', 'Deine Antwort:')}`;
+  }
+  if (kind === 'parts') {
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Welcher Baustein passt?')}</p>
+      <p class="prompt-word">${escapeHtml(challenge?.piece ?? word.word)}</p>
+      ${choiceButtons(exercise)}`;
+  }
+  if (kind === 'memory') {
+    return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Sieh dir das Wort an. Dann schreibst du es aus dem Kopf.')}</p>
+      <p class="prompt-word memory-word" id="wort-bild">${escapeHtml(word.word)}</p>
+      <div class="button-row prompt-actions"><button class="button small" type="button" data-action="show-memory-word">Wort noch einmal zeigen</button></div>`;
+  }
   return `<p class="kicker">Schreib das Wort ab – achte auf jede Stelle</p>
     <p class="prompt-word">${escapeHtml(word.word)}</p>`;
 }
 
-export function practiceView(data: AppData, session: SessionState, checking: boolean, helpVisible: boolean): string {
+export function practiceView(data: AppData, session: SessionState, checking: boolean, helpVisible: boolean, helpStep = 0): string {
   const exercise = session.current;
   if (!exercise) return homeView(data, [], 0, 0, 0);
   const stats = roundStats(session);
@@ -321,8 +380,18 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
   const progressLabel = session.currentRetry
     ? `Wiederholung · ${stats.words} von ${stats.total} Wörtern`
     : `Wort ${Math.min(stats.words + 1, stats.total)} von ${stats.total}`;
-  const isChoice = exercise.kind === 'choice';
-  const canUseAi = data.settings.apiKey.trim().length > 0 && data.settings.privacyOptIn;
+  const needsPad = exercise.kind === 'dictation' || exercise.kind === 'copy' || exercise.kind === 'memory';
+  const hasOptions = exercise.kind === 'choice' || exercise.kind === 'syllables-split' || exercise.kind === 'gap' || exercise.kind === 'parts';
+  const buildTask = exercise.kind === 'syllables-build';
+  const canUseAi = needsPad && data.settings.apiKey.trim().length > 0 && data.settings.privacyOptIn;
+  const challenge = exercise.challenge;
+  const shownSteps = Math.min(helpStep, challenge?.hints.length ?? 0);
+  const helpText = challenge && shownSteps > 0
+    ? challenge.hints.slice(0, shownSteps).join(' ')
+    : `${exercise.rule.tip} ${exercise.word.hint}`;
+  const helpButton = challenge && helpVisible && shownSteps < (challenge.hints.length ?? 0)
+    ? 'Mehr Hilfe zeigen'
+    : helpVisible ? 'Tipp ausblenden' : 'Tipp zeigen';
 
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <div class="practice-head">
@@ -333,17 +402,17 @@ export function practiceView(data: AppData, session: SessionState, checking: boo
     <section class="stage" aria-labelledby="aufgabe">
       <h1 id="aufgabe" class="kicker" style="font-size:1rem">${escapeHtml(exercise.rule.title)}</h1>
       ${promptBlock(exercise, helpVisible || session.showHelp)}
-      ${isChoice ? '' : `<div class="pad-wrap">
+      ${needsPad ? `<div class="pad-wrap">
         <canvas id="schreibflaeche" aria-label="Schreibfläche für das gesuchte Wort" role="img"></canvas>
-      </div>`}
-      ${helpVisible || session.showHelp ? `<p class="tip-box"><strong>Tipp:</strong> ${escapeHtml(exercise.rule.tip)} ${escapeHtml(exercise.word.hint)}</p>` : ''}
+      </div>` : ''}
+      ${helpVisible || session.showHelp ? `<p class="tip-box"><strong>Tipp:</strong> ${escapeHtml(helpText)}</p>` : ''}
       <div class="button-row stage-actions">
-        ${!isChoice && canUseAi ? `<button class="button primary" type="button" data-action="check" ${checking ? 'disabled' : ''}>${checking ? 'Klartext schaut nach …' : 'Prüfen lassen'}</button>` : ''}
-        <button class="button ${canUseAi || isChoice ? '' : 'primary'}" type="button" data-action="self-check">${isChoice ? ' Antwort kontrollieren' : 'Lösung zeigen & selbst prüfen'}</button>
-        ${!isChoice && canUseAi ? '<button class="button small" type="button" data-action="clear">Löschen</button><button class="button small" type="button" data-action="undo">Rückgängig</button>' : ''}
-        <button class="button small" type="button" data-action="tip">${helpVisible || session.showHelp ? 'Tipp ausblenden' : 'Tipp zeigen'}</button>
+        ${needsPad && canUseAi ? `<button class="button primary" type="button" data-action="check" ${checking ? 'disabled' : ''}>${checking ? 'Klartext schaut nach …' : 'Prüfen lassen'}</button>` : ''}
+        ${!hasOptions && !buildTask ? `<button class="button ${canUseAi ? '' : 'primary'}" type="button" data-action="self-check">Lösung zeigen & selbst prüfen</button>` : ''}
+        ${needsPad && canUseAi ? '<button class="button small" type="button" data-action="clear">Löschen</button><button class="button small" type="button" data-action="undo">Rückgängig</button>' : ''}
+        <button class="button small" type="button" data-action="tip">${helpButton}</button>
       </div>
-      ${!canUseAi ? `<p class="panel-note note-gap">${data.settings.apiKey.trim()
+      ${needsPad && !canUseAi ? `<p class="panel-note note-gap">${data.settings.apiKey.trim()
         ? 'KI-Prüfung ist aus: Bitte im Elternbereich die Zustimmung anhaken.'
         : 'KI-Prüfung ist aus. Du vergleichst dein Wort selbst mit der Lösung.'}</p>` : ''}
     </section>

@@ -1,0 +1,1007 @@
+[
+  {
+    "id": "ch-s1",
+    "kind": "syllables-build",
+    "word": "Freundschaft",
+    "ruleId": "silbenbau",
+    "prompt": "Setze das Wort zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Jede Silbe bekam ihren eigenen Platz. Nun setzt du die Teile wieder zusammen.",
+    "hints": [
+      "Sag zuerst „Freund“, dann „schaft“.",
+      "Jetzt beide Teile hintereinander sagen: Freundschaft."
+    ],
+    "syllables": [
+      "Freund",
+      "schaft"
+    ]
+  },
+  {
+    "id": "ch-s2",
+    "kind": "syllables-split",
+    "word": "Wasser-me-lo-ne",
+    "ruleId": "silbenbau",
+    "prompt": "Wo trennst du Wassermelone?",
+    "ruleText": "Ein Silbenbogen zeigt: Eine Silbe beginnt immer mit einem Mitlaut. Klingende Silben tragen oft ein „e“.",
+    "hints": [
+      "Such zuerst das Wort „Wasser“.",
+      "Danach bleibt „Melone“ – das zerlegst du in Me + lo + ne."
+    ],
+    "wordToSplit": "Wassermelone",
+    "options": [
+      "Wasser-me-lo-ne",
+      "Was-ser-melone",
+      "Wasserme-lone"
+    ],
+    "answer": "Wasser-me-lo-ne"
+  },
+  {
+    "id": "ch-s3",
+    "kind": "syllables-build",
+    "word": "Schulhof",
+    "ruleId": "silbenbau",
+    "prompt": "Setze das Wort zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Jede Silbe bekam ihren eigenen Platz. Nun setzt du die Teile wieder zusammen.",
+    "hints": [
+      "Ein Silbenbogen verbindet die Laute von „Schul“.",
+      "Sprich: Schul – Hof – Schulhof."
+    ],
+    "syllables": [
+      "Schul",
+      "hof"
+    ]
+  },
+  {
+    "id": "ch-s4",
+    "kind": "syllables-split",
+    "word": "Son-nen-blume",
+    "ruleId": "silbenbau",
+    "prompt": "Wo trennst du Sonnenblume?",
+    "ruleText": "Ein Silbenbogen zeigt: Eine Silbe beginnt immer mit einem Mitlaut. Klingende Silben tragen oft ein „e“.",
+    "hints": [
+      "„Sonne“ hat zwei Silben: Son + ne.",
+      "„Blume“ bleibt ganz: Blume."
+    ],
+    "wordToSplit": "Sonnenblume",
+    "options": [
+      "Son-nen-blume",
+      "Sonne-nblu-me",
+      "Sonnen-blume"
+    ],
+    "answer": "Son-nen-blume"
+  },
+  {
+    "id": "ch-s5",
+    "kind": "syllables-build",
+    "word": "Mädchen",
+    "ruleId": "silbenbau",
+    "prompt": "Setze das Wort zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Jede Silbe bekam ihren eigenen Platz. Nun setzt du die Teile wieder zusammen.",
+    "hints": [
+      "Sprich die erste Silbe langsam: Mäd.",
+      "Die zweite Silbe ist „chen“."
+    ],
+    "syllables": [
+      "Mäd",
+      "chen"
+    ]
+  },
+  {
+    "id": "ch-s6",
+    "kind": "syllables-split",
+    "word": "Bahn-hof",
+    "ruleId": "silbenbau",
+    "prompt": "Wo trennst du Bahnhof?",
+    "ruleText": "Ein Silbenbogen zeigt: Eine Silbe beginnt immer mit einem Mitlaut. Klingende Silben tragen oft ein „e“.",
+    "hints": [
+      "„Bahn“ ist eine Silbe.",
+      "„Hof“ ist die zweite Silbe."
+    ],
+    "wordToSplit": "Bahnhof",
+    "options": [
+      "Bahn-hof",
+      "Bahnho-f",
+      "Ba-hnhof"
+    ],
+    "answer": "Bahn-hof"
+  },
+  {
+    "id": "ch-s7",
+    "kind": "syllables-build",
+    "word": "Fahrrad",
+    "ruleId": "silbenbau",
+    "prompt": "Setze das Wort zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Jede Silbe bekam ihren eigenen Platz. Nun setzt du die Teile wieder zusammen.",
+    "hints": [
+      "Denk an ein Wort mit zwei Rädern.",
+      "Fahr + rad."
+    ],
+    "syllables": [
+      "Fahr",
+      "rad"
+    ]
+  },
+  {
+    "id": "ch-s8",
+    "kind": "syllables-split",
+    "word": "Klein-ig-keit",
+    "ruleId": "silbenbau",
+    "prompt": "Wo trennst du Kleinigkeit?",
+    "ruleText": "Ein Silbenbogen zeigt: Eine Silbe beginnt immer mit einem Mitlaut. Klingende Silben tragen oft ein „e“.",
+    "hints": [
+      "„Klein“ bleibt als Ganzes.",
+      "„igkeit“ zerfällt in ig + keit."
+    ],
+    "wordToSplit": "Kleinigkeit",
+    "options": [
+      "Klein-ig-keit",
+      "Klei-nig-keit",
+      "Kleinig-keit"
+    ],
+    "answer": "Klein-ig-keit"
+  },
+  {
+    "id": "ch-s9",
+    "kind": "syllables-build",
+    "word": "Turnhalle",
+    "ruleId": "silbenbau",
+    "prompt": "Setze das Wort zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Jede Silbe bekam ihren eigenen Platz. Nun setzt du die Teile wieder zusammen.",
+    "hints": [
+      "Erste Silbe: Turn.",
+      "Zweite Silbe: halle."
+    ],
+    "syllables": [
+      "Turn",
+      "halle"
+    ]
+  },
+  {
+    "id": "ch-s10",
+    "kind": "syllables-split",
+    "word": "Schreib-tisch",
+    "ruleId": "silbenbau",
+    "prompt": "Wo trennst du Schreibtisch?",
+    "ruleText": "Ein Silbenbogen zeigt: Eine Silbe beginnt immer mit einem Mitlaut. Klingende Silben tragen oft ein „e“.",
+    "hints": [
+      "Das erste Wort ist „schreib“.",
+      "Das zweite Wort ist „Tisch“."
+    ],
+    "wordToSplit": "Schreibtisch",
+    "options": [
+      "Schreib-tisch",
+      "Schreibt-isch",
+      "Sch-reibtisch"
+    ],
+    "answer": "Schreib-tisch"
+  },
+  {
+    "id": "ch-f1",
+    "kind": "error",
+    "word": "Fahrrad",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Sprich das letzte Wort deutlich aus: ...rad.",
+      "Ein weicher Laut am Ende wird oft hart geschrieben. Denk an „Räder“."
+    ],
+    "wrong": "Fahrrat",
+    "answer": "Fahrrad",
+    "errorIndex": 6
+  },
+  {
+    "id": "ch-f2",
+    "kind": "error",
+    "word": "Schule",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Lies die Silben: Schu – le.",
+      "In „Schule“ steht nur ein h direkt nach dem sch."
+    ],
+    "wrong": "Schuhle",
+    "answer": "Schule",
+    "errorIndex": 4
+  },
+  {
+    "id": "ch-f3",
+    "kind": "error",
+    "word": "Mädchen",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Denk an „Mädchen“: Nach dem d kommt ein ch.",
+      "Sag die zweite Silbe: chen."
+    ],
+    "wrong": "Mädgen",
+    "answer": "Mädchen",
+    "errorIndex": 3
+  },
+  {
+    "id": "ch-f4",
+    "kind": "error",
+    "word": "Freund",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Denk an „freuen“: Freude, Freund.",
+      "Die richtigen zwei Buchstaben sind eu."
+    ],
+    "wrong": "Freind",
+    "answer": "Freund",
+    "errorIndex": 2
+  },
+  {
+    "id": "ch-f5",
+    "kind": "error",
+    "word": "Bäume",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Denk an den Baum – und an zwei Bäume.",
+      "Aus a wird ä."
+    ],
+    "wrong": "Baume",
+    "answer": "Bäume",
+    "errorIndex": 1
+  },
+  {
+    "id": "ch-f6",
+    "kind": "error",
+    "word": "Wärme",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Was ist das Gegenteil von Kälte? Die ...ärme.",
+      "Schreib den Umlaut."
+    ],
+    "wrong": "Werme",
+    "answer": "Wärme",
+    "errorIndex": 1
+  },
+  {
+    "id": "ch-f7",
+    "kind": "error",
+    "word": "Häuser",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Ein Haus, zwei ...?",
+      "Der erste Buchstabe braucht einen Umlaut."
+    ],
+    "wrong": "Heuser",
+    "answer": "Häuser",
+    "errorIndex": 1
+  },
+  {
+    "id": "ch-f8",
+    "kind": "error",
+    "word": "Mut",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Sprich das Wort langsam: Mut.",
+      "Nach dem u kommt ein t – ohne h."
+    ],
+    "wrong": "Muht",
+    "answer": "Mut",
+    "errorIndex": 2
+  },
+  {
+    "id": "ch-f9",
+    "kind": "error",
+    "word": "Stadt",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Denk an „Städte“: Das t steckt mit drin.",
+      "Sprich: Stadt – Städte."
+    ],
+    "wrong": "Sadt",
+    "answer": "Stadt",
+    "errorIndex": 1
+  },
+  {
+    "id": "ch-f10",
+    "kind": "error",
+    "word": "Wiedersehen",
+    "ruleId": "fehlerfinden",
+    "prompt": "Sieh dir das Wort an. Wo steckt der Fehler? Klicke die Stelle an und schreibe das Wort richtig.",
+    "ruleText": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "hints": [
+      "Denk an „sehen“: se – hen.",
+      "In „Wiedersehen“ steckt das ganze Wort „sehen“."
+    ],
+    "wrong": "Wiedersehn",
+    "answer": "Wiedersehen",
+    "errorIndex": 8
+  },
+  {
+    "id": "ch-l1",
+    "kind": "gap",
+    "word": "warte",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Setz statt „ich“ einmal „wir“ ein.",
+      "Bei wir klingt es anders – bei ich bleibt es „warte“."
+    ],
+    "options": [
+      "warte",
+      "warten"
+    ],
+    "answer": "warte",
+    "before": "Ich warte",
+    "after": "auf dich.",
+    "why": "„Ich“ ist die erste Person: ich warte. Bei „wir“ hieße es wir warten."
+  },
+  {
+    "id": "ch-l2",
+    "kind": "gap",
+    "word": "bellt",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Probiere: „Die Hunde ...“.",
+      "Die Mehrzahlform passt hier nicht."
+    ],
+    "options": [
+      "bellt",
+      "bellen"
+    ],
+    "answer": "bellt",
+    "before": "Der Hund",
+    "after": "laut.",
+    "why": "„Der Hund“ ist Einzahl. Einzahl: bellt. Mehrzahl: bellen."
+  },
+  {
+    "id": "ch-l3",
+    "kind": "gap",
+    "word": "großen",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Sprich: Wir haben ... Hunger.",
+      "„Groß“ allein klingt hier nicht fertig."
+    ],
+    "options": [
+      "großen",
+      "groß"
+    ],
+    "answer": "großen",
+    "before": "Wir haben",
+    "after": "Hunger.",
+    "why": "Nach „haben“ und vor dem Namenwort „Hunger“ braucht das Eigenschaftswort eine Endung."
+  },
+  {
+    "id": "ch-l4",
+    "kind": "gap",
+    "word": "spielen",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Ersetze „die Kinder“ durch „das Kind“.",
+      "Beim Kind hieße es spielt – bei Kindern spielen."
+    ],
+    "options": [
+      "spielt",
+      "spielen"
+    ],
+    "answer": "spielen",
+    "before": "Die Kinder",
+    "after": "im Garten.",
+    "why": "„Die Kinder“ ist Mehrzahl. Mehrzahl: spielen."
+  },
+  {
+    "id": "ch-l5",
+    "kind": "gap",
+    "word": "zur",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Welcher Artikel gehört zu Schule? Die.",
+      "Aus „zu der“ wird „zur“."
+    ],
+    "options": [
+      "zur",
+      "zum"
+    ],
+    "answer": "zur",
+    "before": "Ich gehe",
+    "after": "Schule.",
+    "why": "„Schule“ ist weiblich: die Schule → zu der → zur."
+  },
+  {
+    "id": "ch-l6",
+    "kind": "gap",
+    "word": "einen",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Frag: Was hat er gespielt? Einen Ball.",
+      "Nach „hat“ klingt es mit -en richtiger."
+    ],
+    "options": [
+      "einen",
+      "ein"
+    ],
+    "answer": "einen",
+    "before": "Er hat",
+    "after": "Ball gespielt.",
+    "why": "„Ball“ ist männlich und hier im Akkusativ: einen Ball."
+  },
+  {
+    "id": "ch-l7",
+    "kind": "gap",
+    "word": "ein",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Welcher Artikel passt zu „das Mädchen“?",
+      "Sächlich: ein, nicht eine."
+    ],
+    "options": [
+      "ein",
+      "eine"
+    ],
+    "answer": "ein",
+    "before": "Sie ist",
+    "after": "kleinen Mädchen.",
+    "why": "„Mädchen“ ist sächlich: das Mädchen → ein Mädchen."
+  },
+  {
+    "id": "ch-l8",
+    "kind": "gap",
+    "word": "sind",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Probier es mit „Die Blume ...“.",
+      "Einzahl: ist. Mehrzahl: sind."
+    ],
+    "options": [
+      "ist",
+      "sind"
+    ],
+    "answer": "sind",
+    "before": "Die Blumen",
+    "after": "schön.",
+    "why": "„Die Blumen“ ist Mehrzahl – dazu passt „sind“."
+  },
+  {
+    "id": "ch-l9",
+    "kind": "gap",
+    "word": "auf den Tisch",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Frag: Wo habe ich es hingelegt?",
+      "Wohin? → auf den Tisch."
+    ],
+    "options": [
+      "auf den Tisch",
+      "auf dem Tisch"
+    ],
+    "answer": "auf den Tisch",
+    "before": "Ich habe das Buch",
+    "after": "gelegt.",
+    "why": "Die Frage ist „wohin?“ – dann steht der Akkusativ: auf den Tisch."
+  },
+  {
+    "id": "ch-l10",
+    "kind": "gap",
+    "word": "gehen",
+    "ruleId": "luecken",
+    "prompt": "Welches Wort passt in die Lücke?",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das ergänzte Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Setz „er“ ein: er geht.",
+      "Bei „wir“ braucht es die Mehrzahlform."
+    ],
+    "options": [
+      "gehen",
+      "geht"
+    ],
+    "answer": "gehen",
+    "before": "Morgen",
+    "after": "wir ins Schwimmbad.",
+    "why": "„Wir“ ist die erste Person Mehrzahl: wir gehen."
+  },
+  {
+    "id": "ch-a1",
+    "kind": "derive",
+    "word": "Häuser",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Haus“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Sprich: Haus – Häuser.",
+      "Der Laut wandelt sich zu äu."
+    ],
+    "answer": "Häuser",
+    "from": "Haus",
+    "note": "Haus → Häuser"
+  },
+  {
+    "id": "ch-a2",
+    "kind": "derive",
+    "word": "Bäume",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Baum“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Ein Baum, zwei ...?",
+      "Aus au wird äu."
+    ],
+    "answer": "Bäume",
+    "from": "Baum",
+    "note": "Baum → Bäume"
+  },
+  {
+    "id": "ch-a3",
+    "kind": "derive",
+    "word": "Mäuse",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Maus“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Sag es leise vor: Maus – Mäuse.",
+      "Der Umlaut kommt in die Mitte."
+    ],
+    "answer": "Mäuse",
+    "from": "Maus",
+    "note": "Maus → Mäuse"
+  },
+  {
+    "id": "ch-a4",
+    "kind": "derive",
+    "word": "Räume",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Raum“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Denk an mehrere Zimmer.",
+      "Raum – Räume."
+    ],
+    "answer": "Räume",
+    "from": "Raum",
+    "note": "Raum → Räume"
+  },
+  {
+    "id": "ch-a5",
+    "kind": "derive",
+    "word": "Tage",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Tag“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Sag „Tag“ und dann „Tage“ – hörst du den weichen Laut?",
+      "Am Ende klingt er wie k, in der Mehrzahl schreibst du g."
+    ],
+    "answer": "Tage",
+    "from": "Tag",
+    "note": "Tag → Tage"
+  },
+  {
+    "id": "ch-a6",
+    "kind": "derive",
+    "word": "Räder",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Rad“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Ein Rad, zwei Räder.",
+      "Hier gibt es zwei Veränderungen: Umlaut und Endung."
+    ],
+    "answer": "Räder",
+    "from": "Rad",
+    "note": "Rad → Räder"
+  },
+  {
+    "id": "ch-a7",
+    "kind": "derive",
+    "word": "Berge",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Berg“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Sag Berg – Berge.",
+      "Am Ende hörst du ein k, schreibst aber g."
+    ],
+    "answer": "Berge",
+    "from": "Berg",
+    "note": "Berg → Berge"
+  },
+  {
+    "id": "ch-a8",
+    "kind": "derive",
+    "word": "Wege",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Weg“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Weg – Wege: Der letzte Laut wird weicher.",
+      "Schreib ihn mit g."
+    ],
+    "answer": "Wege",
+    "from": "Weg",
+    "note": "Weg → Wege"
+  },
+  {
+    "id": "ch-a9",
+    "kind": "derive",
+    "word": "Schilder",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Schild“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Denk an Schilder an der Wand.",
+      "Das d am Ende bleibt in der Mitte erhalten."
+    ],
+    "answer": "Schilder",
+    "from": "Schild",
+    "note": "Schild → Schilder"
+  },
+  {
+    "id": "ch-a10",
+    "kind": "derive",
+    "word": "Füße",
+    "ruleId": "ableiten",
+    "prompt": "Was ist die Mehrzahl von „Fuß“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Eine Veränderung im Klang zeigt sich oft in ä oder äu. Am Ende eines Wortes klingt ein weicher Laut manchmal hart – in einer längeren Form kommt er wieder zum Vorschein.",
+    "hints": [
+      "Ein Fuß, zwei Füße.",
+      "Aus u wird ü, aus ss wird ß."
+    ],
+    "answer": "Füße",
+    "from": "Fuß",
+    "note": "Fuß → Füße"
+  },
+  {
+    "id": "ch-b1",
+    "kind": "parts",
+    "word": "ver-",
+    "ruleId": "bausteine",
+    "prompt": "Welche Vorsilbe passt: vergessen oder vorgessen?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Denk an „weg“, an etwas, das man verliert.",
+      "Es gibt kein Wort „vorgessen“."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "ver-",
+    "piece": "…gessen",
+    "note": "vergessen"
+  },
+  {
+    "id": "ch-b2",
+    "kind": "parts",
+    "word": "vor-",
+    "ruleId": "bausteine",
+    "prompt": "Sagst du „vorstellen“ oder „verstellen“?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Wenn du dich jemandem zeigst, stellst du dich vor.",
+      "„Vor“ hat hier mit „vor jemandem“ zu tun."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "vor-",
+    "piece": "…stellen",
+    "note": "vorstellen"
+  },
+  {
+    "id": "ch-b3",
+    "kind": "parts",
+    "word": "ver-",
+    "ruleId": "bausteine",
+    "prompt": "Sagst du „verstehen“ oder „vorstehen“?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Wenn du etwas kapierst, verstehst du es.",
+      "Denk an „Verständnis“."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "ver-",
+    "piece": "…stehen",
+    "note": "verstehen"
+  },
+  {
+    "id": "ch-b4",
+    "kind": "parts",
+    "word": "vor-",
+    "ruleId": "bausteine",
+    "prompt": "Der Lehrer liest die Aufgabe vor – welcher Baustein?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Er liest sie allen vor.",
+      "„Vorlesen“ hat mit „vor“ zu tun."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "vor-",
+    "piece": "…lesen",
+    "note": "vorlesen"
+  },
+  {
+    "id": "ch-b5",
+    "kind": "parts",
+    "word": "-ung",
+    "ruleId": "bausteine",
+    "prompt": "Welche Endung passt: die Wohnung oder die Wohnkeit?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Denk an eine Wohnung, in der du wohnst.",
+      "Viele Wörter auf -ung bezeichnen einen Ort oder eine Handlung."
+    ],
+    "options": [
+      "-ung",
+      "-keit"
+    ],
+    "answer": "-ung",
+    "piece": "Wohn…",
+    "note": "Wohnung"
+  },
+  {
+    "id": "ch-b6",
+    "kind": "parts",
+    "word": "-keit",
+    "ruleId": "bausteine",
+    "prompt": "Welche Endung passt: die Freundlichkeit?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "„Freundlich“ ist ein Eigenschaftswort.",
+      "Aus Eigenschaftswörtern werden oft Wörter auf -keit."
+    ],
+    "options": [
+      "-ung",
+      "-keit"
+    ],
+    "answer": "-keit",
+    "piece": "Freundlich…",
+    "note": "Freundlichkeit"
+  },
+  {
+    "id": "ch-b7",
+    "kind": "parts",
+    "word": "ver-",
+    "ruleId": "bausteine",
+    "prompt": "Jemand verläuft den Weg – welcher Baustein?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Denk an einen Weg, den du verläufst.",
+      "„Vorlaufen“ hieße: vor jemandem her laufen."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "ver-",
+    "piece": "…laufen",
+    "note": "verlaufen"
+  },
+  {
+    "id": "ch-b8",
+    "kind": "parts",
+    "word": "-ung",
+    "ruleId": "bausteine",
+    "prompt": "Welche Endung passt: die Lösung?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Du löst ein Rätsel – die Lösung.",
+      "Die Endung ist -ung."
+    ],
+    "options": [
+      "-ung",
+      "-keit"
+    ],
+    "answer": "-ung",
+    "piece": "Lös…",
+    "note": "Lösung"
+  },
+  {
+    "id": "ch-b9",
+    "kind": "parts",
+    "word": "vor-",
+    "ruleId": "bausteine",
+    "prompt": "Etwas kommt zu dir – welcher Baustein?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "Etwas ist „vorgekommen“.",
+      "Denk an „Vorkommnis“."
+    ],
+    "options": [
+      "ver-",
+      "vor-"
+    ],
+    "answer": "vor-",
+    "piece": "…kommen",
+    "note": "vorkommen"
+  },
+  {
+    "id": "ch-b10",
+    "kind": "parts",
+    "word": "-keit",
+    "ruleId": "bausteine",
+    "prompt": "Welche Endung passt: die Möglichkeit?",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich: Welcher Baustein macht aus dem Teil ein ganzes Wort?",
+    "hints": [
+      "„Möglich“ ist ein Eigenschaftswort.",
+      "Eigenschaft + -keit ergibt ein Namenwort."
+    ],
+    "options": [
+      "-ung",
+      "-keit"
+    ],
+    "answer": "-keit",
+    "piece": "Möglich…",
+    "note": "Möglichkeit"
+  },
+  {
+    "id": "ch-m1",
+    "kind": "memory",
+    "word": "Bibliothek",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Teile es: Bi – blio – thek.",
+      "Denk an viele Bücher in Regalen."
+    ],
+    "wordToSplit": "Bibliothek",
+    "note": "Ort mit vielen Büchern"
+  },
+  {
+    "id": "ch-m2",
+    "kind": "memory",
+    "word": "Schreibtisch",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Schreib + Tisch.",
+      "Wo sitzt du beim Schreiben?"
+    ],
+    "wordToSplit": "Schreibtisch",
+    "note": "Tisch zum Schreiben"
+  },
+  {
+    "id": "ch-m3",
+    "kind": "memory",
+    "word": "Fahrrad",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Fahr + rad.",
+      "Zwei Räder – und du fährst damit."
+    ],
+    "wordToSplit": "Fahrrad",
+    "note": "mit zwei Rädern"
+  },
+  {
+    "id": "ch-m4",
+    "kind": "memory",
+    "word": "Bücherregal",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Bücher + Regal.",
+      "Regal mit Büchern drin."
+    ],
+    "wordToSplit": "Bücherregal",
+    "note": "Bücher stehen darin"
+  },
+  {
+    "id": "ch-m5",
+    "kind": "memory",
+    "word": "Turnhalle",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Turn + halle.",
+      "Halle, in der du turnst."
+    ],
+    "wordToSplit": "Turnhalle",
+    "note": "Halle zum Turnen"
+  },
+  {
+    "id": "ch-m6",
+    "kind": "memory",
+    "word": "Freundschaft",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Freund + schaft.",
+      "Zwischen zwei Freunden."
+    ],
+    "wordToSplit": "Freundschaft",
+    "note": "zwischen Freunden"
+  },
+  {
+    "id": "ch-m7",
+    "kind": "memory",
+    "word": "Nachbar",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Der Mensch nebenan.",
+      "Sprich: Nach – bar."
+    ],
+    "wordToSplit": "Nachbar",
+    "note": "wohnt neben dir"
+  },
+  {
+    "id": "ch-m8",
+    "kind": "memory",
+    "word": "Mittagessen",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Mittag + essen.",
+      "Das Essen um zwölf."
+    ],
+    "wordToSplit": "Mittagessen",
+    "note": "Essen am Mittag"
+  },
+  {
+    "id": "ch-m9",
+    "kind": "memory",
+    "word": "Wirtschaft",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Wirt + schaft.",
+      "Denk an ein Wirtshaus – und an das Fach."
+    ],
+    "wordToSplit": "Wirtschaft",
+    "note": "Schulfach und auch ein Ort"
+  },
+  {
+    "id": "ch-m10",
+    "kind": "memory",
+    "word": "Schulhof",
+    "ruleId": "merkwoerter",
+    "prompt": "Sieh dir das Wort an. Dann verschwindet es – schreib es aus dem Kopf.",
+    "ruleText": "Drei Wege helfen: ansehen, mitsprechen, mit dem Finger in die Luft schreiben. Das nennt man Mehrkanal-Lernen.",
+    "hints": [
+      "Schul + hof.",
+      "Der Hof deiner Schule."
+    ],
+    "wordToSplit": "Schulhof",
+    "note": "Hof in der Schule"
+  }
+]

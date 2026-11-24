@@ -38,6 +38,11 @@ let session: SessionState | null = null;
 let feedback: FeedbackView | null = null;
 let checking = false;
 let helpVisible = false;
+/** Wie viele Hinweise aus der jeweiligen Aufgabe bereits sichtbar sind. */
+let helpStep = 0;
+/** Silben in der Reihenfolge, in der das Kind sie hingelegt hat. */
+let placedSyllables: string[] = [];
+let markedError = -1;
 let pad: WritingPad | null = null;
 /** Letztes Bild für den Fall, dass der Prüfdienst kurzzeitig nicht erreichbar war. */
 let retryImageDataUrl: string | null = null;
@@ -64,6 +69,27 @@ function findRule(id: string): Rule {
 /** Liest den gespeicherten Stand neu – sonst kann der Trainingsplan von einem anderen Tab alt sein. */
 function refreshState(): void {
   data = loadState();
+}
+
+/** Zeigt die vom Kind gelegten Silben in den Kästchen. */
+function renderPlacedSyllables(): void {
+  const slots = document.querySelectorAll<HTMLElement>('.syllable-slot');
+  slots.forEach((slot, index) => {
+    slot.textContent = placedSyllables[index] ?? '';
+    slot.classList.toggle('is-filled', Boolean(placedSyllables[index]));
+  });
+  document.querySelectorAll<HTMLElement>('.syllable-tile').forEach((tile, index) => {
+    tile.classList.toggle('is-used', placedSyllables.includes(tile.textContent ?? ''));
+    tile.setAttribute('aria-label', `Silbe ${index + 1}: ${tile.textContent ?? ''}`);
+  });
+}
+
+/** Hebt die angeklickte Stelle im fehlerhaften Wort hervor. */
+function renderMarkedError(): void {
+  document.querySelectorAll<HTMLElement>('.error-letter').forEach((letter, index) => {
+    letter.classList.toggle('is-marked', index === markedError);
+    letter.setAttribute('aria-pressed', String(index === markedError));
+  });
 }
 
 /** Liest allen sichtbaren Text der aktuellen Seite vor – für alle Bildschirme, nicht nur Diktate. */
@@ -122,7 +148,7 @@ function render(): void {
 
   switch (route) {
     case 'practice':
-      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible) : home();
+      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible, helpStep) : home();
       break;
     case 'feedback':
       app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise(), plan) : home();
@@ -145,15 +171,24 @@ function render(): void {
       app!.innerHTML = home();
   }
 
-  if (route === 'practice' && session?.current && session.current.kind !== 'choice') {
+  const kind = route === 'practice' ? session?.current?.kind : undefined;
+  const needsPad = kind === 'dictation' || kind === 'copy' || kind === 'memory';
+  if (needsPad) {
     const canvas = document.querySelector<HTMLCanvasElement>('#schreibflaeche');
     if (canvas) {
       pad = new WritingPad(canvas, { color: data.settings.handColor, width: data.settings.handWidth });
-      if (session.current.kind === 'dictation') speakWordAndSentence(session.current.word.word, session.current.word.sentence, data.settings.ttsRate);
+      if (kind === 'dictation') speakWordAndSentence(session!.current!.word.word, session!.current!.word.sentence, data.settings.ttsRate);
     }
   } else {
     pad = null;
   }
+
+  if (kind === 'memory') {
+    // Das Wort bleibt kurz sichtbar, verschwindet dann aber für das Aus-der-Erinnerung-Schreiben.
+    window.setTimeout(() => document.querySelector('#wort-bild')?.classList.add('is-hidden'), 2400);
+  }
+  if (kind === 'syllables-build') renderPlacedSyllables();
+  if (kind === 'error') renderMarkedError();
 }
 
 function isLastExercise(): boolean {
@@ -189,9 +224,17 @@ function startSession(ruleId = ''): void {
   feedback = null;
   retryImageDataUrl = null;
   checking = false;
-  helpVisible = false;
+  resetExerciseView();
   route = 'practice';
   render();
+}
+
+/** Neue Aufgabe: Hilfe, Silben und Markierungen gehören nur zur vorherigen Aufgabe. */
+function resetExerciseView(): void {
+  helpVisible = false;
+  helpStep = 0;
+  placedSyllables = [];
+  markedError = -1;
 }
 
 function showSummary(): void {
@@ -218,7 +261,7 @@ function goNext(): void {
   session = nextExercise(session, sessionWords(session, allWords()), rules);
   retryImageDataUrl = null;
   checking = false;
-  helpVisible = false;
+  resetExerciseView();
   if (isSessionFinished(session) || !session.current) showSummary();
   else route = 'practice';
   render();
@@ -358,13 +401,46 @@ function solveBySelf(correct: boolean, retry = false): void {
   });
 }
 
+function exerciseFeedback(exercise: Exercise, correct: boolean): string {
+  const note = correct
+    ? (exercise.challenge?.why ?? exercise.challenge?.note ?? '')
+    : (exercise.challenge?.hints[0] ?? '');
+  const base = localFeedback(exercise.rule, correct);
+  return note ? `${base} ${note}` : base;
+}
+
+/** Vergleicht eine geschriebene Antwort mit der erwarteten Form. */
+function evaluateAnswer(answer: string, expected: string, caseSensitive: boolean): boolean {
+  const clean = answer.trim().replace(/\s+/g, ' ');
+  return caseSensitive ? clean === expected : clean.toLocaleLowerCase('de-DE') === expected.toLocaleLowerCase('de-DE');
+}
+
+function submitAnswer(answer: string): void {
+  const exercise = session?.current;
+  if (!exercise) return;
+  const expected = exercise.answer ?? exercise.word.word;
+  const correct = evaluateAnswer(answer, expected, exercise.rule.caseSensitive === true);
+  const differences = correct ? [] : diffWords(expected, answer, exercise.rule.caseSensitive === true);
+  recordAttempt(exercise, correct, 'self', { transcription: answer, differences });
+  showResult({
+    kind: 'success',
+    word: exercise.word,
+    rule: exercise.rule,
+    correct,
+    transcription: answer,
+    differences,
+    feedback: exerciseFeedback(exercise, correct),
+  });
+}
+
 function chooseOption(index: number): void {
   const exercise = session?.current;
   if (!exercise) return;
   const option = exercise.options?.[index];
   if (option === undefined) return;
-  const correct = option === exercise.word.word;
-  const differences = correct ? [] : diffWords(exercise.word.word, option, exercise.rule.caseSensitive === true);
+  const expected = exercise.answer ?? exercise.word.word;
+  const correct = option === expected;
+  const differences = correct ? [] : diffWords(expected, option, exercise.rule.caseSensitive === true);
   recordAttempt(exercise, correct, 'choice', { transcription: option, differences });
   showResult({
     kind: 'success',
@@ -373,7 +449,40 @@ function chooseOption(index: number): void {
     correct,
     transcription: option,
     differences,
-    feedback: localFeedback(exercise.rule, correct),
+    feedback: exerciseFeedback(exercise, correct),
+  });
+}
+
+function placeSyllable(index: number): void {
+  const exercise = session?.current;
+  const syllable = exercise?.challenge?.syllables?.[index];
+  if (!syllable || placedSyllables.includes(syllable)) return;
+  const count = exercise?.challenge?.syllables?.length ?? 0;
+  if (placedSyllables.length >= count) return;
+  placedSyllables.push(syllable);
+  renderPlacedSyllables();
+}
+
+function submitSyllables(): void {
+  const exercise = session?.current;
+  if (!exercise) return;
+  const expected = (exercise.challenge?.syllables ?? [exercise.word.word]).join('');
+  const answer = placedSyllables.join('');
+  if (!answer) {
+    notice('Setz zuerst die Silben in die Kästchen.');
+    return;
+  }
+  const correct = answer === expected;
+  const differences = correct ? [] : diffWords(expected, answer, false);
+  recordAttempt(exercise, correct, 'choice', { transcription: answer, differences });
+  showResult({
+    kind: 'success',
+    word: exercise.word,
+    rule: exercise.rule,
+    correct,
+    transcription: answer,
+    differences,
+    feedback: exerciseFeedback(exercise, correct),
   });
 }
 
@@ -622,10 +731,38 @@ app.addEventListener('click', (event) => {
       break;
     }
     case 'choose': chooseOption(Number(element.dataset.index)); break;
-    case 'tip':
-      helpVisible = !helpVisible;
+    case 'check-answer': {
+      const input = document.querySelector<HTMLInputElement>('#antwort');
+      if (input) submitAnswer(input.value);
+      break;
+    }
+    case 'mark-error':
+      markedError = Number(element.dataset.index);
+      renderMarkedError();
+      break;
+    case 'place-syllable': placeSyllable(Number(element.dataset.index)); break;
+    case 'check-syllables': submitSyllables(); break;
+    case 'clear-syllables':
+      placedSyllables = [];
+      renderPlacedSyllables();
+      break;
+    case 'show-memory-word':
+      document.querySelector('#wort-bild')?.classList.remove('is-hidden');
+      break;
+    case 'tip': {
+      const hints = session?.current?.challenge?.hints.length ?? 0;
+      if (!helpVisible) {
+        helpVisible = true;
+        helpStep = 1;
+      } else if (hints > 0 && helpStep < hints) {
+        helpStep += 1;
+      } else {
+        helpVisible = false;
+        helpStep = 0;
+      }
       render();
       break;
+    }
     case 'next': goNext(); break;
     case 'retry-same': solveBySelf(true, true); break;
     case 'self-correct': solveBySelf(element.dataset.value === 'correct'); break;
@@ -673,6 +810,21 @@ app.addEventListener('click', (event) => {
       break;
     default: break;
   }
+});
+
+// Silben lassen sich auf Tablets antippen und am Desktop in die Kästchen ziehen.
+app.addEventListener('dragstart', (event) => {
+  const tile = (event.target as HTMLElement).closest<HTMLElement>('.syllable-tile');
+  if (tile && event.dataTransfer) event.dataTransfer.setData('text/plain', tile.dataset.index ?? '0');
+});
+app.addEventListener('dragover', (event) => {
+  if ((event.target as HTMLElement).closest('.syllable-slot')) event.preventDefault();
+});
+app.addEventListener('drop', (event) => {
+  const slot = (event.target as HTMLElement).closest<HTMLElement>('.syllable-slot');
+  if (!slot) return;
+  event.preventDefault();
+  placeSyllable(Number(event.dataTransfer?.getData('text/plain')));
 });
 
 app.addEventListener('submit', (event) => {

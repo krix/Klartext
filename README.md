@@ -26,8 +26,8 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 | Bildschirm | Inhalt |
 |---|---|
 | Start | Täglich wechselnder Wortgruß mit Namen des aktiven Profils, Profilwechsel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
-| Themen | Vier Bereiche mit 16 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
-| Übung | Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt, Diktat (Wort **und** Beispielsatz vorgelesen, Satz mit Lücke), Abschreiben, Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
+| Themen | Vier Bereiche mit 22 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
+| Übung | Eine Aufgabe pro Bildschirm, Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt. Neun Formen: Silben bauen (Tippen/Ziehen mit Silbenbögen), Silben trennen, Fehler finden und tippen, Lückenwörter, Ableiten (ä/äu, Auslautverhärtung), Wortbausteine (ver-, vor-, -ung, -keit), Merkwörter mit Mehrkanal-Lernen, das/dass und Groß-/Kleinschreibung mit Ersatzprobe, Diktat mit wiederholbarer Sprachausgabe und Handschrift. Tipp und Lösung immer dabei |
 | Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
 | Rundenende | Übersicht aller geübten Wörter mit ✓/✗, Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
 | Elternbereich (PIN) | Profile anlegen/umbenennen/wechseln/löschen, KI-Key und Datenschutz, Schriftart, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
@@ -47,11 +47,11 @@ AppData
 └─ customWords[]: id, word, ruleId, level, hint
 ```
 
-Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 320 Wörter und 16 Regelthemen liegen als JSON in `src/data/`.
+Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 380 Wörter, 60 Interaktiv-Aufgaben und 22 Regelthemen liegen als JSON in `src/data/`.
 
 ### Themen
 
-Die Wörter sind über `ruleId` den 16 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in vier Bereiche zusammen:
+Die Wörter sind über `ruleId` den 22 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in vier Bereiche zusammen:
 
 - **Laute & Buchstaben:** ie/i, ei/ai, äu/eu, sch/st/sp
 - **Länge & Silben:** ss/ß, lange Vokale, Dehnungs-h, Doppelkonsonanten
@@ -168,15 +168,16 @@ Straße|ss-oesz
 Biene|ie-i
 ```
 
-Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`.
+Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`, `silbenbau`, `fehlerfinden`, `luecken`, `ableiten`, `bausteine`, `merkwoerter`.
 
+- Die neun Übungsformen stammen aus dem Prototyp in `alternate-vanilla/`. `node scripts/import-challenges.mjs` übernimmt dessen Aufgaben, Regeln und Wörter nach `src/data/challenges.json`, `src/data/words.json` und `src/data/rules.json` (aktualisiert vorhandene Einträge, löscht nichts).
 - Dauerhaft neue Wörter oder Regeln: Dateien `src/data/words.json` und `src/data/rules.json` erweitern. Jedes Wort braucht `id`, `word`, `ruleId`, `level` (1–3), `hint` und optional `sentence`. Ein neues Thema zusätzlich in `src/data/topic-groups.json` einem Bereich zuordnen und in `rules.json` die Felder `area`, `summary`, `goal`, `rules` und `examples` füllen – dann erscheint automatisch eine Lernseite dafür. Danach `npm test && npm run build`.
 
 ---
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 69 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 73 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, alle neun Übungsformen inklusive schrittweiser Hilfe, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf mit Auswahl-, Tipp- und Silbenaufgaben, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

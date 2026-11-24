@@ -1,6 +1,10 @@
+import rawChallenges from '../data/challenges.json';
 import { buildChoiceOptions, selectWords, shuffle, updateDifficulty } from './learning';
-import type { AttemptSource, Difference, Exercise, ExerciseKind, Rule, Word, WordState } from './types';
+import type { AttemptSource, Challenge, Difference, Exercise, ExerciseKind, Rule, Word, WordState } from './types';
 import type { Settings } from './types';
+
+const challenges = rawChallenges as unknown as Challenge[];
+const challengeByWordId = new Map(challenges.map((challenge) => [challenge.id, challenge]));
 
 /** Ein bearbeitetes Wort inklusive Fehlerdetails für die Abschlussübersicht. */
 export interface SessionResult {
@@ -184,12 +188,15 @@ export function nextExercise(
     title: word.ruleId,
     tip: 'Schau genau auf die Stelle, die du unsicher bist.',
   };
-  const kind = pickKind(word, session.errorStreak, rng);
+  const challenge = challengeByWordId.get(word.id);
+  const kind = challenge ? challenge.kind : pickKind(word, session.errorStreak, rng);
   const exercise: Exercise = {
     word,
-    rule,
+    rule: challenge?.ruleText ? { ...rule, tip: challenge.ruleText } : rule,
     kind,
-    options: kind === 'choice' ? buildChoiceOptions(word, rng, rule) : undefined,
+    options: kind === 'choice' ? buildChoiceOptions(word, rng, rule) : challenge?.options,
+    answer: challenge?.answer,
+    challenge,
   };
 
   return {

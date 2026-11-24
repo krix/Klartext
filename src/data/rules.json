@@ -14,10 +14,22 @@
       "In fremdsprachigen Endungen wie -ie, -ier und -ieren steht aber ie: Geometrie, Philosophie, Batterie, marschieren."
     ],
     "examples": [
-      { "word": "Liebe", "note": "Deutsches Wort mit langem i – deshalb ie." },
-      { "word": "Biene", "note": "Gedehntes i in einem deutschen Wort: ie." },
-      { "word": "Krise", "note": "Fremdwort mit langem i, aber nur einem i." },
-      { "word": "Geometrie", "note": "Die Endung -ie wird mit ie geschrieben." }
+      {
+        "word": "Liebe",
+        "note": "Deutsches Wort mit langem i – deshalb ie."
+      },
+      {
+        "word": "Biene",
+        "note": "Gedehntes i in einem deutschen Wort: ie."
+      },
+      {
+        "word": "Krise",
+        "note": "Fremdwort mit langem i, aber nur einem i."
+      },
+      {
+        "word": "Geometrie",
+        "note": "Die Endung -ie wird mit ie geschrieben."
+      }
     ]
   },
   {
@@ -35,10 +47,22 @@
       "Auch Endungen wie -ei in Bäckerei und Metzgerei werden mit ei geschrieben."
     ],
     "examples": [
-      { "word": "Zeit", "note": "Das häufige ei." },
-      { "word": "Mai", "note": "Eines der wenigen Wörter mit ai." },
-      { "word": "Laie", "note": "Auch hier steht ai – anders als bei leihen." },
-      { "word": "Bäckerei", "note": "Die Endung -ei wird mit ei geschrieben." }
+      {
+        "word": "Zeit",
+        "note": "Das häufige ei."
+      },
+      {
+        "word": "Mai",
+        "note": "Eines der wenigen Wörter mit ai."
+      },
+      {
+        "word": "Laie",
+        "note": "Auch hier steht ai – anders als bei leihen."
+      },
+      {
+        "word": "Bäckerei",
+        "note": "Die Endung -ei wird mit ei geschrieben."
+      }
     ]
   },
   {
@@ -56,10 +80,22 @@
       "Äu und eu klingen gleich – die Herkunft oder das Merkwort entscheidet."
     ],
     "examples": [
-      { "word": "Häuser", "note": "Kommt von Haus – deshalb äu." },
-      { "word": "Bäume", "note": "Kommt von Baum – deshalb äu." },
-      { "word": "Freude", "note": "Kein au im Grundwort – deshalb eu." },
-      { "word": "Säule", "note": "Ein Merkwort mit äu." }
+      {
+        "word": "Häuser",
+        "note": "Kommt von Haus – deshalb äu."
+      },
+      {
+        "word": "Bäume",
+        "note": "Kommt von Baum – deshalb äu."
+      },
+      {
+        "word": "Freude",
+        "note": "Kein au im Grundwort – deshalb eu."
+      },
+      {
+        "word": "Säule",
+        "note": "Ein Merkwort mit äu."
+      }
     ]
   },
   {
@@ -77,10 +113,22 @@
       "Merke: Klingt es nach sch, heißt es trotzdem nicht immer sch."
     ],
     "examples": [
-      { "word": "Stein", "note": "Klingt wie schtein, geschrieben wird st." },
-      { "word": "Spiel", "note": "Klingt wie schpil, geschrieben wird sp." },
-      { "word": "Schule", "note": "Hier steht wirklich sch." },
-      { "word": "Tasche", "note": "Auch in der Mitte: sch." }
+      {
+        "word": "Stein",
+        "note": "Klingt wie schtein, geschrieben wird st."
+      },
+      {
+        "word": "Spiel",
+        "note": "Klingt wie schpil, geschrieben wird sp."
+      },
+      {
+        "word": "Schule",
+        "note": "Hier steht wirklich sch."
+      },
+      {
+        "word": "Tasche",
+        "note": "Auch in der Mitte: sch."
+      }
     ]
   },
   {
@@ -98,10 +146,22 @@
       "In der Schweiz und in Liechtenstein darf man immer ss schreiben; hier lernst du die Form mit ß."
     ],
     "examples": [
-      { "word": "Wasser", "note": "Kurzes a – deshalb ss." },
-      { "word": "Straße", "note": "Langes a – deshalb ß." },
-      { "word": "weiß", "note": "Doppellaut ei – deshalb ß." },
-      { "word": "Kasse", "note": "Kurzes a – deshalb ss." }
+      {
+        "word": "Wasser",
+        "note": "Kurzes a – deshalb ss."
+      },
+      {
+        "word": "Straße",
+        "note": "Langes a – deshalb ß."
+      },
+      {
+        "word": "weiß",
+        "note": "Doppellaut ei – deshalb ß."
+      },
+      {
+        "word": "Kasse",
+        "note": "Kurzes a – deshalb ss."
+      }
     ]
   },
   {
@@ -119,10 +179,22 @@
       "Folgt im Wortstamm auf den betonten Vokal kein Konsonant, ist er in der Regel lang: Oase, Idee, Museum."
     ],
     "examples": [
-      { "word": "Haar", "note": "Doppelvokal aa." },
-      { "word": "Boot", "note": "Doppelvokal oo." },
-      { "word": "Oase", "note": "Offene Silbe – das o ist lang." },
-      { "word": "Bahn", "note": "Das h kennzeichnet das lange a; es wird nicht gesprochen." }
+      {
+        "word": "Haar",
+        "note": "Doppelvokal aa."
+      },
+      {
+        "word": "Boot",
+        "note": "Doppelvokal oo."
+      },
+      {
+        "word": "Oase",
+        "note": "Offene Silbe – das o ist lang."
+      },
+      {
+        "word": "Bahn",
+        "note": "Das h kennzeichnet das lange a; es wird nicht gesprochen."
+      }
     ]
   },
   {
@@ -140,10 +212,22 @@
       "Ein paar Wörter merkst du dir einzeln: Ruhe, Sohn."
     ],
     "examples": [
-      { "word": "Bahn", "note": "Das h kennzeichnet das lange a." },
-      { "word": "Stuhl", "note": "Das h steht vor l." },
-      { "word": "Uhr", "note": "Das h steht vor r." },
-      { "word": "Ruhe", "note": "Ein Merkwort mit stummem h." }
+      {
+        "word": "Bahn",
+        "note": "Das h kennzeichnet das lange a."
+      },
+      {
+        "word": "Stuhl",
+        "note": "Das h steht vor l."
+      },
+      {
+        "word": "Uhr",
+        "note": "Das h steht vor r."
+      },
+      {
+        "word": "Ruhe",
+        "note": "Ein Merkwort mit stummem h."
+      }
     ]
   },
   {
@@ -161,10 +245,22 @@
       "Ein Doppelkonsonant ist ein Hinweis: Der Vokal davor ist kurz."
     ],
     "examples": [
-      { "word": "Bett", "note": "Kurzes e – deshalb tt." },
-      { "word": "Jacke", "note": "Kurzes a – deshalb ck statt kk." },
-      { "word": "Sonne", "note": "Kurzes o – deshalb nn." },
-      { "word": "Brot", "note": "Langes o – nur ein t." }
+      {
+        "word": "Bett",
+        "note": "Kurzes e – deshalb tt."
+      },
+      {
+        "word": "Jacke",
+        "note": "Kurzes a – deshalb ck statt kk."
+      },
+      {
+        "word": "Sonne",
+        "note": "Kurzes o – deshalb nn."
+      },
+      {
+        "word": "Brot",
+        "note": "Langes o – nur ein t."
+      }
     ]
   },
   {
@@ -182,9 +278,18 @@
       "Frag dich: Geht es um eine Wiederholung oder um Gegenwehr?"
     ],
     "examples": [
-      { "word": "wiederkommen", "note": "Noch einmal kommen." },
-      { "word": "widerstehen", "note": "Gegen etwas stehen." },
-      { "word": "Wiederholung", "note": "Etwas noch einmal tun." }
+      {
+        "word": "wiederkommen",
+        "note": "Noch einmal kommen."
+      },
+      {
+        "word": "widerstehen",
+        "note": "Gegen etwas stehen."
+      },
+      {
+        "word": "Wiederholung",
+        "note": "Etwas noch einmal tun."
+      }
     ]
   },
   {
@@ -202,9 +307,18 @@
       "Merke: Du liest jemandem vor, aber du verlierst den Schlüssel."
     ],
     "examples": [
-      { "word": "verlieren", "note": "Etwas ist weg." },
-      { "word": "vorstellen", "note": "Sich vor jemanden hinstellen oder etwas vorher zeigen." },
-      { "word": "vorbereiten", "note": "Schon vorher etwas bereitmachen." }
+      {
+        "word": "verlieren",
+        "note": "Etwas ist weg."
+      },
+      {
+        "word": "vorstellen",
+        "note": "Sich vor jemanden hinstellen oder etwas vorher zeigen."
+      },
+      {
+        "word": "vorbereiten",
+        "note": "Schon vorher etwas bereitmachen."
+      }
     ]
   },
   {
@@ -222,10 +336,22 @@
       "Wenn du ratest, probiere zuerst ent- – außer bei den wenigen emp-Merkwörtern."
     ],
     "examples": [
-      { "word": "empfehlen", "note": "Eines der wenigen emp-Wörter." },
-      { "word": "empfangen", "note": "Ebenfalls mit emp-." },
-      { "word": "entdecken", "note": "Mit ent-: etwas kommt ans Licht." },
-      { "word": "entfernen", "note": "Mit ent-: etwas wird weggenommen." }
+      {
+        "word": "empfehlen",
+        "note": "Eines der wenigen emp-Wörter."
+      },
+      {
+        "word": "empfangen",
+        "note": "Ebenfalls mit emp-."
+      },
+      {
+        "word": "entdecken",
+        "note": "Mit ent-: etwas kommt ans Licht."
+      },
+      {
+        "word": "entfernen",
+        "note": "Mit ent-: etwas wird weggenommen."
+      }
     ]
   },
   {
@@ -243,10 +369,22 @@
       "Die Bedeutung hilft, aber es gibt auch Merkwörter: möglich, richtig, eigenartig."
     ],
     "examples": [
-      { "word": "mutig", "note": "Eine Eigenschaft – mit -ig." },
-      { "word": "kindlich", "note": "Wie ein Kind – mit -lich." },
-      { "word": "täglich", "note": "Jeden Tag – mit -lich." },
-      { "word": "möglich", "note": "Ein Merkwort mit -lich." }
+      {
+        "word": "mutig",
+        "note": "Eine Eigenschaft – mit -ig."
+      },
+      {
+        "word": "kindlich",
+        "note": "Wie ein Kind – mit -lich."
+      },
+      {
+        "word": "täglich",
+        "note": "Jeden Tag – mit -lich."
+      },
+      {
+        "word": "möglich",
+        "note": "Ein Merkwort mit -lich."
+      }
     ]
   },
   {
@@ -264,10 +402,22 @@
       "Diese Nomen sind weiblich und werden großgeschrieben: die Gesundheit, die Klarheit."
     ],
     "examples": [
-      { "word": "Schönheit", "note": "Von schön – mit -heit." },
-      { "word": "Möglichkeit", "note": "Von möglich – nach -ig folgt -keit." },
-      { "word": "Freundlichkeit", "note": "Von freundlich – nach -lich folgt -keit." },
-      { "word": "Klarheit", "note": "Von klar – mit -heit." }
+      {
+        "word": "Schönheit",
+        "note": "Von schön – mit -heit."
+      },
+      {
+        "word": "Möglichkeit",
+        "note": "Von möglich – nach -ig folgt -keit."
+      },
+      {
+        "word": "Freundlichkeit",
+        "note": "Von freundlich – nach -lich folgt -keit."
+      },
+      {
+        "word": "Klarheit",
+        "note": "Von klar – mit -heit."
+      }
     ]
   },
   {
@@ -285,9 +435,18 @@
       "Heute schreibt man dass immer mit ss."
     ],
     "examples": [
-      { "word": "Das Buch", "note": "Artikel – mit das." },
-      { "word": "… dass er kommt", "note": "Nebensatz – mit dass." },
-      { "word": "darum", "note": "Ein Da-Wort – beginnt mit da." }
+      {
+        "word": "Das Buch",
+        "note": "Artikel – mit das."
+      },
+      {
+        "word": "… dass er kommt",
+        "note": "Nebensatz – mit dass."
+      },
+      {
+        "word": "darum",
+        "note": "Ein Da-Wort – beginnt mit da."
+      }
     ]
   },
   {
@@ -305,9 +464,18 @@
       "Merke dir einfach: mehr als – so wie."
     ],
     "examples": [
-      { "word": "größer als", "note": "Vergleich – mit als." },
-      { "word": "so schnell wie", "note": "Gleichheit – mit wie." },
-      { "word": "wie viel", "note": "Frage nach einer Menge – mit wie." }
+      {
+        "word": "größer als",
+        "note": "Vergleich – mit als."
+      },
+      {
+        "word": "so schnell wie",
+        "note": "Gleichheit – mit wie."
+      },
+      {
+        "word": "wie viel",
+        "note": "Frage nach einer Menge – mit wie."
+      }
     ]
   },
   {
@@ -325,9 +493,188 @@
       "Eigennamen, Substantive und Substantivierungen werden ebenfalls großgeschrieben: Anna, Bahnhof, das Lesen."
     ],
     "examples": [
-      { "word": "Hund", "note": "Nomen – immer groß." },
-      { "word": "Bahnhof", "note": "Zusammengesetztes Nomen – groß." },
-      { "word": "Schulbibliothek", "note": "Auch lange Nomen bleiben groß." }
+      {
+        "word": "Hund",
+        "note": "Nomen – immer groß."
+      },
+      {
+        "word": "Bahnhof",
+        "note": "Zusammengesetztes Nomen – groß."
+      },
+      {
+        "word": "Schulbibliothek",
+        "note": "Auch lange Nomen bleiben groß."
+      }
+    ]
+  },
+  {
+    "id": "silbenbau",
+    "title": "Silben bauen und trennen",
+    "tip": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Wörter in Silben zerlegen und die Teile wieder zusammensetzen.",
+    "goal": "Du lernst, Wörter in ihren Klangteilen zu hören und die Silben richtig zu trennen.",
+    "rules": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "examples": [
+      {
+        "word": "Freundschaft",
+        "note": "Freund + schaft – zwei Silben."
+      },
+      {
+        "word": "Wasser-me-lo-ne",
+        "note": "Vier Silben, jede mit eigenem Selbstlaut."
+      },
+      {
+        "word": "Schulhof",
+        "note": "Schul + hof – zwei Silben."
+      }
+    ]
+  },
+  {
+    "id": "fehlerfinden",
+    "title": "Fehler finden und verbessern",
+    "tip": "Erst hinschauen, dann mitsprechen: Klingt die Stelle so, wie sie geschrieben ist? Danach das ganze Wort richtig hinschreiben.",
+    "caseSensitive": false,
+    "area": "laute",
+    "summary": "Die unsichere Stelle entdecken und das Wort richtig schreiben.",
+    "goal": "Du übst, eine verdächtige Stelle zu finden und daraus das richtige Wort zu machen.",
+    "rules": [
+      "Lies das Wort langsam Silbe für Silbe.",
+      "Sprich die Stelle, die sich falsch anfühlt, deutlich mit.",
+      "Denk an ein verwandtes Wort, das die Schreibung verrät."
+    ],
+    "examples": [
+      {
+        "word": "Fahrrad",
+        "note": "Aus Fahrrat wird Fahrrad – denk an die Räder."
+      },
+      {
+        "word": "Schule",
+        "note": "Nach sch steht nur ein h direkt vor dem u."
+      },
+      {
+        "word": "Stadt",
+        "note": "Denk an die Städte – das t bleibt erhalten."
+      }
+    ]
+  },
+  {
+    "id": "luecken",
+    "title": "Lückenwörter",
+    "tip": "Lies den Satz bis zur Lücke und dahinter weiter. Das Wort muss zum Sinn und zur Regel passen.",
+    "caseSensitive": false,
+    "area": "satz",
+    "summary": "Das passende Wort anhand des Satzes und der Regel wählen.",
+    "goal": "Du lernst, vor und nach der Lücke mitzulesen und die passende Form zu wählen.",
+    "rules": [
+      "Lies den ganzen Satz, bevor du dich entscheidest.",
+      "Achte auf Einzahl und Mehrzahl sowie auf das Zeitwort.",
+      "Setze probehalber die andere Möglichkeit ein und vergleiche."
+    ],
+    "examples": [
+      {
+        "word": "warte",
+        "note": "Ich warte – bei wir hieße es warten."
+      },
+      {
+        "word": "spielen",
+        "note": "Die Kinder spielen – Mehrzahl."
+      },
+      {
+        "word": "großen",
+        "note": "Wir haben großen Hunger – die Endung passt zum Namenwort."
+      }
+    ]
+  },
+  {
+    "id": "ableiten",
+    "title": "Wörter ableiten",
+    "tip": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Mit äu/au und hörbaren Endlauten sicher umgehen.",
+    "goal": "Du lernst, aus einem Grundwort eine neue Form abzuleiten.",
+    "rules": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "examples": [
+      {
+        "word": "Häuser",
+        "note": "Mehrzahl von Haus."
+      },
+      {
+        "word": "Tage",
+        "note": "Mehrzahl von Tag – das g bleibt."
+      },
+      {
+        "word": "Füße",
+        "note": "Mehrzahl von Fuß – Umlaut und ß verändern sich."
+      }
+    ]
+  },
+  {
+    "id": "bausteine",
+    "title": "Wortbausteine",
+    "tip": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "Vorsilben und Endungen als feste Bausteine erkennen.",
+    "goal": "Du lernst die Bausteine ver-, vor-, -ung und -keit sicher zu unterscheiden.",
+    "rules": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung.",
+      "Aus Eigenschaftswörtern werden Wörter auf -keit: die Freundlichkeit."
+    ],
+    "examples": [
+      {
+        "word": "vergessen",
+        "note": "Die Vorsilbe ist ver-."
+      },
+      {
+        "word": "Freundlichkeit",
+        "note": "Die Endung ist -keit."
+      },
+      {
+        "word": "vorlesen",
+        "note": "Die Vorsilbe ist vor-."
+      }
+    ]
+  },
+  {
+    "id": "merkwoerter",
+    "title": "Merkwörter",
+    "tip": "Sieh dir das Wort an, sprich es mit und schreib es mit dem Finger in die Luft. Dann schreibst du es aus dem Kopf.",
+    "caseSensitive": false,
+    "area": "laute",
+    "summary": "Ansehen, mitsprechen, weglegen und aus dem Kopf schreiben.",
+    "goal": "Du übst das Mehrkanal-Lernen: sehen, hören, sprechen und bewegen.",
+    "rules": [
+      "Sieh dir das Wort in Ruhe an und achte auf die schwierige Stelle.",
+      "Sprich es leise mit und lass die Silben klingen.",
+      "Schreib die Buchstaben mit dem Finger in die Luft.",
+      "Dann erst das Wort wegblenden und aus der Erinnerung schreiben."
+    ],
+    "examples": [
+      {
+        "word": "Bahnhof",
+        "note": "Bahn + Hof."
+      },
+      {
+        "word": "Mädchen",
+        "note": "Sprich die zweite Silbe deutlich: chen."
+      },
+      {
+        "word": "Freundschaft",
+        "note": "Erst ansehen, dann mitsprechen, dann schreiben."
+      }
     ]
   }
 ]

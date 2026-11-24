@@ -55,7 +55,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function cleanWord(value: unknown): Word | null {
   if (!isRecord(value)) return null;
-  const { id, word, ruleId, level, hint, sentence, custom } = value;
+  const { id, word, ruleId, level, hint, sentence, custom, challenge } = value;
   if (typeof id !== 'string' || typeof word !== 'string' || typeof ruleId !== 'string') return null;
   if (typeof hint !== 'string' || !word.trim()) return null;
   const safeLevel = level === 1 || level === 2 || level === 3 ? level : 1;
@@ -67,6 +67,7 @@ function cleanWord(value: unknown): Word | null {
     hint,
     sentence: typeof sentence === 'string' ? sentence : undefined,
     custom: custom === true,
+    challenge: challenge === true,
   };
 }
 

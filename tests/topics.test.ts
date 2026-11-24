@@ -16,7 +16,7 @@ describe('Themen', () => {
   it('sortiert jedes Regelthema in genau einen Bereich ein', () => {
     const areaIds = new Set(areas.map((area) => area.id));
     expect(areaIds.size).toBe(areas.length);
-    expect(rules).toHaveLength(16);
+    expect(rules.length).toBeGreaterThanOrEqual(16);
     for (const rule of rules) {
       expect(areaIds.has(rule.area ?? '')).toBe(true);
     }

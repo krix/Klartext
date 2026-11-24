@@ -11,6 +11,7 @@ import { chromium } from 'playwright';
 
 const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:4173/';
 const CHROME = process.env.CHROME_PATH ?? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const challenges = JSON.parse(readFileSync(new URL('../src/data/challenges.json', import.meta.url), 'utf8'));
 
 const browser = await chromium.launch({ executablePath: CHROME, headless: true });
 const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
@@ -41,6 +42,19 @@ for (let step = 0; step < 200; step += 1) {
     const choice = page.locator('.choice-grid [data-action="choose"]').first();
     const selfCheck = page.locator('[data-action="self-check"]');
     if (await choice.count()) await choice.click(); // Auswahlfehler liefern echte Fehlerdetails.
+    else if (await page.locator('[data-action="check-syllables"]').count()) {
+      const tile = page.locator('[data-action="place-syllable"]:not(.is-used)').first();
+      while (await tile.count()) await tile.click();
+      await page.locator('[data-action="check-syllables"]').click();
+    }
+    else if (await page.locator('[data-action="check-answer"]').count()) {
+      // Tipp-Aufgaben: die erwartete Form steht in den lokalen Aufgabendaten.
+      const typed = await page.locator('#antwort').inputValue();
+      const prompt = await page.locator('.stage > .kicker').last().innerText();
+      const challenge = challenges.find((entry) => entry.wrong === typed || (entry.prompt === prompt && entry.answer));
+      if (challenge?.answer && !typed.includes(challenge.answer)) await page.locator('#antwort').fill(challenge.answer);
+      await page.locator('[data-action="check-answer"]').click();
+    }
     else if (await selfCheck.count()) await selfCheck.click();
     else {
       console.log('DEBUG practice ohne Buttons:', await page.evaluate(() => document.querySelector('main')?.innerText.slice(0, 400)));
@@ -57,6 +71,7 @@ for (let step = 0; step < 200; step += 1) {
   }
   await page.waitForTimeout(80);
 }
+if (!reachedSummary) console.log('DEBUG Ende:', await page.evaluate(() => ({ view: document.body.dataset.view, text: document.querySelector('main')?.innerText.slice(0, 400), actions: [...document.querySelectorAll('[data-action]')].map((el) => el.dataset.action + (el.dataset.value ? ':' + el.dataset.value : '')).join(',') })));
 assert.ok(reachedSummary, 'Rundenübersicht wurde nicht erreicht');
 assert.ok(progressLabels.length > 0, 'keine Fortschrittsanzeige gesehen');
 for (const label of progressLabels) {

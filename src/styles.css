@@ -439,6 +439,57 @@ p { margin: 0 0 clamp(8px, 1.5vh, 16px); max-width: 62ch; }
 .choice:hover { border-color: var(--ink); background: var(--surface); transform: translateY(-3px) rotate(-1deg); }
 .choice:active { transform: translateY(1px); }
 
+/* Zusätzliche Übungsformen: Silben, Fehlerstellen, Lücken und Merkwörter. */
+.kicker-small { color: var(--ink-soft); font-size: .82rem; margin: 0 0 8px; }
+
+.syllable-slots { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 14px; }
+.syllable-slot {
+  min-width: 96px;
+  min-height: 62px;
+  padding: 8px 12px;
+  border: 2px dashed var(--line);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-family: var(--hand);
+  font-size: clamp(1.3rem, 2.6vh, 1.7rem);
+}
+.syllable-slot.is-filled { border-style: solid; border-color: var(--ink); background: var(--surface); }
+.syllable-tiles { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.syllable-tile {
+  min-height: 58px;
+  min-width: 96px;
+  padding: 8px 14px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--hand);
+  font-size: clamp(1.3rem, 2.6vh, 1.7rem);
+  font-weight: 700;
+  touch-action: manipulation;
+}
+.syllable-tile.is-used { opacity: .38; }
+.syllable-arcs { font-size: clamp(1.8rem, 5vh, 3rem); }
+
+.error-letters { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 16px; }
+.error-letter {
+  min-width: 48px;
+  min-height: 58px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-family: var(--hand);
+  font-size: clamp(1.5rem, 3vh, 2rem);
+}
+.error-letter.is-marked { border-color: var(--fun-coral); background: color-mix(in srgb, var(--fun-coral) 18%, var(--surface)); }
+
+.answer-field { margin: 10px 0; }
+.answer-field input { width: min(100%, 360px); min-height: 56px; padding: 8px 12px; border: 2px solid var(--line); border-radius: 12px; font-size: 1.3rem; }
+.gap-blank { display: inline-block; min-width: 96px; border-bottom: 3px solid var(--ink); }
+.memory-word { transition: filter .2s ease, opacity .2s ease; }
+.memory-word.is-hidden { filter: blur(9px); opacity: .25; user-select: none; }
+
 .tip-box {
   margin-top: clamp(8px, 1.5vh, 18px);
   padding: clamp(8px, 1.4vh, 12px) 16px;
