@@ -12,6 +12,8 @@ import { chromium } from 'playwright';
 const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:4173/';
 const CHROME = process.env.CHROME_PATH ?? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const challenges = JSON.parse(readFileSync(new URL('../src/data/challenges.json', import.meta.url), 'utf8'));
+const words = JSON.parse(readFileSync(new URL('../src/data/words.json', import.meta.url), 'utf8'));
+const knownWords = new Set(words.map((word) => word.word));
 
 const browser = await chromium.launch({ executablePath: CHROME, headless: true });
 const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
@@ -39,9 +41,26 @@ for (let step = 0; step < 200; step += 1) {
   if (view === 'feedback' && (await page.getByText('Gut gemacht!').count())) { reachedSummary = true; break; }
   if (view === 'practice') {
     progressLabels.push(await page.locator('.practice-head span').first().innerText());
-    const choice = page.locator('.choice-grid [data-action="choose"]').first();
+    const choices = page.locator('.choice-grid [data-action="choose"]');
     const selfCheck = page.locator('[data-action="self-check"]');
-    if (await choice.count()) await choice.click(); // Auswahlfehler liefern echte Fehlerdetails.
+    if (await choices.count()) {
+      const options = await choices.allTextContents();
+      const prompt = (await page.locator('.stage > .kicker').last().textContent())?.trim() ?? '';
+      const hint = (await page.locator('.prompt-hint').textContent()) ?? '';
+      const challengeAnswer = challenges.find((entry) => entry.prompt === prompt)?.answer;
+      const candidates = options
+        .map((option, index) => ({ option: option.trim(), index }))
+        .filter((entry) => entry.option === challengeAnswer
+          || (knownWords.has(entry.option) && hint.toLocaleLowerCase('de-DE').includes(entry.option.toLocaleLowerCase('de-DE')))
+          || knownWords.has(entry.option));
+      const correctIndex = (challengeAnswer ? candidates.find((entry) => entry.option === challengeAnswer) : candidates[0])?.index ?? 0;
+      const isRetry = progressLabels.at(-1)?.startsWith('Wiederholung') ?? false;
+      // Drei bewusste Fehler liefern echte Fehlerdetails; danach muss die Runde zuverlässig enden.
+      const wrongIndex = options.findIndex((_, index) => index !== correctIndex);
+      const index = wrongMarked < 3 && !isRetry && wrongIndex >= 0 ? wrongIndex : correctIndex;
+      if (index === wrongIndex) wrongMarked += 1;
+      await choices.nth(index).click();
+    }
     else if (await page.locator('[data-action="check-syllables"]').count()) {
       const tile = page.locator('[data-action="place-syllable"]:not(.is-used)').first();
       while (await tile.count()) await tile.click();
@@ -50,7 +69,8 @@ for (let step = 0; step < 200; step += 1) {
     else if (await page.locator('[data-action="check-answer"]').count()) {
       // Tipp-Aufgaben: die erwartete Form steht in den lokalen Aufgabendaten.
       const typed = await page.locator('#antwort').inputValue();
-      const prompt = await page.locator('.stage > .kicker').last().innerText();
+      // textContent bewahrt die Originalschreibung; innerText liefert die per CSS großgeschriebene Variante.
+      const prompt = (await page.locator('.stage > .kicker').last().textContent())?.trim() ?? '';
       const challenge = challenges.find((entry) => entry.wrong === typed || (entry.prompt === prompt && entry.answer));
       if (challenge?.answer && !typed.includes(challenge.answer)) await page.locator('#antwort').fill(challenge.answer);
       await page.locator('[data-action="check-answer"]').click();

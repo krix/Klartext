@@ -29,7 +29,7 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 | Themen | Vier Bereiche mit 22 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
 | Übung | Eine Aufgabe pro Bildschirm, Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt. Neun Formen: Silben bauen (Tippen/Ziehen mit Silbenbögen), Silben trennen, Fehler finden und tippen, Lückenwörter, Ableiten (ä/äu, Auslautverhärtung), Wortbausteine (ver-, vor-, -ung, -keit), Merkwörter mit Mehrkanal-Lernen, das/dass und Groß-/Kleinschreibung mit Ersatzprobe, Diktat mit wiederholbarer Sprachausgabe und Handschrift. Tipp und Lösung immer dabei |
 | Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
-| Rundenende | Übersicht aller geübten Wörter mit ✓/✗, Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
+| Rundenende | Übersicht aller geübten Wörter mit ✓/↻ (kein rotes Kreuz), Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
 | Elternbereich (PIN) | Profile anlegen/umbenennen/wechseln/löschen, KI-Key und Datenschutz, Schriftart, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
 
 ### Datenmodell (alles in `localStorage`, Schlüssel `klartext.state.v1`)
@@ -70,7 +70,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,7: freundlich noch einmal schreiben bitten, **kein** Fehler.
 5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen. Bei einem kurzen Dienstausfall bleibt das geschriebene Bild erhalten; „Erneut prüfen“ startet denselben Check noch einmal, ohne dass neu geschrieben werden muss.
 6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
-7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗, den Beispielsatz und – bei KI- oder Auswahlfehlern – die markierte Fehlerstelle mit Position und richtiger Schreibweise. Der Trainingsplan steht dort bereits aktuell; die Startseite liest beim Zurückkehren und bei Änderungen in anderen Tabs neu aus dem Speicher. Wartende Wiederholungen dürfen das Rundenende nicht blockieren.
+7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/↻, den Beispielsatz und – bei KI- oder Auswahlfehlern – die markierte Fehlerstelle mit Position und richtiger Schreibweise. Der Trainingsplan steht dort bereits aktuell; die Startseite liest beim Zurückkehren und bei Änderungen in anderen Tabs neu aus dem Speicher. Wartende Wiederholungen dürfen das Rundenende nicht blockieren.
 8. Nach einem Reload (z. B. durch Ziehen zum Aktualisieren) beginnt die Startseite wieder oben und behält trotz ein-/ausblendender Browserleiste ihre Höhe (`svh` statt `dvh`).
 
 ---

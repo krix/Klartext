@@ -567,15 +567,16 @@ th { font-size: .85rem; color: var(--ink-soft); }
 }
 .review-item strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .review-item.is-right { border-color: color-mix(in srgb, var(--good) 70%, var(--line)); }
-.review-item.is-wrong { border-color: color-mix(in srgb, var(--bad) 70%, var(--line)); }
+/* Noch üben wird mit einer sanften Wendung markiert – kein rotes Kreuz. */
+.review-item.is-wrong { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .review-mark { font-weight: 900; }
 .review-item.is-right .review-mark { color: var(--good); }
-.review-item.is-wrong .review-mark { color: var(--bad); }
+.review-item.is-wrong .review-mark { color: var(--ink-soft); }
 .review-item small { margin-left: auto; color: var(--ink-soft); }
 .word-review.with-details { grid-template-columns: 1fr; }
 .review-line { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .review-sentence { margin: 2px 0 0; color: var(--ink-soft); font-size: .88rem; }
-.review-note { margin: 3px 0 0; color: var(--bad); font-size: .85rem; }
+.review-note { margin: 3px 0 0; color: var(--ink-soft); font-size: .85rem; }
 .summary-plan { margin-top: clamp(8px, 1.4vh, 14px); padding: 10px 14px; }
 .summary-plan h3 { margin: 0 0 4px; font-size: 1rem; }
 

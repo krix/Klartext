@@ -143,13 +143,13 @@ function renderSummaryOverview(results: readonly SessionResult[], plan: readonly
     const sentence = entry.sentence ? `<p class="review-sentence">${escapeHtml(entry.sentence)}</p>` : '';
     const tries = entry.tries > 1 ? `<small>${entry.tries}×</small>` : '';
     return `<li class="review-item ${ok ? 'is-right' : 'is-wrong'}" aria-label="${escapeHtml(entry.word)} ${ok ? 'richtig' : 'noch üben'}">
-      <span class="review-line"><span class="review-mark" aria-hidden="true">${ok ? '✓' : '✗'}</span><strong>${escapeHtml(entry.word)}</strong>${tries}</span>
+      <span class="review-line"><span class="review-mark" aria-hidden="true">${ok ? '✓' : '↻'}</span><strong>${escapeHtml(entry.word)}</strong>${tries}</span>
       ${sentence}${detail}${note}
     </li>`;
   }).join('');
   return `<section class="summary-overview" aria-labelledby="review-title">
     <h2 id="review-title">Deine Wörter in dieser Runde</h2>
-    <p class="panel-note">${right} richtig · ${entries.length - right} noch üben · ✓ sitzt, ✗ nochmal anschauen</p>
+    <p class="panel-note">${right} richtig · ${entries.length - right} noch üben · ✓ sitzt, ↻ nochmal anschauen</p>
     <ul class="word-review${withDetails ? ' with-details' : ''}">${list}</ul>
     <section class="summary-plan panel" aria-label="Dein Trainingsplan">
       <h3>Dein Trainingsplan</h3>

@@ -97,7 +97,7 @@ function speakPage(): void {
   const main = document.querySelector<HTMLElement>('#hauptinhalt');
   if (!main) return;
   const lines = main.innerText
-    .replace(/[✦🔒✓✗]/g, ' ')
+    .replace(/[✦🔒✓✗↻]/g, ' ')
     .split(/\n+/)
     .map((line) => line.trim())
     .filter((line) => line.length > 1 && !/^\d+ von \d+$/.test(line));
