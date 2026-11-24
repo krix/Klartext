@@ -349,8 +349,13 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
   }
   if (kind === 'gap') {
     const blank = `<span class="gap-blank" aria-label="Lücke">_____</span>`;
+    const before = challenge?.before ?? '';
+    const after = challenge?.after ?? '';
+    // Wortteilchen bekommen Leerzeichen um die Lücke, ganze Sätze kein Leerzeichen vor Satzzeichen.
+    const lead = before && !before.endsWith(' ') ? `${before} ` : before;
+    const tail = after && !/^[\s.,!?;:]/.test(after) ? ` ${after}` : after;
     return `<p class="kicker">${escapeHtml(challenge?.prompt ?? 'Welches Wort passt in die Lücke?')}</p>
-      <p class="prompt-sentence">${escapeHtml(challenge?.before ?? '')} ${blank} ${escapeHtml(challenge?.after ?? '')}</p>
+      <p class="prompt-sentence">${escapeHtml(lead)}${blank}${escapeHtml(tail)}</p>
       ${choiceButtons(exercise)}`;
   }
   if (kind === 'derive') {

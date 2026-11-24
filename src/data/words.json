@@ -3230,6 +3230,24 @@
     "challenge": true
   },
   {
+    "id": "ch-v11",
+    "word": "Feuer",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Feuer ist ein deutsches Wort mit f.",
+    "sentence": "Das Feuer brennt im Ofen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v12",
+    "word": "Fahrrad",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Fahrrad beginnt mit f.",
+    "sentence": "Ich fahre mit dem Fahrrad.",
+    "challenge": true
+  },
+  {
     "id": "ch-k1",
     "word": "sechs",
     "ruleId": "ks-laute",
@@ -3336,6 +3354,33 @@
     "challenge": true
   },
   {
+    "id": "ch-k13",
+    "word": "Wachs",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "wachsen → Wachs: das chs bleibt.",
+    "sentence": "Ich poliere mit Wachs.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k14",
+    "word": "Klecks",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Klecks endet auf cks.",
+    "sentence": "Ein Klecks Tinte liegt auf dem Papier.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k15",
+    "word": "flugs",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "flugs kommt von Flug: das g bleibt.",
+    "sentence": "Er kam flugs zurück.",
+    "challenge": true
+  },
+  {
     "id": "ch-y1",
     "word": "Baby",
     "ruleId": "y-laute",
@@ -3426,9 +3471,36 @@
     "challenge": true
   },
   {
+    "id": "ch-y11",
+    "word": "Handy",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Das y am Ende klingt wie i.",
+    "sentence": "Mein Handy liegt auf dem Tisch.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y12",
+    "word": "Gymnastik",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Gymnastik ist ein Fremdwort mit y.",
+    "sentence": "Wir treiben Gymnastik.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y13",
+    "word": "Pyramide",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Pyramide ist ein Fremdwort mit y.",
+    "sentence": "Die Pyramide steht in der Wüste.",
+    "challenge": true
+  },
+  {
     "id": "ch-p1",
     "word": "Pferd",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "level": 1,
     "hint": "Ein Pferd beginnt mit pf.",
     "sentence": "Das Pferd läuft auf dem Feld.",
@@ -3437,7 +3509,7 @@
   {
     "id": "ch-p2",
     "word": "Pflanze",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "level": 1,
     "hint": "pflanzen → Pflanze: das pf bleibt.",
     "sentence": "Die Pflanze wächst.",
@@ -3446,7 +3518,7 @@
   {
     "id": "ch-p3",
     "word": "Pflege",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "level": 1,
     "hint": "pflegen → Pflege.",
     "sentence": "Die Pflege ist wichtig.",
@@ -3455,7 +3527,7 @@
   {
     "id": "ch-p4",
     "word": "Pflug",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "level": 1,
     "hint": "pflügen → Pflug: das pf bleibt.",
     "sentence": "Der Pflug liegt auf dem Feld.",
@@ -3464,16 +3536,61 @@
   {
     "id": "ch-p5",
     "word": "Pflaster",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "level": 1,
     "hint": "pflastern → Pflaster: das pf bleibt.",
     "sentence": "Das Pflaster ist neu.",
     "challenge": true
   },
   {
+    "id": "ch-p6",
+    "word": "Apfel",
+    "ruleId": "pf-mpf",
+    "level": 1,
+    "hint": "Apfel hat pf mitten im Wort.",
+    "sentence": "Der Apfel hängt am Baum.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p7",
+    "word": "Kopf",
+    "ruleId": "pf-mpf",
+    "level": 1,
+    "hint": "Kopf → Köpfe: das pf bleibt.",
+    "sentence": "Ich trage eine Mütze auf dem Kopf.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p8",
+    "word": "Strumpf",
+    "ruleId": "pf-mpf",
+    "level": 1,
+    "hint": "Strumpf → Strümpfe: das mpf bleibt.",
+    "sentence": "Der Strumpf ist warm.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p9",
+    "word": "Kampf",
+    "ruleId": "pf-mpf",
+    "level": 1,
+    "hint": "Kampf → Kämpfe: das mpf bleibt.",
+    "sentence": "Der Kampf war spannend.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p10",
+    "word": "Dampf",
+    "ruleId": "pf-mpf",
+    "level": 1,
+    "hint": "Dampf → Dämpfe: das mpf bleibt.",
+    "sentence": "Der Dampf steigt auf.",
+    "challenge": true
+  },
+  {
     "id": "ch-q1",
     "word": "Quelle",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "level": 1,
     "hint": "quellen → Quelle: das qu bleibt.",
     "sentence": "Die Quelle sprudelt.",
@@ -3482,7 +3599,7 @@
   {
     "id": "ch-q2",
     "word": "Quittung",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "level": 1,
     "hint": "quittieren → Quittung.",
     "sentence": "Ich hebe die Quittung auf.",
@@ -3491,7 +3608,7 @@
   {
     "id": "ch-q3",
     "word": "Qualität",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "level": 1,
     "hint": "Qualität beginnt mit qu.",
     "sentence": "Die Qualität ist hoch.",
@@ -3500,7 +3617,7 @@
   {
     "id": "ch-q4",
     "word": "Quartal",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "level": 1,
     "hint": "Quartal beginnt mit qu.",
     "sentence": "Das Quartal endet heute.",
@@ -3509,10 +3626,55 @@
   {
     "id": "ch-q5",
     "word": "Quell",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "level": 1,
     "hint": "Das q steht vor u.",
     "sentence": "Das Quellwasser ist kalt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q6",
+    "word": "Qualle",
+    "ruleId": "qu",
+    "level": 1,
+    "hint": "Qualle beginnt mit qu.",
+    "sentence": "Die Qualle schwimmt im Meer.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q7",
+    "word": "Quark",
+    "ruleId": "qu",
+    "level": 1,
+    "hint": "Quark beginnt mit qu.",
+    "sentence": "Ich esse Quark mit Obst.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q8",
+    "word": "quaken",
+    "ruleId": "qu",
+    "level": 1,
+    "hint": "quaken → Quaken: das qu bleibt.",
+    "sentence": "Der Frosch fängt an zu quaken.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q9",
+    "word": "bequem",
+    "ruleId": "qu",
+    "level": 1,
+    "hint": "bequem behält das qu in der Mitte.",
+    "sentence": "Der Sessel ist bequem.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q10",
+    "word": "Quatsch",
+    "ruleId": "qu",
+    "level": 1,
+    "hint": "Quatsch beginnt mit qu.",
+    "sentence": "Das war nur Quatsch.",
     "challenge": true
   },
   {
@@ -3585,6 +3747,96 @@
     "level": 1,
     "hint": "Stadt endet auf dt.",
     "sentence": "In der Stadt wohnen viele Menschen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h1",
+    "word": "Meer",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Meer ist das Wasser – mehr ist eine Menge.",
+    "sentence": "Wir fahren im Sommer ans Meer. Das Wasser ist blau.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h2",
+    "word": "mehr",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "mehr heißt „eine größere Menge“.",
+    "sentence": "Ich möchte noch mehr Kuchen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h3",
+    "word": "Wal",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Ein Wal ist ein Tier.",
+    "sentence": "Im Meer schwimmt ein Wal.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h4",
+    "word": "Wahl",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "eine Wahl ist eine Entscheidung.",
+    "sentence": "Wir treffen eine Wahl.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h5",
+    "word": "Lied",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Ein Lied wird gesungen.",
+    "sentence": "Das Lied ist schön.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h6",
+    "word": "Lid",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Das Lid ist das Augenlid.",
+    "sentence": "Er schließt das Lid.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h7",
+    "word": "Seite",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Die Seite steht im Buch.",
+    "sentence": "Ich lese auf der Seite.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h8",
+    "word": "Saite",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Die Saite klingt – die Seite nicht.",
+    "sentence": "Die Saite der Gitarre klingt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h9",
+    "word": "Mal",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "zum ersten Mal heißt „einmal“.",
+    "sentence": "Das ist das erste Mal.",
+    "challenge": true
+  },
+  {
+    "id": "ch-h10",
+    "word": "Mahl",
+    "ruleId": "homophone",
+    "level": 1,
+    "hint": "Ein Mahl ist das Essen.",
+    "sentence": "Das Mahl war reichlich.",
     "challenge": true
   }
 ]

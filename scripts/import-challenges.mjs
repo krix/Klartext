@@ -163,97 +163,116 @@ const extraRules = [
   {
     id: 'e-oder-ae',
     title: 'e oder ä?',
-    tip: 'Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.',
+    tip: 'Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.',
     caseSensitive: false,
     area: 'verwechslung',
     summary: 'Ähnlich klingendes e und ä sicher unterscheiden.',
     goal: 'Du lernst, mit einem verwandten Wort mit a zu prüfen, ob ä oder e richtig ist.',
     rules: [
-      'Ä entsteht oft aus einem a: Hand → Hände, kalt → Kälte, backen → Bäcker.',
+      'Ä entsteht oft aus einem a: Baum → Bäume, Garten → Gärten, kalt → Kälte.',
       'Findest du kein verwandtes Wort mit a, bleibt meist das e: Held, Erde, Nest.',
       'Sprich das Wort und die verwandte Form langsam mit – dann hörst du den Unterschied.',
     ],
     examples: [
-      { word: 'Hände', note: 'Hand → Hände: aus a wird ä.' },
-      { word: 'Bäcker', note: 'backen → Bäcker: das a wird zu ä.' },
+      { word: 'Bäume', note: 'Baum → Bäume: aus a wird ä.' },
+      { word: 'Gärten', note: 'Garten → Gärten: das a wird zu ä.' },
       { word: 'Erde', note: 'Kein verwandtes Wort mit a – deshalb e.' },
     ],
   },
   {
     id: 'f-oder-v',
     title: 'f oder v?',
-    tip: 'Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel.',
+    tip: 'Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll.',
     caseSensitive: false,
     area: 'verwechslung',
     summary: 'Den harten f-Laut als f oder v schreiben.',
     goal: 'Du lernst die deutschen Wörter mit v und die Fremdwörter, in denen v wie w klingt.',
     rules: [
-      'In deutschen Wörtern steht für den harten f-Laut meist f: Fisch, Feder, laufen.',
-      'Häufige deutsche Wörter mit v merkst du dir: Vater, Vogel, von, vor, voll, vier, viel.',
+      'In deutschen Wörtern steht für den harten f-Laut meist f: Fisch, Feuer, Fahrrad.',
+      'Häufige deutsche Wörter mit v merkst du dir: Vogel, Vater, viel, von, vor, voll.',
       'In Fremdwörtern wie Vase, Video oder Ventil klingt v eher wie w – hier hilft nur Merken.',
     ],
     examples: [
-      { word: 'Fisch', note: 'Deutsches Wort mit hartem f-Laut.' },
-      { word: 'Vater', note: 'Häufiges deutsches Wort mit v am Anfang.' },
+      { word: 'Fahrrad', note: 'Deutsches Wort mit hartem f-Laut.' },
+      { word: 'Vogel', note: 'Häufiges deutsches Wort mit v am Anfang.' },
       { word: 'Vase', note: 'Fremdwort: das v klingt wie w.' },
     ],
   },
   {
     id: 'ks-laute',
     title: 'Der ks-Laut: cks, gs, chs, x, ks, ex-',
-    tip: 'Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.',
+    tip: 'Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.',
     caseSensitive: false,
     area: 'verwechslung',
     summary: 'Die sechs Schreibweisen des ks-Lautes sicher unterscheiden.',
     goal: 'Du lernst, bei einem ks-Laut auf die Grundform und auf Fremdwörter zu achten.',
     rules: [
-      'sechs, Fuchs, Luchs und Wachs schreibt man mit chs.',
-      'Aus Tag wird Tags, aus Zug wird Zugs: das g der Grundform bleibt sichtbar.',
-      'Endet die Grundform auf ck, entsteht cks: Scheck → Schecks, Block → Blocks.',
-      'Box, Hexe und Taxi haben x; Keks und links haben ks; Extra und Export beginnen mit ex-.',
+      'Wachs, sechs und Fuchs schreibt man mit chs.',
+      'Aus Flug wird flugs, aus Tag wird Tags: das g der Grundform bleibt sichtbar.',
+      'Endet die Grundform auf ck, entsteht cks: Klecks, Scheck → Schecks, Block → Blocks.',
+      'Hexe, Box und Taxi haben x; Keks und links haben ks; Extra und Export beginnen mit ex-.',
     ],
     examples: [
-      { word: 'sechs', note: 'chs – denk an sechste.' },
-      { word: 'Schecks', note: 'cks – Scheck mit angehängtem s.' },
-      { word: 'Export', note: 'ex- am Anfang eines Fremdwortes.' },
+      { word: 'Wachs', note: 'chs – denk an wachsen.' },
+      { word: 'Klecks', note: 'cks – wie Schecks.' },
+      { word: 'flugs', note: 'gs – denk an Flug.' },
     ],
   },
   {
     id: 'y-laute',
     title: 'y – wie i, ü oder j?',
-    tip: 'Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.',
+    tip: 'Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.',
     caseSensitive: false,
     area: 'verwechslung',
     summary: 'Die drei Aussprachen des y sicher zuordnen.',
     goal: 'Du lernst, das y trotz unterschiedlicher Aussprache immer als y zu schreiben.',
     rules: [
-      'Am Ende von Baby, Hobby, Party und City klingt das y wie i.',
-      'In Typ, Zyklus, Symbol und Hymne klingt das y wie ü.',
-      'Am Anfang von Yoga und Yeti klingt das y wie j.',
+      'Viele Wörter mit y kommen aus anderen Sprachen: Baby, Handy, Hobby, Gymnastik, Pyramide.',
+      'Am Ende von Baby, Handy, Hobby, Party und City klingt das y wie i.',
+      'In Gymnastik, Pyramide, Typ und Symbol klingt das y wie ü; am Anfang von Yoga und Yeti wie j.',
     ],
     examples: [
-      { word: 'Baby', note: 'y am Ende klingt wie i.' },
-      { word: 'Typ', note: 'y klingt wie ü.' },
+      { word: 'Handy', note: 'Lehnwort, y am Ende klingt wie i.' },
+      { word: 'Pyramide', note: 'Fremdwort, y klingt wie ü.' },
       { word: 'Yoga', note: 'y am Anfang klingt wie j.' },
     ],
   },
   {
-    id: 'pf-qu',
-    title: 'Wortfamilien mit pf und qu',
-    tip: 'In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.',
+    id: 'pf-mpf',
+    title: 'Wörter mit pf und mpf',
+    tip: 'Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.',
     caseSensitive: false,
     area: 'verwechslung',
-    summary: 'Die Anlaute pf und qu in Wortfamilien wiedererkennen.',
-    goal: 'Du lernst, aus einem bekannten Familienwort die Schreibung von pf und qu abzuleiten.',
+    summary: 'pf und mpf in allen Positionen sicher schreiben.',
+    goal: 'Du lernst pf und mpf auch dort zu erkennen, wo man nur ein f hört.',
     rules: [
-      'Viele Wortfamilien beginnen mit pf: Pferd, Pferde; Pflanze, pflanzen; Pflege, pflegen.',
-      'Hörst du den pf-Laut, schreib beide Buchstaben – auch in der Grundform.',
-      'Das q steht im Deutschen fast immer unmittelbar vor u: Quelle, Quittung, Qualität.',
+      'Am Anfang vieler Wörter steht pf: Pferd, Pflanze, Pflege.',
+      'Mitten im Wort kommt pf vor: Apfel, Kopf, Schnupfen.',
+      'Nach einem m schreibst du mpf: Strumpf, Kampf, Dampf – im Plural Strümpfe, Kämpfe, Dämpfe.',
     ],
     examples: [
-      { word: 'Pferd', note: 'pf bleibt auch in Pferde.' },
-      { word: 'Pflanze', note: 'pflanzen → Pflanze.' },
-      { word: 'Quelle', note: 'q steht direkt vor u.' },
+      { word: 'Pferd', note: 'pf am Anfang; in Pferden bleibt er.' },
+      { word: 'Apfel', note: 'pf mitten im Wort.' },
+      { word: 'Strumpf', note: 'mpf – im Plural Strümpfe.' },
+    ],
+  },
+  {
+    id: 'qu',
+    title: 'Wörter mit qu',
+    tip: 'Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.',
+    caseSensitive: false,
+    area: 'verwechslung',
+    summary: 'qu als festen Buchstabenpaar erkennen und schreiben.',
+    goal: 'Du lernst Wörter mit qu sicher von gleich klingenden Formen mit k oder kw zu trennen.',
+    rules: [
+      'Das q steht fast immer unmittelbar vor u: Quelle, Qualle, Quark.',
+      'Auch in der Mitte bleibt das qu zusammen: bequem, quaken.',
+      'Denk an die Wortfamilie: quellen → Quelle, quaken → Quaken.',
+    ],
+    examples: [
+      { word: 'Quelle', note: 'quellen → Quelle.' },
+      { word: 'Qualle', note: 'q steht direkt vor u.' },
+      { word: 'bequem', note: 'qu bleibt auch in der Mitte.' },
     ],
   },
   {
@@ -273,6 +292,25 @@ const extraRules = [
       { word: 'Stadt', note: 'Stadt → Städte: das d bleibt.' },
       { word: 'sandte', note: 'senden → sandte.' },
       { word: 'verwandt', note: 'Endet auf -dt.' },
+    ],
+  },
+  {
+    id: 'homophone',
+    title: 'Gleich klingend, anders geschrieben',
+    tip: 'Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.',
+    caseSensitive: false,
+    area: 'verwechslung',
+    summary: 'Homophone über die Bedeutung im Satz unterscheiden.',
+    goal: 'Du lernst, bei gleich klingenden Wörtern auf den Sinn des Satzes zu achten.',
+    rules: [
+      'Lies den ganzen Satz, bevor du dich für eine Schreibweise entscheidest.',
+      'Setze beide Möglichkeiten probehalber ein: Nur eine ergibt einen Sinn.',
+      'Diese Paare merkst du dir gemeinsam: Meer/mehr, Wal/Wahl, Lied/Lid, Seite/Saite, Mal/Mahl.',
+    ],
+    examples: [
+      { word: 'Meer', note: 'Das Wasser – nicht „mehr“.' },
+      { word: 'Wahl', note: 'Eine Entscheidung – nicht das Tier Wal.' },
+      { word: 'Saite', note: 'Sie klingt – nicht die Seite.' },
     ],
   },
 ];
@@ -331,11 +369,13 @@ for (const [topic, tasks] of Object.entries(TASKS)) {
   }
 }
 
-const E_AE_RULE = 'Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.';
-const F_V_RULE = 'Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.';
-const KS_RULE = 'Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.';
-const Y_RULE = 'Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.';
-const PF_QU_RULE = 'In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.';
+const E_AE_RULE = 'Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.';
+const F_V_RULE = 'Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.';
+const KS_RULE = 'Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.';
+const Y_RULE = 'Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.';
+const PF_MPF_RULE = 'Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.';
+const QU_RULE = 'Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.';
+const HOMO_RULE = 'Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.';
 const DT_RULE = 'Ein paar Wörter enden auf -dt, obwohl man nur ein t hört: die Stadt, die Magd, sandte, wandte, verwandt. Denk an die Familie: Stadt → Städte.';
 
 /** „Fehler finden“: die erste abweichende Stelle wird automatisch markiert. */
@@ -417,6 +457,10 @@ const extraChallenges = [
     ['laufen ist ein deutsches Wort mit f.', 'Wir laufen – mit f.'], 'Die Kinder laufen schnell.'),
   memorize('ch-v10', 'Vogel', 'f-oder-v', 'Sieh dir das Wort an, dann schreibst du es aus dem Kopf.', F_V_RULE,
     ['Vogel beginnt mit v.', 'Denk an den Vogel, der fliegt.'], 'Der Vogel fliegt hoch.'),
+  mistake('ch-v11', 'Veuer', 'Feuer', 'f-oder-v', 'Was wärmt dich im Winter? Das …', F_V_RULE,
+    ['Feuer ist ein deutsches Wort mit f.', 'Das Feuer brennt – mit f.'], 'Das Feuer brennt im Ofen.'),
+  mistake('ch-v12', 'Vahrrad', 'Fahrrad', 'f-oder-v', 'Womit fährst du zur Schule? Mit dem …', F_V_RULE,
+    ['Fahrrad beginnt mit f.', 'Das Fahrrad hat zwei Räder – mit f.'], 'Ich fahre mit dem Fahrrad.'),
 
   // ks-Laute
   fill('ch-k1', 'se', '', 'chs', ['chs', 'ks', 'x'], 'sechs', 'ks-laute', 'Wie schreibt man sechs?', KS_RULE,
@@ -443,6 +487,12 @@ const extraChallenges = [
     ['Extra beginnt mit ex – wie Export.', 'Fremdwörter mit ex- schreibt man mit x.'], 'Das ist ein Extra.'),
   mistake('ch-k12', 'Eksport', 'Export', 'ks-laute', 'Welches Wort beginnt mit ex-?', KS_RULE,
     ['Export beginnt mit ex – wie Extra.', 'Das x steht direkt nach dem E.'], 'Wir exportieren Waren.'),
+  mistake('ch-k13', 'Waks', 'Wachs', 'ks-laute', 'Womit polierst du den Boden? Mit …', KS_RULE,
+    ['wachsen → Wachs: das chs bleibt.', 'Wachs wird mit chs geschrieben.'], 'Ich poliere mit Wachs.'),
+  mistake('ch-k14', 'Kleks', 'Klecks', 'ks-laute', 'Ein … Tinte auf dem Papier.', KS_RULE,
+    ['Klecks endet auf cks.', 'Denk an Schecks – beide enden auf cks.'], 'Ein Klecks Tinte liegt auf dem Papier.'),
+  mistake('ch-k15', 'fluk', 'flugs', 'ks-laute', 'Er kam … zurück.', KS_RULE,
+    ['flugs kommt von Flug: das g bleibt.', 'Das gs hörst du, wenn du flugs sagst.'], 'Er kam flugs zurück.'),
 
   // y wie i, ü oder j
   mistake('ch-y1', 'Babi', 'Baby', 'y-laute', 'Wie schreibt man das kleine Kind?', Y_RULE,
@@ -465,28 +515,56 @@ const extraChallenges = [
     ['Am Anfang klingt y wie j: Yoga.', 'Yoga beginnt mit y.'], 'Wir machen Yoga.'),
   mistake('ch-y10', 'Jeti', 'Yeti', 'y-laute', 'Im Schnee wohnt der …', Y_RULE,
     ['Yeti beginnt mit y.', 'Das y klingt hier wie j.'], 'Der Yeti wohnt im Schnee.'),
+  fill('ch-y11', 'Han', '', 'dy', ['dy', 'di'], 'Handy', 'y-laute', 'Handy oder Handi?', Y_RULE,
+    ['Das y am Ende klingt wie i.', 'Handy ist ein Lehnwort mit y.'], 'Mein Handy liegt auf dem Tisch.'),
+  mistake('ch-y12', 'Gimnastik', 'Gymnastik', 'y-laute', 'Wir treiben …', Y_RULE,
+    ['Gymnastik ist ein Fremdwort mit y.', 'Das y klingt hier wie ü.'], 'Wir treiben Gymnastik.'),
+  mistake('ch-y13', 'Piramide', 'Pyramide', 'y-laute', 'In Ägypten steht eine …', Y_RULE,
+    ['Pyramide ist ein Fremdwort mit y.', 'Das y klingt hier wie ü.'], 'Die Pyramide steht in der Wüste.'),
 
-  // Wortfamilien mit pf und qu
-  mistake('ch-p1', 'Ferd', 'Pferd', 'pf-qu', 'Was läuft auf vier Beinen?', PF_QU_RULE,
+  // Wörter mit pf und mpf
+  mistake('ch-p1', 'Ferd', 'Pferd', 'pf-mpf', 'Was läuft auf vier Beinen?', PF_MPF_RULE,
     ['Ein Pferd beginnt mit pf.', 'Pferd → Pferde: das pf bleibt.'], 'Das Pferd läuft auf dem Feld.'),
-  mistake('ch-p2', 'Flanze', 'Pflanze', 'pf-qu', 'Was wächst im Garten?', PF_QU_RULE,
+  mistake('ch-p2', 'Flanze', 'Pflanze', 'pf-mpf', 'Was wächst im Garten?', PF_MPF_RULE,
     ['pflanzen → Pflanze: das pf bleibt.', 'Sprich das Wort deutlich: Pflanze.'], 'Die Pflanze wächst.'),
-  mistake('ch-p3', 'Flege', 'Pflege', 'pf-qu', 'Wer kümmert sich um Kranke? Die …', PF_QU_RULE,
+  mistake('ch-p3', 'Flege', 'Pflege', 'pf-mpf', 'Wer kümmert sich um Kranke? Die …', PF_MPF_RULE,
     ['pflegen → Pflege.', 'Pflege beginnt mit pf.'], 'Die Pflege ist wichtig.'),
-  derive('ch-p4', 'pflügen', 'Pflug', 'pf-qu', 'Wie heißt die Grundform von pflügen?', PF_QU_RULE,
+  derive('ch-p4', 'pflügen', 'Pflug', 'pf-mpf', 'Wie heißt die Grundform von pflügen?', PF_MPF_RULE,
     ['pflügen → Pflug: das pf bleibt.', 'Denk an den Pflug auf dem Feld.'], 'Der Pflug liegt auf dem Feld.'),
-  derive('ch-p5', 'pflastern', 'Pflaster', 'pf-qu', 'Was legst du auf den Weg? Das …', PF_QU_RULE,
+  derive('ch-p5', 'pflastern', 'Pflaster', 'pf-mpf', 'Was legst du auf den Weg? Das …', PF_MPF_RULE,
     ['pflastern → Pflaster: das pf bleibt.', 'Das Pflaster liegt auf der Straße.'], 'Das Pflaster ist neu.'),
-  mistake('ch-q1', 'Kuelle', 'Quelle', 'pf-qu', 'Wo kommt das Wasser her? Aus der …', PF_QU_RULE,
+  mistake('ch-p6', 'Afel', 'Apfel', 'pf-mpf', 'Was wächst am Baum? Der …', PF_MPF_RULE,
+    ['Apfel hat pf mitten im Wort.', 'Sprich deutlich: Apfel – das pf bleibt.'], 'Der Apfel hängt am Baum.'),
+  mistake('ch-p7', 'Kof', 'Kopf', 'pf-mpf', 'Was hast du auf den Schultern? Den …', PF_MPF_RULE,
+    ['Kopf → Köpfe: das pf bleibt.', 'Du hörst einen Laut, schreibst aber zwei.'], 'Ich trage eine Mütze auf dem Kopf.'),
+  mistake('ch-p8', 'Strumf', 'Strumpf', 'pf-mpf', 'Was ziehst du an die Füße? Den …', PF_MPF_RULE,
+    ['Strumpf → Strümpfe: das mpf bleibt.', 'Nach dem m kommen p und f.'], 'Der Strumpf ist warm.'),
+  mistake('ch-p9', 'Kamf', 'Kampf', 'pf-mpf', 'Zwei Mannschaften im …', PF_MPF_RULE,
+    ['Kampf → Kämpfe: das mpf bleibt.', 'Sprich: Kampf – mit mpf.'], 'Der Kampf war spannend.'),
+  mistake('ch-p10', 'Damf', 'Dampf', 'pf-mpf', 'Was steigt aus dem Topf? Der …', PF_MPF_RULE,
+    ['Dampf → Dämpfe: das mpf bleibt.', 'Dampf beginnt nicht mit f.'], 'Der Dampf steigt auf.'),
+
+  // Wörter mit qu
+  mistake('ch-q1', 'Kuelle', 'Quelle', 'qu', 'Wo kommt das Wasser her? Aus der …', QU_RULE,
     ['quellen → Quelle: das qu bleibt.', 'Das q steht direkt vor u.'], 'Die Quelle sprudelt.'),
-  mistake('ch-q2', 'Kittung', 'Quittung', 'pf-qu', 'Was bekommst du beim Bezahlen? Die …', PF_QU_RULE,
+  mistake('ch-q2', 'Kittung', 'Quittung', 'qu', 'Was bekommst du beim Bezahlen? Die …', QU_RULE,
     ['quittieren → Quittung.', 'Quittung beginnt mit qu.'], 'Ich hebe die Quittung auf.'),
-  mistake('ch-q3', 'Kualität', 'Qualität', 'pf-qu', 'Wie gut ist etwas? Die …', PF_QU_RULE,
+  mistake('ch-q3', 'Kualität', 'Qualität', 'qu', 'Wie gut ist etwas? Die …', QU_RULE,
     ['Qualität beginnt mit qu.', 'Das q steht vor u.'], 'Die Qualität ist hoch.'),
-  mistake('ch-q4', 'Kuartal', 'Quartal', 'pf-qu', 'Ein Viertel Jahr ist ein …', PF_QU_RULE,
+  mistake('ch-q4', 'Kuartal', 'Quartal', 'qu', 'Ein Viertel Jahr ist ein …', QU_RULE,
     ['Quartal beginnt mit qu.', 'Das q steht direkt vor u.'], 'Das Quartal endet heute.'),
-  fill('ch-q5', '', 'ell', 'Qu', ['Qu', 'Ku', 'Quu'], 'Quell', 'pf-qu', 'Quell oder Kuell?', PF_QU_RULE,
+  fill('ch-q5', '', 'ell', 'Qu', ['Qu', 'Ku', 'Quu'], 'Quell', 'qu', 'Quell oder Kuell?', QU_RULE,
     ['Das q steht vor u.', 'Quell beginnt mit qu.'], 'Das Quellwasser ist kalt.'),
+  mistake('ch-q6', 'Kwalle', 'Qualle', 'qu', 'Was schwimmt im Meer? Die …', QU_RULE,
+    ['Qualle beginnt mit qu.', 'Das q steht direkt vor u.'], 'Die Qualle schwimmt im Meer.'),
+  mistake('ch-q7', 'Kwark', 'Quark', 'qu', 'Was isst du zum Frühstück? Den …', QU_RULE,
+    ['Quark beginnt mit qu.', 'Sprich das qu deutlich mit.'], 'Ich esse Quark mit Obst.'),
+  mistake('ch-q8', 'kwaken', 'quaken', 'qu', 'Was macht der Frosch? Er …', QU_RULE,
+    ['quaken → Quaken: das qu bleibt.', 'Das q steht vor u.'], 'Der Frosch fängt an zu quaken.'),
+  mistake('ch-q9', 'bekwem', 'bequem', 'qu', 'Der Sessel ist …', QU_RULE,
+    ['bequem behält das qu in der Mitte.', 'Das q steht direkt vor u.'], 'Der Sessel ist bequem.'),
+  mistake('ch-q10', 'Kwatsch', 'Quatsch', 'qu', 'Das war nur …', QU_RULE,
+    ['Quatsch beginnt mit qu.', 'Das q steht direkt vor u.'], 'Das war nur Quatsch.'),
 
   // Lernwörter mit -dt
   mistake('ch-d1', 'Stat', 'Stadt', 'dt', 'Wo wohnst du? In der …', DT_RULE,
@@ -505,6 +583,28 @@ const extraChallenges = [
     ['wenden → wandte.', 'Schreib dt, auch wenn es wie t klingt.'], 'Er wandte den Blick ab.'),
   memorize('ch-d8', 'Stadt', 'dt', 'Sieh dir das Wort an, dann schreibst du es aus dem Kopf.', DT_RULE,
     ['Stadt endet auf dt.', 'Denk an die Städte – das d bleibt.'], 'In der Stadt wohnen viele Menschen.'),
+
+  // Gleich klingend, anders geschrieben – die Bedeutung im Satz entscheidet.
+  fill('ch-h1', 'Wir fahren im Sommer ans', '. Das Wasser ist blau.', 'Meer', ['Meer', 'mehr'], 'Meer', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Meer ist das Wasser – mehr ist eine Menge.', 'Lies den ganzen Satz: Wovon ist die Rede?'], 'Wir fahren im Sommer ans Meer. Das Wasser ist blau.'),
+  fill('ch-h2', 'Ich möchte noch', ' Kuchen.', 'mehr', ['Meer', 'mehr'], 'mehr', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['mehr heißt „eine größere Menge“.', 'Hier passt kein Meer hinein.'], 'Ich möchte noch mehr Kuchen.'),
+  fill('ch-h3', 'Im Meer schwimmt ein', '.', 'Wal', ['Wal', 'Wahl'], 'Wal', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Ein Wal ist ein Tier.', 'Wahl wäre eine Entscheidung – hier schwimmt ein Tier.'], 'Im Meer schwimmt ein Wal.'),
+  fill('ch-h4', 'Wir treffen eine', '.', 'Wahl', ['Wal', 'Wahl'], 'Wahl', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['eine Wahl ist eine Entscheidung.', 'Sprich beide Wörter: nur eines ergibt Sinn.'], 'Wir treffen eine Wahl.'),
+  fill('ch-h5', 'Das', ' ist schön.', 'Lied', ['Lied', 'Lid'], 'Lied', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Ein Lied wird gesungen.', 'Das Lid gehört zum Auge.'], 'Das Lied ist schön.'),
+  fill('ch-h6', 'Er schließt das', '.', 'Lid', ['Lied', 'Lid'], 'Lid', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Das Lid ist das Augenlid.', 'Hier singt niemand – es geht ums Auge.'], 'Er schließt das Lid.'),
+  fill('ch-h7', 'Ich lese auf der', '.', 'Seite', ['Seite', 'Saite'], 'Seite', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Die Seite steht im Buch.', 'Eine Saite gehört zur Gitarre.'], 'Ich lese auf der Seite.'),
+  fill('ch-h8', 'Die', ' der Gitarre klingt.', 'Saite', ['Seite', 'Saite'], 'Saite', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Die Saite klingt – die Seite nicht.', 'Denk an das Instrument.'], 'Die Saite der Gitarre klingt.'),
+  fill('ch-h9', 'Das ist das erste', '.', 'Mal', ['Mal', 'Mahl'], 'Mal', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['zum ersten Mal heißt „einmal“.', 'Ein Mahl ist eine Mahlzeit.'], 'Das ist das erste Mal.'),
+  fill('ch-h10', 'Das', ' war reichlich.', 'Mahl', ['Mal', 'Mahl'], 'Mahl', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Ein Mahl ist das Essen.', 'Hier geht es um Essen, nicht um einen Zeitpunkt.'], 'Das Mahl war reichlich.'),
 ];
 
 for (const challenge of extraChallenges) {
@@ -521,7 +621,9 @@ for (const challenge of extraChallenges) {
 }
 
 const extraIds = new Set(extraRules.map((rule) => rule.id));
-const keptRules = rules.filter((rule) => !extraIds.has(rule.id));
+// Der gesamte Bereich „Verwechslung“ wird vom Skript verwaltet. So verschwinden
+// auch umbenannte Regeln aus früheren Läufen (z. B. pf-qu) wieder aus den Daten.
+const keptRules = rules.filter((rule) => rule.area !== 'verwechslung' && !extraIds.has(rule.id));
 rules.length = 0;
 rules.push(...keptRules, ...extraRules);
 const challengeIds = new Set(challengeWords.map((word) => word.id));

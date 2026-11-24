@@ -1010,7 +1010,7 @@
     "word": "Hände",
     "ruleId": "e-oder-ae",
     "prompt": "Korrigiere das Wort.",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Denk an die Hand: eine Hand, zwei …",
       "Hand → Hände: aus a wird ä."
@@ -1026,7 +1026,7 @@
     "word": "Kälte",
     "ruleId": "e-oder-ae",
     "prompt": "Mir ist kalt. Wie schreibt man das?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "kalt → Kälte: das a wird zu ä.",
       "Sprich beide Wörter langsam mit."
@@ -1042,7 +1042,7 @@
     "word": "Bäcker",
     "ruleId": "e-oder-ae",
     "prompt": "Wer backt das Brot?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "backen → Bäcker: aus a wird ä.",
       "Der Bäcker steht in der Backstube."
@@ -1058,7 +1058,7 @@
     "word": "Zähne",
     "ruleId": "e-oder-ae",
     "prompt": "Ein Zahn, zwei …?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Ein Zahn, zwei Zähne – das a aus Zahn wird zu ä.",
       "Sprich beide Formen langsam: Zahn – Zähne."
@@ -1074,7 +1074,7 @@
     "word": "Wäsche",
     "ruleId": "e-oder-ae",
     "prompt": "Waschen macht …?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "waschen → Wäsche: das a wird zu ä.",
       "Denk an die Wäsche im Schrank."
@@ -1090,7 +1090,7 @@
     "word": "lächeln",
     "ruleId": "e-oder-ae",
     "prompt": "Lächeln oder lecheln?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "lachen → lächeln: aus a wird ä.",
       "Das Kind lächelt – mit ä."
@@ -1110,7 +1110,7 @@
     "word": "kräftig",
     "ruleId": "e-oder-ae",
     "prompt": "Kräftig oder kreftig?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Kraft → kräftig: aus a wird ä.",
       "Sprich das Wort deutlich: kräftig."
@@ -1130,7 +1130,7 @@
     "word": "Erde",
     "ruleId": "e-oder-ae",
     "prompt": "Auf welchem Planeten leben wir?",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Gibt es ein verwandtes Wort mit a? Nein.",
       "Die Erde bleibt mit e."
@@ -1146,7 +1146,7 @@
     "word": "Nest",
     "ruleId": "e-oder-ae",
     "prompt": "Wo wohnen junge Vögel? Im …",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Nest hat kein verwandtes Wort mit a.",
       "Das Nest bleibt mit e."
@@ -1162,7 +1162,7 @@
     "word": "Mädchen",
     "ruleId": "e-oder-ae",
     "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
-    "ruleText": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "ruleText": "Such in der Wortfamilie ein Wort mit a: Baum → Bäume, Garten → Gärten, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
     "hints": [
       "Denk an die Magd: Mädchen mit ä.",
       "Mäd-chen – die zweite Silbe bleibt mit e."
@@ -1175,7 +1175,7 @@
     "word": "Vater",
     "ruleId": "f-oder-v",
     "prompt": "Wer ist der Papa? Der …",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Das ist ein häufiges deutsches Wort mit v.",
       "Denk an vor: beide beginnen mit v."
@@ -1191,7 +1191,7 @@
     "word": "Vogel",
     "ruleId": "f-oder-v",
     "prompt": "Was fliegt durch die Luft? Der …",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Vogel gehört zu den deutschen Wörtern mit v.",
       "Ein Vogel fliegt – mit v am Anfang."
@@ -1207,7 +1207,7 @@
     "word": "von",
     "ruleId": "f-oder-v",
     "prompt": "Welches kleine Wort fehlt: … mir?",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Das Wort von beginnt mit v.",
       "Ich bin von hier – nicht „fon“."
@@ -1223,7 +1223,7 @@
     "word": "voll",
     "ruleId": "f-oder-v",
     "prompt": "Die Flasche ist …",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "voll gehört zu den deutschen Wörtern mit v.",
       "Sprich: voll – mit v."
@@ -1239,7 +1239,7 @@
     "word": "Vase",
     "ruleId": "f-oder-v",
     "prompt": "Wo stehen die Blumen? In der …",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Die Vase ist ein Fremdwort.",
       "In Fremdwörtern wie Vase klingt v wie w."
@@ -1255,7 +1255,7 @@
     "word": "Video",
     "ruleId": "f-oder-v",
     "prompt": "Was schauen wir uns an? Ein …",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Video ist ein Fremdwort mit v.",
       "Das v klingt hier wie w."
@@ -1271,7 +1271,7 @@
     "word": "Fisch",
     "ruleId": "f-oder-v",
     "prompt": "Fisch – mit F oder V?",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Deutsche Wörter mit f-Laut schreibt man meist mit f.",
       "Ein Fisch schwimmt – mit f."
@@ -1291,7 +1291,7 @@
     "word": "Feder",
     "ruleId": "f-oder-v",
     "prompt": "Feder – mit F oder V?",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Feder ist ein deutsches Wort mit f.",
       "Ich schreibe mit einer Feder."
@@ -1311,7 +1311,7 @@
     "word": "laufen",
     "ruleId": "f-oder-v",
     "prompt": "Laufen – mit f oder v?",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "laufen ist ein deutsches Wort mit f.",
       "Wir laufen – mit f."
@@ -1331,7 +1331,7 @@
     "word": "Vogel",
     "ruleId": "f-oder-v",
     "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
-    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
     "hints": [
       "Vogel beginnt mit v.",
       "Denk an den Vogel, der fliegt."
@@ -1339,12 +1339,44 @@
     "sentence": "Der Vogel fliegt hoch."
   },
   {
+    "id": "ch-v11",
+    "kind": "error",
+    "word": "Feuer",
+    "ruleId": "f-oder-v",
+    "prompt": "Was wärmt dich im Winter? Das …",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "hints": [
+      "Feuer ist ein deutsches Wort mit f.",
+      "Das Feuer brennt – mit f."
+    ],
+    "wrong": "Veuer",
+    "answer": "Feuer",
+    "errorIndex": 0,
+    "sentence": "Das Feuer brennt im Ofen."
+  },
+  {
+    "id": "ch-v12",
+    "kind": "error",
+    "word": "Fahrrad",
+    "ruleId": "f-oder-v",
+    "prompt": "Womit fährst du zur Schule? Mit dem …",
+    "ruleText": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feuer, Fahrrad. Ein paar häufige deutsche Wörter beginnen mit v: Vogel, Vater, viel, von, vor, voll. In Fremdwörtern wie Vase oder Video klingt v wie w.",
+    "hints": [
+      "Fahrrad beginnt mit f.",
+      "Das Fahrrad hat zwei Räder – mit f."
+    ],
+    "wrong": "Vahrrad",
+    "answer": "Fahrrad",
+    "errorIndex": 0,
+    "sentence": "Ich fahre mit dem Fahrrad."
+  },
+  {
     "id": "ch-k1",
     "kind": "gap",
     "word": "sechs",
     "ruleId": "ks-laute",
     "prompt": "Wie schreibt man sechs?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "sechs – sechste: das ch bleibt.",
       "Zähl mit: eins, zwei, drei, vier, fünf, sechs."
@@ -1365,7 +1397,7 @@
     "word": "Fuchs",
     "ruleId": "ks-laute",
     "prompt": "Welches Tier hat einen buschigen Schwanz?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Fuchs → Füchse: das ch bleibt.",
       "Ein Fuchs ist kein Fuks."
@@ -1381,7 +1413,7 @@
     "word": "Tags",
     "ruleId": "ks-laute",
     "prompt": "Der Tag – zwei …?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Grundform: der Tag. Häng s dran: Tags.",
       "Das g aus dem Tag bleibt sichtbar."
@@ -1401,7 +1433,7 @@
     "word": "Zugs",
     "ruleId": "ks-laute",
     "prompt": "Der Zug – mit s wird …?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Grundform: der Zug.",
       "Zug + s = Zugs mit g."
@@ -1416,7 +1448,7 @@
     "word": "Schecks",
     "ruleId": "ks-laute",
     "prompt": "Der Scheck – mehrere …?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Scheck endet auf ck; dann kommt s dazu.",
       "Scheck → Schecks mit cks."
@@ -1437,7 +1469,7 @@
     "word": "Blocks",
     "ruleId": "ks-laute",
     "prompt": "Der Block – zwei …?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Block endet auf ck.",
       "Block + s = Blocks mit cks."
@@ -1453,7 +1485,7 @@
     "word": "Box",
     "ruleId": "ks-laute",
     "prompt": "Eine Box – mit x oder ks?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Box → Boxen: das x bleibt.",
       "Box ist ein kurzes Fremdwort mit x."
@@ -1474,7 +1506,7 @@
     "word": "Hexe",
     "ruleId": "ks-laute",
     "prompt": "Die Hexe – mit x oder ks?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Hexe hat ein x.",
       "Denk an Hexe und Box."
@@ -1495,7 +1527,7 @@
     "word": "Keks",
     "ruleId": "ks-laute",
     "prompt": "Der Keks – mit ks oder x?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Keks → Kekse: das ks bleibt.",
       "Keks wird nicht mit x geschrieben."
@@ -1516,7 +1548,7 @@
     "word": "links",
     "ruleId": "ks-laute",
     "prompt": "Das Wort links – mit ks oder x?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "links endet auf ks.",
       "Denk an „link“ und häng s dran."
@@ -1537,7 +1569,7 @@
     "word": "Extra",
     "ruleId": "ks-laute",
     "prompt": "Was steht am Anfang: Ex oder Eks?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Extra beginnt mit ex – wie Export.",
       "Fremdwörter mit ex- schreibt man mit x."
@@ -1558,7 +1590,7 @@
     "word": "Export",
     "ruleId": "ks-laute",
     "prompt": "Welches Wort beginnt mit ex-?",
-    "ruleText": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
     "hints": [
       "Export beginnt mit ex – wie Extra.",
       "Das x steht direkt nach dem E."
@@ -1569,12 +1601,60 @@
     "sentence": "Wir exportieren Waren."
   },
   {
+    "id": "ch-k13",
+    "kind": "error",
+    "word": "Wachs",
+    "ruleId": "ks-laute",
+    "prompt": "Womit polierst du den Boden? Mit …",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
+    "hints": [
+      "wachsen → Wachs: das chs bleibt.",
+      "Wachs wird mit chs geschrieben."
+    ],
+    "wrong": "Waks",
+    "answer": "Wachs",
+    "errorIndex": 2,
+    "sentence": "Ich poliere mit Wachs."
+  },
+  {
+    "id": "ch-k14",
+    "kind": "error",
+    "word": "Klecks",
+    "ruleId": "ks-laute",
+    "prompt": "Ein … Tinte auf dem Papier.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
+    "hints": [
+      "Klecks endet auf cks.",
+      "Denk an Schecks – beide enden auf cks."
+    ],
+    "wrong": "Kleks",
+    "answer": "Klecks",
+    "errorIndex": 3,
+    "sentence": "Ein Klecks Tinte liegt auf dem Papier."
+  },
+  {
+    "id": "ch-k15",
+    "kind": "error",
+    "word": "flugs",
+    "ruleId": "ks-laute",
+    "prompt": "Er kam … zurück.",
+    "ruleText": "Der ks-Laut hat viele Gesichter: Wachs und Fuchs mit chs, Keks mit ks, Klecks mit cks, Hexe mit x, flugs mit gs. Denk an die Grundform: Scheck → Schecks.",
+    "hints": [
+      "flugs kommt von Flug: das g bleibt.",
+      "Das gs hörst du, wenn du flugs sagst."
+    ],
+    "wrong": "fluk",
+    "answer": "flugs",
+    "errorIndex": 3,
+    "sentence": "Er kam flugs zurück."
+  },
+  {
     "id": "ch-y1",
     "kind": "error",
     "word": "Baby",
     "ruleId": "y-laute",
     "prompt": "Wie schreibt man das kleine Kind?",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Das y am Ende klingt wie i: Baby.",
       "Baby endet auf y – nicht auf i."
@@ -1590,7 +1670,7 @@
     "word": "Hobby",
     "ruleId": "y-laute",
     "prompt": "Was machst du in deiner Freizeit? Dein …",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Hobby klingt wie „Hobi“, wird aber mit y geschrieben.",
       "Das y am Ende klingt wie i."
@@ -1606,7 +1686,7 @@
     "word": "Party",
     "ruleId": "y-laute",
     "prompt": "Wir feiern eine …",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Party endet auf y.",
       "Das y klingt hier wie i."
@@ -1622,7 +1702,7 @@
     "word": "City",
     "ruleId": "y-laute",
     "prompt": "City oder Citi?",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Das y am Ende klingt wie i.",
       "Die City liegt im Zentrum."
@@ -1642,7 +1722,7 @@
     "word": "Typ",
     "ruleId": "y-laute",
     "prompt": "Was für ein … ist er?",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Hier klingt das y wie ü: Typ.",
       "Sprich das Wort deutlich: Typ."
@@ -1658,7 +1738,7 @@
     "word": "Zyklus",
     "ruleId": "y-laute",
     "prompt": "Der … wiederholt sich.",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Zyklus wird mit y geschrieben.",
       "Das y klingt hier wie ü."
@@ -1674,7 +1754,7 @@
     "word": "Symbol",
     "ruleId": "y-laute",
     "prompt": "Ein Herz ist ein …",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Symbol hat ein y.",
       "Das y klingt wie ü."
@@ -1690,7 +1770,7 @@
     "word": "Hymne",
     "ruleId": "y-laute",
     "prompt": "Die … wird gesungen.",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Hymne wird mit y geschrieben.",
       "Das y klingt wie ü."
@@ -1706,7 +1786,7 @@
     "word": "Yoga",
     "ruleId": "y-laute",
     "prompt": "Wir machen …",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Am Anfang klingt y wie j: Yoga.",
       "Yoga beginnt mit y."
@@ -1722,7 +1802,7 @@
     "word": "Yeti",
     "ruleId": "y-laute",
     "prompt": "Im Schnee wohnt der …",
-    "ruleText": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
     "hints": [
       "Yeti beginnt mit y.",
       "Das y klingt hier wie j."
@@ -1733,12 +1813,64 @@
     "sentence": "Der Yeti wohnt im Schnee."
   },
   {
+    "id": "ch-y11",
+    "kind": "gap",
+    "word": "Handy",
+    "ruleId": "y-laute",
+    "prompt": "Handy oder Handi?",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
+    "hints": [
+      "Das y am Ende klingt wie i.",
+      "Handy ist ein Lehnwort mit y."
+    ],
+    "before": "Han",
+    "after": "",
+    "answer": "dy",
+    "options": [
+      "dy",
+      "di"
+    ],
+    "sentence": "Mein Handy liegt auf dem Tisch."
+  },
+  {
+    "id": "ch-y12",
+    "kind": "error",
+    "word": "Gymnastik",
+    "ruleId": "y-laute",
+    "prompt": "Wir treiben …",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
+    "hints": [
+      "Gymnastik ist ein Fremdwort mit y.",
+      "Das y klingt hier wie ü."
+    ],
+    "wrong": "Gimnastik",
+    "answer": "Gymnastik",
+    "errorIndex": 1,
+    "sentence": "Wir treiben Gymnastik."
+  },
+  {
+    "id": "ch-y13",
+    "kind": "error",
+    "word": "Pyramide",
+    "ruleId": "y-laute",
+    "prompt": "In Ägypten steht eine …",
+    "ruleText": "Wörter mit y sind meist Fremd- und Lehnwörter: Baby, Handy, Hobby, Gymnastik, Pyramide. Das y klingt mal wie i, mal wie ü, am Anfang auch wie j.",
+    "hints": [
+      "Pyramide ist ein Fremdwort mit y.",
+      "Das y klingt hier wie ü."
+    ],
+    "wrong": "Piramide",
+    "answer": "Pyramide",
+    "errorIndex": 1,
+    "sentence": "Die Pyramide steht in der Wüste."
+  },
+  {
     "id": "ch-p1",
     "kind": "error",
     "word": "Pferd",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "prompt": "Was läuft auf vier Beinen?",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
     "hints": [
       "Ein Pferd beginnt mit pf.",
       "Pferd → Pferde: das pf bleibt."
@@ -1752,9 +1884,9 @@
     "id": "ch-p2",
     "kind": "error",
     "word": "Pflanze",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "prompt": "Was wächst im Garten?",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
     "hints": [
       "pflanzen → Pflanze: das pf bleibt.",
       "Sprich das Wort deutlich: Pflanze."
@@ -1768,9 +1900,9 @@
     "id": "ch-p3",
     "kind": "error",
     "word": "Pflege",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "prompt": "Wer kümmert sich um Kranke? Die …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
     "hints": [
       "pflegen → Pflege.",
       "Pflege beginnt mit pf."
@@ -1784,9 +1916,9 @@
     "id": "ch-p4",
     "kind": "derive",
     "word": "Pflug",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "prompt": "Wie heißt die Grundform von pflügen?",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
     "hints": [
       "pflügen → Pflug: das pf bleibt.",
       "Denk an den Pflug auf dem Feld."
@@ -1799,9 +1931,9 @@
     "id": "ch-p5",
     "kind": "derive",
     "word": "Pflaster",
-    "ruleId": "pf-qu",
+    "ruleId": "pf-mpf",
     "prompt": "Was legst du auf den Weg? Das …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
     "hints": [
       "pflastern → Pflaster: das pf bleibt.",
       "Das Pflaster liegt auf der Straße."
@@ -1811,12 +1943,92 @@
     "sentence": "Das Pflaster ist neu."
   },
   {
+    "id": "ch-p6",
+    "kind": "error",
+    "word": "Apfel",
+    "ruleId": "pf-mpf",
+    "prompt": "Was wächst am Baum? Der …",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
+    "hints": [
+      "Apfel hat pf mitten im Wort.",
+      "Sprich deutlich: Apfel – das pf bleibt."
+    ],
+    "wrong": "Afel",
+    "answer": "Apfel",
+    "errorIndex": 1,
+    "sentence": "Der Apfel hängt am Baum."
+  },
+  {
+    "id": "ch-p7",
+    "kind": "error",
+    "word": "Kopf",
+    "ruleId": "pf-mpf",
+    "prompt": "Was hast du auf den Schultern? Den …",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
+    "hints": [
+      "Kopf → Köpfe: das pf bleibt.",
+      "Du hörst einen Laut, schreibst aber zwei."
+    ],
+    "wrong": "Kof",
+    "answer": "Kopf",
+    "errorIndex": 2,
+    "sentence": "Ich trage eine Mütze auf dem Kopf."
+  },
+  {
+    "id": "ch-p8",
+    "kind": "error",
+    "word": "Strumpf",
+    "ruleId": "pf-mpf",
+    "prompt": "Was ziehst du an die Füße? Den …",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
+    "hints": [
+      "Strumpf → Strümpfe: das mpf bleibt.",
+      "Nach dem m kommen p und f."
+    ],
+    "wrong": "Strumf",
+    "answer": "Strumpf",
+    "errorIndex": 5,
+    "sentence": "Der Strumpf ist warm."
+  },
+  {
+    "id": "ch-p9",
+    "kind": "error",
+    "word": "Kampf",
+    "ruleId": "pf-mpf",
+    "prompt": "Zwei Mannschaften im …",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
+    "hints": [
+      "Kampf → Kämpfe: das mpf bleibt.",
+      "Sprich: Kampf – mit mpf."
+    ],
+    "wrong": "Kamf",
+    "answer": "Kampf",
+    "errorIndex": 3,
+    "sentence": "Der Kampf war spannend."
+  },
+  {
+    "id": "ch-p10",
+    "kind": "error",
+    "word": "Dampf",
+    "ruleId": "pf-mpf",
+    "prompt": "Was steigt aus dem Topf? Der …",
+    "ruleText": "Der pf-Laut steht am Anfang (Pferd), mitten im Wort (Apfel, Kopf) oder nach m (Strumpf, Kampf, Dampf). In der Wortfamilie bleibt er erhalten.",
+    "hints": [
+      "Dampf → Dämpfe: das mpf bleibt.",
+      "Dampf beginnt nicht mit f."
+    ],
+    "wrong": "Damf",
+    "answer": "Dampf",
+    "errorIndex": 3,
+    "sentence": "Der Dampf steigt auf."
+  },
+  {
     "id": "ch-q1",
     "kind": "error",
     "word": "Quelle",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "prompt": "Wo kommt das Wasser her? Aus der …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
     "hints": [
       "quellen → Quelle: das qu bleibt.",
       "Das q steht direkt vor u."
@@ -1830,9 +2042,9 @@
     "id": "ch-q2",
     "kind": "error",
     "word": "Quittung",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "prompt": "Was bekommst du beim Bezahlen? Die …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
     "hints": [
       "quittieren → Quittung.",
       "Quittung beginnt mit qu."
@@ -1846,9 +2058,9 @@
     "id": "ch-q3",
     "kind": "error",
     "word": "Qualität",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "prompt": "Wie gut ist etwas? Die …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
     "hints": [
       "Qualität beginnt mit qu.",
       "Das q steht vor u."
@@ -1862,9 +2074,9 @@
     "id": "ch-q4",
     "kind": "error",
     "word": "Quartal",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "prompt": "Ein Viertel Jahr ist ein …",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
     "hints": [
       "Quartal beginnt mit qu.",
       "Das q steht direkt vor u."
@@ -1878,9 +2090,9 @@
     "id": "ch-q5",
     "kind": "gap",
     "word": "Quell",
-    "ruleId": "pf-qu",
+    "ruleId": "qu",
     "prompt": "Quell oder Kuell?",
-    "ruleText": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
     "hints": [
       "Das q steht vor u.",
       "Quell beginnt mit qu."
@@ -1894,6 +2106,86 @@
       "Quu"
     ],
     "sentence": "Das Quellwasser ist kalt."
+  },
+  {
+    "id": "ch-q6",
+    "kind": "error",
+    "word": "Qualle",
+    "ruleId": "qu",
+    "prompt": "Was schwimmt im Meer? Die …",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
+    "hints": [
+      "Qualle beginnt mit qu.",
+      "Das q steht direkt vor u."
+    ],
+    "wrong": "Kwalle",
+    "answer": "Qualle",
+    "errorIndex": 0,
+    "sentence": "Die Qualle schwimmt im Meer."
+  },
+  {
+    "id": "ch-q7",
+    "kind": "error",
+    "word": "Quark",
+    "ruleId": "qu",
+    "prompt": "Was isst du zum Frühstück? Den …",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
+    "hints": [
+      "Quark beginnt mit qu.",
+      "Sprich das qu deutlich mit."
+    ],
+    "wrong": "Kwark",
+    "answer": "Quark",
+    "errorIndex": 0,
+    "sentence": "Ich esse Quark mit Obst."
+  },
+  {
+    "id": "ch-q8",
+    "kind": "error",
+    "word": "quaken",
+    "ruleId": "qu",
+    "prompt": "Was macht der Frosch? Er …",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
+    "hints": [
+      "quaken → Quaken: das qu bleibt.",
+      "Das q steht vor u."
+    ],
+    "wrong": "kwaken",
+    "answer": "quaken",
+    "errorIndex": 0,
+    "sentence": "Der Frosch fängt an zu quaken."
+  },
+  {
+    "id": "ch-q9",
+    "kind": "error",
+    "word": "bequem",
+    "ruleId": "qu",
+    "prompt": "Der Sessel ist …",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
+    "hints": [
+      "bequem behält das qu in der Mitte.",
+      "Das q steht direkt vor u."
+    ],
+    "wrong": "bekwem",
+    "answer": "bequem",
+    "errorIndex": 2,
+    "sentence": "Der Sessel ist bequem."
+  },
+  {
+    "id": "ch-q10",
+    "kind": "error",
+    "word": "Quatsch",
+    "ruleId": "qu",
+    "prompt": "Das war nur …",
+    "ruleText": "Das q steht im Deutschen fast immer direkt vor u: Quelle, Qualle, Quark, quaken, bequem, Quatsch. Sprich das qu deutlich mit.",
+    "hints": [
+      "Quatsch beginnt mit qu.",
+      "Das q steht direkt vor u."
+    ],
+    "wrong": "Kwatsch",
+    "answer": "Quatsch",
+    "errorIndex": 0,
+    "sentence": "Das war nur Quatsch."
   },
   {
     "id": "ch-d1",
@@ -2017,5 +2309,205 @@
       "Denk an die Städte – das d bleibt."
     ],
     "sentence": "In der Stadt wohnen viele Menschen."
+  },
+  {
+    "id": "ch-h1",
+    "kind": "gap",
+    "word": "Meer",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Meer ist das Wasser – mehr ist eine Menge.",
+      "Lies den ganzen Satz: Wovon ist die Rede?"
+    ],
+    "before": "Wir fahren im Sommer ans",
+    "after": ". Das Wasser ist blau.",
+    "answer": "Meer",
+    "options": [
+      "Meer",
+      "mehr"
+    ],
+    "sentence": "Wir fahren im Sommer ans Meer. Das Wasser ist blau."
+  },
+  {
+    "id": "ch-h2",
+    "kind": "gap",
+    "word": "mehr",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "mehr heißt „eine größere Menge“.",
+      "Hier passt kein Meer hinein."
+    ],
+    "before": "Ich möchte noch",
+    "after": " Kuchen.",
+    "answer": "mehr",
+    "options": [
+      "Meer",
+      "mehr"
+    ],
+    "sentence": "Ich möchte noch mehr Kuchen."
+  },
+  {
+    "id": "ch-h3",
+    "kind": "gap",
+    "word": "Wal",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Ein Wal ist ein Tier.",
+      "Wahl wäre eine Entscheidung – hier schwimmt ein Tier."
+    ],
+    "before": "Im Meer schwimmt ein",
+    "after": ".",
+    "answer": "Wal",
+    "options": [
+      "Wal",
+      "Wahl"
+    ],
+    "sentence": "Im Meer schwimmt ein Wal."
+  },
+  {
+    "id": "ch-h4",
+    "kind": "gap",
+    "word": "Wahl",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "eine Wahl ist eine Entscheidung.",
+      "Sprich beide Wörter: nur eines ergibt Sinn."
+    ],
+    "before": "Wir treffen eine",
+    "after": ".",
+    "answer": "Wahl",
+    "options": [
+      "Wal",
+      "Wahl"
+    ],
+    "sentence": "Wir treffen eine Wahl."
+  },
+  {
+    "id": "ch-h5",
+    "kind": "gap",
+    "word": "Lied",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Ein Lied wird gesungen.",
+      "Das Lid gehört zum Auge."
+    ],
+    "before": "Das",
+    "after": " ist schön.",
+    "answer": "Lied",
+    "options": [
+      "Lied",
+      "Lid"
+    ],
+    "sentence": "Das Lied ist schön."
+  },
+  {
+    "id": "ch-h6",
+    "kind": "gap",
+    "word": "Lid",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Das Lid ist das Augenlid.",
+      "Hier singt niemand – es geht ums Auge."
+    ],
+    "before": "Er schließt das",
+    "after": ".",
+    "answer": "Lid",
+    "options": [
+      "Lied",
+      "Lid"
+    ],
+    "sentence": "Er schließt das Lid."
+  },
+  {
+    "id": "ch-h7",
+    "kind": "gap",
+    "word": "Seite",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Die Seite steht im Buch.",
+      "Eine Saite gehört zur Gitarre."
+    ],
+    "before": "Ich lese auf der",
+    "after": ".",
+    "answer": "Seite",
+    "options": [
+      "Seite",
+      "Saite"
+    ],
+    "sentence": "Ich lese auf der Seite."
+  },
+  {
+    "id": "ch-h8",
+    "kind": "gap",
+    "word": "Saite",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Die Saite klingt – die Seite nicht.",
+      "Denk an das Instrument."
+    ],
+    "before": "Die",
+    "after": " der Gitarre klingt.",
+    "answer": "Saite",
+    "options": [
+      "Seite",
+      "Saite"
+    ],
+    "sentence": "Die Saite der Gitarre klingt."
+  },
+  {
+    "id": "ch-h9",
+    "kind": "gap",
+    "word": "Mal",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "zum ersten Mal heißt „einmal“.",
+      "Ein Mahl ist eine Mahlzeit."
+    ],
+    "before": "Das ist das erste",
+    "after": ".",
+    "answer": "Mal",
+    "options": [
+      "Mal",
+      "Mahl"
+    ],
+    "sentence": "Das ist das erste Mal."
+  },
+  {
+    "id": "ch-h10",
+    "kind": "gap",
+    "word": "Mahl",
+    "ruleId": "homophone",
+    "prompt": "Welches Wort passt in den Satz?",
+    "ruleText": "Meer oder mehr? Wal oder Wahl? Solche Wörter klingen gleich, haben aber verschiedene Bedeutungen. Lies vor und nach der Lücke und setze beide probehalber ein.",
+    "hints": [
+      "Ein Mahl ist das Essen.",
+      "Hier geht es um Essen, nicht um einen Zeitpunkt."
+    ],
+    "before": "Das",
+    "after": " war reichlich.",
+    "answer": "Mahl",
+    "options": [
+      "Mal",
+      "Mahl"
+    ],
+    "sentence": "Das Mahl war reichlich."
   }
 ]

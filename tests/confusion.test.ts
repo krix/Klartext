@@ -13,7 +13,9 @@ const rules = rawRules as unknown as Rule[];
 const words = rawWords as unknown as Word[];
 const challenges = rawChallenges as unknown as Challenge[];
 
-const NEW_RULES = ['e-oder-ae', 'f-oder-v', 'ks-laute', 'y-laute', 'pf-qu', 'dt'] as const;
+const NEW_RULES = [
+  'e-oder-ae', 'f-oder-v', 'ks-laute', 'y-laute', 'pf-mpf', 'qu', 'dt', 'homophone',
+] as const;
 
 function topicChallenges(ruleId: string): Challenge[] {
   return challenges.filter((challenge) => challenge.ruleId === ruleId);
@@ -33,8 +35,9 @@ function singleChallenge(challenge: Challenge) {
 }
 
 describe('Verwechslungsgefahr', () => {
-  it('bildet einen eigenen Themenbereich mit drei Regeln', () => {
+  it('bildet einen eigenen Themenbereich mit allen Regeln', () => {
     expect(areas.some((area) => area.id === 'verwechslung')).toBe(true);
+    expect(rules.some((rule) => rule.id === 'pf-qu')).toBe(false);
     for (const id of NEW_RULES) {
       const rule = rules.find((candidate) => candidate.id === id);
       expect(rule, id).toBeDefined();
@@ -68,12 +71,33 @@ describe('Verwechslungsgefahr', () => {
   });
 
   it('setzt Lückentexte korrekt zusammen und bietet die Lösung als Option', () => {
-    const gaps = challenges.filter((challenge) => NEW_RULES.includes(challenge.ruleId as typeof NEW_RULES[number]) && challenge.kind === 'gap');
+    const gaps = challenges.filter((challenge) =>
+      NEW_RULES.includes(challenge.ruleId as typeof NEW_RULES[number]) &&
+      challenge.kind === 'gap' && challenge.ruleId !== 'homophone');
     expect(gaps.length).toBeGreaterThanOrEqual(13);
     for (const task of gaps) {
       expect(`${task.before ?? ''}${task.answer ?? ''}${task.after ?? ''}`, task.id).toBe(task.word);
       expect(task.options?.includes(task.answer ?? ''), task.id).toBe(true);
     }
+  });
+
+  it('entscheidet bei gleich klingenden Wörtern über die Bedeutung im Satz', () => {
+    const tasks = topicChallenges('homophone');
+    expect(tasks.length).toBeGreaterThanOrEqual(10);
+    for (const task of tasks) {
+      expect(task.kind, task.id).toBe('gap');
+      expect(task.options?.length, task.id).toBe(2);
+      expect(task.options?.includes(task.answer ?? ''), task.id).toBe(true);
+      expect(`${task.before ?? ''}${task.after ?? ''}`.length, task.id).toBeGreaterThan(4);
+      expect(words.find((word) => word.id === task.id)?.sentence, task.id).toContain(task.word);
+    }
+    const pair = tasks[0];
+    const html = practiceView(freshState(), singleChallenge(pair), false, false);
+    expect(html).toContain('gap-blank');
+    expect(html).toContain(pair.before);
+    expect(html).toContain(pair.after);
+    expect(html).not.toContain('</span> .');
+    for (const option of pair.options ?? []) expect(html).toContain(option);
   });
 
   it('bietet bei Ableitungen die Grundform und die erwartete Form', () => {

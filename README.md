@@ -26,7 +26,7 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 | Bildschirm | Inhalt |
 |---|---|
 | Start | Täglich wechselnder Wortgruß mit Namen des aktiven Profils, Profilwechsel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
-| Themen | Fünf Bereiche mit 28 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
+| Themen | Fünf Bereiche mit 30 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
 | Übung | Eine Aufgabe pro Bildschirm, Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt. Neun Formen: Silben bauen (Tippen/Ziehen mit Silbenbögen), Silben trennen, Fehler finden und tippen, Lückenwörter, Ableiten (ä/äu, Auslautverhärtung), Wortbausteine (ver-, vor-, -ung, -keit), Merkwörter mit Mehrkanal-Lernen, das/dass und Groß-/Kleinschreibung mit Ersatzprobe, Diktat mit wiederholbarer Sprachausgabe und Handschrift. Tipp und Lösung immer dabei |
 | Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
 | Rundenende | Übersicht aller geübten Wörter mit ✓/↻ (kein rotes Kreuz), Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
@@ -47,17 +47,17 @@ AppData
 └─ customWords[]: id, word, ruleId, level, hint
 ```
 
-Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 440 Wörter, 120 Interaktiv-Aufgaben und 28 Regelthemen liegen als JSON in `src/data/`.
+Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 468 Wörter, 148 Interaktiv-Aufgaben und 30 Regelthemen liegen als JSON in `src/data/`.
 
 ### Themen
 
-Die Wörter sind über `ruleId` den 28 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in fünf Bereiche zusammen:
+Die Wörter sind über `ruleId` den 30 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in fünf Bereiche zusammen:
 
 - **Laute & Buchstaben:** ie/i, ei/ai, äu/eu, sch/st/sp
 - **Länge & Silben:** ss/ß, lange Vokale, Dehnungs-h, Doppelkonsonanten
 - **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, -ig/-lich, -heit/-keit
 - **Wörter im Satz:** das/dass, als/wie, Großschreibung
-- **Verwechslungsgefahr:** e/ä (verwandtes Wort mit a), f/v (deutsche Merkwörter und Fremdwörter), ks-Laute (cks, gs, chs, x, ks, ex-), y (wie i/ü/j), Wortfamilien mit pf und qu, Lernwörter mit -dt
+- **Verwechslungsgefahr:** e/ä (Wortfamilie mit a suchen: Baum → Bäume, Garten → Gärten), f/v (Vogel, Vater, viel gegenüber Fisch, Feuer, Fahrrad), gs/ks/cks/chs/x (Wachs, Fuchs, Keks, Hexe, Klecks, flugs), y (meist Fremd- und Lehnwörter: Baby, Handy, Gymnastik, Pyramide, Hobby), pf und mpf (Pferd, Apfel, Kopf, Strumpf, Kampf, Dampf), qu (Quelle, Qualle, Quark, quaken, bequem, Quatsch), Lernwörter mit -dt, gleich klingende Wörter (Meer/mehr, Wal/Wahl, Lied/Lid, Seite/Saite, Mal/Mahl – Bedeutung im Satz erkennen)
 
 Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas; Wiederholungen und der Austausch gegen schwerere Wörter bleiben ebenfalls im Thema. Die eingestellte Rundenlänge bleibt dabei immer gleich. „Alle Themen mischen“ in der Themenübersicht (und „Übung starten“ auf der Startseite) mischt bewusst über alle Themen hinweg. Innerhalb einer Runde werden verschiedene Varianten eines Themas gemischt, zum Beispiel bei ei/ai beide Schreibweisen.
 
@@ -169,16 +169,16 @@ Straße|ss-oesz
 Biene|ie-i
 ```
 
-Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`, `silbenbau`, `fehlerfinden`, `luecken`, `ableiten`, `bausteine`, `merkwoerter`, `e-oder-ae`, `f-oder-v`, `ks-laute`, `y-laute`, `pf-qu`, `dt`.
+Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`, `silbenbau`, `fehlerfinden`, `luecken`, `ableiten`, `bausteine`, `merkwoerter`, `e-oder-ae`, `f-oder-v`, `ks-laute`, `y-laute`, `pf-mpf`, `qu`, `dt`, `homophone`.
 
-- Die neun Übungsformen stammen aus dem Prototyp in `alternate-vanilla/`. `node scripts/import-challenges.mjs` übernimmt dessen Aufgaben, Regeln und Wörter nach `src/data/challenges.json`, `src/data/words.json` und `src/data/rules.json` (aktualisiert vorhandene Einträge, löscht nichts). Die 60 zusätzlichen Aufgaben zum Thema „Verwechslungsgefahr“ (e/ä, f/v, ks-Laute, y, pf/qu, -dt) stehen direkt im Skript und werden bei jedem Lauf mitgeschrieben.
+- Die neun Übungsformen stammen aus dem Prototyp in `alternate-vanilla/`. `node scripts/import-challenges.mjs` übernimmt dessen Aufgaben, Regeln und Wörter nach `src/data/challenges.json`, `src/data/words.json` und `src/data/rules.json` (aktualisiert vorhandene Einträge, löscht nichts). Die 88 zusätzlichen Aufgaben zum Thema „Verwechslungsgefahr“ (e/ä, f/v, ks-Laute, y, pf/mpf, qu, -dt, Homophone) stehen direkt im Skript und werden bei jedem Lauf mitgeschrieben. Der Bereich wird beim Import vollständig aus dem Skript neu aufgebaut; umbenannte Regeln aus früheren Läufen bleiben dabei nicht liegen.
 - Dauerhaft neue Wörter oder Regeln: Dateien `src/data/words.json` und `src/data/rules.json` erweitern. Jedes Wort braucht `id`, `word`, `ruleId`, `level` (1–3), `hint` und optional `sentence`. Ein neues Thema zusätzlich in `src/data/topic-groups.json` einem Bereich zuordnen und in `rules.json` die Felder `area`, `summary`, `goal`, `rules` und `examples` füllen – dann erscheint automatisch eine Lernseite dafür. Danach `npm test && npm run build`.
 
 ---
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 80 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, alle neun Übungsformen inklusive schrittweiser Hilfe, das Thema „Verwechslungsgefahr“ mit e/ä, f/v, ks-Lauten, y, pf/qu und -dt inklusive konsistenter Lückentexte und Fehlerstellen, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf mit Auswahl-, Tipp- und Silbenaufgaben, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 81 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, alle neun Übungsformen inklusive schrittweiser Hilfe, das Thema „Verwechslungsgefahr“ mit e/ä, f/v, ks-Lauten, y, pf/mpf, qu, -dt und Homophonen inklusive konsistenter Lückentexte, Fehlerstellen und Satzzusammenhänge, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf mit Auswahl-, Tipp- und Silbenaufgaben, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 
