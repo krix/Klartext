@@ -2,7 +2,7 @@ import { escapeHtml, header } from './html';
 import type { ConnectionTestResult } from '../lib/gemini';
 import type { AppData, Difference, Exercise, Rule, TopicArea, Word } from '../lib/types';
 import { diffWords, type PlanEntry } from '../lib/learning';
-import type { SessionResult, SessionState } from '../lib/session';
+import { roundStats, type SessionResult, type SessionState } from '../lib/session';
 
 export interface FeedbackView {
   kind: 'success' | 'retry' | 'fallback' | 'summary';
@@ -289,13 +289,17 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
 export function practiceView(data: AppData, session: SessionState, checking: boolean, helpVisible: boolean): string {
   const exercise = session.current;
   if (!exercise) return homeView(data, [], 0, 0, 0);
-  const percent = Math.round((session.done / Math.max(1, session.total)) * 100);
+  const stats = roundStats(session);
+  const percent = Math.min(100, Math.round((stats.words / Math.max(1, stats.total)) * 100));
+  const progressLabel = session.currentRetry
+    ? `Wiederholung · ${stats.words} von ${stats.total} Wörtern`
+    : `Wort ${Math.min(stats.words + 1, stats.total)} von ${stats.total}`;
   const isChoice = exercise.kind === 'choice';
   const canUseAi = data.settings.apiKey.trim().length > 0 && data.settings.privacyOptIn;
 
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <div class="practice-head">
-      <span>Wort ${session.done + 1} von ${session.total}</span>
+      <span>${progressLabel}</span>
       <button class="link-button" type="button" data-action="quit">Übung beenden</button>
     </div>
     <div class="progress-track" role="progressbar" aria-label="Fortschritt der Übung" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${percent}%"></span></div>

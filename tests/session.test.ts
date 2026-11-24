@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createSession, finishExercise, isSessionFinished, nextExercise, refillWords } from '../src/lib/session';
+import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, upgradeQueue } from '../src/lib/session';
 import { DEFAULT_SETTINGS } from '../src/lib/storage';
 import type { Rule, Word } from '../src/lib/types';
 
@@ -100,7 +100,7 @@ describe('Übungssitzung', () => {
     expect([...seen].every((id) => id === 'a' || id === 'b')).toBe(true);
   });
 
-  it('ergänzt nach einer Erfolgsserie nur aus dem Pool der Themenrunde', () => {
+  it('tauscht nach einer Erfolgsserie, ohne die Rundenlänge zu vergrößern', () => {
     const topicWords: Word[] = [
       { id: 't1', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' },
       { id: 't2', word: 'Antike', ruleId: 'ie-i', level: 1, hint: 'Tipp' },
@@ -110,10 +110,26 @@ describe('Übungssitzung', () => {
     ];
     const mixed = [...topicWords, words[2]];
     const session = createSession(mixed, rules, {}, { ...settings, sessionLength: 2 }, () => 0.5, Date.now(), 'ie-i');
-    const improved = { ...session, difficulty: 3 };
-    const refilled = refillWords(improved, mixed, {});
-    expect(refilled.length).toBeGreaterThan(0);
-    expect(refilled.every((word) => word.ruleId === 'ie-i')).toBe(true);
-    expect(refilled.every((word) => topicWords.some((topic) => topic.id === word.id))).toBe(true);
+    const upcoming = session.queue[0];
+    const upgraded = upgradeQueue({ ...session, difficulty: 3 }, mixed);
+    expect(upgraded.total).toBe(session.total);
+    expect(upgraded.queue).toHaveLength(1);
+    expect(upgraded.queue[0]).not.toBe(upcoming);
+    expect(mixed.find((word) => word.id === upgraded.queue[0])?.ruleId).toBe('ie-i');
+    expect(upgraded.reserveIds).not.toContain(upgraded.queue[0]);
+  });
+
+  it('zählt Wörter, Treffer und Wiederholungen unabhängig von der Rundenlänge', () => {
+    let session = createSession(words, rules, {}, settings, () => 0.5);
+    session = finishExercise(session, false);
+    session = nextExercise(session, words, rules, () => 0.5);
+    session = finishExercise(session, true);
+    session = nextExercise(session, words, rules, () => 0.5);
+    session = finishExercise(session, true);
+    session = nextExercise(session, words, rules, () => 0.5);
+    expect(session.currentRetry).toBe(true);
+    expect(roundStats(session)).toMatchObject({ words: 3, total: 3, correctWords: 2, repeats: 0 });
+    session = finishExercise(session, true);
+    expect(roundStats(session)).toMatchObject({ words: 3, total: 3, correctWords: 2, repeats: 1 });
   });
 });

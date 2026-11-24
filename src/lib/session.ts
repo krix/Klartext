@@ -23,7 +23,11 @@ export interface SessionState {
   queue: string[];
   retries: string[];
   recentIds: string[];
+  /** Nicht eingeplante Wörter aus demselben Pool für den Austausch nach einer Erfolgsserie. */
+  reserveIds: string[];
   current: Exercise | null;
+  /** Zeigt an, dass das aktuelle Wort eine Wiederholung ist. */
+  currentRetry: boolean;
   /** Alle bisherigen Ergebnisse der Runde – auch Wiederholungen. */
   results: SessionResult[];
   done: number;
@@ -59,13 +63,23 @@ export function createSession(
   // Die Wortbank der Runde steht fest – adaptive Ergänzungen bleiben dadurch im gewählten Thema.
   const pool = words.filter((word) => !ruleId || word.ruleId === ruleId);
   const chosen = selectWords(pool, progress, settings.sessionLength, { now, rng });
+  const chosenIds = new Set(chosen.map((word) => word.id));
+  // Reserven liegen bereits fest. Bei einer Erfolgsserie wird getauscht, nie nachgelegt –
+  // so bleibt „Wörter pro Runde“ die ganze Runde über verlässlich.
+  const reserves = selectWords(pool.filter((word) => !chosenIds.has(word.id)), progress, 4, {
+    now,
+    difficulty: 3,
+    rng,
+  });
   const initial: SessionState = {
     poolIds: pool.map((word) => word.id),
     ruleId,
     queue: chosen.map((word) => word.id),
     retries: [],
     recentIds: [],
+    reserveIds: reserves.map((word) => word.id),
     current: null,
+    currentRetry: false,
     results: [],
     done: 0,
     total: chosen.length,
@@ -86,25 +100,55 @@ export function sessionWords(session: SessionState, words: readonly Word[]): Wor
     (session.poolIds.length === 0 || allowed.has(word.id)) && (!session.ruleId || word.ruleId === session.ruleId));
 }
 
-/** Ergänzt nach einer Erfolgsserie höhere Stufen – ausschließlich aus dem Pool der Runde. */
-export function refillWords(
-  session: SessionState,
-  words: readonly Word[],
-  progress: Record<string, WordState>,
-  now = Date.now(),
-): Word[] {
-  const used = new Set([...session.queue, ...session.retries, ...session.recentIds]);
-  const candidates = sessionWords(session, words).filter((word) => {
-    const state = progress[word.id];
-    const fullyLearned = !!state && state.box >= 5 && state.due > now;
-    return word.level <= session.difficulty && !used.has(word.id) && !fullyLearned;
-  });
-  return selectWords(candidates, progress, 2, {
-    now,
-    difficulty: session.difficulty,
-    recentIds: session.recentIds,
-    retryIds: session.retries,
-  });
+/**
+ * Nach einer Erfolgsserie ein noch kommendes Wort gegen ein schwereres Wort aus
+ * demselben Pool tauschen. Die Rundenlänge bleibt unverändert.
+ */
+export function upgradeQueue(session: SessionState, words: readonly Word[]): SessionState {
+  if (session.queue.length === 0 || session.reserveIds.length === 0 || session.difficulty < 2) return session;
+  const byId = new Map(sessionWords(session, words).map((word) => [word.id, word]));
+  const candidates = session.reserveIds
+    .map((id) => byId.get(id))
+    .filter((word): word is Word => !!word);
+  if (candidates.length === 0) return session;
+
+  const upgrade = [...candidates].sort((a, b) => b.level - a.level)[0];
+  // Bevorzugt ein leichteres Wort ersetzen; sonst einfach das letzte offene Wort.
+  let index = -1;
+  for (let position = session.queue.length - 1; position >= 0; position -= 1) {
+    const queued = byId.get(session.queue[position]);
+    if (queued && queued.level < upgrade.level) {
+      index = position;
+      break;
+    }
+  }
+  if (index < 0) index = session.queue.length - 1;
+
+  const queue = [...session.queue];
+  queue[index] = upgrade.id;
+  return {
+    ...session,
+    queue,
+    reserveIds: session.reserveIds.filter((id) => id !== upgrade.id),
+  };
+}
+
+/** Zählt unterschiedliche Wörter, Treffer und Wiederholungen der laufenden Runde. */
+export function roundStats(session: SessionState): { words: number; total: number; correctWords: number; repeats: number } {
+  const byWord = new Map<string, { right: number; wrong: number }>();
+  for (const result of session.results) {
+    const entry = byWord.get(result.wordId) ?? { right: 0, wrong: 0 };
+    if (result.correct) entry.right += 1;
+    else entry.wrong += 1;
+    byWord.set(result.wordId, entry);
+  }
+  const entries = [...byWord.values()];
+  return {
+    words: entries.length,
+    total: session.total,
+    correctWords: entries.filter((entry) => entry.wrong === 0 && entry.right > 0).length,
+    repeats: Math.max(0, session.results.length - entries.length),
+  };
 }
 
 export function nextExercise(
@@ -154,6 +198,7 @@ export function nextExercise(
     retries: useRetry ? session.retries.slice(1) : session.retries,
     recentIds: [...session.recentIds.slice(-6), wordId],
     current: exercise,
+    currentRetry: useRetry,
   };
 }
 
@@ -191,6 +236,7 @@ export function finishExercise(
     retries: correct || !wordId ? session.retries : [...session.retries, wordId],
     retryAfter: correct || !wordId ? session.retryAfter : done + 2,
     current: null,
+    currentRetry: false,
   };
 }
 

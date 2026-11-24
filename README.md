@@ -55,16 +55,16 @@ Die Wörter sind über `ruleId` den 16 Themen zugeordnet. `src/data/topic-groups
 - **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, -ig/-lich, -heit/-keit
 - **Wörter im Satz:** das/dass, als/wie, Großschreibung
 
-Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas; Wiederholungen und adaptive Ergänzungen bleiben ebenfalls im Thema. „Alle Themen mischen“ in der Themenübersicht (und „Übung starten“ auf der Startseite) mischt bewusst über alle Themen hinweg. Innerhalb einer Runde werden verschiedene Varianten eines Themas gemischt, zum Beispiel bei ei/ai beide Schreibweisen.
+Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas; Wiederholungen und der Austausch gegen schwerere Wörter bleiben ebenfalls im Thema. Die eingestellte Rundenlänge bleibt dabei immer gleich. „Alle Themen mischen“ in der Themenübersicht (und „Übung starten“ auf der Startseite) mischt bewusst über alle Themen hinweg. Innerhalb einer Runde werden verschiedene Varianten eines Themas gemischt, zum Beispiel bei ei/ai beide Schreibweisen.
 
 Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024.pdf) des Rats für deutsche Rechtschreibung geprüft; die Online-Fassung liegt bei [grammis/IDS](https://grammis.ids-mannheim.de/rechtschreibung). Ergänzend dienten die [Duden-Regeln zur Laut-Buchstaben-Zuordnung](https://www.duden.de/sprachwissen/rechtschreibregeln/laut-buchstaben-zuordnung) und zur [Groß- und Kleinschreibung](https://www.duden.de/sprachwissen/rechtschreibregeln/gross-und-kleinschreibung). Korrekturen betreffen unter anderem: Das Dehnungs-h kennzeichnet die Vokallänge, es erzeugt sie nicht; in der Schweiz und in Liechtenstein ist generell `ss` statt `ß` zulässig; fremdsprachige Endungen `-ie`, `-ier`, `-ieren` werden mit `ie` geschrieben; `äu` hat neben `au`-Grundwörtern ein paar Merkwörter. `Uhu` wurde als Beispiel für ein stummes h entfernt.
 
 ### Übungsablauf
 
 1. Wörter nach Leitner-Fach und Fälligkeit auswählen, dabei Varianten des Themas mischen; falsche Wörter kommen nach zwei anderen Wörtern wieder. Der Pool der Runde steht fest: In einer Themenrunde tauchen keine Wörter anderer Themen auf, auch nicht nach einer Erfolgsserie.
-2. Übungstyp wählen: Hördiktat (~60 %), Abschreiben, Auswahl. Nach zwei Fehlern in Folge erscheinen mehr Hilfen und leichtere Wörter; nach fünf Richtigen wird die Stufe erhöht.
+2. Übungstyp wählen: Hördiktat (~60 %), Abschreiben, Auswahl. Nach zwei Fehlern in Folge erscheinen mehr Hilfen; nach fünf Richtigen wird die Stufe erhöht und ein noch kommendes Wort durch ein schwereres aus demselben Pool ersetzt. Die Anzahl der Wörter pro Runde bleibt fest; Wiederholungen werden in der Anzeige extra als solche gekennzeichnet.
 3. Handschrift auf dem Canvas schreiben → PNG (nur der beschriebene Bereich) → Gemini.
-4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,6: freundlich noch einmal schreiben bitten, **kein** Fehler.
+4. Antwort validieren, lokal nachvergleichen, Rückmeldung zeigen. Bei unleserlicher Schrift oder Konfidenz < 0,7: freundlich noch einmal schreiben bitten, **kein** Fehler.
 5. Bei Offline/Key-Fehler/Rate-Limit/Timeout/kaputtem JSON: Lösung anzeigen und Kind selbst bewerten lassen.
 6. Aus Fehlern wird ein persönlicher Trainingsplan (häufigste Fehlerkategorien der letzten 90 Tage) gebaut. Auch selbst geprüfte Fehler zählen dort mit; für Sterne und Elternstatistik bleiben sie ungewertet.
 7. Am Rundenende zeigt die Übersicht alle geübten Wörter mit ✓/✗, den Beispielsatz und – bei KI- oder Auswahlfehlern – die markierte Fehlerstelle mit Position und richtiger Schreibweise. Der Trainingsplan steht dort bereits aktuell; die Startseite liest beim Zurückkehren und bei Änderungen in anderen Tabs neu aus dem Speicher. Wartende Wiederholungen dürfen das Rundenende nicht blockieren.
@@ -173,7 +173,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 55 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und adaptiver Ergänzung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 56 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

@@ -17,7 +17,7 @@ import {
 } from './lib/learning';
 import { hashPin, newSalt, verifyPin } from './lib/pin';
 import { speakWordAndSentence } from './lib/speech';
-import { createSession, finishExercise, isSessionFinished, nextExercise, refillWords, sessionWords, type SessionState } from './lib/session';
+import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, sessionWords, upgradeQueue, type SessionState } from './lib/session';
 import { clearState, freshState, loadState, saveState } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
 import { feedbackView, homeView, parentGateView, parentView, practiceView, topicView, topicsView, type FeedbackView } from './ui/views';
@@ -182,7 +182,9 @@ function showSummary(): void {
     word: last?.word ?? builtinWords[0],
     rule: last?.rule ?? findRule(''),
     ruleId: session?.ruleId,
-    message: session ? `${session.correct} von ${session.total} Wörtern in dieser Runde richtig.` : 'Runde beendet.',
+    message: session
+      ? `${roundStats(session).correctWords} von ${session.total} Wörtern in dieser Runde richtig.`
+      : 'Runde beendet.',
     results: session?.results ?? [],
   };
   route = 'feedback';
@@ -231,11 +233,8 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
   if (session) {
     const before = session.difficulty;
     session = finishExercise(session, correct, { transcription: result?.transcription, differences, source });
-    // Erfolgsserie: ein paar schwerere Wörter in die laufende Runde holen – nur aus dem gewählten Thema.
-    if (session.difficulty > before && session.queue.length < 4) {
-      const harder = refillWords(session, allWords(), data.progress).map((candidate) => candidate.id);
-      session = { ...session, queue: [...session.queue, ...harder], total: session.total + harder.length };
-    }
+    // Erfolgsserie: ein kommendes Wort gegen ein schwereres tauschen – die Rundenlänge bleibt fest.
+    if (session.difficulty > before) session = upgradeQueue(session, allWords());
   }
 }
 

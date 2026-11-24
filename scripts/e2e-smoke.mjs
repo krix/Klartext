@@ -27,10 +27,12 @@ await page.locator('[data-action="start"]').click();
 
 let wrongMarked = 0;
 let reachedSummary = false;
+const progressLabels = [];
 for (let step = 0; step < 200; step += 1) {
   const view = await page.evaluate(() => document.body.dataset.view);
   if (view === 'feedback' && (await page.getByText('Gut gemacht!').count())) { reachedSummary = true; break; }
   if (view === 'practice') {
+    progressLabels.push(await page.locator('.practice-head span').first().innerText());
     const choice = page.locator('.choice-grid [data-action="choose"]').first();
     const selfCheck = page.locator('[data-action="self-check"]');
     if (await choice.count()) await choice.click(); // Auswahlfehler liefern echte Fehlerdetails.
@@ -51,6 +53,14 @@ for (let step = 0; step < 200; step += 1) {
   await page.waitForTimeout(80);
 }
 assert.ok(reachedSummary, 'Rundenübersicht wurde nicht erreicht');
+assert.ok(progressLabels.length > 0, 'keine Fortschrittsanzeige gesehen');
+for (const label of progressLabels) {
+  const match = label.match(/(\d+)\s+von\s+(\d+)/);
+  assert.ok(match, 'Fortschritt ohne „X von Y“: ' + label);
+  assert.equal(Number(match[2]), 5, 'Rundenlänge darf nicht wachsen: ' + label);
+  assert.ok(Number(match[1]) <= 5, 'Fortschritt darf die Rundenlänge nicht überschreiten: ' + label);
+}
+console.log('progressLabels=' + JSON.stringify(progressLabels));
 
 const reviewCount = await page.locator('.review-item').count();
 const wrongCount = await page.locator('.review-item.is-wrong').count();
