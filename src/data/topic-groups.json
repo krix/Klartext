@@ -18,5 +18,10 @@
     "id": "satz",
     "title": "Wörter im Satz",
     "subtitle": "Hier entscheidet die Aufgabe im Satz über die Schreibung."
+  },
+  {
+    "id": "verwechslung",
+    "title": "Verwechslungsgefahr",
+    "subtitle": "Fast gleich klingend, aber anders geschrieben: e/ä, f/v und alle ks-Laute."
   }
 ]

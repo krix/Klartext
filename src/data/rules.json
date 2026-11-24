@@ -676,5 +676,174 @@
         "note": "Erst ansehen, dann mitsprechen, dann schreiben."
       }
     ]
+  },
+  {
+    "id": "e-oder-ae",
+    "title": "e oder ä?",
+    "tip": "Such ein verwandtes Wort mit a: Hand → Hände, kalt → Kälte. Gibt es eins, schreib ä. Sonst bleibt meist das e: Held, Erde, Nest.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Ähnlich klingendes e und ä sicher unterscheiden.",
+    "goal": "Du lernst, mit einem verwandten Wort mit a zu prüfen, ob ä oder e richtig ist.",
+    "rules": [
+      "Ä entsteht oft aus einem a: Hand → Hände, kalt → Kälte, backen → Bäcker.",
+      "Findest du kein verwandtes Wort mit a, bleibt meist das e: Held, Erde, Nest.",
+      "Sprich das Wort und die verwandte Form langsam mit – dann hörst du den Unterschied."
+    ],
+    "examples": [
+      {
+        "word": "Hände",
+        "note": "Hand → Hände: aus a wird ä."
+      },
+      {
+        "word": "Bäcker",
+        "note": "backen → Bäcker: das a wird zu ä."
+      },
+      {
+        "word": "Erde",
+        "note": "Kein verwandtes Wort mit a – deshalb e."
+      }
+    ]
+  },
+  {
+    "id": "f-oder-v",
+    "title": "f oder v?",
+    "tip": "Deutsche Wörter mit dem harten f-Laut schreibt man meist mit f: Fisch, Feder, laufen. Ein paar häufige deutsche Wörter beginnen mit v: Vater, Vogel, von, vor, voll, vier, viel.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Den harten f-Laut als f oder v schreiben.",
+    "goal": "Du lernst die deutschen Wörter mit v und die Fremdwörter, in denen v wie w klingt.",
+    "rules": [
+      "In deutschen Wörtern steht für den harten f-Laut meist f: Fisch, Feder, laufen.",
+      "Häufige deutsche Wörter mit v merkst du dir: Vater, Vogel, von, vor, voll, vier, viel.",
+      "In Fremdwörtern wie Vase, Video oder Ventil klingt v eher wie w – hier hilft nur Merken."
+    ],
+    "examples": [
+      {
+        "word": "Fisch",
+        "note": "Deutsches Wort mit hartem f-Laut."
+      },
+      {
+        "word": "Vater",
+        "note": "Häufiges deutsches Wort mit v am Anfang."
+      },
+      {
+        "word": "Vase",
+        "note": "Fremdwort: das v klingt wie w."
+      }
+    ]
+  },
+  {
+    "id": "ks-laute",
+    "title": "Der ks-Laut: cks, gs, chs, x, ks, ex-",
+    "tip": "Der ks-Laut hat viele Gesichter. Denk an die Grundform: Tag → Tags, Fuchs → Füchse, Scheck → Schecks. Fremdwörter beginnen oft mit ex-: Extra, Export.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Die sechs Schreibweisen des ks-Lautes sicher unterscheiden.",
+    "goal": "Du lernst, bei einem ks-Laut auf die Grundform und auf Fremdwörter zu achten.",
+    "rules": [
+      "sechs, Fuchs, Luchs und Wachs schreibt man mit chs.",
+      "Aus Tag wird Tags, aus Zug wird Zugs: das g der Grundform bleibt sichtbar.",
+      "Endet die Grundform auf ck, entsteht cks: Scheck → Schecks, Block → Blocks.",
+      "Box, Hexe und Taxi haben x; Keks und links haben ks; Extra und Export beginnen mit ex-."
+    ],
+    "examples": [
+      {
+        "word": "sechs",
+        "note": "chs – denk an sechste."
+      },
+      {
+        "word": "Schecks",
+        "note": "cks – Scheck mit angehängtem s."
+      },
+      {
+        "word": "Export",
+        "note": "ex- am Anfang eines Fremdwortes."
+      }
+    ]
+  },
+  {
+    "id": "y-laute",
+    "title": "y – wie i, ü oder j?",
+    "tip": "Das y klingt mal wie i (Baby, Hobby), mal wie ü (Typ, Symbol) und am Wortanfang oft wie j (Yoga, Yeti). Sprich das Wort mit und merk dir die Gruppe.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Die drei Aussprachen des y sicher zuordnen.",
+    "goal": "Du lernst, das y trotz unterschiedlicher Aussprache immer als y zu schreiben.",
+    "rules": [
+      "Am Ende von Baby, Hobby, Party und City klingt das y wie i.",
+      "In Typ, Zyklus, Symbol und Hymne klingt das y wie ü.",
+      "Am Anfang von Yoga und Yeti klingt das y wie j."
+    ],
+    "examples": [
+      {
+        "word": "Baby",
+        "note": "y am Ende klingt wie i."
+      },
+      {
+        "word": "Typ",
+        "note": "y klingt wie ü."
+      },
+      {
+        "word": "Yoga",
+        "note": "y am Anfang klingt wie j."
+      }
+    ]
+  },
+  {
+    "id": "pf-qu",
+    "title": "Wortfamilien mit pf und qu",
+    "tip": "In einer Wortfamilie bleibt der Anlaut erhalten: Pferd → Pferde, pflanzen → Pflanze. Das q steht fast immer direkt vor u: Quelle, Quittung.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Die Anlaute pf und qu in Wortfamilien wiedererkennen.",
+    "goal": "Du lernst, aus einem bekannten Familienwort die Schreibung von pf und qu abzuleiten.",
+    "rules": [
+      "Viele Wortfamilien beginnen mit pf: Pferd, Pferde; Pflanze, pflanzen; Pflege, pflegen.",
+      "Hörst du den pf-Laut, schreib beide Buchstaben – auch in der Grundform.",
+      "Das q steht im Deutschen fast immer unmittelbar vor u: Quelle, Quittung, Qualität."
+    ],
+    "examples": [
+      {
+        "word": "Pferd",
+        "note": "pf bleibt auch in Pferde."
+      },
+      {
+        "word": "Pflanze",
+        "note": "pflanzen → Pflanze."
+      },
+      {
+        "word": "Quelle",
+        "note": "q steht direkt vor u."
+      }
+    ]
+  },
+  {
+    "id": "dt",
+    "title": "Lernwörter mit -dt",
+    "tip": "Ein paar Wörter enden auf -dt, obwohl man nur ein t hört: die Stadt, die Magd, sandte, wandte, verwandt. Denk an die Familie: Stadt → Städte.",
+    "caseSensitive": false,
+    "area": "verwechslung",
+    "summary": "Typische Wörter mit stummem d vor t merken.",
+    "goal": "Du lernst die Lernwörter mit -dt und findest sie über verwandte Formen wieder.",
+    "rules": [
+      "Stadt und Magd enden auf -dt; im Plural bleibt das d sichtbar: Städte, Mägde.",
+      "sandte und wandte kommen von senden und wenden – das d bleibt, auch wenn man es nicht hört.",
+      "Auch verwandt endet auf -dt. Diese Wörter merkst du dir gemeinsam."
+    ],
+    "examples": [
+      {
+        "word": "Stadt",
+        "note": "Stadt → Städte: das d bleibt."
+      },
+      {
+        "word": "sandte",
+        "note": "senden → sandte."
+      },
+      {
+        "word": "verwandt",
+        "note": "Endet auf -dt."
+      }
+    ]
   }
 ]

@@ -46,7 +46,8 @@ for (let step = 0; step < 200; step += 1) {
     if (await choices.count()) {
       const options = await choices.allTextContents();
       const prompt = (await page.locator('.stage > .kicker').last().textContent())?.trim() ?? '';
-      const hint = (await page.locator('.prompt-hint').textContent()) ?? '';
+      const hintLocator = page.locator('.prompt-hint');
+      const hint = (await hintLocator.count()) ? (await hintLocator.textContent()) ?? '' : '';
       const challengeAnswer = challenges.find((entry) => entry.prompt === prompt)?.answer;
       const candidates = options
         .map((option, index) => ({ option: option.trim(), index }))

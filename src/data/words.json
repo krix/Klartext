@@ -3048,5 +3048,543 @@
     "level": 1,
     "hint": "Schul + hof.",
     "challenge": true
+  },
+  {
+    "id": "ch-e1",
+    "word": "Hände",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Denk an die Hand: eine Hand, zwei …",
+    "sentence": "Ich wasche mir die Hände.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e2",
+    "word": "Kälte",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "kalt → Kälte: das a wird zu ä.",
+    "sentence": "Die Kälte kommt aus dem Norden.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e3",
+    "word": "Bäcker",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "backen → Bäcker: aus a wird ä.",
+    "sentence": "Der Bäcker backt frisches Brot.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e4",
+    "word": "Zähne",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Ein Zahn, zwei Zähne – das a aus Zahn wird zu ä.",
+    "sentence": "Ich putze mir die Zähne.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e5",
+    "word": "Wäsche",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "waschen → Wäsche: das a wird zu ä.",
+    "sentence": "Die Wäsche ist trocken.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e6",
+    "word": "lächeln",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "lachen → lächeln: aus a wird ä.",
+    "sentence": "Das Kind lächelt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e7",
+    "word": "kräftig",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Kraft → kräftig: aus a wird ä.",
+    "sentence": "Der Hund ist kräftig.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e8",
+    "word": "Erde",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Gibt es ein verwandtes Wort mit a? Nein.",
+    "sentence": "Die Erde ist unser Planet.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e9",
+    "word": "Nest",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Nest hat kein verwandtes Wort mit a.",
+    "sentence": "Im Nest sitzen junge Vögel.",
+    "challenge": true
+  },
+  {
+    "id": "ch-e10",
+    "word": "Mädchen",
+    "ruleId": "e-oder-ae",
+    "level": 1,
+    "hint": "Denk an die Magd: Mädchen mit ä.",
+    "sentence": "Das Mädchen liest ein Buch.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v1",
+    "word": "Vater",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Das ist ein häufiges deutsches Wort mit v.",
+    "sentence": "Der Vater liest vor.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v2",
+    "word": "Vogel",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Vogel gehört zu den deutschen Wörtern mit v.",
+    "sentence": "Der Vogel singt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v3",
+    "word": "von",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Das Wort von beginnt mit v.",
+    "sentence": "Das Buch ist von mir.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v4",
+    "word": "voll",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "voll gehört zu den deutschen Wörtern mit v.",
+    "sentence": "Die Flasche ist voll.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v5",
+    "word": "Vase",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Die Vase ist ein Fremdwort.",
+    "sentence": "In der Vase stehen Blumen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v6",
+    "word": "Video",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Video ist ein Fremdwort mit v.",
+    "sentence": "Das Video ist lustig.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v7",
+    "word": "Fisch",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Deutsche Wörter mit f-Laut schreibt man meist mit f.",
+    "sentence": "Der Fisch schwimmt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v8",
+    "word": "Feder",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Feder ist ein deutsches Wort mit f.",
+    "sentence": "Ich schreibe mit einer Feder.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v9",
+    "word": "laufen",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "laufen ist ein deutsches Wort mit f.",
+    "sentence": "Die Kinder laufen schnell.",
+    "challenge": true
+  },
+  {
+    "id": "ch-v10",
+    "word": "Vogel",
+    "ruleId": "f-oder-v",
+    "level": 1,
+    "hint": "Vogel beginnt mit v.",
+    "sentence": "Der Vogel fliegt hoch.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k1",
+    "word": "sechs",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "sechs – sechste: das ch bleibt.",
+    "sentence": "Ich habe sechs Stifte.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k2",
+    "word": "Fuchs",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Fuchs → Füchse: das ch bleibt.",
+    "sentence": "Der Fuchs läuft durch den Wald.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k3",
+    "word": "Tags",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Grundform: der Tag. Häng s dran: Tags.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k4",
+    "word": "Zugs",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Grundform: der Zug.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k5",
+    "word": "Schecks",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Scheck endet auf ck; dann kommt s dazu.",
+    "sentence": "Ich habe zwei Schecks dabei.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k6",
+    "word": "Blocks",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Block endet auf ck.",
+    "sentence": "Zwei Blocks liegen auf dem Tisch.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k7",
+    "word": "Box",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Box → Boxen: das x bleibt.",
+    "sentence": "Die Box steht im Flur.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k8",
+    "word": "Hexe",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Hexe hat ein x.",
+    "sentence": "Die Hexe fliegt auf dem Besen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k9",
+    "word": "Keks",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Keks → Kekse: das ks bleibt.",
+    "sentence": "Ich esse einen Keks.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k10",
+    "word": "links",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "links endet auf ks.",
+    "sentence": "Der Hund läuft links.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k11",
+    "word": "Extra",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Extra beginnt mit ex – wie Export.",
+    "sentence": "Das ist ein Extra.",
+    "challenge": true
+  },
+  {
+    "id": "ch-k12",
+    "word": "Export",
+    "ruleId": "ks-laute",
+    "level": 1,
+    "hint": "Export beginnt mit ex – wie Extra.",
+    "sentence": "Wir exportieren Waren.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y1",
+    "word": "Baby",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Das y am Ende klingt wie i: Baby.",
+    "sentence": "Das Baby schläft.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y2",
+    "word": "Hobby",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Hobby klingt wie „Hobi“, wird aber mit y geschrieben.",
+    "sentence": "Mein Hobby ist Lesen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y3",
+    "word": "Party",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Party endet auf y.",
+    "sentence": "Die Party ist lustig.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y4",
+    "word": "City",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Das y am Ende klingt wie i.",
+    "sentence": "In der City ist viel los.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y5",
+    "word": "Typ",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Hier klingt das y wie ü: Typ.",
+    "sentence": "Er ist ein lustiger Typ.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y6",
+    "word": "Zyklus",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Zyklus wird mit y geschrieben.",
+    "sentence": "Der Zyklus wiederholt sich.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y7",
+    "word": "Symbol",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Symbol hat ein y.",
+    "sentence": "Die Flagge ist ein Symbol.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y8",
+    "word": "Hymne",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Hymne wird mit y geschrieben.",
+    "sentence": "Die Hymne wird gesungen.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y9",
+    "word": "Yoga",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Am Anfang klingt y wie j: Yoga.",
+    "sentence": "Wir machen Yoga.",
+    "challenge": true
+  },
+  {
+    "id": "ch-y10",
+    "word": "Yeti",
+    "ruleId": "y-laute",
+    "level": 1,
+    "hint": "Yeti beginnt mit y.",
+    "sentence": "Der Yeti wohnt im Schnee.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p1",
+    "word": "Pferd",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "Ein Pferd beginnt mit pf.",
+    "sentence": "Das Pferd läuft auf dem Feld.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p2",
+    "word": "Pflanze",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "pflanzen → Pflanze: das pf bleibt.",
+    "sentence": "Die Pflanze wächst.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p3",
+    "word": "Pflege",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "pflegen → Pflege.",
+    "sentence": "Die Pflege ist wichtig.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p4",
+    "word": "Pflug",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "pflügen → Pflug: das pf bleibt.",
+    "sentence": "Der Pflug liegt auf dem Feld.",
+    "challenge": true
+  },
+  {
+    "id": "ch-p5",
+    "word": "Pflaster",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "pflastern → Pflaster: das pf bleibt.",
+    "sentence": "Das Pflaster ist neu.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q1",
+    "word": "Quelle",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "quellen → Quelle: das qu bleibt.",
+    "sentence": "Die Quelle sprudelt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q2",
+    "word": "Quittung",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "quittieren → Quittung.",
+    "sentence": "Ich hebe die Quittung auf.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q3",
+    "word": "Qualität",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "Qualität beginnt mit qu.",
+    "sentence": "Die Qualität ist hoch.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q4",
+    "word": "Quartal",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "Quartal beginnt mit qu.",
+    "sentence": "Das Quartal endet heute.",
+    "challenge": true
+  },
+  {
+    "id": "ch-q5",
+    "word": "Quell",
+    "ruleId": "pf-qu",
+    "level": 1,
+    "hint": "Das q steht vor u.",
+    "sentence": "Das Quellwasser ist kalt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d1",
+    "word": "Stadt",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "Stadt endet auf dt.",
+    "sentence": "Die Stadt ist groß.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d2",
+    "word": "Magd",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "Magd endet auf dt.",
+    "sentence": "Die Magd molk die Kuh.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d3",
+    "word": "sandte",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "senden → sandte: das d bleibt.",
+    "sentence": "Ich sandte einen Brief.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d4",
+    "word": "wandte",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "wenden → wandte.",
+    "sentence": "Er wandte sich um.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d5",
+    "word": "verwandt",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "verwandt endet auf dt.",
+    "sentence": "Wir sind verwandt.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d6",
+    "word": "sandte",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "senden → sandte.",
+    "sentence": "Ich sandte das Paket ab.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d7",
+    "word": "wandte",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "wenden → wandte.",
+    "sentence": "Er wandte den Blick ab.",
+    "challenge": true
+  },
+  {
+    "id": "ch-d8",
+    "word": "Stadt",
+    "ruleId": "dt",
+    "level": 1,
+    "hint": "Stadt endet auf dt.",
+    "sentence": "In der Stadt wohnen viele Menschen.",
+    "challenge": true
   }
 ]
