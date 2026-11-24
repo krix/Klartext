@@ -1,8 +1,9 @@
 import { escapeHtml, header } from './html';
 import type { ConnectionTestResult } from '../lib/gemini';
-import type { AppData, Difference, Exercise, Rule, TopicArea, Word } from '../lib/types';
+import type { AppData, Difference, Exercise, Profile, Rule, TopicArea, Word } from '../lib/types';
 import { diffWords, type PlanEntry } from '../lib/learning';
 import { roundStats, type SessionResult, type SessionState } from '../lib/session';
+import { activeProfile } from '../lib/storage';
 
 export interface FeedbackView {
   kind: 'success' | 'retry' | 'fallback' | 'summary';
@@ -23,6 +24,21 @@ export interface FeedbackView {
 }
 
 const lockSymbol = '<span aria-hidden="true">🔒</span>';
+
+/** Täglich wechselnder Wortgruß für die Startseite – ohne Wettbewerb und ohne Druck. */
+const HERO_GREETINGS = [
+  { kicker: 'Ein Wort für dich', title: 'Worte kommen klar.', word: 'Liebe.' },
+  { kicker: 'Kleiner Wortgruß', title: 'Schreiben macht sichtbar.', word: 'Wiese.' },
+  { kicker: 'Heute im Fokus', title: 'Jeder Buchstabe zählt.', word: 'Tier.' },
+  { kicker: 'Lernen in deinem Tempo', title: 'Worte werden sicherer.', word: 'Frieden.' },
+  { kicker: 'Ein bisschen üben', title: 'Klar und lesbar.', word: 'Biene.' },
+  { kicker: 'Dein Wortgruß', title: 'Buchstaben sitzen.', word: 'Papier.' },
+] as const;
+
+export function heroGreeting(today = new Date()): { kicker: string; title: string; word: string } {
+  const localDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  return HERO_GREETINGS[Math.floor(localDay / 86_400_000) % HERO_GREETINGS.length];
+}
 
 /** Zeigt den Beispielsatz mit Lücke, damit das Wort nicht einfach abgeschrieben wird. */
 export function maskedSentence(word: string, sentence?: string): string {
@@ -143,16 +159,25 @@ function renderSummaryOverview(results: readonly SessionResult[], plan: readonly
 }
 
 export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars: number, totalWords: number): string {
-  const learned = Object.keys(data.progress).length;
+  const profile = activeProfile(data);
+  const learned = Object.keys(profile.progress).length;
   const percent = totalWords === 0 ? 0 : Math.round((learned / totalWords) * 100);
   const hasKey = data.settings.apiKey.trim().length > 0 && data.settings.privacyOptIn;
+  const greeting = heroGreeting();
+  const profileMenu = `<details class="profile-menu">
+      <summary aria-label="Profil wechseln">${escapeHtml(profile.name)} <span aria-hidden="true">▾</span></summary>
+      <div class="profile-menu-list">
+        ${data.profiles.map((entry) => `<button type="button" data-action="switch-profile" data-id="${escapeHtml(entry.id)}" ${entry.id === profile.id ? 'aria-current="true"' : ''}>${escapeHtml(entry.name)}${entry.id === profile.id ? ' ✓' : ''}</button>`).join('')}
+      </div>
+    </details>`;
 
   return `${header()}<main id="hauptinhalt" class="shell" tabindex="-1">
     <div class="home-grid">
       <section class="hero">
-        <p class="kicker">Deine Übung für heute</p>
-        <h1>Worte kommen klar.</h1>
-        <div class="hero-word" aria-hidden="true">Liebe.<span class="doodle-star">✦</span></div>
+        ${profileMenu}
+        <p class="kicker">Hallo ${escapeHtml(profile.name)}! ${escapeHtml(greeting.kicker)}</p>
+        <h1>${escapeHtml(greeting.title)}</h1>
+        <div class="hero-word" aria-hidden="true">${escapeHtml(greeting.word)}<span class="doodle-star">✦</span></div>
         <p class="lead">Hör dir ein Wort an, schreib es auf und bekomm eine freundliche Rückmeldung. Ganz ohne Druck.</p>
         <div class="button-row">
           <button class="button primary" type="button" data-action="start">Übung starten <span aria-hidden="true">→</span></button>
@@ -167,7 +192,7 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
       <aside class="rail" aria-label="Lernübersicht">
         <section class="panel">
           <h2>Dein Trainingsplan</h2>
-          ${planBlock(plan, data.attempts.length > 0)}
+          ${planBlock(plan, profile.attempts.length > 0)}
           <div class="progress-track" role="progressbar" aria-label="Anteil der geübten Wörter" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${percent}%"></span></div>
           <p class="panel-note">${percent}% der Wortbank schon gesehen</p>
         </section>
@@ -181,7 +206,7 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
   </main>`;
 }
 
-function topicStats(ruleId: string, words: readonly Word[], progress: AppData['progress']): { total: number; learned: number } {
+function topicStats(ruleId: string, words: readonly Word[], progress: Profile['progress']): { total: number; learned: number } {
   const topicWords = words.filter((word) => word.ruleId === ruleId);
   return {
     total: topicWords.length,
@@ -190,7 +215,7 @@ function topicStats(ruleId: string, words: readonly Word[], progress: AppData['p
 }
 
 /** Übersicht: die 16 Themen in vier Bereichen, jeweils mit Kurzbeschreibung und Lernstand. */
-export function topicsView(areas: readonly TopicArea[], rules: readonly Rule[], words: readonly Word[], progress: AppData['progress'], parentUnlocked = false): string {
+export function topicsView(areas: readonly TopicArea[], rules: readonly Rule[], words: readonly Word[], progress: Profile['progress'], parentUnlocked = false): string {
   const areaSections = areas.map((area) => {
     const areaRules = rules.filter((rule) => rule.area === area.id);
     if (areaRules.length === 0) return '';
@@ -224,7 +249,7 @@ export function topicsView(areas: readonly TopicArea[], rules: readonly Rule[], 
 }
 
 /** Detailseite: Erklärung, Lernziel, Regeln und Beispiele zu einem Thema. */
-export function topicView(rule: Rule, area: TopicArea | undefined, words: readonly Word[], progress: AppData['progress'], parentUnlocked = false): string {
+export function topicView(rule: Rule, area: TopicArea | undefined, words: readonly Word[], progress: Profile['progress'], parentUnlocked = false): string {
   const summary = rule.summary ?? rule.tip;
   const goal = rule.goal ?? rule.tip;
   const rules = rule.rules?.length ? rule.rules : [rule.tip];
@@ -409,6 +434,17 @@ export function parentView(
   connectionTesting = false,
 ): string {
   const settings = data.settings;
+  const profile = activeProfile(data);
+  const profileList = data.profiles.map((entry) => `<li>
+      <span><strong>${escapeHtml(entry.name)}</strong>${entry.id === profile.id ? ' <small>– aktiv</small>' : ''}</span>
+      <button class="button small" type="button" data-action="switch-profile" data-id="${escapeHtml(entry.id)}" data-keep="true" ${entry.id === profile.id ? 'disabled' : ''}>Aktivieren</button>
+      <form class="inline-form" data-form="rename-profile" data-id="${escapeHtml(entry.id)}">
+        <label class="sr-only" for="rename-${escapeHtml(entry.id)}">Namen ändern</label>
+        <input id="rename-${escapeHtml(entry.id)}" name="name" type="text" maxlength="24" value="${escapeHtml(entry.name)}" required />
+        <button class="button small" type="submit">Speichern</button>
+      </form>
+      ${data.profiles.length > 1 ? `<button class="link-button" type="button" data-action="delete-profile" data-id="${escapeHtml(entry.id)}" aria-label="Profil ${escapeHtml(entry.name)} löschen">Löschen</button>` : ''}
+    </li>`).join('');
   const customList = data.customWords.length
     ? `<ul class="category-list">${data.customWords.map((word) => `<li><span>${escapeHtml(word.word)} <small>${escapeHtml(word.ruleId)}</small></span><button class="link-button" type="button" data-action="delete-custom" data-id="${escapeHtml(word.id)}" aria-label="Wort ${escapeHtml(word.word)} löschen">Entfernen</button></li>`).join('')}</ul>`
     : '<p class="panel-note">Noch keine eigenen Wörter.</p>';
@@ -418,20 +454,34 @@ export function parentView(
     <h1>Einstellungen & Fortschritt</h1>
     <p class="lead">Alles bleibt auf diesem Gerät. Es gibt kein Konto und keine Werbung.</p>
 
-    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-ki" checked />
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-profiles" checked />
+    <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-ki" />
     <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-writing" />
     <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-words" />
     <input class="tab-input" type="radio" name="parent-tab" id="parent-tab-progress" />
     <nav class="tab-bar" aria-label="Bereiche">
+      <label class="tab-label" for="parent-tab-profiles">Profile</label>
       <label class="tab-label" for="parent-tab-ki">KI-Prüfung</label>
       <label class="tab-label" for="parent-tab-writing">Schreiben</label>
       <label class="tab-label" for="parent-tab-words">Eigene Wörter</label>
       <label class="tab-label" for="parent-tab-progress">Fortschritt</label>
     </nav>
     <div class="parent-panels">
+    <section class="panel" id="panel-profiles" aria-labelledby="profile-titel">
+      <h2 id="profile-titel">Profile</h2>
+      <p class="panel-note">Jedes Kind hat seinen eigenen Lernstand. Der Name bleibt nur auf diesem Gerät und wird nicht an die KI gesendet.</p>
+      <ul class="profile-list">${profileList}</ul>
+      <form class="form-grid" data-form="add-profile">
+        <div class="field"><label for="new-profile">Neues Profil anlegen</label>
+          <input id="new-profile" name="name" type="text" maxlength="24" placeholder="Name des Kindes" required />
+        </div>
+        <button class="button primary" type="submit">Profil hinzufügen</button>
+      </form>
+    </section>
+
     <section class="panel" id="panel-ki" aria-labelledby="ki-titel">
       <h2 id="ki-titel">KI-Prüfung</h2>
-      <p class="panel-note"><strong>Bitte lesen:</strong> Für die Prüfung gehen nur Schriftbild und Zielwort an Gemini – keine Namen. Nur mit Zustimmung aktivieren. Empfohlen: eigener Key mit Limit.</p>
+      <p class="panel-note"><strong>Bitte lesen:</strong> Für die Prüfung geht nur das Schriftbild an Gemini – kein Zielwort, kein Profilname und kein Fortschritt. Nur mit Zustimmung aktivieren. Empfohlen: eigener Key mit Limit.</p>
       <form class="form-grid" data-form="settings">
         <div class="checkbox-line">
           <input id="privacy" name="privacy" type="checkbox" ${settings.privacyOptIn ? 'checked' : ''} />

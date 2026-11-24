@@ -98,11 +98,19 @@ export interface Settings {
   theme: AppTheme;
 }
 
-export interface AppData {
-  version: 1;
-  settings: Settings;
+/** Lernstand eines Kindes. Einstellungen und eigene Wörter bleiben geräteweit gemeinsam. */
+export interface Profile {
+  id: string;
+  name: string;
   progress: Record<string, WordState>;
   attempts: Attempt[];
+}
+
+export interface AppData {
+  version: 2;
+  settings: Settings;
+  activeProfileId: string;
+  profiles: Profile[];
   customWords: Word[];
 }
 

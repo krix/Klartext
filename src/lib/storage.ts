@@ -1,7 +1,9 @@
-import type { AppData, AppTheme, Settings, Word, WordState } from './types';
+import type { AppData, AppTheme, Attempt, Profile, Settings, Word, WordState } from './types';
 
 const STORAGE_KEY = 'klartext.state.v1';
 const MAX_ATTEMPTS = 3000;
+const MAX_NAME_LENGTH = 24;
+export const DEFAULT_PROFILE_NAME = 'Kind';
 
 export const DEFAULT_SETTINGS: Settings = {
   pinHash: null,
@@ -16,12 +18,32 @@ export const DEFAULT_SETTINGS: Settings = {
   theme: 'paper',
 };
 
-export function freshState(): AppData {
+function newProfileId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return `kind-${crypto.randomUUID()}`;
+  return `kind-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+export function makeProfile(name: string, progress: Record<string, WordState> = {}, attempts: Attempt[] = []): Profile {
   return {
-    version: 1,
+    id: newProfileId(),
+    name: cleanName(name) || DEFAULT_PROFILE_NAME,
+    progress,
+    attempts: attempts.slice(-MAX_ATTEMPTS),
+  };
+}
+
+function cleanName(value: unknown): string {
+  return typeof value === 'string' && value.trim() ? value.trim().slice(0, MAX_NAME_LENGTH) : '';
+}
+
+export function freshState(): AppData {
+  const profile = makeProfile(DEFAULT_PROFILE_NAME);
+  profile.id = 'kind-1';
+  return {
+    version: 2,
     settings: { ...DEFAULT_SETTINGS },
-    progress: {},
-    attempts: [],
+    activeProfileId: profile.id,
+    profiles: [profile],
     customWords: [],
   };
 }
@@ -58,7 +80,53 @@ function cleanWordState(value: unknown): WordState | null {
   };
 }
 
-/** Liest den lokalen Zustand robust ein; beschädigte Teile werden verworfen. */
+function cleanProgress(value: unknown): Record<string, WordState> {
+  const progress: Record<string, WordState> = {};
+  if (isRecord(value)) {
+    for (const [id, entry] of Object.entries(value)) {
+      const clean = cleanWordState(entry);
+      if (clean) progress[id] = clean;
+    }
+  }
+  return progress;
+}
+
+function cleanAttempts(value: unknown): Attempt[] {
+  return Array.isArray(value)
+    ? value.filter(isRecord).slice(-MAX_ATTEMPTS) as unknown as Attempt[]
+    : [];
+}
+
+function cleanProfile(value: unknown): Profile | null {
+  if (!isRecord(value)) return null;
+  const id = typeof value.id === 'string' && value.id.trim() ? value.id : newProfileId();
+  return {
+    id,
+    name: cleanName(value.name) || DEFAULT_PROFILE_NAME,
+    progress: cleanProgress(value.progress),
+    attempts: cleanAttempts(value.attempts),
+  };
+}
+
+function cleanSettings(raw: unknown): Settings {
+  const settingsRaw = isRecord(raw) ? raw : {};
+  return {
+    ...DEFAULT_SETTINGS,
+    ...settingsRaw,
+    pinHash: typeof settingsRaw.pinHash === 'string' ? settingsRaw.pinHash : null,
+    pinSalt: typeof settingsRaw.pinSalt === 'string' ? settingsRaw.pinSalt : null,
+    apiKey: typeof settingsRaw.apiKey === 'string' ? settingsRaw.apiKey : '',
+    model: typeof settingsRaw.model === 'string' && settingsRaw.model.trim() ? settingsRaw.model : DEFAULT_SETTINGS.model,
+    handColor: typeof settingsRaw.handColor === 'string' ? settingsRaw.handColor : DEFAULT_SETTINGS.handColor,
+    handWidth: typeof settingsRaw.handWidth === 'number' ? settingsRaw.handWidth : DEFAULT_SETTINGS.handWidth,
+    ttsRate: typeof settingsRaw.ttsRate === 'number' ? settingsRaw.ttsRate : DEFAULT_SETTINGS.ttsRate,
+    sessionLength: typeof settingsRaw.sessionLength === 'number' ? settingsRaw.sessionLength : DEFAULT_SETTINGS.sessionLength,
+    privacyOptIn: settingsRaw.privacyOptIn === true,
+    theme: isTheme(settingsRaw.theme) ? settingsRaw.theme : 'paper',
+  };
+}
+
+/** Liest den lokalen Zustand robust ein; alte Daten werden als erstes Profil übernommen. */
 export function loadState(): AppData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -66,39 +134,24 @@ export function loadState(): AppData {
     const parsed: unknown = JSON.parse(raw);
     if (!isRecord(parsed)) return freshState();
 
-    const settingsRaw = isRecord(parsed.settings) ? parsed.settings : {};
-    const settings: Settings = {
-      ...DEFAULT_SETTINGS,
-      ...settingsRaw,
-      pinHash: typeof settingsRaw.pinHash === 'string' ? settingsRaw.pinHash : null,
-      pinSalt: typeof settingsRaw.pinSalt === 'string' ? settingsRaw.pinSalt : null,
-      apiKey: typeof settingsRaw.apiKey === 'string' ? settingsRaw.apiKey : '',
-      model: typeof settingsRaw.model === 'string' && settingsRaw.model.trim() ? settingsRaw.model : DEFAULT_SETTINGS.model,
-      handColor: typeof settingsRaw.handColor === 'string' ? settingsRaw.handColor : DEFAULT_SETTINGS.handColor,
-      handWidth: typeof settingsRaw.handWidth === 'number' ? settingsRaw.handWidth : DEFAULT_SETTINGS.handWidth,
-      ttsRate: typeof settingsRaw.ttsRate === 'number' ? settingsRaw.ttsRate : DEFAULT_SETTINGS.ttsRate,
-      sessionLength: typeof settingsRaw.sessionLength === 'number' ? settingsRaw.sessionLength : DEFAULT_SETTINGS.sessionLength,
-      privacyOptIn: settingsRaw.privacyOptIn === true,
-      theme: isTheme(settingsRaw.theme) ? settingsRaw.theme : 'paper',
-    };
-
-    const progress: Record<string, WordState> = {};
-    if (isRecord(parsed.progress)) {
-      for (const [id, value] of Object.entries(parsed.progress)) {
-        const clean = cleanWordState(value);
-        if (clean) progress[id] = clean;
-      }
-    }
-
-    const attempts = Array.isArray(parsed.attempts)
-      ? parsed.attempts.filter(isRecord).slice(-MAX_ATTEMPTS) as unknown as AppData['attempts']
-      : [];
-
+    const settings = cleanSettings(parsed.settings);
     const customWords = Array.isArray(parsed.customWords)
       ? parsed.customWords.map(cleanWord).filter((word): word is Word => word !== null)
       : [];
 
-    return { version: 1, settings, progress, attempts, customWords };
+    // Version 1 hatte genau einen Lernstand direkt im Wurzelobjekt.
+    if (parsed.version === 1 || !Array.isArray(parsed.profiles) || parsed.profiles.length === 0) {
+      const legacy = makeProfile(DEFAULT_PROFILE_NAME, cleanProgress(parsed.progress), cleanAttempts(parsed.attempts));
+      legacy.id = 'kind-1';
+      return { version: 2, settings, activeProfileId: legacy.id, profiles: [legacy], customWords };
+    }
+
+    const profiles = parsed.profiles.map(cleanProfile).filter((profile): profile is Profile => profile !== null);
+    if (profiles.length === 0) return freshState();
+    const activeId = typeof parsed.activeProfileId === 'string' && profiles.some((profile) => profile.id === parsed.activeProfileId)
+      ? parsed.activeProfileId
+      : profiles[0].id;
+    return { version: 2, settings, activeProfileId: activeId, profiles, customWords };
   } catch (error) {
     console.warn('Klartext: gespeicherte Daten konnten nicht gelesen werden.', error);
     return freshState();
@@ -124,4 +177,39 @@ export function clearState(): void {
   } catch (error) {
     console.warn('Klartext: Daten konnten nicht gelöscht werden.', error);
   }
+}
+
+export function activeProfile(data: AppData): Profile {
+  return data.profiles.find((profile) => profile.id === data.activeProfileId) ?? data.profiles[0];
+}
+
+export function addProfile(data: AppData, name: string): Profile {
+  const profile = makeProfile(name);
+  data.profiles.push(profile);
+  data.activeProfileId = profile.id;
+  return profile;
+}
+
+export function switchProfile(data: AppData, id: string): boolean {
+  if (!data.profiles.some((profile) => profile.id === id)) return false;
+  data.activeProfileId = id;
+  return true;
+}
+
+export function renameProfile(data: AppData, id: string, name: string): boolean {
+  const profile = data.profiles.find((entry) => entry.id === id);
+  if (!profile) return false;
+  const clean = cleanName(name);
+  if (!clean) return false;
+  profile.name = clean;
+  return true;
+}
+
+export function deleteProfile(data: AppData, id: string): boolean {
+  if (data.profiles.length <= 1) return false;
+  const index = data.profiles.findIndex((profile) => profile.id === id);
+  if (index < 0) return false;
+  data.profiles.splice(index, 1);
+  if (data.activeProfileId === id) data.activeProfileId = data.profiles[Math.min(index, data.profiles.length - 1)].id;
+  return true;
 }

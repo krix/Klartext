@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createSession } from '../src/lib/session';
 import { freshState } from '../src/lib/storage';
 import type { Rule, Word } from '../src/lib/types';
-import { feedbackView, maskedSentence, parentView, practiceView } from '../src/ui/views';
+import { feedbackView, heroGreeting, homeView, maskedSentence, parentView, practiceView } from '../src/ui/views';
 
 const rule: Rule = { id: 'ie-i', title: 'ie oder i', tip: 'Lang: ie.' };
 const words: Word[] = [{ id: 'a', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' }];
@@ -54,6 +54,25 @@ describe('Übungsansicht', () => {
     expect(maskedSentence('Mai', 'Der Main fließt.')).toBe('');
     expect(maskedSentence('weiß', 'Der Schnee ist weiß.')).toBe('Der Schnee ist _____.');
     expect(maskedSentence('Äußerung', 'Das ist meine Äußerung.')).toBe('Das ist meine _____.');
+  });
+});
+
+describe('Startseite', () => {
+  it('wechselt den Wortgruß mit dem Tag', () => {
+    const today = heroGreeting(new Date(2026, 10, 24, 12));
+    const tomorrow = heroGreeting(new Date(2026, 10, 25, 12));
+    expect(today).not.toEqual(tomorrow);
+    const html = homeView(freshState(), [], 0, 0, 320);
+    expect(html).not.toContain('Deine Übung für heute');
+    expect(html).toContain(heroGreeting().word);
+  });
+
+  it('begrüßt das aktive Profil mit Namen und bietet einen Wechsel an', () => {
+    const data = freshState();
+    data.profiles[0].name = 'Lina';
+    const html = homeView(data, [], 0, 0, 320);
+    expect(html).toContain('Hallo Lina!');
+    expect(html).toContain('data-action="switch-profile"');
   });
 });
 
@@ -136,17 +155,19 @@ describe('Rückmeldung', () => {
 });
 
 describe('Elternbereich', () => {
-  it('bietet vier Reiter für die Bereiche', () => {
+  it('bietet fünf Reiter inklusive Profile an', () => {
     const html = parentView(
       freshState(),
       [],
       { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] },
       [],
     );
-    expect(html.match(/type="radio" name="parent-tab"/g)).toHaveLength(4);
-    for (const id of ['ki', 'writing', 'words', 'progress']) {
+    expect(html.match(/type="radio" name="parent-tab"/g)).toHaveLength(5);
+    for (const id of ['profiles', 'ki', 'writing', 'words', 'progress']) {
       expect(html).toContain(`for="parent-tab-${id}"`);
       expect(html).toContain(`id="panel-${id}"`);
     }
+    expect(html).toContain('data-form="add-profile"');
+    expect(html).toContain('data-form="rename-profile"');
   });
 });

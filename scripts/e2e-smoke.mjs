@@ -4,6 +4,9 @@
  * Chrome wird lokal genutzt, es muss kein Playwright-Browser geladen werden.
  */
 import assert from 'node:assert/strict';
+import { createServer } from 'node:http';
+import { existsSync, readFileSync } from 'node:fs';
+import { extname, join } from 'node:path';
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:4173/';
@@ -234,6 +237,97 @@ const retryResult = await outagePage.locator('main').innerText();
 console.log('retryResult=' + JSON.stringify(retryResult.slice(0, 120)));
 assert.doesNotMatch(retryResult, /Selbst prüfen/);
 await outageContext.close();
+
+// Profile: anlegen, umbenennen, wechseln – der aktive Name steht in der Begrüßung.
+const profileContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+const profilePage = await profileContext.newPage();
+profilePage.on('pageerror', (error) => errors.push(String(error)));
+await profilePage.goto(BASE);
+await profilePage.evaluate(async () => {
+  const salt = '1234567890abcdef1234567890abcdef';
+  const bytes = new TextEncoder().encode(`klartext:${salt}:1234`);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  const pinHash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+  localStorage.setItem('klartext.state.v1', JSON.stringify({
+    version: 2,
+    settings: { sessionLength: 5, pinSalt: salt, pinHash, privacyOptIn: true, apiKey: 'test-key' },
+    activeProfileId: 'kind-1',
+    profiles: [{ id: 'kind-1', name: 'Kind', progress: {}, attempts: [] }],
+    customWords: [],
+  }));
+});
+await profilePage.reload();
+await profilePage.locator('[data-action="parent"]').click();
+await profilePage.locator('#pin').fill('1234');
+await profilePage.locator('form[data-form="pin"] button[type="submit"]').click();
+await profilePage.waitForFunction(() => document.body.dataset.view === 'parent');
+await profilePage.locator('#new-profile').fill('Lina');
+await profilePage.locator('[data-form="add-profile"] button[type="submit"]').click();
+await profilePage.waitForFunction(() => document.querySelector('.profile-list')?.textContent.includes('Lina'));
+await profilePage.locator('form[data-form="rename-profile"] input').last().fill('Lina S.');
+await profilePage.locator('form[data-form="rename-profile"] button[type="submit"]').last().click();
+await profilePage.waitForFunction(() => document.querySelector('.profile-list')?.textContent.includes('Lina S.'));
+await profilePage.locator('[data-action="switch-profile"][data-keep="true"]').first().click();
+await profilePage.waitForFunction(() => document.querySelector('.profile-list')?.textContent.includes('Kind'));
+await profilePage.locator('a[data-action="home"]').click();
+await profilePage.waitForFunction(() => document.body.dataset.view === 'home');
+assert.match((await profilePage.locator('.kicker').innerText()).toLowerCase(), /hallo kind!/);
+await profilePage.locator('.profile-menu summary').click();
+await profilePage.locator('.profile-menu-list button', { hasText: 'Lina S.' }).click();
+await profilePage.waitForFunction(() => document.querySelector('.kicker')?.textContent.toLowerCase().includes('hallo lina s.!'));
+console.log('profileGreeting=' + JSON.stringify((await profilePage.locator('main').innerText()).slice(0, 90)));
+await profileContext.close();
+
+// Update-Hinweis: eine neue Service-Worker-Version muss sichtbar werden und übernehmen.
+// Dafür liefert ein kleiner lokaler Server denselben Build aus, aber mit wechselnder SW-Version.
+let swVersion = 'update-v1';
+const MIME = {
+  '.html': 'text/html; charset=utf-8', '.js': 'application/javascript', '.css': 'text/css',
+  '.png': 'image/png', '.json': 'application/json', '.webmanifest': 'application/manifest+json',
+  '.svg': 'image/svg+xml',
+};
+const updateServer = createServer((req, res) => {
+  const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+  if (path === '/sw.js') {
+    const body = readFileSync('dist/sw.js', 'utf8')
+      .replace(/const VERSION = ['"][^'"]+['"]/, `const VERSION = '${swVersion}'`);
+    res.writeHead(200, { 'content-type': 'application/javascript', 'cache-control': 'no-store' });
+    res.end(body);
+    return;
+  }
+  const file = join('dist', path.replace(/^\/+/, '') || 'index.html');
+  if (!existsSync(file)) {
+    res.writeHead(404);
+    res.end('Nicht gefunden');
+    return;
+  }
+  res.writeHead(200, { 'content-type': MIME[extname(file)] ?? 'application/octet-stream' });
+  res.end(readFileSync(file));
+});
+await new Promise((resolve) => updateServer.listen(0, '127.0.0.1', resolve));
+const updateBase = `http://127.0.0.1:${updateServer.address().port}/`;
+const updateContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+try {
+  const updatePage = await updateContext.newPage();
+  updatePage.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()); });
+  updatePage.on('pageerror', (error) => errors.push(String(error)));
+  await updatePage.goto(updateBase);
+  await updatePage.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 10000 });
+  swVersion = 'update-v2';
+  await updatePage.reload({ waitUntil: 'domcontentloaded' });
+  await updatePage.waitForSelector('#update-banner', { timeout: 10000 });
+  assert.match(await updatePage.locator('#update-banner').innerText(), /Neue Version da!/);
+  const [navigated] = await Promise.all([
+    updatePage.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    updatePage.locator('#update-banner button').click(),
+  ]);
+  assert.equal(navigated?.url(), updateBase);
+  assert.equal(await updatePage.locator('#update-banner').count(), 0);
+  console.log('updateBanner=gezeigt und übernommen');
+} finally {
+  await updateContext.close();
+  await new Promise((resolve) => updateServer.close(resolve));
+}
 
 assert.equal(errors.length, 0, 'keine Konsolenfehler: ' + errors.join(' | '));
 console.log('ALL PLAYWRIGHT CHECKS PASSED');

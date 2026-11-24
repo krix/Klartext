@@ -25,12 +25,12 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 
 | Bildschirm | Inhalt |
 |---|---|
-| Start | Tagesziel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
+| Start | Täglich wechselnder Wortgruß mit Namen des aktiven Profils, Profilwechsel, Sterne, Tagesserie, Trainingsplan, Startknopf, Themen, Elternbereich |
 | Themen | Vier Bereiche mit 16 Themen; pro Thema Erklärung, Lernziel, Merkregeln, Beispiele und „Dieses Thema üben“ |
 | Übung | Regelthema in echter Schreibweise (`ß` bleibt `ß`), Fortschritt, Diktat (Wort **und** Beispielsatz vorgelesen, Satz mit Lücke), Abschreiben, Auswahl, Schreibfläche oder Antwortbuttons, Tipp, Lösung |
 | Rückmeldung | Richtig/Fast, markierte Fehlerstelle mit Position und richtiger Schreibweise, Vergleichswort im Beispielsatz, kurzer Tipp, Wiederholung oder Selbstprüfung |
 | Rundenende | Übersicht aller geübten Wörter mit ✓/✗, Anzahl richtiger Wörter, neue Runde oder Startseite mit aktualisiertem Trainingsplan |
-| Elternbereich (PIN) | KI-Key und Datenschutz, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
+| Elternbereich (PIN) | Profile anlegen/umbenennen/wechseln/löschen, KI-Key und Datenschutz, Schriftfarbe/-stärke, Vorlesetempo, Rundenlänge, Design, eigene Wortlisten, Fortschritt, Export, Reset |
 
 ### Datenmodell (alles in `localStorage`, Schlüssel `klartext.state.v1`)
 
@@ -38,13 +38,16 @@ Quellen: [Interactions API](https://aistudio.google.com/api-reference/interactio
 AppData
 ├─ settings: apiKey, model, privacyOptIn, handColor, handWidth,
 │            ttsRate, sessionLength, theme, pinHash, pinSalt
-├─ progress[wortId]: box (Leitner 0..5), due, seen, lapses
-├─ attempts[]: ts, wortId, correct, source (ai|self|choice),
-│              confidence, transcription, illegible, categories
+├─ activeProfileId
+├─ profiles[]
+│  ├─ id, name
+│  ├─ progress[wortId]: box (Leitner 0..5), due, seen, lapses
+│  └─ attempts[]: ts, wortId, correct, source (ai|self|choice),
+│                 confidence, transcription, illegible, categories
 └─ customWords[]: id, word, ruleId, level, hint
 ```
 
-Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 320 Wörter und 16 Regelthemen liegen als JSON in `src/data/`.
+Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 320 Wörter und 16 Regelthemen liegen als JSON in `src/data/`.
 
 ### Themen
 
@@ -76,7 +79,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 
 **TypeScript + Vite ohne Framework.** Die App hat vier Bildschirme und wenige Zustände; ein Framework würde nur Bundle-Größe und Update-Komplexität hinzufügen. Vite liefert einen kleinen Production-Build (~96 kB JS inklusive Wortbank, ~27 kB gzip), der vollständig offline funktioniert. TypeScript verhindert Fehler im Datenmodell. `localStorage` reicht bei dieser Datenmenge aus und ist einfacher als IndexedDB; exportiert wird jederzeit als JSON.
 
-Weitere Punkte: Service Worker mit versionsbasiertem Precache (außer Gemini alles offline), installierbares Manifest mit Icons, `prefers-reduced-motion`, Tastaturbedienung, ARIA-Labels, Skip-Link, klare Fokusmarkierung. Kommentare im Code erklären die kniffligen Stellen (Leitner-Logik, DPR-Canvas, API-Fallback, PIN-Hash).
+Weitere Punkte: Service Worker mit versionsbasiertem Precache (außer Gemini alles offline) und deutlichem Update-Hinweis mit „Aktualisieren“-Button, sobald eine neue Version bereitsteht, installierbares Manifest mit Icons, `prefers-reduced-motion`, Tastaturbedienung, ARIA-Labels, Skip-Link, klare Fokusmarkierung. Kommentare im Code erklären die kniffligen Stellen (Leitner-Logik, DPR-Canvas, API-Fallback, PIN-Hash).
 
 > **Hinweis zum Repo:** Im Ordner `alternate-vanilla/` liegt ein früherer Prototyp ohne Build-Schritt (Node-Server mit serverseitigem `GEMINI_API_KEY`, eigene Schriften und Themen). Er wird nicht ausgeliefert und ist nur als Referenz erhalten. Die aktive App ist die oben beschriebene TypeScript/Vite-Version.
 
@@ -151,7 +154,7 @@ Dafür müsste die Basis-URL in `src/lib/gemini.ts` auf die Worker-URL umgestell
 - Es wird **nur das Canvas-Bild** an Gemini gesendet – **auch das Zielwort nicht**. Das Modell transkribiert blind, die App vergleicht lokal. Keine Namen, kein Fortschritt, keine Kontodaten.
 - Die Prüfung ist standardmäßig aus. Einmaliger Opt-in im Elternbereich; ohne Opt-in läuft alles offline mit Selbstvergleich.
 - `store: false` verhindert das Speichern der Anfrage in den Google-Interaktions-Logs. Google verarbeitet den Bild-Input jedoch gemäß seiner Datenschutzerklärung; deshalb die Zustimmung.
-- Alle Lernfortschritte bleiben lokal. Export und Löschen jederzeit im Elternbereich möglich. Keine Accounts, keine Analyse-Skripte, keine externen Fonts.
+- Alle Lernfortschritte bleiben lokal und gehören zum aktiven Profil. Profilnamen werden nur auf dem Gerät angezeigt und nie an die KI gesendet. Export und Löschen jederzeit im Elternbereich möglich. Keine Accounts, keine Analyse-Skripte, keine externen Fonts.
 
 ---
 
@@ -173,7 +176,7 @@ Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 59 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz sowie blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 66 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 

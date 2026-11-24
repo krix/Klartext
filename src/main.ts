@@ -18,7 +18,7 @@ import {
 import { hashPin, newSalt, verifyPin } from './lib/pin';
 import { speakWordAndSentence } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, sessionWords, upgradeQueue, type SessionState } from './lib/session';
-import { clearState, freshState, loadState, saveState } from './lib/storage';
+import { activeProfile, addProfile, clearState, deleteProfile, freshState, loadState, renameProfile, saveState, switchProfile } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
 import { feedbackView, homeView, parentGateView, parentView, practiceView, topicView, topicsView, type FeedbackView } from './ui/views';
 
@@ -102,15 +102,17 @@ function render(): void {
     window.scrollTo(0, 0);
     lastRenderedRoute = route;
   }
-  const stars = computeStars(data.attempts);
-  const plan = buildTrainingPlan(data.attempts, rules);
+  const profile = activeProfile(data);
+  const stars = computeStars(profile.attempts);
+  const plan = buildTrainingPlan(profile.attempts, rules);
+  const home = () => homeView(data, plan, computeStreak(profile.attempts), stars, allWords().length);
 
   switch (route) {
     case 'practice':
-      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
+      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible) : home();
       break;
     case 'feedback':
-      app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise(), plan) : homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
+      app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise(), plan) : home();
       break;
     case 'parent':
       app!.innerHTML = parentView(data, plan, parentStats(), unlockedThemes(stars), connectionTest, connectionTesting);
@@ -119,15 +121,15 @@ function render(): void {
       app!.innerHTML = parentGateView(pinSetup, pinError);
       break;
     case 'topics':
-      app!.innerHTML = topicsView(topicAreas, rules, allWords(), data.progress, parentUnlocked);
+      app!.innerHTML = topicsView(topicAreas, rules, allWords(), profile.progress, parentUnlocked);
       break;
     case 'topic': {
       const rule = findRule(topicId);
-      app!.innerHTML = topicView(rule, topicAreas.find((area) => area.id === rule.area), allWords(), data.progress, parentUnlocked);
+      app!.innerHTML = topicView(rule, topicAreas.find((area) => area.id === rule.area), allWords(), profile.progress, parentUnlocked);
       break;
     }
     default:
-      app!.innerHTML = homeView(data, plan, computeStreak(data.attempts), stars, allWords().length);
+      app!.innerHTML = home();
   }
 
   if (route === 'practice' && session?.current && session.current.kind !== 'choice') {
@@ -146,18 +148,19 @@ function isLastExercise(): boolean {
 }
 
 function parentStats(): { seen: number; correctRate: number; streak: number; stars: number; byCategory: Array<{ name: string; errors: number }> } {
+  const profile = activeProfile(data);
   const categories = new Map<string, number>();
-  for (const attempt of data.attempts) {
+  for (const attempt of profile.attempts) {
     if (attempt.correct) continue;
     for (const category of attempt.categories) categories.set(category, (categories.get(category) ?? 0) + 1);
   }
-  const seen = Object.keys(data.progress).length;
-  const rated = data.attempts.filter((attempt) => !attempt.selfAssessed);
+  const seen = Object.keys(profile.progress).length;
+  const rated = profile.attempts.filter((attempt) => !attempt.selfAssessed);
   return {
     seen,
     correctRate: rated.length === 0 ? 0 : rated.filter((attempt) => attempt.correct).length / rated.length,
-    streak: computeStreak(data.attempts),
-    stars: computeStars(data.attempts),
+    streak: computeStreak(profile.attempts),
+    stars: computeStars(profile.attempts),
     byCategory: [...categories.entries()].map(([name, errors]) => ({ name, errors })).sort((a, b) => b.errors - a.errors),
   };
 }
@@ -168,7 +171,7 @@ function startSession(ruleId = ''): void {
     notice(ruleId ? 'Für dieses Thema sind keine Wörter vorhanden.' : 'Es sind keine Wörter vorhanden.');
     return;
   }
-  session = createSession(pool, rules, data.progress, data.settings, Math.random, Date.now(), ruleId);
+  session = createSession(pool, rules, activeProfile(data).progress, data.settings, Math.random, Date.now(), ruleId);
   topicId = ruleId;
   feedback = null;
   retryImageDataUrl = null;
@@ -210,7 +213,8 @@ function goNext(): void {
 
 function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['source'], result?: { confidence?: number; transcription?: string; illegible?: boolean; differences?: Difference[] }): void {
   const word = exercise.word;
-  const previousState = data.progress[word.id];
+  const profile = activeProfile(data);
+  const previousState = profile.progress[word.id];
   feedbackContext = { exercise, previousState };
   const differences = result?.differences ?? (result?.transcription
     ? diffWords(word.word, result.transcription, exercise.rule.caseSensitive === true)
@@ -229,9 +233,9 @@ function recordAttempt(exercise: Exercise, correct: boolean, source: Attempt['so
     illegible: result?.illegible ?? false,
     categories: correct ? [] : errorCategories(differences, word.ruleId),
   };
-  data.attempts.push(attempt);
-  if (data.attempts.length > 3000) data.attempts = data.attempts.slice(-3000);
-  data.progress[word.id] = applyResult(previousState, correct);
+  profile.attempts.push(attempt);
+  if (profile.attempts.length > 3000) profile.attempts = profile.attempts.slice(-3000);
+  profile.progress[word.id] = applyResult(previousState, correct);
   saveState(data);
 
   if (session) {
@@ -360,6 +364,27 @@ function chooseOption(index: number): void {
   });
 }
 
+function setActiveProfile(id: string, keepRoute = false): void {
+  if (!switchProfile(data, id)) {
+    notice('Dieses Profil gibt es nicht mehr.');
+    return;
+  }
+  saveState(data);
+  session = null;
+  feedback = null;
+  feedbackContext = null;
+  retryImageDataUrl = null;
+  checking = false;
+  helpVisible = false;
+  if (!keepRoute) {
+    route = 'home';
+    topicId = '';
+    parentUnlocked = false;
+  }
+  render();
+  notice(`Profil „${activeProfile(data).name}“ ist jetzt aktiv.`);
+}
+
 function goHome(): void {
   refreshState();
   route = 'home';
@@ -454,10 +479,41 @@ function saveWritingForm(form: HTMLFormElement): void {
   data.settings.ttsRate = Math.max(0.5, Math.min(1.3, Number(values.get('ttsRate')) || 0.85));
   data.settings.sessionLength = [5, 8, 12, 16].includes(Number(values.get('sessionLength'))) ? Number(values.get('sessionLength')) : 8;
   const theme = String(values.get('theme') ?? 'paper');
-  if (unlockedThemes(computeStars(data.attempts)).includes(theme)) data.settings.theme = theme as AppData['settings']['theme'];
+  if (unlockedThemes(computeStars(activeProfile(data).attempts)).includes(theme)) data.settings.theme = theme as AppData['settings']['theme'];
   saveState(data);
   render();
   notice('Darstellung gespeichert.');
+}
+
+function saveProfileForm(form: HTMLFormElement): void {
+  const values = new FormData(form);
+  const name = String(values.get('name') ?? '').trim();
+  if (form.dataset.form === 'add-profile') {
+    if (!name) {
+      notice('Bitte einen Namen eingeben.');
+      return;
+    }
+    const profile = addProfile(data, name);
+    saveState(data);
+    session = null;
+    feedback = null;
+    feedbackContext = null;
+    retryImageDataUrl = null;
+    checking = false;
+    helpVisible = false;
+    render();
+    notice(`Profil „${profile.name}“ angelegt und aktiviert.`);
+    return;
+  }
+  if (form.dataset.form === 'rename-profile') {
+    if (!renameProfile(data, form.dataset.id ?? '', name)) {
+      notice('Bitte einen gültigen Namen eingeben.');
+      return;
+    }
+    saveState(data);
+    render();
+    notice('Profilname gespeichert.');
+  }
 }
 
 function addCustomWords(form: HTMLFormElement): void {
@@ -506,6 +562,25 @@ app.addEventListener('click', (event) => {
 
   switch (action) {
     case 'home': goHome(); break;
+    case 'switch-profile': setActiveProfile(element.dataset.id ?? '', element.dataset.keep === 'true'); break;
+    case 'delete-profile': {
+      const id = element.dataset.id ?? '';
+      const profile = data.profiles.find((entry) => entry.id === id);
+      if (!profile) break;
+      if (!window.confirm(`Profil „${profile.name}“ und sein Lernstand wirklich löschen?`)) break;
+      const wasActive = data.activeProfileId === id;
+      if (deleteProfile(data, id)) {
+        saveState(data);
+        if (wasActive) {
+          session = null;
+          feedback = null;
+          feedbackContext = null;
+        }
+        render();
+        notice(`Profil „${profile.name}“ gelöscht.`);
+      } else notice('Das letzte Profil kann nicht gelöscht werden.');
+      break;
+    }
     case 'topics': route = 'topics'; render(); break;
     case 'topic': topicId = element.dataset.id ?? ''; route = 'topic'; render(); break;
     case 'practice-topic': startSession(element.dataset.id ?? ''); break;
@@ -521,7 +596,7 @@ app.addEventListener('click', (event) => {
     case 'test-connection': void runConnectionTest(element); break;
     case 'self-check': {
       const exercise = session?.current;
-      if (exercise) feedbackContext = { exercise, previousState: data.progress[exercise.word.id] };
+      if (exercise) feedbackContext = { exercise, previousState: activeProfile(data).progress[exercise.word.id] };
       showResult({
         kind: 'fallback',
         word: exercise?.word ?? feedbackContext?.exercise.word ?? builtinWords[0],
@@ -541,8 +616,9 @@ app.addEventListener('click', (event) => {
     case 'disagree': {
       if (feedbackContext?.previousState) {
         const previous = feedbackContext.previousState;
-        if (previous.seen === 0) delete data.progress[feedbackContext.exercise.word.id];
-        else data.progress[feedbackContext.exercise.word.id] = previous;
+        const profile = activeProfile(data);
+        if (previous.seen === 0) delete profile.progress[feedbackContext.exercise.word.id];
+        else profile.progress[feedbackContext.exercise.word.id] = previous;
       }
       saveState(data);
       showResult({ kind: 'fallback', word: feedbackContext?.exercise.word ?? builtinWords[0], rule: feedbackContext?.exercise.rule ?? findRule(''), message: 'Du entscheidest selbst: War dein Wort richtig?' });
@@ -591,6 +667,7 @@ app.addEventListener('submit', (event) => {
   if (form.dataset.form === 'settings') saveSettingsForm(form);
   if (form.dataset.form === 'writing') saveWritingForm(form);
   if (form.dataset.form === 'custom') addCustomWords(form);
+  if (form.dataset.form === 'add-profile' || form.dataset.form === 'rename-profile') saveProfileForm(form);
 });
 
 app.addEventListener('input', (event) => {
@@ -604,14 +681,64 @@ app.addEventListener('input', (event) => {
 // Mehrere Tabs teilen sich localStorage: ein Tab übt, der andere zeigt sonst einen leeren Plan.
 window.addEventListener('storage', (event) => {
   if (event.key !== 'klartext.state.v1') return;
+  const previousProfileId = data.activeProfileId;
   refreshState();
+  if (previousProfileId !== data.activeProfileId) {
+    // Ein anderer Tab hat das Kind gewechselt: keine Versuche mehr dem falschen Profil zuschreiben.
+    session = null;
+    feedback = null;
+    feedbackContext = null;
+    retryImageDataUrl = null;
+    checking = false;
+    helpVisible = false;
+    if (route === 'practice' || route === 'feedback') route = 'home';
+    render();
+    notice(`Profil „${activeProfile(data).name}“ ist jetzt aktiv.`);
+    return;
+  }
   // Während einer Übung darf die Schreibfläche nicht mitten im Schreiben neu gezeichnet werden.
   if (route !== 'practice') render();
 });
 
+let updateRegistration: ServiceWorkerRegistration | null = null;
+let updateBannerShown = false;
+
+function showUpdateBanner(): void {
+  if (updateBannerShown || document.getElementById('update-banner')) return;
+  updateBannerShown = true;
+  const banner = document.createElement('div');
+  banner.id = 'update-banner';
+  banner.className = 'update-banner';
+  banner.setAttribute('role', 'status');
+  banner.innerHTML = '<span><strong>Neue Version da!</strong> Jetzt übernehmen, um sie zu nutzen.</span><button type="button">Aktualisieren</button>';
+  banner.querySelector('button')?.addEventListener('click', () => {
+    updateRegistration?.waiting?.postMessage({ type: 'SKIP_WAITING' });
+    window.location.reload();
+  });
+  document.body.appendChild(banner);
+}
+
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch((error: unknown) => {
+    // Den-controllerchange zuerst abonnieren: ein schnelles Update kann sonst vor dem
+    // aufgelösten register()-Promise passieren und der Hinweis geht verloren.
+    let alreadyControlled = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (alreadyControlled) showUpdateBanner();
+      alreadyControlled = true;
+    });
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((registration) => {
+      updateRegistration = registration;
+      if (registration.waiting && alreadyControlled) showUpdateBanner();
+      registration.addEventListener('updatefound', () => {
+        const installing = registration.installing;
+        if (!installing) return;
+        installing.addEventListener('statechange', () => {
+          if (installing.state === 'installed' && alreadyControlled) showUpdateBanner();
+        });
+      });
+      registration.update().catch(() => {});
+    }).catch((error: unknown) => {
       console.warn('Klartext: Service Worker konnte nicht registriert werden.', error);
     });
   });
