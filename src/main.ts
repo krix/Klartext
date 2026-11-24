@@ -16,7 +16,7 @@ import {
   unlockedThemes,
 } from './lib/learning';
 import { hashPin, newSalt, verifyPin } from './lib/pin';
-import { speakParts, speakWordAndSentence } from './lib/speech';
+import { speakWordAndSentence } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, sessionWords, upgradeQueue, type SessionState } from './lib/session';
 import { activeProfile, addProfile, clearState, deleteProfile, freshState, loadState, renameProfile, saveState, switchProfile } from './lib/storage';
 import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
@@ -90,18 +90,6 @@ function renderMarkedError(): void {
     letter.classList.toggle('is-marked', index === markedError);
     letter.setAttribute('aria-pressed', String(index === markedError));
   });
-}
-
-/** Liest allen sichtbaren Text der aktuellen Seite vor – für alle Bildschirme, nicht nur Diktate. */
-function speakPage(): void {
-  const main = document.querySelector<HTMLElement>('#hauptinhalt');
-  if (!main) return;
-  const lines = main.innerText
-    .replace(/[✦🔒✓✗↻]/g, ' ')
-    .split(/\n+/)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 1 && !/^\d+ von \d+$/.test(line));
-  if (!speakParts(lines, data.settings.ttsRate)) notice('Dieser Browser kann nicht vorlesen.');
 }
 
 function notice(message: string): void {
@@ -710,7 +698,6 @@ app.addEventListener('click', (event) => {
     case 'practice-topic': startSession(element.dataset.id ?? ''); break;
     case 'start': startSession(); break;
     case 'quit': goHome(); break;
-    case 'speak-page': speakPage(); break;
     case 'speak':
       if (session?.current) speakWordAndSentence(session.current.word.word, session.current.word.sentence, data.settings.ttsRate);
       break;

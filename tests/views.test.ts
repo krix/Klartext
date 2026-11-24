@@ -189,10 +189,11 @@ describe('Elternbereich', () => {
     expect(html).not.toContain('value="mint"');
   });
 
-  it('bietet auf jeder Seite einen Vorlese-Button an', () => {
+  it('bietet im Header nur Navigation an, kein Vorlesen der ganzen Seite', () => {
     for (const html of [homeView(freshState(), [], 0, 0, 320), parentView(freshState(), [], { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] }, [])]) {
-      expect(html).toContain('data-action="speak-page"');
-      expect(html).toContain('Text dieser Seite vorlesen');
+      expect(html).not.toContain('data-action="speak-page"');
+      expect(html).toContain('data-action="topics"');
+      expect(html).toContain('Elternbereich');
     }
   });
 });

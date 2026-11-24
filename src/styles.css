@@ -174,8 +174,6 @@ a { color: inherit; }
 
 .topnav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 
-.link-button[data-action="speak-page"] { white-space: nowrap; }
-
 .link-button {
   border: 0;
   background: transparent;
@@ -737,7 +735,6 @@ body[data-view="parent"] .checkbox-line small { font-size: .8rem; }
   .topbar { padding: 10px 16px; }
   .topnav { gap: 2px; }
   .link-button { padding: 5px 6px; font-size: .82rem; }
-  .speak-label { display: none; }
   body[data-view="home"] .topbar { padding-top: 8px; padding-bottom: 8px; }
   .brand small { display: none; }
   .stage { padding: 14px 18px; border-radius: 18px; }
