@@ -1,4 +1,5 @@
 import './styles.css';
+import rawChallenges from './data/challenges.json';
 import rawRules from './data/rules.json';
 import rawTopicGroups from './data/topic-groups.json';
 import rawWords from './data/words.json';
@@ -18,13 +19,15 @@ import {
 import { hashPin, newSalt, verifyPin } from './lib/pin';
 import { speakWordAndSentence } from './lib/speech';
 import { createSession, finishExercise, isSessionFinished, nextExercise, roundStats, sessionWords, upgradeQueue, type SessionState } from './lib/session';
+import { computeHomeStats } from './lib/stats';
 import { activeProfile, addProfile, clearState, deleteProfile, freshState, loadState, renameProfile, saveState, switchProfile } from './lib/storage';
-import type { AppData, Attempt, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
+import type { AppData, Attempt, Challenge, Difference, Exercise, Rule, TopicArea, Word, WordState } from './lib/types';
 import { feedbackView, homeView, parentGateView, parentView, practiceView, topicView, topicsView, type FeedbackView } from './ui/views';
 
 const rules = rawRules as unknown as Rule[];
 const topicAreas = rawTopicGroups as unknown as TopicArea[];
 const builtinWords = rawWords as unknown as Word[];
+const builtinChallenges = rawChallenges as unknown as Challenge[];
 
 type Route = 'home' | 'practice' | 'feedback' | 'parent' | 'gate' | 'topics' | 'topic';
 
@@ -133,11 +136,12 @@ function render(): void {
   const profile = activeProfile(data);
   const stars = computeStars(profile.attempts);
   const plan = buildTrainingPlan(profile.attempts, rules);
-  const home = () => homeView(data, plan, computeStreak(profile.attempts), stars, allWords().length);
+  const stats = computeHomeStats(allWords(), rules, builtinChallenges, profile.progress, profile.attempts);
+  const home = () => homeView(data, plan, computeStreak(profile.attempts), stars, stats);
 
   switch (route) {
     case 'practice':
-      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible, helpStep) : home();
+      app!.innerHTML = session ? practiceView(data, session, checking, helpVisible, helpStep, stats) : home();
       break;
     case 'feedback':
       app!.innerHTML = feedback ? feedbackView(feedback, isLastExercise(), plan) : home();

@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { createSession } from '../src/lib/session';
+import type { LearningStats } from '../src/lib/stats';
 import { freshState } from '../src/lib/storage';
 import type { Rule, Word } from '../src/lib/types';
 import { feedbackView, heroGreeting, homeView, maskedSentence, parentView, practiceView } from '../src/ui/views';
 
 const rule: Rule = { id: 'ie-i', title: 'ie oder i', tip: 'Lang: ie.' };
 const words: Word[] = [{ id: 'a', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' }];
+const emptyStats: LearningStats = {
+  totalWords: 320, learned: 0, percent: 0, totalTopics: 4, trainedTopics: 0,
+  totalExercises: 7, trainedExercises: 0, secureWords: 0, toughSpots: [], strengths: [],
+};
 
 function renderPractice(checking: boolean, kiReady = true): string {
   const data = freshState();
@@ -62,7 +67,7 @@ describe('Startseite', () => {
     const today = heroGreeting(new Date(2026, 10, 24, 12));
     const tomorrow = heroGreeting(new Date(2026, 10, 25, 12));
     expect(today).not.toEqual(tomorrow);
-    const html = homeView(freshState(), [], 0, 0, 320);
+    const html = homeView(freshState(), [], 0, 0, emptyStats);
     expect(html).not.toContain('Deine Übung für heute');
     expect(html).toContain(heroGreeting().word);
   });
@@ -70,9 +75,30 @@ describe('Startseite', () => {
   it('begrüßt das aktive Profil mit Namen und bietet einen Wechsel an', () => {
     const data = freshState();
     data.profiles[0].name = 'Lina';
-    const html = homeView(data, [], 0, 0, 320);
+    const html = homeView(data, [], 0, 0, emptyStats);
     expect(html).toContain('Hallo Lina!');
     expect(html).toContain('data-action="switch-profile"');
+  });
+
+  it('zeigt Bestand, Trainingsstand und ausklappbare Auswertung', () => {
+    const stats: LearningStats = {
+      ...emptyStats,
+      learned: 12, percent: 4, trainedTopics: 2, trainedExercises: 3, secureWords: 5,
+      toughSpots: [{ name: 'ie/i', count: 4 }],
+      strengths: [{ name: 'ie oder i', count: 3, detail: '3 von 4 richtig' }],
+    };
+    const html = homeView(freshState(), [], 0, 0, stats);
+    expect(html).toContain('12 / 320');
+    expect(html).toContain('2/4 Themen');
+    expect(html).toContain('3/7 Übungen trainiert');
+    expect(html).toContain('5 Wörter sitzen sicher');
+    expect(html).toContain('Noch knifflig');
+    expect(html).toContain('4× üben');
+    expect(html).toContain('Sitzt schon gut');
+    expect(html).toContain('3 von 4 richtig');
+    // Zugeklappt: die Startseite bleibt auf einer Höhe.
+    expect(html).toContain('<details class="insight-details">');
+    expect(html).not.toContain('<details class="insight-details" open>');
   });
 });
 
@@ -190,7 +216,7 @@ describe('Elternbereich', () => {
   });
 
   it('bietet im Header nur Navigation an, kein Vorlesen der ganzen Seite', () => {
-    for (const html of [homeView(freshState(), [], 0, 0, 320), parentView(freshState(), [], { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] }, [])]) {
+    for (const html of [homeView(freshState(), [], 0, 0, emptyStats), parentView(freshState(), [], { seen: 0, correctRate: 0, streak: 0, stars: 0, byCategory: [] }, [])]) {
       expect(html).not.toContain('data-action="speak-page"');
       expect(html).toContain('data-action="topics"');
       expect(html).toContain('Elternbereich');

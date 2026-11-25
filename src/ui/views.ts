@@ -3,6 +3,7 @@ import type { ConnectionTestResult } from '../lib/gemini';
 import type { AppData, Difference, Exercise, Profile, Rule, TopicArea, Word } from '../lib/types';
 import { diffWords, type PlanEntry } from '../lib/learning';
 import { roundStats, type SessionResult, type SessionState } from '../lib/session';
+import { EMPTY_LEARNING_STATS, type LearningStats } from '../lib/stats';
 import { activeProfile } from '../lib/storage';
 
 export interface FeedbackView {
@@ -161,10 +162,25 @@ function renderSummaryOverview(results: readonly SessionResult[], plan: readonly
   </section>`;
 }
 
-export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars: number, totalWords: number): string {
+/** Zwei kleine Auswertungen in der Startseite: Stolperstellen und Stärken. */
+function learningInsights(stats: LearningStats): string {
+  const spots = stats.toughSpots.length
+    ? `<ul class="category-list">${stats.toughSpots.map((spot) => `<li><span>${escapeHtml(spot.name)}</span><small>${spot.count}× üben</small></li>`).join('')}</ul>`
+    : '<p class="panel-note">Im Moment ist nichts besonders knifflig.</p>';
+  const strengths = stats.strengths.length
+    ? `<ul class="category-list">${stats.strengths.map((item) => `<li><span>${escapeHtml(item.name)}</span><small>${escapeHtml(item.detail)}</small></li>`).join('')}</ul>`
+    : '<p class="panel-note">Üb noch ein paar Runden – dann sehe ich hier deine Stärken.</p>';
+  return `<div class="insight-body">
+    <p class="panel-note">${stats.percent}% der Wortbank gesehen · ${stats.secureWords} Wörter sitzen sicher.</p>
+    <h3>Noch knifflig</h3>
+    ${spots}
+    <h3>Sitzt schon gut</h3>
+    ${strengths}
+  </div>`;
+}
+
+export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars: number, stats: LearningStats): string {
   const profile = activeProfile(data);
-  const learned = Object.keys(profile.progress).length;
-  const percent = totalWords === 0 ? 0 : Math.round((learned / totalWords) * 100);
   const hasKey = data.settings.apiKey.trim().length > 0 && data.settings.privacyOptIn;
   const greeting = heroGreeting();
   const profileMenu = `<details class="profile-menu">
@@ -189,15 +205,18 @@ export function homeView(data: AppData, plan: PlanEntry[], streak: number, stars
         <div class="stat-row">
           <div class="stat stat-stars"><b>${stars}</b><span>Sterne gesammelt</span></div>
           <div class="stat"><b>${streak}</b><span>Tage in Folge</span></div>
-          <div class="stat"><b>${learned}</b><span>Wörter geübt</span></div>
+          <div class="stat"><b>${stats.learned} / ${stats.totalWords}</b><span>Wörter geübt</span></div>
         </div>
       </section>
       <aside class="rail" aria-label="Lernübersicht">
         <section class="panel">
           <h2>Dein Trainingsplan</h2>
           ${planBlock(plan, profile.attempts.length > 0)}
-          <div class="progress-track" role="progressbar" aria-label="Anteil der geübten Wörter" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${percent}%"></span></div>
-          <p class="panel-note">${percent}% der Wortbank schon gesehen</p>
+          <div class="progress-track" role="progressbar" aria-label="Anteil der geübten Wörter" aria-valuenow="${stats.percent}" aria-valuemin="0" aria-valuemax="100"><span style="width:${stats.percent}%"></span></div>
+          <details class="insight-details">
+            <summary class="panel-note">${stats.trainedTopics}/${stats.totalTopics} Themen · ${stats.trainedExercises}/${stats.totalExercises} Übungen trainiert <span aria-hidden="true">▾</span></summary>
+            ${learningInsights(stats)}
+          </details>
         </section>
         ${data.settings.privacyOptIn ? '' : `<section class="panel">
           <h3>${lockSymbol} Für die Eltern</h3>
@@ -380,9 +399,9 @@ function promptBlock(exercise: Exercise, showHelp: boolean): string {
     <p class="prompt-word">${escapeHtml(word.word)}</p>`;
 }
 
-export function practiceView(data: AppData, session: SessionState, checking: boolean, helpVisible: boolean, helpStep = 0): string {
+export function practiceView(data: AppData, session: SessionState, checking: boolean, helpVisible: boolean, helpStep = 0, homeStats: LearningStats = EMPTY_LEARNING_STATS): string {
   const exercise = session.current;
-  if (!exercise) return homeView(data, [], 0, 0, 0);
+  if (!exercise) return homeView(data, [], 0, 0, homeStats);
   const stats = roundStats(session);
   const percent = Math.min(100, Math.round((stats.words / Math.max(1, stats.total)) * 100));
   const progressLabel = session.currentRetry
