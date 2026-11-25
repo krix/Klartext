@@ -104,6 +104,12 @@ function decodeLogo(path) {
 function downsample(logo, size) {
   const out = Buffer.alloc(size * size * 4);
   const samples = 4;
+  // Seitenverhältnis beibehalten: das Logo wird zentriert und nicht gestaucht.
+  const scale = Math.min(size / logo.width, size / logo.height);
+  const drawWidth = logo.width * scale;
+  const drawHeight = logo.height * scale;
+  const padX = (size - drawWidth) / 2;
+  const padY = (size - drawHeight) / 2;
   for (let y = 0; y < size; y += 1) {
     for (let x = 0; x < size; x += 1) {
       let alpha = 0;
@@ -111,9 +117,13 @@ function downsample(logo, size) {
       let green = 0;
       let blue = 0;
       for (let sy = 0; sy < samples; sy += 1) {
-        const sourceY = Math.min(logo.height - 1, Math.floor(((y + (sy + 0.5) / samples) / size) * logo.height));
+        const sampleY = y + (sy + 0.5) / samples - padY;
+        if (sampleY < 0 || sampleY >= drawHeight) continue;
+        const sourceY = Math.min(logo.height - 1, Math.floor((sampleY / drawHeight) * logo.height));
         for (let sx = 0; sx < samples; sx += 1) {
-          const sourceX = Math.min(logo.width - 1, Math.floor(((x + (sx + 0.5) / samples) / size) * logo.width));
+          const sampleX = x + (sx + 0.5) / samples - padX;
+          if (sampleX < 0 || sampleX >= drawWidth) continue;
+          const sourceX = Math.min(logo.width - 1, Math.floor((sampleX / drawWidth) * logo.width));
           const i = (sourceY * logo.width + sourceX) * 4;
           const a = logo.pixels[i + 3] / 255;
           alpha += a;
