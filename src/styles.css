@@ -120,9 +120,9 @@ body {
 }
 
 /* Heftpapier: das graue Raster steht fest (siehe body-Hintergrund). Darüber
-   liegen einzelne bunte Punkte – jeder ist ein eigenes Element mit eigener
-   Größe, Farbe, Richtung, Dauer und Startzeit. Sie sind einfarbig und hart
-   begrenzt, also ohne weichen Verlauf oder Farbtupfer. */
+   gleiten fünf große, leicht transparente Punkte. Jeder hat eine eigene
+   geschwungene Bahn und einen eigenen Rhythmus; die Bahnen schließen sich,
+   damit die Bewegung ohne Sprung weiterläuft. */
 .background-dots {
   position: fixed;
   inset: 0;
@@ -138,42 +138,49 @@ body {
   height: var(--size);
   border-radius: 50%;
   background: var(--dot-color);
-  animation: dot-wander var(--time) ease-in-out var(--delay) infinite alternate;
+  opacity: .28;
+  animation-name: var(--path);
+  animation-duration: var(--time);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: var(--delay);
   will-change: transform;
 }
-.background-dots i:nth-child(3n + 1) { --dot-color: color-mix(in srgb, var(--accent) 72%, var(--paper)); }
-.background-dots i:nth-child(3n + 2) { --dot-color: color-mix(in srgb, var(--fun-sky) 66%, var(--paper)); }
-.background-dots i:nth-child(3n) { --dot-color: color-mix(in srgb, var(--fun-coral) 60%, var(--paper)); }
+.background-dots i:nth-child(1) { --x: 4%;  --y: 16%; --size: 78px; --dot-color: var(--accent); --path: glide-1; --time: 19s; --delay: -4s; }
+.background-dots i:nth-child(2) { --x: 62%; --y: 6%;  --size: 62px; --dot-color: var(--fun-sky); --path: glide-2; --time: 23s; --delay: -11s; }
+.background-dots i:nth-child(3) { --x: 28%; --y: 60%; --size: 92px; --dot-color: var(--fun-coral); --path: glide-3; --time: 26s; --delay: -7s; }
+.background-dots i:nth-child(4) { --x: 76%; --y: 52%; --size: 70px; --dot-color: var(--accent); --path: glide-4; --time: 21s; --delay: -16s; }
+.background-dots i:nth-child(5) { --x: 6%;  --y: 74%; --size: 56px; --dot-color: var(--fun-sky); --path: glide-5; --time: 25s; --delay: -2s; }
 
-/* Kleine, mittlere und große Punkte sind bewusst gemischt; jeder wandert
-   in eine andere Richtung und in einem anderen Rhythmus. */
-.background-dots i:nth-child(1)  { --x: 7%;  --y: 14%; --size: 5px;  --dx: 8px;   --dy: -6px;  --time: 21s; --delay: -3s; }
-.background-dots i:nth-child(2)  { --x: 19%; --y: 8%;  --size: 11px; --dx: -9px;  --dy: 7px;   --time: 26s; --delay: -11s; }
-.background-dots i:nth-child(3)  { --x: 31%; --y: 19%; --size: 4px;  --dx: 6px;   --dy: 9px;   --time: 18s; --delay: -6s; }
-.background-dots i:nth-child(4)  { --x: 44%; --y: 10%; --size: 24px; --dx: -7px;  --dy: -10px; --time: 29s; --delay: -14s; }
-.background-dots i:nth-child(5)  { --x: 57%; --y: 16%; --size: 6px;  --dx: 10px;  --dy: 5px;   --time: 20s; --delay: -9s; }
-.background-dots i:nth-child(6)  { --x: 69%; --y: 7%;  --size: 13px; --dx: -8px;  --dy: 8px;   --time: 24s; --delay: -2s; }
-.background-dots i:nth-child(7)  { --x: 82%; --y: 15%; --size: 5px;  --dx: 7px;   --dy: -9px;  --time: 19s; --delay: -13s; }
-.background-dots i:nth-child(8)  { --x: 93%; --y: 22%; --size: 10px; --dx: -6px;  --dy: 6px;   --time: 27s; --delay: -7s; }
-.background-dots i:nth-child(9)  { --x: 12%; --y: 32%; --size: 12px; --dx: 9px;   --dy: 8px;   --time: 25s; --delay: -17s; }
-.background-dots i:nth-child(10) { --x: 26%; --y: 41%; --size: 4px;  --dx: -7px;  --dy: -6px;  --time: 17s; --delay: -4s; }
-.background-dots i:nth-child(11) { --x: 39%; --y: 36%; --size: 20px; --dx: 8px;   --dy: -11px; --time: 30s; --delay: -19s; }
-.background-dots i:nth-child(12) { --x: 52%; --y: 29%; --size: 5px;  --dx: -9px;  --dy: 7px;   --time: 22s; --delay: -12s; }
-.background-dots i:nth-child(13) { --x: 64%; --y: 38%; --size: 14px; --dx: 7px;   --dy: 9px;   --time: 28s; --delay: -5s; }
-.background-dots i:nth-child(14) { --x: 77%; --y: 31%; --size: 6px;  --dx: -5px;  --dy: -8px;  --time: 16s; --delay: -8s; }
-.background-dots i:nth-child(15) { --x: 89%; --y: 42%; --size: 26px; --dx: 10px;  --dy: 6px;   --time: 32s; --delay: -21s; }
-.background-dots i:nth-child(16) { --x: 5%;  --y: 61%; --size: 5px;  --dx: 6px;   --dy: -7px;  --time: 21s; --delay: -15s; }
-.background-dots i:nth-child(17) { --x: 18%; --y: 72%; --size: 11px; --dx: -8px;  --dy: 9px;   --time: 26s; --delay: -1s; }
-.background-dots i:nth-child(18) { --x: 33%; --y: 64%; --size: 4px;  --dx: 7px;   --dy: 5px;   --time: 18s; --delay: -10s; }
-.background-dots i:nth-child(19) { --x: 47%; --y: 80%; --size: 22px; --dx: -10px; --dy: -6px;  --time: 31s; --delay: -23s; }
-.background-dots i:nth-child(20) { --x: 60%; --y: 59%; --size: 12px; --dx: 9px;   --dy: 8px;   --time: 23s; --delay: -6s; }
-.background-dots i:nth-child(21) { --x: 73%; --y: 74%; --size: 6px;  --dx: -6px;  --dy: -9px;  --time: 20s; --delay: -18s; }
-.background-dots i:nth-child(22) { --x: 86%; --y: 66%; --size: 13px; --dx: 8px;   --dy: -7px;  --time: 27s; --delay: -3s; }
-.background-dots i:nth-child(23) { --x: 95%; --y: 86%; --size: 5px;  --dx: -7px;  --dy: 8px;   --time: 19s; --delay: -14s; }
-
-@keyframes dot-wander {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(var(--dx, 8px), var(--dy, -6px), 0); }
+@keyframes glide-1 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(10vw, 5vh, 0); }
+  50% { transform: translate3d(14vw, -3vh, 0); }
+  75% { transform: translate3d(4vw, -7vh, 0); }
+}
+@keyframes glide-2 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-8vw, 6vh, 0); }
+  50% { transform: translate3d(-12vw, 1vh, 0); }
+  75% { transform: translate3d(-5vw, -5vh, 0); }
+}
+@keyframes glide-3 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(7vw, -7vh, 0); }
+  50% { transform: translate3d(12vw, -1vh, 0); }
+  75% { transform: translate3d(3vw, 6vh, 0); }
+}
+@keyframes glide-4 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-9vw, -5vh, 0); }
+  50% { transform: translate3d(-4vw, 5vh, 0); }
+  75% { transform: translate3d(6vw, 3vh, 0); }
+}
+@keyframes glide-5 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(6vw, 8vh, 0); }
+  50% { transform: translate3d(-2vw, 10vh, 0); }
+  75% { transform: translate3d(-8vw, 2vh, 0); }
 }
 
 #app { display: flex; flex: 1 0 auto; flex-direction: column; }
