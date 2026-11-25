@@ -901,5 +901,565 @@
         "note": "Sie klingt – nicht die Seite."
       }
     ]
+  },
+  {
+    "id": "tz-ck",
+    "title": "tz oder ck?",
+    "tip": "Nach einem kurzen Vokal schreibst du tz oder ck: Katze, Ecke, Decke. Sprich das Wort langsam – der Vokal davor bleibt kurz.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "tz und ck nach kurzem Vokal sicher unterscheiden.",
+    "goal": "Du lernst, warum man Katze mit tz und Ecke mit ck schreibt.",
+    "rules": [
+      "Nach kurzem Vokal steht tz statt tt: Katze, Matze, spitze.",
+      "Nach kurzem Vokal steht ck statt kk: Ecke, Decke, backen.",
+      "Sprich das Wort und achte darauf, dass der Vokal davor kurz bleibt."
+    ],
+    "examples": [
+      {
+        "word": "Katze",
+        "note": "Kurz gesprochen – deshalb tz."
+      },
+      {
+        "word": "Ecke",
+        "note": "Kurz gesprochen – deshalb ck."
+      },
+      {
+        "word": "Decke",
+        "note": "Deck-e: das ck bleibt."
+      }
+    ]
+  },
+  {
+    "id": "verben-endungen",
+    "title": "Verben: Stamm und Endung",
+    "tip": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Verbformen aus Stamm und Endung zusammensetzen.",
+    "goal": "Du lernst, Verben in Stamm und Endung zu zerlegen und richtig zu schreiben.",
+    "rules": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "examples": [
+      {
+        "word": "machen",
+        "note": "Stamm mach + Endung en."
+      },
+      {
+        "word": "machst",
+        "note": "Stamm mach + Endung st."
+      },
+      {
+        "word": "macht",
+        "note": "Stamm mach + Endung t."
+      }
+    ]
+  },
+  {
+    "id": "dehnungs-h-ausnahmen",
+    "title": "Ausnahmen beim stummen h",
+    "tip": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Typische Wörter ohne stummes h kennen.",
+    "goal": "Du lernst, wann das stumme h verboten ist und wie du Ausnahmen erkennst.",
+    "rules": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ],
+    "examples": [
+      {
+        "word": "holen",
+        "note": "Kein stummes h."
+      },
+      {
+        "word": "hören",
+        "note": "Lange Aussprache, aber ohne h."
+      },
+      {
+        "word": "malen",
+        "note": "Gehört zu den Ausnahmen."
+      }
+    ]
+  },
+  {
+    "id": "ie-fremdwoerter",
+    "title": "Kein ie in Fremdwörtern",
+    "tip": "Das lange i steht in deutschen Wörtern meist als ie. Fremdwörter behalten ein einfaches i: Kino, Zitrone, Musik.",
+    "caseSensitive": false,
+    "area": "laute",
+    "summary": "deutsche ie-Wörter von Fremdwörtern trennen.",
+    "goal": "Du lernst, auch in Fremdwörtern das lange i richtig zu schreiben.",
+    "rules": [
+      "Deutsche Wörter mit langem i: Liebe, Biene, Ziel – mit ie.",
+      "Fremdwörter behalten oft ein einfaches i: Kino, Zitrone, Detail.",
+      "Die Endung -ie bleibt in Fremdwörtern: Energie, Fantasie."
+    ],
+    "examples": [
+      {
+        "word": "Kino",
+        "note": "Fremdwort mit einfachem i."
+      },
+      {
+        "word": "Zitrone",
+        "note": "Das i bleibt einfach."
+      },
+      {
+        "word": "Energie",
+        "note": "Fremde Endung -ie."
+      }
+    ]
+  },
+  {
+    "id": "doppelvokale",
+    "title": "Doppelvokale",
+    "tip": "Manche Wörter schreibt man mit zwei gleichen Vokalen: Aal, Seele, Moore. Sprich das Wort deutlich und merk dir die Doppelung.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Wörter mit zwei gleichen Vokalen erkennen.",
+    "goal": "Du lernst Doppelvokale von langen Vokalen mit h oder einfachem Vokal zu trennen.",
+    "rules": [
+      "Doppelvokale kommen oft in alten deutschen Wörtern vor: Aal, Seele, Tier.",
+      "Bei a, e, o und u können zwei gleiche Vokale stehen.",
+      "Vergleiche verwandte Formen: Seele → Seelen."
+    ],
+    "examples": [
+      {
+        "word": "Aal",
+        "note": "Zwei a."
+      },
+      {
+        "word": "Seele",
+        "note": "Zwei e."
+      },
+      {
+        "word": "Moore",
+        "note": "Zwei o."
+      }
+    ]
+  },
+  {
+    "id": "trennungs-h",
+    "title": "Das Trennungs-h",
+    "tip": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "das h zwischen Vokalen als Silbengrenze verstehen.",
+    "goal": "Du lernst das Trennungs-h von Dehnungs-h und einfachen Vokalen zu unterscheiden.",
+    "rules": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "examples": [
+      {
+        "word": "Gehör",
+        "note": "Ge-hör mit Trennungs-h."
+      },
+      {
+        "word": "Ahorn",
+        "note": "A-horn mit Trennungs-h."
+      },
+      {
+        "word": "Uhr",
+        "note": "Uhr mit h nach u."
+      }
+    ]
+  },
+  {
+    "id": "verben-h",
+    "title": "Verben mit oder ohne h",
+    "tip": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "Verbformen mit und ohne h sicher bilden.",
+    "goal": "Du lernst bei Verben zu prüfen, ob eine Form ein h braucht.",
+    "rules": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "examples": [
+      {
+        "word": "gehe",
+        "note": "gehen → gehe."
+      },
+      {
+        "word": "sehe",
+        "note": "sehen → sehe."
+      },
+      {
+        "word": "geschehen",
+        "note": "Mit h in der Grundform."
+      }
+    ]
+  },
+  {
+    "id": "verben-s-z",
+    "title": "Verben mit s-Laut oder z",
+    "tip": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Verbendungen auf -sen und -zen schreiben.",
+    "goal": "Du lernst, den Stamm von Verben auf -sen und -zen zu erhalten.",
+    "rules": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "examples": [
+      {
+        "word": "reise",
+        "note": "reisen → reise."
+      },
+      {
+        "word": "reist",
+        "note": "reisen → du reist."
+      },
+      {
+        "word": "sitze",
+        "note": "sitzen → sitze."
+      }
+    ]
+  },
+  {
+    "id": "fremd-endung-ie",
+    "title": "Fremde Endungen mit -ie",
+    "tip": "Viele Fremdwörter enden auf -ie: Energie, Fantasie, Demokratie. Die Endung bleibt auch in der Mehrzahl erhalten.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "Fremde Endungen auf -ie erkennen.",
+    "goal": "Du lernst, die Endung -ie in Fremdwörtern sicher zu schreiben.",
+    "rules": [
+      "Fremdwörter enden oft auf -ie: Energie, Fantasie, Demokratie.",
+      "Die Endung bleibt unverändert: die Energien.",
+      "Sprich die letzte Silbe deutlich: -ie."
+    ],
+    "examples": [
+      {
+        "word": "Energie",
+        "note": "Endet auf -ie."
+      },
+      {
+        "word": "Fantasie",
+        "note": "Endet auf -ie."
+      },
+      {
+        "word": "Demokratie",
+        "note": "Endet auf -ie."
+      }
+    ]
+  },
+  {
+    "id": "wortstamm-familien",
+    "title": "Wortstämme und Wortfamilien",
+    "tip": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "verwandte Wörter über ihren Stamm finden.",
+    "goal": "Du lernst, aus einem bekannten Familienwort die Schreibung abzuleiten.",
+    "rules": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "examples": [
+      {
+        "word": "Häuser",
+        "note": "Haus → Häuser."
+      },
+      {
+        "word": "liest",
+        "note": "lesen → liest."
+      },
+      {
+        "word": "schrieb",
+        "note": "schreiben → schrieb."
+      }
+    ]
+  },
+  {
+    "id": "hin-her-da",
+    "title": "hin-, her- und da(r)-",
+    "tip": "hin- heißt weg von hier, her- heißt zu mir, da(r)- heißt dort. Die Vorsilbe bleibt in jedem Wort erhalten.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "die Vorsilben hin, her und da(r) zuordnen.",
+    "goal": "Du lernst, die Richtung einer Bewegung aus der Vorsilbe abzulesen.",
+    "rules": [
+      "hin- bedeutet Bewegung weg: hingehen.",
+      "her- bedeutet Bewegung zu mir: herkommen.",
+      "da- oder dar- heißt dort: dabei, daraus."
+    ],
+    "examples": [
+      {
+        "word": "hingehen",
+        "note": "Bewegung weg."
+      },
+      {
+        "word": "herkommen",
+        "note": "Bewegung zu mir."
+      },
+      {
+        "word": "daraus",
+        "note": "dort heraus."
+      }
+    ]
+  },
+  {
+    "id": "ver-fer-vor-for",
+    "title": "ver-, fer-, vor- oder for-?",
+    "tip": "ver- ist häufig (verkaufen), fer- kommt in wenigen Wörtern vor (fern, Fernglas). vor- heißt vorher; for- gibt es im Deutschen kaum.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "die vier ähnlichen Vorsilben unterscheiden.",
+    "goal": "Du lernst, die passende Vorsilbe über die Bedeutung zu wählen.",
+    "rules": [
+      "ver- heißt oft verändert oder weg: verkaufen, verlieren.",
+      "fer- steht in fern, Ferne, Fernglas.",
+      "vor- heißt vorher oder davor: vorstellen, vorher."
+    ],
+    "examples": [
+      {
+        "word": "verkaufen",
+        "note": "ver- mit veränderter Bedeutung."
+      },
+      {
+        "word": "Fernglas",
+        "note": "fer- wie fern."
+      },
+      {
+        "word": "vorstellen",
+        "note": "vor- wie vorher."
+      }
+    ]
+  },
+  {
+    "id": "end-ent",
+    "title": "end- oder ent-?",
+    "tip": "ent- heißt oft los oder weg: entdecken, entfernen. end- gehört zu Ende: endlich, Endung.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "end- und ent- über die Bedeutung trennen.",
+    "goal": "Du lernst, die Vorsilbe mit einem verwandten Wort zu prüfen.",
+    "rules": [
+      "ent- bedeutet los, weg oder beginnen: entdecken, entscheiden.",
+      "end- hängt mit Ende zusammen: endlich, Endung.",
+      "Setze ein verwandtes Wort probehalber ein."
+    ],
+    "examples": [
+      {
+        "word": "entdecken",
+        "note": "ent- mit los/weg."
+      },
+      {
+        "word": "entfernen",
+        "note": "ent- mit weg."
+      },
+      {
+        "word": "endlich",
+        "note": "end- wie Ende."
+      }
+    ]
+  },
+  {
+    "id": "fugen",
+    "title": "Fugen in Zusammensetzungen",
+    "tip": "Zusammengesetzte Wörter behalten oft ein -s- oder -en- in der Fuge: Straßenbahn, Arbeitsblatt, Kirschtorte.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "die Fuge zwischen zwei Wortteilen sichtbar machen.",
+    "goal": "Du lernst, die beiden Teile eines Kompositums zu erkennen.",
+    "rules": [
+      "Zusammengesetzte Wörter behalten oft s oder en in der Fuge.",
+      "Straßenbahn, Arbeitsblatt, Kirschtorte – die Fuge verbindet die Teile.",
+      "Sprich die beiden Teile einzeln und dann zusammen."
+    ],
+    "examples": [
+      {
+        "word": "Straßenbahn",
+        "note": "Straße + n + Bahn."
+      },
+      {
+        "word": "Arbeitsblatt",
+        "note": "Arbeit + s + Blatt."
+      },
+      {
+        "word": "Kirschtorte",
+        "note": "Kirsche + Torte."
+      }
+    ]
+  },
+  {
+    "id": "endung-in",
+    "title": "Die Endung -in für Frauen",
+    "tip": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "caseSensitive": false,
+    "area": "wortbau",
+    "summary": "weibliche Formen mit -in bilden.",
+    "goal": "Du lernst, Berufsbezeichnungen über den Stamm in die weibliche Form zu übertragen.",
+    "rules": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ],
+    "examples": [
+      {
+        "word": "Lehrerin",
+        "note": "Lehrer → Lehrerin."
+      },
+      {
+        "word": "Ärztin",
+        "note": "Arzt → Ärztin."
+      },
+      {
+        "word": "Malerin",
+        "note": "Maler → Malerin."
+      }
+    ]
+  },
+  {
+    "id": "konsonanten",
+    "title": "Verschiedene Konsonanten nach kurzem Vokal",
+    "tip": "Nach einem kurzen Vokal stehen oft zwei verschiedene Mitlaute: Hund, Tulpe, Wespe. Sprich den Vokal kurz und hör auf die Laute danach.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Konsonantenverbindungen nach kurzem Vokal schreiben.",
+    "goal": "Du lernst, auf die Mitlaute nach einem kurzen Selbstlaut zu achten.",
+    "rules": [
+      "Nach kurzem Vokal folgen oft zwei verschiedene Konsonanten: Hund, Fink, Wespe.",
+      "Sprich das Wort langsam: nach dem kurzen Laut kommen zwei Mitlaute.",
+      "Denk an ein verwandtes Wort, wenn du dir bei einem Laut unsicher bist."
+    ],
+    "examples": [
+      {
+        "word": "Hund",
+        "note": "Kurzes u, dann nd."
+      },
+      {
+        "word": "Tulpe",
+        "note": "Kurzes u, dann lp."
+      },
+      {
+        "word": "Wespe",
+        "note": "Kurzes e, dann sp."
+      }
+    ]
+  },
+  {
+    "id": "adjektive-kurzvokal",
+    "title": "Adjektive mit kurzem Vokal",
+    "tip": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Steigerungsformen mit kurzem Vokal schreiben.",
+    "goal": "Du lernst, warum sich die Schreibung bei dumm → dümmer ändert.",
+    "rules": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ],
+    "examples": [
+      {
+        "word": "dumm",
+        "note": "Kurzes u – einfach."
+      },
+      {
+        "word": "dümmer",
+        "note": "Kurz gesprochen – mm."
+      },
+      {
+        "word": "dünnster",
+        "note": "Kurz gesprochen – nn."
+      }
+    ]
+  },
+  {
+    "id": "verben-langvokal",
+    "title": "Verben mit langem Vokal",
+    "tip": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Verbformen mit langem Vokal sicher schreiben.",
+    "goal": "Du lernst, einen langen Vokal in allen Verbformen zu erkennen.",
+    "rules": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ],
+    "examples": [
+      {
+        "word": "graben",
+        "note": "Lang gesprochen – ein b."
+      },
+      {
+        "word": "gräbst",
+        "note": "graben → gräbst."
+      },
+      {
+        "word": "wagen",
+        "note": "Lang gesprochen – ein g."
+      }
+    ]
+  },
+  {
+    "id": "adjektive-langvokal",
+    "title": "Adjektive mit langem Vokal",
+    "tip": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "caseSensitive": false,
+    "area": "laenge",
+    "summary": "Steigerungsformen mit langem Vokal schreiben.",
+    "goal": "Du lernst, lange Vokale in Adjektiven von kurzen zu unterscheiden.",
+    "rules": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ],
+    "examples": [
+      {
+        "word": "müde",
+        "note": "Lang gesprochen."
+      },
+      {
+        "word": "klüger",
+        "note": "klug → klüger."
+      },
+      {
+        "word": "schwerer",
+        "note": "schwer → schwerer."
+      }
+    ]
+  },
+  {
+    "id": "diphthong",
+    "title": "Doppellaute: ei, ai, au, äu, eu",
+    "tip": "In Doppellauten klingen zwei Laute in einer Silbe: ei, au, eu, äu. ai ist selten: Mai, Laie, Kaiser.",
+    "caseSensitive": false,
+    "area": "laute",
+    "summary": "Die Doppellaute ei, ai, au, äu und eu erkennen.",
+    "goal": "Du lernst, zwei Laute in einer Silbe als Doppellaut zu hören.",
+    "rules": [
+      "Doppellaute verbinden zwei Laute in einer Silbe: ei, au, eu, äu.",
+      "Fast immer schreibt man ei – ai nur in Mai, Laie, Kaiser und ähnlichen Wörtern.",
+      "Sprich die Silbe langsam und achte auf den zweiten Laut."
+    ],
+    "examples": [
+      {
+        "word": "Mais",
+        "note": "ai bleibt in diesem Wort."
+      },
+      {
+        "word": "Laich",
+        "note": "ai wie in Laie."
+      },
+      {
+        "word": "Kaiser",
+        "note": "ai bleibt vor s."
+      }
+    ]
   }
 ]

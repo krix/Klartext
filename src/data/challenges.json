@@ -2509,5 +2509,3890 @@
       "Mahl"
     ],
     "sentence": "Das Mahl war reichlich."
+  },
+  {
+    "id": "pdfmem-1-3-1",
+    "kind": "memory",
+    "word": "Schale",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfmem-1-3-2",
+    "kind": "memory",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfsilbe-1-3-1",
+    "kind": "syllables-build",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Him",
+      "mel"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfsilbe-1-3-2",
+    "kind": "syllables-build",
+    "word": "Garten",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Gar",
+      "ten"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfsilbe-1-3-3",
+    "kind": "syllables-build",
+    "word": "Mutter",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Mut",
+      "ter"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfmem-1-3-1-1",
+    "kind": "memory",
+    "word": "Schale",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfmem-1-3-1-2",
+    "kind": "memory",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfsilbe-1-3-1-1",
+    "kind": "syllables-build",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Him",
+      "mel"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfsilbe-1-3-1-2",
+    "kind": "syllables-build",
+    "word": "Dose",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Do",
+      "se"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfsilbe-1-3-1-3",
+    "kind": "syllables-build",
+    "word": "Garten",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Gar",
+      "ten"
+    ],
+    "sentence": "Die erste Silbe ist betont."
+  },
+  {
+    "id": "pdfmem-1-3-2-1",
+    "kind": "memory",
+    "word": "Kind",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfmem-1-3-2-2",
+    "kind": "memory",
+    "word": "Kinder",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfsilbe-1-3-2-1",
+    "kind": "syllables-build",
+    "word": "Kinder",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Kin",
+      "der"
+    ]
+  },
+  {
+    "id": "pdfsilbe-1-3-2-2",
+    "kind": "syllables-build",
+    "word": "Spatzen",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Spat",
+      "zen"
+    ]
+  },
+  {
+    "id": "pdfsilbe-1-3-2-3",
+    "kind": "syllables-build",
+    "word": "Böcke",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Bö",
+      "cke"
+    ]
+  },
+  {
+    "id": "pdfmem-2-1-1",
+    "kind": "memory",
+    "word": "Oma",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ],
+    "sentence": "Lange Vokale klingen lang und schön."
+  },
+  {
+    "id": "pdfmem-2-1-2",
+    "kind": "memory",
+    "word": "Foto",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ],
+    "sentence": "Kurze Vokale klingen kurz und abgehackt."
+  },
+  {
+    "id": "pdfmem-2-2-1",
+    "kind": "memory",
+    "word": "Tafel",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ],
+    "sentence": "Klingt das a von Tafel wie das a von Rabe oder wie das a von Saft?"
+  },
+  {
+    "id": "pdfmem-2-2-2",
+    "kind": "memory",
+    "word": "Rabe",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-3-1-1",
+    "kind": "memory",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfmem-3-1-2",
+    "kind": "memory",
+    "word": "Garten",
+    "ruleId": "silbenbau",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ]
+  },
+  {
+    "id": "pdfsilbe-3-1-1",
+    "kind": "syllables-build",
+    "word": "Himmel",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Him",
+      "mel"
+    ]
+  },
+  {
+    "id": "pdfsilbe-3-1-2",
+    "kind": "syllables-build",
+    "word": "Murmel",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Mur",
+      "mel"
+    ]
+  },
+  {
+    "id": "pdfsilbe-3-1-3",
+    "kind": "syllables-build",
+    "word": "Wasser",
+    "ruleId": "silbenbau",
+    "prompt": "Setze die Silben in der richtigen Reihenfolge zusammen.",
+    "ruleText": "Sprich das Wort Silbe für Silbe mit. Eine Silbe beginnt mit einem Mitlaut; ein Silbenbogen verbindet die Laute.",
+    "hints": [
+      "Eine Silbe beginnt meist mit einem Mitlaut und trägt einen Selbstlaut.",
+      "Sprich das Wort langsam und klatsche bei jeder neuen Silbe.",
+      "Ein Silbenbogen zeigt dir, welche Laute zu einer Silbe gehören."
+    ],
+    "syllables": [
+      "Was",
+      "ser"
+    ]
+  },
+  {
+    "id": "pdfmem-3-2-1",
+    "kind": "memory",
+    "word": "prächtig",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfmem-3-2-2",
+    "kind": "memory",
+    "word": "Pracht",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfableit-3-2-1",
+    "kind": "derive",
+    "word": "prächtig",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Pracht“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Pracht",
+    "answer": "prächtig"
+  },
+  {
+    "id": "pdfableit-3-2-2",
+    "kind": "derive",
+    "word": "männlich",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Mann“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Mann",
+    "answer": "männlich"
+  },
+  {
+    "id": "pdfableit-3-2-3",
+    "kind": "derive",
+    "word": "zärtlich",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „zart“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "zart",
+    "answer": "zärtlich"
+  },
+  {
+    "id": "pdfableit-3-2-4",
+    "kind": "derive",
+    "word": "Täuschung",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Tausch“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Tausch",
+    "answer": "Täuschung"
+  },
+  {
+    "id": "pdfableit-3-2-5",
+    "kind": "derive",
+    "word": "Gärtner",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Garten“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Garten",
+    "answer": "Gärtner"
+  },
+  {
+    "id": "pdfmem-3-3-1",
+    "kind": "memory",
+    "word": "Stab",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfmem-3-3-2",
+    "kind": "memory",
+    "word": "Stäbe",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfableit-3-3-1",
+    "kind": "derive",
+    "word": "Stäbe",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Stab“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Stab",
+    "answer": "Stäbe"
+  },
+  {
+    "id": "pdfableit-3-3-2",
+    "kind": "derive",
+    "word": "Wände",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Wand“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Wand",
+    "answer": "Wände"
+  },
+  {
+    "id": "pdfableit-3-3-3",
+    "kind": "derive",
+    "word": "Mächte",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Macht“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Macht",
+    "answer": "Mächte"
+  },
+  {
+    "id": "pdfableit-3-3-4",
+    "kind": "derive",
+    "word": "Gläser",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Glas“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Glas",
+    "answer": "Gläser"
+  },
+  {
+    "id": "pdfableit-3-3-5",
+    "kind": "derive",
+    "word": "Grüße",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Gruß“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Gruß",
+    "answer": "Grüße"
+  },
+  {
+    "id": "pdfmem-3-3-1-1",
+    "kind": "memory",
+    "word": "Stab",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfmem-3-3-1-2",
+    "kind": "memory",
+    "word": "Stäbe",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfableit-3-3-1-1",
+    "kind": "derive",
+    "word": "Stäbe",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Stab“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Stab",
+    "answer": "Stäbe"
+  },
+  {
+    "id": "pdfableit-3-3-1-2",
+    "kind": "derive",
+    "word": "Wände",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Wand“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Wand",
+    "answer": "Wände"
+  },
+  {
+    "id": "pdfableit-3-3-1-3",
+    "kind": "derive",
+    "word": "Hemden",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Hemd“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Hemd",
+    "answer": "Hemden"
+  },
+  {
+    "id": "pdfableit-3-3-1-4",
+    "kind": "derive",
+    "word": "Mächte",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Macht“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Macht",
+    "answer": "Mächte"
+  },
+  {
+    "id": "pdfableit-3-3-1-5",
+    "kind": "derive",
+    "word": "Schuhe",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „Schuh“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "Schuh",
+    "answer": "Schuhe"
+  },
+  {
+    "id": "pdfmem-3-3-2-1",
+    "kind": "memory",
+    "word": "kleben",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfmem-3-3-2-2",
+    "kind": "memory",
+    "word": "klebt",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfableit-3-3-2-1",
+    "kind": "derive",
+    "word": "klebt",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „kleben“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "kleben",
+    "answer": "klebt"
+  },
+  {
+    "id": "pdfableit-3-3-2-2",
+    "kind": "derive",
+    "word": "hinkt",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „hinken“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "hinken",
+    "answer": "hinkt"
+  },
+  {
+    "id": "pdfableit-3-3-2-3",
+    "kind": "derive",
+    "word": "fliegt",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „fliegen“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "fliegen",
+    "answer": "fliegt"
+  },
+  {
+    "id": "pdfableit-3-3-2-4",
+    "kind": "derive",
+    "word": "sprüht",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „sprühen“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "sprühen",
+    "answer": "sprüht"
+  },
+  {
+    "id": "pdfableit-3-3-2-5",
+    "kind": "derive",
+    "word": "schweigt",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „schweigen“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "schweigen",
+    "answer": "schweigt"
+  },
+  {
+    "id": "pdfmem-3-3-3-1",
+    "kind": "memory",
+    "word": "bunter",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfmem-3-3-3-2",
+    "kind": "memory",
+    "word": "bunte",
+    "ruleId": "ableiten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ]
+  },
+  {
+    "id": "pdfableit-3-3-3-1",
+    "kind": "derive",
+    "word": "bunter",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „bunt“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "bunt",
+    "answer": "bunter"
+  },
+  {
+    "id": "pdfableit-3-3-3-2",
+    "kind": "derive",
+    "word": "schlanker",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „schlank“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "schlank",
+    "answer": "schlanker"
+  },
+  {
+    "id": "pdfableit-3-3-3-3",
+    "kind": "derive",
+    "word": "näher",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „nah“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "nah",
+    "answer": "näher"
+  },
+  {
+    "id": "pdfableit-3-3-3-4",
+    "kind": "derive",
+    "word": "blasser",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „blass“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "blass",
+    "answer": "blasser"
+  },
+  {
+    "id": "pdfableit-3-3-3-5",
+    "kind": "derive",
+    "word": "klüger",
+    "ruleId": "ableiten",
+    "prompt": "Wie heißt die passende Form zu „klug“?",
+    "ruleText": "Sprich die Grundform und die neue Form nacheinander aus. Ein Wechsel im Klang zeigt sich oft in äu oder im Endlaut.",
+    "hints": [
+      "Kommt das Wort von au, schreibst du in der Mehrzahl äu: Haus – Häuser.",
+      "Am Ende klingt ein weicher Laut oft hart: Tag – Tage, Rad – Räder.",
+      "Sprich beide Formen nacheinander und höre, was sich verändert."
+    ],
+    "from": "klug",
+    "answer": "klüger"
+  },
+  {
+    "id": "pdfmem-4-4-1",
+    "kind": "memory",
+    "word": "lieb",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdfmem-4-4-2",
+    "kind": "memory",
+    "word": "liebe",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdferr-4-4-1",
+    "kind": "error",
+    "word": "Hund",
+    "ruleId": "grossschreibung",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "wrong": "hund",
+    "answer": "Hund",
+    "errorIndex": 0
+  },
+  {
+    "id": "pdferr-4-4-2",
+    "kind": "error",
+    "word": "Blume",
+    "ruleId": "grossschreibung",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "wrong": "blume",
+    "answer": "Blume",
+    "errorIndex": 0
+  },
+  {
+    "id": "pdfmem-4-4-1-1",
+    "kind": "memory",
+    "word": "liebe",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdfmem-4-4-1-2",
+    "kind": "memory",
+    "word": "lieber",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdfmem-4-4-2-1",
+    "kind": "memory",
+    "word": "böse",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "sentence": "Nichts verscheuchte böse Träume schneller als das Rascheln von bedrucktem Papier."
+  },
+  {
+    "id": "pdfmem-4-4-2-2",
+    "kind": "memory",
+    "word": "Träume",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdfmem-4-4-3-1",
+    "kind": "memory",
+    "word": "unglaublichen",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "sentence": "Dein ehrliches Ja bedeutet mir viel."
+  },
+  {
+    "id": "pdfmem-4-4-3-2",
+    "kind": "memory",
+    "word": "Glück",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "sentence": "Sein blödes Zögern verhinderte den schönen Sieg."
+  },
+  {
+    "id": "pdfmem-4-4-4-1",
+    "kind": "memory",
+    "word": "Schnarchen",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ],
+    "sentence": "Jeder Zweite bekommt eine zusätzliche Aufgabe."
+  },
+  {
+    "id": "pdfmem-4-4-4-2",
+    "kind": "memory",
+    "word": "Zweite",
+    "ruleId": "grossschreibung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nomen schreibst du immer groß, auch mitten im Satz. Achte auf der, die, das: der Hund, die Katze, das Buch.",
+    "hints": [
+      "Nomen schreibst du immer groß: der Hund, die Katze, das Buch.",
+      "Auch mitten im Satz bleiben Nomen groß: Ich sehe den Hund.",
+      "Wenn du der, die oder das davor setzen kannst, ist es meist ein Nomen."
+    ]
+  },
+  {
+    "id": "pdfmem-5-1-1",
+    "kind": "memory",
+    "word": "Hund",
+    "ruleId": "konsonanten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach einem kurzen Vokal stehen oft zwei verschiedene Mitlaute: Hund, Tulpe, Wespe. Sprich den Vokal kurz und hör auf die Laute danach.",
+    "hints": [
+      "Nach kurzem Vokal folgen oft zwei verschiedene Konsonanten: Hund, Fink, Wespe.",
+      "Sprich das Wort langsam: nach dem kurzen Laut kommen zwei Mitlaute.",
+      "Denk an ein verwandtes Wort, wenn du dir bei einem Laut unsicher bist."
+    ]
+  },
+  {
+    "id": "pdfmem-5-1-2",
+    "kind": "memory",
+    "word": "Flunder",
+    "ruleId": "konsonanten",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach einem kurzen Vokal stehen oft zwei verschiedene Mitlaute: Hund, Tulpe, Wespe. Sprich den Vokal kurz und hör auf die Laute danach.",
+    "hints": [
+      "Nach kurzem Vokal folgen oft zwei verschiedene Konsonanten: Hund, Fink, Wespe.",
+      "Sprich das Wort langsam: nach dem kurzen Laut kommen zwei Mitlaute.",
+      "Denk an ein verwandtes Wort, wenn du dir bei einem Laut unsicher bist."
+    ]
+  },
+  {
+    "id": "pdfmem-5-2-1",
+    "kind": "memory",
+    "word": "Henne",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ]
+  },
+  {
+    "id": "pdfmem-5-2-2",
+    "kind": "memory",
+    "word": "Spinne",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ]
+  },
+  {
+    "id": "pdferr-5-2-1",
+    "kind": "error",
+    "word": "Henne",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ],
+    "wrong": "Hene",
+    "answer": "Henne",
+    "errorIndex": 3
+  },
+  {
+    "id": "pdferr-5-2-2",
+    "kind": "error",
+    "word": "Affe",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ],
+    "wrong": "Afe",
+    "answer": "Affe",
+    "errorIndex": 2
+  },
+  {
+    "id": "pdfmem-5-3-1",
+    "kind": "memory",
+    "word": "Zecke",
+    "ruleId": "tz-ck",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach einem kurzen Vokal schreibst du tz oder ck: Katze, Ecke, Decke. Sprich das Wort langsam – der Vokal davor bleibt kurz.",
+    "hints": [
+      "Nach kurzem Vokal steht tz statt tt: Katze, Matze, spitze.",
+      "Nach kurzem Vokal steht ck statt kk: Ecke, Decke, backen.",
+      "Sprich das Wort und achte darauf, dass der Vokal davor kurz bleibt."
+    ]
+  },
+  {
+    "id": "pdfmem-5-3-2",
+    "kind": "memory",
+    "word": "Dackel",
+    "ruleId": "tz-ck",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach einem kurzen Vokal schreibst du tz oder ck: Katze, Ecke, Decke. Sprich das Wort langsam – der Vokal davor bleibt kurz.",
+    "hints": [
+      "Nach kurzem Vokal steht tz statt tt: Katze, Matze, spitze.",
+      "Nach kurzem Vokal steht ck statt kk: Ecke, Decke, backen.",
+      "Sprich das Wort und achte darauf, dass der Vokal davor kurz bleibt."
+    ]
+  },
+  {
+    "id": "pdferr-5-3-1",
+    "kind": "error",
+    "word": "Zecke",
+    "ruleId": "tz-ck",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Nach einem kurzen Vokal schreibst du tz oder ck: Katze, Ecke, Decke. Sprich das Wort langsam – der Vokal davor bleibt kurz.",
+    "hints": [
+      "Nach kurzem Vokal steht tz statt tt: Katze, Matze, spitze.",
+      "Nach kurzem Vokal steht ck statt kk: Ecke, Decke, backen.",
+      "Sprich das Wort und achte darauf, dass der Vokal davor kurz bleibt."
+    ],
+    "wrong": "Zece",
+    "answer": "Zecke",
+    "errorIndex": 3
+  },
+  {
+    "id": "pdferr-5-3-2",
+    "kind": "error",
+    "word": "Hitze",
+    "ruleId": "tz-ck",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Nach einem kurzen Vokal schreibst du tz oder ck: Katze, Ecke, Decke. Sprich das Wort langsam – der Vokal davor bleibt kurz.",
+    "hints": [
+      "Nach kurzem Vokal steht tz statt tt: Katze, Matze, spitze.",
+      "Nach kurzem Vokal steht ck statt kk: Ecke, Decke, backen.",
+      "Sprich das Wort und achte darauf, dass der Vokal davor kurz bleibt."
+    ],
+    "wrong": "Hitse",
+    "answer": "Hitze",
+    "errorIndex": 3
+  },
+  {
+    "id": "pdfmem-5-4-1",
+    "kind": "memory",
+    "word": "helfen",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfmem-5-4-2",
+    "kind": "memory",
+    "word": "hilfst",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfableit-5-4-1",
+    "kind": "derive",
+    "word": "hilfst",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „helfen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "helfen",
+    "answer": "hilfst"
+  },
+  {
+    "id": "pdfableit-5-4-2",
+    "kind": "derive",
+    "word": "hilft",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „helfen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "helfen",
+    "answer": "hilft"
+  },
+  {
+    "id": "pdfableit-5-4-3",
+    "kind": "derive",
+    "word": "lebt",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „leben“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "leben",
+    "answer": "lebt"
+  },
+  {
+    "id": "pdfableit-5-4-4",
+    "kind": "derive",
+    "word": "lebte",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „leben“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "leben",
+    "answer": "lebte"
+  },
+  {
+    "id": "pdfmem-5-4-3-1",
+    "kind": "memory",
+    "word": "helfe",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfmem-5-4-3-2",
+    "kind": "memory",
+    "word": "hilfst",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfableit-5-4-3-1",
+    "kind": "derive",
+    "word": "hilfst",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „helfen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "helfen",
+    "answer": "hilfst"
+  },
+  {
+    "id": "pdfableit-5-4-3-2",
+    "kind": "derive",
+    "word": "helft",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „helfen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "helfen",
+    "answer": "helft"
+  },
+  {
+    "id": "pdfableit-5-4-3-3",
+    "kind": "derive",
+    "word": "halfen",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „helfen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "helfen",
+    "answer": "halfen"
+  },
+  {
+    "id": "pdfmem-5-4-4-1",
+    "kind": "memory",
+    "word": "meint",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfmem-5-4-4-2",
+    "kind": "memory",
+    "word": "liebtest",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfableit-5-4-4-1",
+    "kind": "derive",
+    "word": "meint",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „meinen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "meinen",
+    "answer": "meint"
+  },
+  {
+    "id": "pdfableit-5-4-4-2",
+    "kind": "derive",
+    "word": "antwortete",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „antworten“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "antworten",
+    "answer": "antwortete"
+  },
+  {
+    "id": "pdfableit-5-4-4-3",
+    "kind": "derive",
+    "word": "putzt",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „putzen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "putzen",
+    "answer": "putzt"
+  },
+  {
+    "id": "pdfmem-5-4-5-1",
+    "kind": "memory",
+    "word": "rasen",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfmem-5-4-5-2",
+    "kind": "memory",
+    "word": "rase",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfableit-5-4-5-1",
+    "kind": "derive",
+    "word": "rast",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „rasen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "rasen",
+    "answer": "rast"
+  },
+  {
+    "id": "pdfableit-5-4-5-2",
+    "kind": "derive",
+    "word": "reist",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „reisen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "reisen",
+    "answer": "reist"
+  },
+  {
+    "id": "pdfableit-5-4-5-3",
+    "kind": "derive",
+    "word": "fasst",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „fassen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "fassen",
+    "answer": "fasst"
+  },
+  {
+    "id": "pdfmem-5-5-1",
+    "kind": "memory",
+    "word": "rennen",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfmem-5-5-2",
+    "kind": "memory",
+    "word": "rennt",
+    "ruleId": "verben-endungen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ]
+  },
+  {
+    "id": "pdfableit-5-5-1",
+    "kind": "derive",
+    "word": "rennt",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „rennen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "rennen",
+    "answer": "rennt"
+  },
+  {
+    "id": "pdfableit-5-5-2",
+    "kind": "derive",
+    "word": "kratzt",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „kratzen“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "kratzen",
+    "answer": "kratzt"
+  },
+  {
+    "id": "pdfableit-5-5-3",
+    "kind": "derive",
+    "word": "findet",
+    "ruleId": "verben-endungen",
+    "prompt": "Wie heißt die passende Form zu „finden“?",
+    "ruleText": "Such zuerst den Wortstamm und häng die Endung an: mach-en, mach-st, mach-t. Der Stamm bleibt in allen Formen gleich.",
+    "hints": [
+      "Der Stamm bleibt erhalten: mach-en, mach-st, mach-t.",
+      "Die Endungen -en, -st und -t hängen direkt an den Stamm.",
+      "In der 2. Person Singular steht -st: du machst, du gehst."
+    ],
+    "from": "finden",
+    "answer": "findet"
+  },
+  {
+    "id": "pdfmem-5-6-1",
+    "kind": "memory",
+    "word": "dumm",
+    "ruleId": "adjektive-kurzvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "hints": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ]
+  },
+  {
+    "id": "pdfmem-5-6-2",
+    "kind": "memory",
+    "word": "dummer",
+    "ruleId": "adjektive-kurzvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "hints": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ]
+  },
+  {
+    "id": "pdfableit-5-6-1",
+    "kind": "derive",
+    "word": "dümmer",
+    "ruleId": "adjektive-kurzvokal",
+    "prompt": "Wie heißt die passende Form zu „dumm“?",
+    "ruleText": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "hints": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ],
+    "from": "dumm",
+    "answer": "dümmer"
+  },
+  {
+    "id": "pdfableit-5-6-2",
+    "kind": "derive",
+    "word": "dünner",
+    "ruleId": "adjektive-kurzvokal",
+    "prompt": "Wie heißt die passende Form zu „dünn“?",
+    "ruleText": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "hints": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ],
+    "from": "dünn",
+    "answer": "dünner"
+  },
+  {
+    "id": "pdfableit-5-6-3",
+    "kind": "derive",
+    "word": "dicker",
+    "ruleId": "adjektive-kurzvokal",
+    "prompt": "Wie heißt die passende Form zu „dick“?",
+    "ruleText": "Bei Adjektiven mit kurzem Vokal wird der letzte Mitlaut verdoppelt: dumm → dümmer → dümmsten.",
+    "hints": [
+      "dumm → dümmer → am dümmsten: der Vokal bleibt kurz.",
+      "dünn → dünner → am dünnsten, dick → dicker → am dicksten.",
+      "Sprich die Formen nacheinander und achte auf die Doppelung."
+    ],
+    "from": "dick",
+    "answer": "dicker"
+  },
+  {
+    "id": "pdfmem-6-1-1",
+    "kind": "memory",
+    "word": "Made",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-6-1-2",
+    "kind": "memory",
+    "word": "Blume",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-6-2-1",
+    "kind": "memory",
+    "word": "gräbst",
+    "ruleId": "verben-langvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "hints": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ]
+  },
+  {
+    "id": "pdfmem-6-2-2",
+    "kind": "memory",
+    "word": "graben",
+    "ruleId": "verben-langvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "hints": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ]
+  },
+  {
+    "id": "pdfableit-6-2-1",
+    "kind": "derive",
+    "word": "gräbst",
+    "ruleId": "verben-langvokal",
+    "prompt": "Wie heißt die passende Form zu „graben“?",
+    "ruleText": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "hints": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ],
+    "from": "graben",
+    "answer": "gräbst"
+  },
+  {
+    "id": "pdfableit-6-2-2",
+    "kind": "derive",
+    "word": "wagt",
+    "ruleId": "verben-langvokal",
+    "prompt": "Wie heißt die passende Form zu „wagen“?",
+    "ruleText": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "hints": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ],
+    "from": "wagen",
+    "answer": "wagt"
+  },
+  {
+    "id": "pdfableit-6-2-3",
+    "kind": "derive",
+    "word": "klagt",
+    "ruleId": "verben-langvokal",
+    "prompt": "Wie heißt die passende Form zu „klagen“?",
+    "ruleText": "Bei Verben mit langem Vokal bleibt der Mitlaut einfach: graben → gräbst, wagen → wagt. Der Vokal davor ist lang.",
+    "hints": [
+      "graben → gräbst: der Vokal ist lang, der Mitlaut bleibt einfach.",
+      "wagen → wagt, klagen → klagt, flöten → flötet.",
+      "Sprich die Formen langsam und vergleiche die Vokallänge."
+    ],
+    "from": "klagen",
+    "answer": "klagt"
+  },
+  {
+    "id": "pdfmem-6-3-1",
+    "kind": "memory",
+    "word": "schwer",
+    "ruleId": "adjektive-langvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "hints": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ]
+  },
+  {
+    "id": "pdfmem-6-3-2",
+    "kind": "memory",
+    "word": "schwerer",
+    "ruleId": "adjektive-langvokal",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "hints": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ]
+  },
+  {
+    "id": "pdfableit-6-3-1",
+    "kind": "derive",
+    "word": "schwerer",
+    "ruleId": "adjektive-langvokal",
+    "prompt": "Wie heißt die passende Form zu „schwer“?",
+    "ruleText": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "hints": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ],
+    "from": "schwer",
+    "answer": "schwerer"
+  },
+  {
+    "id": "pdfableit-6-3-2",
+    "kind": "derive",
+    "word": "klüger",
+    "ruleId": "adjektive-langvokal",
+    "prompt": "Wie heißt die passende Form zu „klug“?",
+    "ruleText": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "hints": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ],
+    "from": "klug",
+    "answer": "klüger"
+  },
+  {
+    "id": "pdfableit-6-3-3",
+    "kind": "derive",
+    "word": "müder",
+    "ruleId": "adjektive-langvokal",
+    "prompt": "Wie heißt die passende Form zu „müde“?",
+    "ruleText": "Bei langem Vokal bleibt der Mitlaut einfach: müde → müder, klug → klüger. Sprich den Vokal deutlich lang.",
+    "hints": [
+      "müde → müder → am müdesten: der Vokal bleibt lang.",
+      "klug → klüger → am klügsten, schwer → schwerer.",
+      "Nach langem Vokal steht kein doppelter Mitlaut."
+    ],
+    "from": "müde",
+    "answer": "müder"
+  },
+  {
+    "id": "pdfmem-6-4-1",
+    "kind": "memory",
+    "word": "wippen",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ]
+  },
+  {
+    "id": "pdfmem-6-4-2",
+    "kind": "memory",
+    "word": "Maske",
+    "ruleId": "doppelkonsonant",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Folgt auf einen kurzen, betonten Vokal nur ein Konsonant, wird er meist verdoppelt: Bett, Sonne. Statt kk schreibt man ck, statt zz schreibt man tz.",
+    "hints": [
+      "Folgt auf einen betonten kurzen Vokal nur ein einzelner Konsonant, wird er meist verdoppelt: Bett, Sonne, Koffer.",
+      "Nach einem langen Vokal bleibt es bei einem Konsonanten: Brot, Nase, Schaf.",
+      "Statt kk schreibt man ck: Jacke, Zucker, Decke. Statt zz schreibt man tz: Katze, Matratze, Schutz."
+    ]
+  },
+  {
+    "id": "pdfmem-6-5-1",
+    "kind": "memory",
+    "word": "Hund",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-6-5-2",
+    "kind": "memory",
+    "word": "Blut",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-7-1-1",
+    "kind": "memory",
+    "word": "Möhre",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-1-2",
+    "kind": "memory",
+    "word": "Nahrung",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-2-1",
+    "kind": "memory",
+    "word": "gähnen",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-2-2",
+    "kind": "memory",
+    "word": "kehren",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfableit-7-2-1",
+    "kind": "derive",
+    "word": "gähnt",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „gähnen“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "gähnen",
+    "answer": "gähnt"
+  },
+  {
+    "id": "pdfableit-7-2-2",
+    "kind": "derive",
+    "word": "wohnt",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „wohnen“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "wohnen",
+    "answer": "wohnt"
+  },
+  {
+    "id": "pdfableit-7-2-3",
+    "kind": "derive",
+    "word": "dehnt",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „dehnen“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "dehnen",
+    "answer": "dehnt"
+  },
+  {
+    "id": "pdfmem-7-3-1",
+    "kind": "memory",
+    "word": "kahl",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-3-2",
+    "kind": "memory",
+    "word": "kahler",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfableit-7-3-1",
+    "kind": "derive",
+    "word": "kahler",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „kahl“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "kahl",
+    "answer": "kahler"
+  },
+  {
+    "id": "pdfableit-7-3-2",
+    "kind": "derive",
+    "word": "kühner",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „kühn“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "kühn",
+    "answer": "kühner"
+  },
+  {
+    "id": "pdfableit-7-3-3",
+    "kind": "derive",
+    "word": "lahmer",
+    "ruleId": "dehnungs-h",
+    "prompt": "Wie heißt die passende Form zu „lahm“?",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "from": "lahm",
+    "answer": "lahmer"
+  },
+  {
+    "id": "pdfmem-7-4-1",
+    "kind": "memory",
+    "word": "während",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "sentence": "Während er rennt, schwitzt er so sehr."
+  },
+  {
+    "id": "pdfmem-7-4-2",
+    "kind": "memory",
+    "word": "rennt",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "sentence": "Ohne Pause kann er nicht mehr."
+  },
+  {
+    "id": "pdfmem-7-5-1",
+    "kind": "memory",
+    "word": "dehnst",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-5-2",
+    "kind": "memory",
+    "word": "Kuhle",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-6-1",
+    "kind": "memory",
+    "word": "Schule",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "sentence": "Die Farbe von Gras ist grün."
+  },
+  {
+    "id": "pdfmem-7-6-2",
+    "kind": "memory",
+    "word": "grün",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "sentence": "Zwischen zwei Bergen ist ein Tal."
+  },
+  {
+    "id": "pdferr-7-6-1",
+    "kind": "error",
+    "word": "grün",
+    "ruleId": "dehnungs-h",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ],
+    "wrong": "grun",
+    "answer": "grün",
+    "errorIndex": 2,
+    "sentence": "Die Farbe von Gras ist grün."
+  },
+  {
+    "id": "pdfmem-7-7-1",
+    "kind": "memory",
+    "word": "lahm",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-7-2",
+    "kind": "memory",
+    "word": "Tor",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-9-1",
+    "kind": "memory",
+    "word": "Fall",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-9-2",
+    "kind": "memory",
+    "word": "Lohn",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-10-1",
+    "kind": "memory",
+    "word": "Fleck",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-10-2",
+    "kind": "memory",
+    "word": "Lupe",
+    "ruleId": "dehnungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das stumme h steht nach einem langen Vokal, meist vor l, m, n oder r. Es wird nicht gesprochen und zeigt nur die Länge: Bahn, Mühle, Uhr.",
+    "hints": [
+      "Das dehnungs-h steht typischerweise vor l, m, n oder r: Stuhl, Bahn, Uhr, Mühle – aber längst nicht in allen passenden Wörtern.",
+      "Das h macht den Vokal nicht erst lang; es zeigt nur, dass er lang zu lesen ist.",
+      "Vergleiche Mal und Mahl oder mehr und Meer: Die Schreibung unterscheidet die Wörter."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-1",
+    "kind": "memory",
+    "word": "holen",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-2",
+    "kind": "memory",
+    "word": "hören",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-1-1",
+    "kind": "memory",
+    "word": "Barhocker",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-1-2",
+    "kind": "memory",
+    "word": "Hausbar",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-2-1",
+    "kind": "memory",
+    "word": "Blume",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-2-2",
+    "kind": "memory",
+    "word": "Sonnenblume",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-3-1",
+    "kind": "memory",
+    "word": "abholen",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-3-2",
+    "kind": "memory",
+    "word": "erholen",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfableit-7-11-3-1",
+    "kind": "derive",
+    "word": "abholen",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Wie heißt die passende Form zu „holen“?",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ],
+    "from": "holen",
+    "answer": "abholen"
+  },
+  {
+    "id": "pdfableit-7-11-3-2",
+    "kind": "derive",
+    "word": "abhören",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Wie heißt die passende Form zu „hören“?",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ],
+    "from": "hören",
+    "answer": "abhören"
+  },
+  {
+    "id": "pdfableit-7-11-3-3",
+    "kind": "derive",
+    "word": "Malerin",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Wie heißt die passende Form zu „malen“?",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ],
+    "from": "malen",
+    "answer": "Malerin"
+  },
+  {
+    "id": "pdfmem-7-11-4-1",
+    "kind": "memory",
+    "word": "Bar",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-7-11-4-2",
+    "kind": "memory",
+    "word": "Dame",
+    "ruleId": "dehnungs-h-ausnahmen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nicht jedes lang gesprochene Wort bekommt ein stummes h: holen, hören, malen bleiben ohne h. Merk dir diese Wortfamilien.",
+    "hints": [
+      "holen, hören und malen stehen ohne stummes h.",
+      "Englische Verwandte helfen: die Mutter, die Feder – ohne h.",
+      "Prüfe die Wortfamilie, bevor du ein h einsetzt."
+    ]
+  },
+  {
+    "id": "pdfmem-8-1-1",
+    "kind": "memory",
+    "word": "Fliege",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdfmem-8-1-2",
+    "kind": "memory",
+    "word": "Liebe",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdferr-8-1-1",
+    "kind": "error",
+    "word": "Fliege",
+    "ruleId": "ie-i",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ],
+    "wrong": "Flige",
+    "answer": "Fliege",
+    "errorIndex": 3
+  },
+  {
+    "id": "pdferr-8-1-2",
+    "kind": "error",
+    "word": "Liebe",
+    "ruleId": "ie-i",
+    "prompt": "Korrigiere das Wort.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ],
+    "wrong": "Libe",
+    "answer": "Liebe",
+    "errorIndex": 2
+  },
+  {
+    "id": "pdfmem-8-2-1",
+    "kind": "memory",
+    "word": "Tiger",
+    "ruleId": "ie-fremdwoerter",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das lange i steht in deutschen Wörtern meist als ie. Fremdwörter behalten ein einfaches i: Kino, Zitrone, Musik.",
+    "hints": [
+      "Deutsche Wörter mit langem i: Liebe, Biene, Ziel – mit ie.",
+      "Fremdwörter behalten oft ein einfaches i: Kino, Zitrone, Detail.",
+      "Die Endung -ie bleibt in Fremdwörtern: Energie, Fantasie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-2-2",
+    "kind": "memory",
+    "word": "Bibel",
+    "ruleId": "ie-fremdwoerter",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das lange i steht in deutschen Wörtern meist als ie. Fremdwörter behalten ein einfaches i: Kino, Zitrone, Musik.",
+    "hints": [
+      "Deutsche Wörter mit langem i: Liebe, Biene, Ziel – mit ie.",
+      "Fremdwörter behalten oft ein einfaches i: Kino, Zitrone, Detail.",
+      "Die Endung -ie bleibt in Fremdwörtern: Energie, Fantasie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-2-1-1",
+    "kind": "memory",
+    "word": "Musik",
+    "ruleId": "ie-fremdwoerter",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das lange i steht in deutschen Wörtern meist als ie. Fremdwörter behalten ein einfaches i: Kino, Zitrone, Musik.",
+    "hints": [
+      "Deutsche Wörter mit langem i: Liebe, Biene, Ziel – mit ie.",
+      "Fremdwörter behalten oft ein einfaches i: Kino, Zitrone, Detail.",
+      "Die Endung -ie bleibt in Fremdwörtern: Energie, Fantasie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-2-1-2",
+    "kind": "memory",
+    "word": "Fabrik",
+    "ruleId": "ie-fremdwoerter",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Das lange i steht in deutschen Wörtern meist als ie. Fremdwörter behalten ein einfaches i: Kino, Zitrone, Musik.",
+    "hints": [
+      "Deutsche Wörter mit langem i: Liebe, Biene, Ziel – mit ie.",
+      "Fremdwörter behalten oft ein einfaches i: Kino, Zitrone, Detail.",
+      "Die Endung -ie bleibt in Fremdwörtern: Energie, Fantasie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-2-2-1",
+    "kind": "memory",
+    "word": "Kiesel",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdfmem-8-2-2-2",
+    "kind": "memory",
+    "word": "liegt",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdfmem-8-5-1",
+    "kind": "memory",
+    "word": "Juwelier",
+    "ruleId": "fremd-endung-ie",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Viele Fremdwörter enden auf -ie: Energie, Fantasie, Demokratie. Die Endung bleibt auch in der Mehrzahl erhalten.",
+    "hints": [
+      "Fremdwörter enden oft auf -ie: Energie, Fantasie, Demokratie.",
+      "Die Endung bleibt unverändert: die Energien.",
+      "Sprich die letzte Silbe deutlich: -ie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-5-2",
+    "kind": "memory",
+    "word": "Klavier",
+    "ruleId": "fremd-endung-ie",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Viele Fremdwörter enden auf -ie: Energie, Fantasie, Demokratie. Die Endung bleibt auch in der Mehrzahl erhalten.",
+    "hints": [
+      "Fremdwörter enden oft auf -ie: Energie, Fantasie, Demokratie.",
+      "Die Endung bleibt unverändert: die Energien.",
+      "Sprich die letzte Silbe deutlich: -ie."
+    ]
+  },
+  {
+    "id": "pdfmem-8-6-1",
+    "kind": "memory",
+    "word": "Brief",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdfmem-8-6-2",
+    "kind": "memory",
+    "word": "Brise",
+    "ruleId": "ie-i",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In deutschen Wörtern steht für das lange i meist ie: Liebe, Tier. In Fremdwörtern findet man oft ein einfaches i: Krise, Ventil.",
+    "hints": [
+      "Sprich das Wort langsam: Klingt das i gedehnt, steht in deutschen Wörtern meist ie – zum Beispiel in Liebe, Wiese und Tier.",
+      "Ein kurzes i schreibst du mit einem i, zum Beispiel in immer, Liste und indiskret.",
+      "In Fremdwörtern steht das lange i oft einfach: Iris, Krise, Ventil."
+    ]
+  },
+  {
+    "id": "pdfmem-9-1-1",
+    "kind": "memory",
+    "word": "Haar",
+    "ruleId": "doppelvokale",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Manche Wörter schreibt man mit zwei gleichen Vokalen: Aal, Seele, Moore. Sprich das Wort deutlich und merk dir die Doppelung.",
+    "hints": [
+      "Doppelvokale kommen oft in alten deutschen Wörtern vor: Aal, Seele, Tier.",
+      "Bei a, e, o und u können zwei gleiche Vokale stehen.",
+      "Vergleiche verwandte Formen: Seele → Seelen."
+    ],
+    "sentence": "Draußen fällt der Schnee."
+  },
+  {
+    "id": "pdfmem-9-1-2",
+    "kind": "memory",
+    "word": "Härchen",
+    "ruleId": "doppelvokale",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Manche Wörter schreibt man mit zwei gleichen Vokalen: Aal, Seele, Moore. Sprich das Wort deutlich und merk dir die Doppelung.",
+    "hints": [
+      "Doppelvokale kommen oft in alten deutschen Wörtern vor: Aal, Seele, Tier.",
+      "Bei a, e, o und u können zwei gleiche Vokale stehen.",
+      "Vergleiche verwandte Formen: Seele → Seelen."
+    ],
+    "sentence": "Ich gehe jetzt zum See."
+  },
+  {
+    "id": "pdfmem-9-3-1",
+    "kind": "memory",
+    "word": "Haar",
+    "ruleId": "doppelvokale",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Manche Wörter schreibt man mit zwei gleichen Vokalen: Aal, Seele, Moore. Sprich das Wort deutlich und merk dir die Doppelung.",
+    "hints": [
+      "Doppelvokale kommen oft in alten deutschen Wörtern vor: Aal, Seele, Tier.",
+      "Bei a, e, o und u können zwei gleiche Vokale stehen.",
+      "Vergleiche verwandte Formen: Seele → Seelen."
+    ]
+  },
+  {
+    "id": "pdfmem-9-3-2",
+    "kind": "memory",
+    "word": "Pfahl",
+    "ruleId": "doppelvokale",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Manche Wörter schreibt man mit zwei gleichen Vokalen: Aal, Seele, Moore. Sprich das Wort deutlich und merk dir die Doppelung.",
+    "hints": [
+      "Doppelvokale kommen oft in alten deutschen Wörtern vor: Aal, Seele, Tier.",
+      "Bei a, e, o und u können zwei gleiche Vokale stehen.",
+      "Vergleiche verwandte Formen: Seele → Seelen."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-1",
+    "kind": "memory",
+    "word": "Eimer",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-2",
+    "kind": "memory",
+    "word": "Haar",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-1-1",
+    "kind": "memory",
+    "word": "gehen",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-1-2",
+    "kind": "memory",
+    "word": "mähen",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-2-1",
+    "kind": "memory",
+    "word": "Autoverleih",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-2-2",
+    "kind": "memory",
+    "word": "aufgereiht",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ]
+  },
+  {
+    "id": "pdfmem-9-4-4-1",
+    "kind": "memory",
+    "word": "drehe",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "sentence": "Ich drehe den Draht."
+  },
+  {
+    "id": "pdfmem-9-4-4-2",
+    "kind": "memory",
+    "word": "Draht",
+    "ruleId": "trennungs-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "sentence": "Ich nähe die Naht."
+  },
+  {
+    "id": "pdfableit-9-4-4-1",
+    "kind": "derive",
+    "word": "drehe",
+    "ruleId": "trennungs-h",
+    "prompt": "Wie heißt die passende Form zu „drehen“?",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "from": "drehen",
+    "answer": "drehe"
+  },
+  {
+    "id": "pdfableit-9-4-4-2",
+    "kind": "derive",
+    "word": "nähe",
+    "ruleId": "trennungs-h",
+    "prompt": "Wie heißt die passende Form zu „nähen“?",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "from": "nähen",
+    "answer": "nähe"
+  },
+  {
+    "id": "pdfableit-9-4-4-3",
+    "kind": "derive",
+    "word": "fährst",
+    "ruleId": "trennungs-h",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "Zwischen zwei Vokalen steht manchmal ein h, damit die Silben getrennt bleiben: Ge-hör, A-horn, Uhr.",
+    "hints": [
+      "Das h zwischen Vokalen trennt die Silben: Ge-hör, A-horn.",
+      "Es steht oft nach e, a oder u: Gehör, Ahorn, Uhr.",
+      "Lernwörter mit Trennungs-h merkst du dir gemeinsam."
+    ],
+    "from": "fahren",
+    "answer": "fährst"
+  },
+  {
+    "id": "pdfmem-9-5-1",
+    "kind": "memory",
+    "word": "Falke",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-5-2",
+    "kind": "memory",
+    "word": "Lehne",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-5-1-1",
+    "kind": "memory",
+    "word": "Falke",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-5-1-2",
+    "kind": "memory",
+    "word": "Lehne",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-5-2-1",
+    "kind": "memory",
+    "word": "Falke",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-5-2-2",
+    "kind": "memory",
+    "word": "Lehne",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-9-6-1",
+    "kind": "memory",
+    "word": "Hai",
+    "ruleId": "diphthong",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In Doppellauten klingen zwei Laute in einer Silbe: ei, au, eu, äu. ai ist selten: Mai, Laie, Kaiser.",
+    "hints": [
+      "Doppellaute verbinden zwei Laute in einer Silbe: ei, au, eu, äu.",
+      "Fast immer schreibt man ei – ai nur in Mai, Laie, Kaiser und ähnlichen Wörtern.",
+      "Sprich die Silbe langsam und achte auf den zweiten Laut."
+    ]
+  },
+  {
+    "id": "pdfmem-9-6-2",
+    "kind": "memory",
+    "word": "Laich",
+    "ruleId": "diphthong",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In Doppellauten klingen zwei Laute in einer Silbe: ei, au, eu, äu. ai ist selten: Mai, Laie, Kaiser.",
+    "hints": [
+      "Doppellaute verbinden zwei Laute in einer Silbe: ei, au, eu, äu.",
+      "Fast immer schreibt man ei – ai nur in Mai, Laie, Kaiser und ähnlichen Wörtern.",
+      "Sprich die Silbe langsam und achte auf den zweiten Laut."
+    ]
+  },
+  {
+    "id": "pdfmem-9-6-2-1",
+    "kind": "memory",
+    "word": "Hai",
+    "ruleId": "diphthong",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In Doppellauten klingen zwei Laute in einer Silbe: ei, au, eu, äu. ai ist selten: Mai, Laie, Kaiser.",
+    "hints": [
+      "Doppellaute verbinden zwei Laute in einer Silbe: ei, au, eu, äu.",
+      "Fast immer schreibt man ei – ai nur in Mai, Laie, Kaiser und ähnlichen Wörtern.",
+      "Sprich die Silbe langsam und achte auf den zweiten Laut."
+    ]
+  },
+  {
+    "id": "pdfmem-9-6-2-2",
+    "kind": "memory",
+    "word": "Laich",
+    "ruleId": "diphthong",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In Doppellauten klingen zwei Laute in einer Silbe: ei, au, eu, äu. ai ist selten: Mai, Laie, Kaiser.",
+    "hints": [
+      "Doppellaute verbinden zwei Laute in einer Silbe: ei, au, eu, äu.",
+      "Fast immer schreibt man ei – ai nur in Mai, Laie, Kaiser und ähnlichen Wörtern.",
+      "Sprich die Silbe langsam und achte auf den zweiten Laut."
+    ]
+  },
+  {
+    "id": "pdfmem-10-1-1",
+    "kind": "memory",
+    "word": "Dose",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-1-2",
+    "kind": "memory",
+    "word": "Los",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-2-1",
+    "kind": "memory",
+    "word": "Häuser",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-2-2",
+    "kind": "memory",
+    "word": "lesen",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-3-1",
+    "kind": "memory",
+    "word": "Tasse",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-3-2",
+    "kind": "memory",
+    "word": "Laster",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ]
+  },
+  {
+    "id": "pdfmem-10-4-1",
+    "kind": "memory",
+    "word": "Glas",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ],
+    "sentence": "Auf dich ist Verlass."
+  },
+  {
+    "id": "pdfmem-10-4-2",
+    "kind": "memory",
+    "word": "muss",
+    "ruleId": "ss-oesz",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Nach kurzem Vokal schreibst du ss, nach langem Vokal oder Doppellaut ß – wenn im Wortstamm kein weiterer Konsonant folgt: Wasser, Straße.",
+    "hints": [
+      "Nach einem kurzen, betonten Vokal schreibst du ss: Klasse, Wasser, essen.",
+      "Nach einem langen Vokal oder einem Doppellaut steht ß, wenn im Wortstamm kein weiterer Konsonant folgt: Straße, Fuß, weiß, groß.",
+      "Wenn der Vokal kurz ist, folgt oft ein doppelter Konsonant – dann ist es ss."
+    ],
+    "sentence": "Auf der Klassenfahrt ist Alkohol in Maßen erlaubt."
+  },
+  {
+    "id": "pdfmem-10-5-1",
+    "kind": "memory",
+    "word": "Hund",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-10-5-2",
+    "kind": "memory",
+    "word": "Blut",
+    "ruleId": "dehnung",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein langer Vokal klingt gedehnt. Doppelvokale wie aa, ee oder oo, ein stummes h oder eine offene Silbe zeigen die Länge an.",
+    "hints": [
+      "Ein gedehnter Vokal ist lang: Haar, See, Moos, Boot.",
+      "Oft zeigt ein Doppelvokal die Länge an: aa, ee oder oo.",
+      "Manchmal kennzeichnet ein stummes h die Länge: Bahn, Uhr, Stuhl."
+    ]
+  },
+  {
+    "id": "pdfmem-11-1-1",
+    "kind": "memory",
+    "word": "sehen",
+    "ruleId": "verben-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ]
+  },
+  {
+    "id": "pdfmem-11-1-2",
+    "kind": "memory",
+    "word": "ziehen",
+    "ruleId": "verben-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ]
+  },
+  {
+    "id": "pdfableit-11-1-1",
+    "kind": "derive",
+    "word": "sehe",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „sehen“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "sehen",
+    "answer": "sehe"
+  },
+  {
+    "id": "pdfableit-11-1-2",
+    "kind": "derive",
+    "word": "ziehe",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „ziehen“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "ziehen",
+    "answer": "ziehe"
+  },
+  {
+    "id": "pdfableit-11-1-3",
+    "kind": "derive",
+    "word": "fährt",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "fahren",
+    "answer": "fährt"
+  },
+  {
+    "id": "pdfmem-11-1-3-1",
+    "kind": "memory",
+    "word": "sehe",
+    "ruleId": "verben-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ]
+  },
+  {
+    "id": "pdfmem-11-1-3-2",
+    "kind": "memory",
+    "word": "siehst",
+    "ruleId": "verben-h",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ]
+  },
+  {
+    "id": "pdfableit-11-1-3-1",
+    "kind": "derive",
+    "word": "sieht",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „sehen“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "sehen",
+    "answer": "sieht"
+  },
+  {
+    "id": "pdfableit-11-1-3-2",
+    "kind": "derive",
+    "word": "zieht",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „ziehen“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "ziehen",
+    "answer": "zieht"
+  },
+  {
+    "id": "pdfableit-11-1-3-3",
+    "kind": "derive",
+    "word": "fährst",
+    "ruleId": "verben-h",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "gehen, sehen und geschehen behalten das h in vielen Formen: gehe, gehst, sehe. Hör nicht nur zu – schau auf die Grundform.",
+    "hints": [
+      "gehen, sehen und geschehen behalten in vielen Formen ein h.",
+      "Das h hörst du nicht immer – die Grundform hilft.",
+      "Sprich die Formen langsam mit: gehe, gehst, geht."
+    ],
+    "from": "fahren",
+    "answer": "fährst"
+  },
+  {
+    "id": "pdfmem-11-2-2-1",
+    "kind": "memory",
+    "word": "dösen",
+    "ruleId": "verben-s-z",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ]
+  },
+  {
+    "id": "pdfmem-11-2-2-2",
+    "kind": "memory",
+    "word": "döst",
+    "ruleId": "verben-s-z",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ]
+  },
+  {
+    "id": "pdfableit-11-2-2-1",
+    "kind": "derive",
+    "word": "döst",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „dösen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "dösen",
+    "answer": "döst"
+  },
+  {
+    "id": "pdfableit-11-2-2-2",
+    "kind": "derive",
+    "word": "küsst",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „küssen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "küssen",
+    "answer": "küsst"
+  },
+  {
+    "id": "pdfableit-11-2-2-3",
+    "kind": "derive",
+    "word": "grüßt",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „grüßen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "grüßen",
+    "answer": "grüßt"
+  },
+  {
+    "id": "pdfmem-11-2-3-1",
+    "kind": "memory",
+    "word": "essen",
+    "ruleId": "verben-s-z",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ]
+  },
+  {
+    "id": "pdfmem-11-2-3-2",
+    "kind": "memory",
+    "word": "isst",
+    "ruleId": "verben-s-z",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ]
+  },
+  {
+    "id": "pdfableit-11-2-3-1",
+    "kind": "derive",
+    "word": "isst",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „essen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "essen",
+    "answer": "isst"
+  },
+  {
+    "id": "pdfableit-11-2-3-2",
+    "kind": "derive",
+    "word": "liest",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „lesen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "lesen",
+    "answer": "liest"
+  },
+  {
+    "id": "pdfableit-11-2-3-3",
+    "kind": "derive",
+    "word": "lässt",
+    "ruleId": "verben-s-z",
+    "prompt": "Wie heißt die passende Form zu „lassen“?",
+    "ruleText": "Verben auf -sen und -zen behalten ihren Laut in allen Formen: reisen → reise, sitzen → sitze.",
+    "hints": [
+      "Die Endung -sen bleibt: reisen, reise, reist.",
+      "Die Endung -zen bleibt: sitzen, sitze, sitzt.",
+      "In der 2. Person Singular steht -st: du reist, du sitzt."
+    ],
+    "from": "lassen",
+    "answer": "lässt"
+  },
+  {
+    "id": "pdfmem-11-3-1",
+    "kind": "memory",
+    "word": "gehst",
+    "ruleId": "luecken",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Lies den ganzen Satz, bevor du dich entscheidest.",
+      "Achte auf Einzahl und Mehrzahl sowie auf das Zeitwort.",
+      "Setze probehalber die andere Möglichkeit ein und vergleiche."
+    ],
+    "sentence": "Du gehst (gehen) nach Hause."
+  },
+  {
+    "id": "pdfmem-11-3-2",
+    "kind": "memory",
+    "word": "fror",
+    "ruleId": "luecken",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Lies den Satz bis zur Lücke und dahinter weiter. Das Wort muss zum Sinn und zur Regel passen.",
+    "hints": [
+      "Lies den ganzen Satz, bevor du dich entscheidest.",
+      "Achte auf Einzahl und Mehrzahl sowie auf das Zeitwort.",
+      "Setze probehalber die andere Möglichkeit ein und vergleiche."
+    ],
+    "sentence": "Sieh (sehen) mich an!"
+  },
+  {
+    "id": "pdfmem-12-1-1",
+    "kind": "memory",
+    "word": "Urwald",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-12-1-2",
+    "kind": "memory",
+    "word": "Vorahnung",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-12-2-1",
+    "kind": "memory",
+    "word": "dankbar",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-12-2-2",
+    "kind": "memory",
+    "word": "Reichtum",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-12-3-1",
+    "kind": "memory",
+    "word": "blockieren",
+    "ruleId": "fremd-endung-ie",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Viele Fremdwörter enden auf -ie: Energie, Fantasie, Demokratie. Die Endung bleibt auch in der Mehrzahl erhalten.",
+    "hints": [
+      "Fremdwörter enden oft auf -ie: Energie, Fantasie, Demokratie.",
+      "Die Endung bleibt unverändert: die Energien.",
+      "Sprich die letzte Silbe deutlich: -ie."
+    ]
+  },
+  {
+    "id": "pdfmem-12-3-2",
+    "kind": "memory",
+    "word": "buchstabieren",
+    "ruleId": "fremd-endung-ie",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Viele Fremdwörter enden auf -ie: Energie, Fantasie, Demokratie. Die Endung bleibt auch in der Mehrzahl erhalten.",
+    "hints": [
+      "Fremdwörter enden oft auf -ie: Energie, Fantasie, Demokratie.",
+      "Die Endung bleibt unverändert: die Energien.",
+      "Sprich die letzte Silbe deutlich: -ie."
+    ]
+  },
+  {
+    "id": "pdfmem-13-1-1",
+    "kind": "memory",
+    "word": "Märsche",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
+  },
+  {
+    "id": "pdfmem-13-1-2",
+    "kind": "memory",
+    "word": "Brötchen",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
+  },
+  {
+    "id": "pdfableit-13-1-1",
+    "kind": "derive",
+    "word": "klüger",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „klug“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "klug",
+    "answer": "klüger"
+  },
+  {
+    "id": "pdfableit-13-1-2",
+    "kind": "derive",
+    "word": "längsten",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „lang“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "lang",
+    "answer": "längsten"
+  },
+  {
+    "id": "pdfableit-13-1-3",
+    "kind": "derive",
+    "word": "höchsten",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „hoch“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "hoch",
+    "answer": "höchsten"
+  },
+  {
+    "id": "pdfmem-13-2-1",
+    "kind": "memory",
+    "word": "abfahren",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
+  },
+  {
+    "id": "pdfmem-13-2-2",
+    "kind": "memory",
+    "word": "Abfahrt",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
+  },
+  {
+    "id": "pdfableit-13-2-1",
+    "kind": "derive",
+    "word": "Abfahrt",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "fahren",
+    "answer": "Abfahrt"
+  },
+  {
+    "id": "pdfableit-13-2-2",
+    "kind": "derive",
+    "word": "Beifahrer",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "fahren",
+    "answer": "Beifahrer"
+  },
+  {
+    "id": "pdfableit-13-2-3",
+    "kind": "derive",
+    "word": "Erfahrung",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Wie heißt die passende Form zu „fahren“?",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ],
+    "from": "fahren",
+    "answer": "Erfahrung"
+  },
+  {
+    "id": "pdfmem-14-1-1",
+    "kind": "memory",
+    "word": "Geheimnis",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-14-1-2",
+    "kind": "memory",
+    "word": "Urwälder",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-14-2-1",
+    "kind": "memory",
+    "word": "Bäcker",
+    "ruleId": "endung-in",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "hints": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ]
+  },
+  {
+    "id": "pdfmem-14-2-2",
+    "kind": "memory",
+    "word": "Bäckerin",
+    "ruleId": "endung-in",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "hints": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ]
+  },
+  {
+    "id": "pdfableit-14-2-1",
+    "kind": "derive",
+    "word": "Bäckerin",
+    "ruleId": "endung-in",
+    "prompt": "Wie heißt die passende Form zu „Bäcker“?",
+    "ruleText": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "hints": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ],
+    "from": "Bäcker",
+    "answer": "Bäckerin"
+  },
+  {
+    "id": "pdfableit-14-2-2",
+    "kind": "derive",
+    "word": "Lehrerin",
+    "ruleId": "endung-in",
+    "prompt": "Wie heißt die passende Form zu „Lehrer“?",
+    "ruleText": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "hints": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ],
+    "from": "Lehrer",
+    "answer": "Lehrerin"
+  },
+  {
+    "id": "pdfableit-14-2-3",
+    "kind": "derive",
+    "word": "Bäuerin",
+    "ruleId": "endung-in",
+    "prompt": "Wie heißt die passende Form zu „Bauer“?",
+    "ruleText": "Aus einem Berufswort wird die weibliche Form mit -in: Lehrer → Lehrerin, Arzt → Ärztin. Der Stamm bleibt erhalten.",
+    "hints": [
+      "Die Endung -in macht aus Männer- Frauenwörter: Lehrerin.",
+      "Vor dem -in bleibt der Stamm: Ärztin, Malerin.",
+      "Bei -er entfällt oft das e: Lehrer → Lehrerin."
+    ],
+    "from": "Bauer",
+    "answer": "Bäuerin"
+  },
+  {
+    "id": "pdfmem-14-3-1",
+    "kind": "memory",
+    "word": "hinaus",
+    "ruleId": "hin-her-da",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "hin- heißt weg von hier, her- heißt zu mir, da(r)- heißt dort. Die Vorsilbe bleibt in jedem Wort erhalten.",
+    "hints": [
+      "hin- bedeutet Bewegung weg: hingehen.",
+      "her- bedeutet Bewegung zu mir: herkommen.",
+      "da- oder dar- heißt dort: dabei, daraus."
+    ]
+  },
+  {
+    "id": "pdfmem-14-3-2",
+    "kind": "memory",
+    "word": "hinab",
+    "ruleId": "hin-her-da",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "hin- heißt weg von hier, her- heißt zu mir, da(r)- heißt dort. Die Vorsilbe bleibt in jedem Wort erhalten.",
+    "hints": [
+      "hin- bedeutet Bewegung weg: hingehen.",
+      "her- bedeutet Bewegung zu mir: herkommen.",
+      "da- oder dar- heißt dort: dabei, daraus."
+    ]
+  },
+  {
+    "id": "pdfmem-14-4-1",
+    "kind": "memory",
+    "word": "vergleichen",
+    "ruleId": "ver-fer-vor-for",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ver- ist häufig (verkaufen), fer- kommt in wenigen Wörtern vor (fern, Fernglas). vor- heißt vorher; for- gibt es im Deutschen kaum.",
+    "hints": [
+      "ver- heißt oft verändert oder weg: verkaufen, verlieren.",
+      "fer- steht in fern, Ferne, Fernglas.",
+      "vor- heißt vorher oder davor: vorstellen, vorher."
+    ]
+  },
+  {
+    "id": "pdfmem-14-4-2",
+    "kind": "memory",
+    "word": "verheiraten",
+    "ruleId": "ver-fer-vor-for",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ver- ist häufig (verkaufen), fer- kommt in wenigen Wörtern vor (fern, Fernglas). vor- heißt vorher; for- gibt es im Deutschen kaum.",
+    "hints": [
+      "ver- heißt oft verändert oder weg: verkaufen, verlieren.",
+      "fer- steht in fern, Ferne, Fernglas.",
+      "vor- heißt vorher oder davor: vorstellen, vorher."
+    ]
+  },
+  {
+    "id": "pdfmem-14-5-1",
+    "kind": "memory",
+    "word": "vorgehen",
+    "ruleId": "ver-fer-vor-for",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ver- ist häufig (verkaufen), fer- kommt in wenigen Wörtern vor (fern, Fernglas). vor- heißt vorher; for- gibt es im Deutschen kaum.",
+    "hints": [
+      "ver- heißt oft verändert oder weg: verkaufen, verlieren.",
+      "fer- steht in fern, Ferne, Fernglas.",
+      "vor- heißt vorher oder davor: vorstellen, vorher."
+    ]
+  },
+  {
+    "id": "pdfmem-14-5-2",
+    "kind": "memory",
+    "word": "vorhalten",
+    "ruleId": "ver-fer-vor-for",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ver- ist häufig (verkaufen), fer- kommt in wenigen Wörtern vor (fern, Fernglas). vor- heißt vorher; for- gibt es im Deutschen kaum.",
+    "hints": [
+      "ver- heißt oft verändert oder weg: verkaufen, verlieren.",
+      "fer- steht in fern, Ferne, Fernglas.",
+      "vor- heißt vorher oder davor: vorstellen, vorher."
+    ]
+  },
+  {
+    "id": "pdfmem-14-6-1",
+    "kind": "memory",
+    "word": "Ende",
+    "ruleId": "end-ent",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ent- heißt oft los oder weg: entdecken, entfernen. end- gehört zu Ende: endlich, Endung.",
+    "hints": [
+      "ent- bedeutet los, weg oder beginnen: entdecken, entscheiden.",
+      "end- hängt mit Ende zusammen: endlich, Endung.",
+      "Setze ein verwandtes Wort probehalber ein."
+    ],
+    "sentence": "Endspiel ist das Spiel am Ende eines Wettbewerbs."
+  },
+  {
+    "id": "pdfmem-14-6-2",
+    "kind": "memory",
+    "word": "endlich",
+    "ruleId": "end-ent",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "ent- heißt oft los oder weg: entdecken, entfernen. end- gehört zu Ende: endlich, Endung.",
+    "hints": [
+      "ent- bedeutet los, weg oder beginnen: entdecken, entscheiden.",
+      "end- hängt mit Ende zusammen: endlich, Endung.",
+      "Setze ein verwandtes Wort probehalber ein."
+    ],
+    "sentence": "Es entstand der Endstand 1:0."
+  },
+  {
+    "id": "pdfmem-14-7-1",
+    "kind": "memory",
+    "word": "eilig",
+    "ruleId": "ig-lich",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "-ig und -lich machen Adjektive. -ig beschreibt oft eine Eigenschaft, -lich oft „wie“ oder „gehörend zu“.",
+    "hints": [
+      "Mit -ig beschreibst du oft eine Eigenschaft oder Stimmung: mutig, wichtig, hungrig.",
+      "Mit -lich meinst du oft wie oder gehörend zu: kindlich, freundlich, brüderlich.",
+      "-lich steckt auch in Wörtern für wiederkehrende Zeiten: täglich, wöchentlich, jährlich, monatlich."
+    ]
+  },
+  {
+    "id": "pdfmem-14-7-2",
+    "kind": "memory",
+    "word": "lustig",
+    "ruleId": "ig-lich",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "-ig und -lich machen Adjektive. -ig beschreibt oft eine Eigenschaft, -lich oft „wie“ oder „gehörend zu“.",
+    "hints": [
+      "Mit -ig beschreibst du oft eine Eigenschaft oder Stimmung: mutig, wichtig, hungrig.",
+      "Mit -lich meinst du oft wie oder gehörend zu: kindlich, freundlich, brüderlich.",
+      "-lich steckt auch in Wörtern für wiederkehrende Zeiten: täglich, wöchentlich, jährlich, monatlich."
+    ]
+  },
+  {
+    "id": "pdfmem-14-8-1",
+    "kind": "memory",
+    "word": "Nummernschild",
+    "ruleId": "fugen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zusammengesetzte Wörter behalten oft ein -s- oder -en- in der Fuge: Straßenbahn, Arbeitsblatt, Kirschtorte.",
+    "hints": [
+      "Zusammengesetzte Wörter behalten oft s oder en in der Fuge.",
+      "Straßenbahn, Arbeitsblatt, Kirschtorte – die Fuge verbindet die Teile.",
+      "Sprich die beiden Teile einzeln und dann zusammen."
+    ]
+  },
+  {
+    "id": "pdfmem-14-8-2",
+    "kind": "memory",
+    "word": "Scheibenwischer",
+    "ruleId": "fugen",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Zusammengesetzte Wörter behalten oft ein -s- oder -en- in der Fuge: Straßenbahn, Arbeitsblatt, Kirschtorte.",
+    "hints": [
+      "Zusammengesetzte Wörter behalten oft s oder en in der Fuge.",
+      "Straßenbahn, Arbeitsblatt, Kirschtorte – die Fuge verbindet die Teile.",
+      "Sprich die beiden Teile einzeln und dann zusammen."
+    ]
+  },
+  {
+    "id": "pdfmem-15-1-1",
+    "kind": "memory",
+    "word": "Vorverkauf",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-15-1-2",
+    "kind": "memory",
+    "word": "Versäumnisse",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-15-2-1",
+    "kind": "memory",
+    "word": "Untersuchung",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-15-2-2",
+    "kind": "memory",
+    "word": "Vereinsvorstand",
+    "ruleId": "bausteine",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "Ein Wortbaustein bleibt in vielen Wörtern gleich. Frag dich, welcher Baustein aus dem Teil ein ganzes Wort macht.",
+    "hints": [
+      "ver- hat oft mit einem Weg oder einer Veränderung zu tun: vergessen, verlaufen.",
+      "vor- hat mit einer Stelle oder einem Vorher zu tun: vorstellen, vorlesen.",
+      "Aus Tätigkeiten werden Wörter auf -ung: die Lösung, die Wohnung."
+    ]
+  },
+  {
+    "id": "pdfmem-15-3-1",
+    "kind": "memory",
+    "word": "Geheimnis",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
+  },
+  {
+    "id": "pdfmem-15-3-2",
+    "kind": "memory",
+    "word": "Vorverkauf",
+    "ruleId": "wortstamm-familien",
+    "prompt": "Sieh dir das Wort an, dann schreibst du es aus dem Kopf.",
+    "ruleText": "In einer Wortfamilie bleibt der Stamm erkennbar, auch wenn er sich ändert: Haus → Häuser, lesen → liest.",
+    "hints": [
+      "Such zuerst die Grundform der Wortfamilie.",
+      "Auch wenn der Stamm sich ändert, bleibt er verwandt: Haus → Häuser.",
+      "Markier die schwierige Stelle mit einem Silbenbogen."
+    ]
   }
 ]

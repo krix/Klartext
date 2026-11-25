@@ -47,17 +47,19 @@ AppData
 └─ customWords[]: id, word, ruleId, level, hint
 ```
 
-Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 468 Wörter, 148 Interaktiv-Aufgaben und 30 Regelthemen liegen als JSON in `src/data/`.
+Jedes Profil hat einen eigenen Lernstand und eigene Versuche; Einstellungen, PIN, Design und eigene Wortlisten bleiben geräteweit gemeinsam. Ältere Daten (Version 1) werden beim ersten Start automatisch in das erste Profil übernommen. Die PIN wird gesalzen als SHA-256-Hash gespeichert, nie im Klartext. 1588 Wörter, 426 Interaktiv-Aufgaben und 50 Regelthemen liegen als JSON in `src/data/`.
 
 ### Themen
 
-Die Wörter sind über `ruleId` den 30 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in fünf Bereiche zusammen:
+Die Wörter sind über `ruleId` den 50 Themen zugeordnet. `src/data/topic-groups.json` fasst sie in fünf Bereiche zusammen:
 
-- **Laute & Buchstaben:** ie/i, ei/ai, äu/eu, sch/st/sp
-- **Länge & Silben:** ss/ß, lange Vokale, Dehnungs-h, Doppelkonsonanten
-- **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, -ig/-lich, -heit/-keit
+- **Laute & Buchstaben:** ie/i, ei/ai, äu/eu, sch/st/sp, Doppellaute (ei, ai, au, äu, eu), ie in Fremdwörtern
+- **Länge & Silben:** ss/ß, lange Vokale, Dehnungs-h und seine Ausnahmen, Trennungs-h, Doppelvokale, Doppelkonsonanten, tz/ck, verschiedene Konsonanten nach kurzem Vokal, Verbformen mit langem und kurzem Vokal, Adjektive mit langem und kurzem Vokal
+- **Wortbau & Endungen:** wieder/wider, ver-/vor-, emp-/ent-, end-/ent-, hin-/her-/da(r)-, ver-/fer-/vor-/for-, -ig/-lich, -heit/-keit, -in für Frauen, Fugen in Zusammensetzungen, Wortstämme und Wortfamilien, fremde Endungen auf -ie, Verben mit oder ohne h, Verben mit s-Laut oder z
 - **Wörter im Satz:** das/dass, als/wie, Großschreibung
 - **Verwechslungsgefahr:** e/ä (Wortfamilie mit a suchen: Baum → Bäume, Garten → Gärten), f/v (Vogel, Vater, viel gegenüber Fisch, Feuer, Fahrrad), gs/ks/cks/chs/x (Wachs, Fuchs, Keks, Hexe, Klecks, flugs), y (meist Fremd- und Lehnwörter: Baby, Handy, Gymnastik, Pyramide, Hobby), pf und mpf (Pferd, Apfel, Kopf, Strumpf, Kampf, Dampf), qu (Quelle, Qualle, Quark, quaken, bequem, Quatsch), Lernwörter mit -dt, gleich klingende Wörter (Meer/mehr, Wal/Wahl, Lied/Lid, Seite/Saite, Mal/Mahl – Bedeutung im Satz erkennen)
+
+Ein Teil der Wörter, Merkregeln und Übungen stammt aus dem Lösungsheft *Intelligente LRS-Schüler – Lernprogramm* von Uta Livonius (AOL-Verlag). `themen-und-uebungen.md` listet alle Kapitel und Unterkapitel mit Seitenverweisen; `pdf-abgleich.md` zeigt Thema für Thema, welche PDF-Abschnitte neu aufgenommen wurden und wo sie in der App liegen.
 
 Jedes Thema hat eine eigene Leseseite mit „Worum geht’s?“, „Das lernst du“, Merkregeln und Beispielen. Von dort startet „Dieses Thema üben“ eine Runde nur mit den Wörtern dieses Themas; Wiederholungen und der Austausch gegen schwerere Wörter bleiben ebenfalls im Thema. Die eingestellte Rundenlänge bleibt dabei immer gleich. „Alle Themen mischen“ in der Themenübersicht (und „Übung starten“ auf der Startseite) mischt bewusst über alle Themen hinweg. Innerhalb einer Runde werden verschiedene Varianten eines Themas gemischt, zum Beispiel bei ei/ai beide Schreibweisen.
 
@@ -78,7 +80,7 @@ Die Erklärungen wurden gegen das [Amtliche Regelwerk 2024](https://www.rechtsch
 
 ## 3. Technik und Begründung
 
-**TypeScript + Vite ohne Framework.** Die App hat vier Bildschirme und wenige Zustände; ein Framework würde nur Bundle-Größe und Update-Komplexität hinzufügen. Vite liefert einen kleinen Production-Build (~96 kB JS inklusive Wortbank, ~27 kB gzip), der vollständig offline funktioniert. TypeScript verhindert Fehler im Datenmodell. `localStorage` reicht bei dieser Datenmenge aus und ist einfacher als IndexedDB; exportiert wird jederzeit als JSON.
+**TypeScript + Vite ohne Framework.** Die App hat vier Bildschirme und wenige Zustände; ein Framework würde nur Bundle-Größe und Update-Komplexität hinzufügen. Vite liefert einen kompakten Production-Build (~571 kB JS inklusive der jetzt deutlich größeren Wortbank, ~85 kB gzip), der vollständig offline funktioniert. TypeScript verhindert Fehler im Datenmodell. `localStorage` reicht bei dieser Datenmenge aus und ist einfacher als IndexedDB; exportiert wird jederzeit als JSON.
 
 Weitere Punkte: drei wählbare Designs (Creme, Hellblau, Dunkel), vier lokal eingebundene Leseschriften (Lexend als Standard, Atkinson Hyperlegible, OpenDyslexic, Geräteschrift) mit großzügigem Buchstabenabstand, gezielte Sprachausgabe im Diktat und beim Anhören von Wort und Satz, Service Worker mit versionsbasiertem Precache (auch der Schriftdateien; außer Gemini alles offline) und deutlichem Update-Hinweis mit „Aktualisieren“-Button, installierbares Manifest mit Icons, `prefers-reduced-motion`, Tastaturbedienung, ARIA-Labels, Skip-Link, klare Fokusmarkierung. Kommentare im Code erklären die kniffligen Stellen (Leitner-Logik, DPR-Canvas, API-Fallback, PIN-Hash).
 
@@ -169,16 +171,17 @@ Straße|ss-oesz
 Biene|ie-i
 ```
 
-Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`, `silbenbau`, `fehlerfinden`, `luecken`, `ableiten`, `bausteine`, `merkwoerter`, `e-oder-ae`, `f-oder-v`, `ks-laute`, `y-laute`, `pf-mpf`, `qu`, `dt`, `homophone`.
+Gültige Regel-IDs: `ie-i`, `ss-oesz`, `ai-ei`, `aeu-eu`, `dehnung`, `dehnungs-h`, `doppelkonsonant`, `sch-s`, `das-dass`, `als-wie`, `wieder-wider`, `ver-vor`, `emp-ent`, `ig-lich`, `heit-keit`, `grossschreibung`, `silbenbau`, `fehlerfinden`, `luecken`, `ableiten`, `bausteine`, `merkwoerter`, `e-oder-ae`, `f-oder-v`, `ks-laute`, `y-laute`, `pf-mpf`, `qu`, `dt`, `homophone`, `tz-ck`, `verben-endungen`, `dehnungs-h-ausnahmen`, `ie-fremdwoerter`, `doppelvokale`, `trennungs-h`, `verben-h`, `verben-s-z`, `fremd-endung-ie`, `wortstamm-familien`, `hin-her-da`, `ver-fer-vor-for`, `end-ent`, `fugen`, `endung-in`, `konsonanten`, `adjektive-kurzvokal`, `verben-langvokal`, `adjektive-langvokal`, `diphthong`.
 
-- Die neun Übungsformen stammen aus dem Prototyp in `alternate-vanilla/`. `node scripts/import-challenges.mjs` übernimmt dessen Aufgaben, Regeln und Wörter nach `src/data/challenges.json`, `src/data/words.json` und `src/data/rules.json` (aktualisiert vorhandene Einträge, löscht nichts). Die 88 zusätzlichen Aufgaben zum Thema „Verwechslungsgefahr“ (e/ä, f/v, ks-Laute, y, pf/mpf, qu, -dt, Homophone) stehen direkt im Skript und werden bei jedem Lauf mitgeschrieben. Der Bereich wird beim Import vollständig aus dem Skript neu aufgebaut; umbenannte Regeln aus früheren Läufen bleiben dabei nicht liegen.
+- Die neun Übungsformen stammen aus dem Prototyp in `alternate-vanilla/`. `node scripts/import-challenges.mjs` übernimmt dessen Aufgaben nach `src/data/challenges.json`, `src/data/words.json` und `src/data/rules.json`. Die 88 Aufgaben zum Thema „Verwechslungsgefahr“ (e/ä, f/v, ks-Laute, y, pf/mpf, qu, -dt, Homophone) stehen direkt im Skript; dieser Bereich wird beim Import vollständig neu aufgebaut, damit umbenannte Regeln aus früheren Läufen verschwinden.
+- Die Aufgaben zu den übrigen Kapiteln liegen in `scripts/pdf-sections.mjs` und tragen Kapitel-/Seitenverweise aus `Loesungen.pdf`. Der Import erzeugt daraus Wörter, Merk-, Silbenbau-, Ableit- und Fehlerfinden-Aufgaben. `node scripts/report-pdf-abgleich.mjs` schreibt `pdf-abgleich.md` neu; `themen-und-uebungen.md` bleibt die reine Inhaltsverzeichnis-Liste.
 - Dauerhaft neue Wörter oder Regeln: Dateien `src/data/words.json` und `src/data/rules.json` erweitern. Jedes Wort braucht `id`, `word`, `ruleId`, `level` (1–3), `hint` und optional `sentence`. Ein neues Thema zusätzlich in `src/data/topic-groups.json` einem Bereich zuordnen und in `rules.json` die Felder `area`, `summary`, `goal`, `rules` und `examples` füllen – dann erscheint automatisch eine Lernseite dafür. Danach `npm test && npm run build`.
 
 ---
 
 ## 8. Tests und offene Punkte
 
-**Getestet:** 81 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, alle neun Übungsformen inklusive schrittweiser Hilfe, das Thema „Verwechslungsgefahr“ mit e/ä, f/v, ks-Lauten, y, pf/mpf, qu, -dt und Homophonen inklusive konsistenter Lückentexte, Fehlerstellen und Satzzusammenhänge, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf mit Auswahl-, Tipp- und Silbenaufgaben, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
+**Getestet:** 84 Unit-Tests für Textvergleich, Leitner-Fächer, adaptive Auswahl und Variantennischung, Themen-Sperre inklusive Wiederholungen und austauschbarer Reserven, feste Rundenlänge mit Treffer-/Wiederholungszählung, Trainingsplan (auch Selbstprüfung), Tagesserie, Themen-Lernseiten, den Abgleich aller 97 PDF-Unterkapitel mit Wörtern und Aufgaben, alle neun Übungsformen inklusive schrittweiser Hilfe, das Thema „Verwechslungsgefahr“ mit e/ä, f/v, ks-Lauten, y, pf/mpf, qu, -dt und Homophonen inklusive konsistenter Lückentexte, Fehlerstellen und Satzzusammenhänge, Fehlerdetails, Rundenübersicht, Rundenende ohne Blockade durch Wiederholungen, Sprachausgabe von Wort + Satz, blinde Gemini-Lesung, Request/-Fallback und Fehlerzuordnung sowie Profile, Schriftarten und Designs inklusive Migration alter Daten. Der Playwright-Smoke-Test prüft zusätzlich Rundenablauf mit Auswahl-, Tipp- und Silbenaufgaben, eine konstant bleibende Fortschrittsanzeige, Fehlerdetails, erneute Prüfung nach Dienstausfall, Profilwechsel mit Begrüßung, Laden der lokalen Schrift, Trainingsplan ohne Reload, Tab-Synchronisierung und Overflow auf Mobil/Desktop. `npm run build` prüft Typen, erstellt den Produktionsbuild und den Service Worker.
 
 **Annahmen / offene Punkte:**
 
