@@ -25,6 +25,13 @@ page.on('pageerror', (error) => errors.push(String(error)));
 await page.goto(BASE);
 await page.evaluate(() => document.fonts.ready);
 assert.ok(await page.evaluate(() => document.fonts.check('18px Lexend')), 'lokale Leseschrift wurde nicht geladen');
+assert.ok(
+  await page.evaluate(() => {
+    const logo = document.querySelector('.brand-mark img');
+    return !!logo && logo.complete && logo.naturalWidth > 0;
+  }),
+  'Logo in der Kopfleiste wurde nicht geladen',
+);
 await page.evaluate(() => {
   localStorage.setItem('klartext.state.v1', JSON.stringify({
     version: 1, settings: { sessionLength: 5 }, progress: {}, attempts: [], customWords: [],

@@ -228,8 +228,21 @@ a { color: inherit; }
   font-size: clamp(1.1rem, 2.6vh, 1.32rem);
   letter-spacing: -.02em;
 }
-.brand svg { width: clamp(36px, 6vh, 44px); height: clamp(36px, 6vh, 44px); flex: none; transition: transform .18s ease; }
-.brand:hover svg { transform: rotate(-8deg); }
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(36px, 6vh, 44px);
+  height: clamp(36px, 6vh, 44px);
+  padding: 4px;
+  border-radius: 12px;
+  /* Fest wie der Hintergrund der App-Icons – auch im Nacht-Design. */
+  background: #173b44;
+  flex: none;
+  transition: transform .18s ease;
+}
+.brand-mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.brand:hover .brand-mark { transform: rotate(-8deg); }
 .brand small {
   display: block;
   font-size: .72rem;
