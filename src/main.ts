@@ -125,7 +125,8 @@ function render(): void {
   document.body.dataset.theme = data.settings.theme;
   document.body.dataset.font = data.settings.font;
   document.body.dataset.view = route;
-  if (lastRenderedRoute !== route) {
+  const routeChanged = lastRenderedRoute !== route;
+  if (routeChanged) {
     window.scrollTo(0, 0);
     lastRenderedRoute = route;
   }
@@ -158,6 +159,10 @@ function render(): void {
     default:
       app!.innerHTML = home();
   }
+
+  // Sanfter Seitenwechsel nur beim Routenwechsel – Antworten in einer laufenden
+  // Übung dürfen nicht jedes Mal neu einblenden.
+  if (routeChanged) app!.querySelector('main.shell')?.classList.add('page-enter');
 
   const kind = route === 'practice' ? session?.current?.kind : undefined;
   const needsPad = kind === 'dictation' || kind === 'copy' || kind === 'memory';

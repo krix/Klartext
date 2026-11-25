@@ -140,7 +140,10 @@ function renderSummaryOverview(results: readonly SessionResult[], plan: readonly
     const note = ok || detail ? '' : `<p class="review-note">${entry.lastError?.source === 'self'
       ? 'Du hast selbst entschieden, dieses Wort noch einmal zu üben.'
       : 'Vergleich dein Wort noch einmal mit der Lösung.'}</p>`;
-    const sentence = entry.sentence ? `<p class="review-sentence">${escapeHtml(entry.sentence)}</p>` : '';
+    // Auch ohne Beispielsatz muss bei einem Fehler die Lösung sichtbar sein.
+    const sentence = entry.sentence
+      ? `<p class="review-sentence">${escapeHtml(entry.sentence)}</p>`
+      : ok ? '' : `<p class="review-sentence">Richtig geschrieben: ${escapeHtml(entry.word)}</p>`;
     const tries = entry.tries > 1 ? `<small>${entry.tries}×</small>` : '';
     return `<li class="review-item ${ok ? 'is-right' : 'is-wrong'}" aria-label="${escapeHtml(entry.word)} ${ok ? 'richtig' : 'noch üben'}">
       <span class="review-line"><span class="review-mark" aria-hidden="true">${ok ? '✓' : '↻'}</span><strong>${escapeHtml(entry.word)}</strong>${tries}</span>

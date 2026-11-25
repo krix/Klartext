@@ -102,12 +102,11 @@ body {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  /* Punkte wie im Übungsheft, dazu zwei ganz leichte Farbtupfer. */
-  background:
-    radial-gradient(circle at 8% 14%, color-mix(in srgb, var(--accent) 18%, transparent) 0 110px, transparent 112px),
-    radial-gradient(circle at 94% 82%, color-mix(in srgb, var(--fun-sky) 14%, transparent) 0 130px, transparent 132px),
-    radial-gradient(color-mix(in srgb, var(--ink) 11%, transparent) 1.2px, transparent 1.3px) 0 0 / 26px 26px,
-    var(--paper);
+  /* Die ruhige Heft-Optik liegt auf eigenen Ebenen (siehe ::before/::after),
+     damit sich Punkte und Farbtupfer bewegen können, ohne Text zu verschieben. */
+  position: relative;
+  isolation: isolate;
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-ui);
   /* Großzügiger Abstand erleichtert das Lesen bei LRS; Wörter bleiben klar getrennt. */
@@ -115,6 +114,43 @@ body {
   letter-spacing: .015em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Lebendiges, aber ruhiges Heftpapier: feine und bunte Punkte gleiten langsam
+   weiter, dazu zwei weiche Farbtupfer. Beide Ebenen liegen hinter dem Inhalt
+   und nehmen keine Berührungen an, damit Schreiben und Tippen ungestört bleiben. */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: -24px;
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 32%, transparent) 2px, transparent 3px),
+    radial-gradient(circle, color-mix(in srgb, var(--fun-sky) 24%, transparent) 1.8px, transparent 2.8px),
+    radial-gradient(color-mix(in srgb, var(--ink) 10%, transparent) 1.2px, transparent 1.3px);
+  background-size: 156px 156px, 208px 208px, 26px 26px;
+  background-position: 24px 36px, 96px 8px, 0 0;
+  animation: dots-drift 38s ease-in-out infinite alternate;
+}
+body::after {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--accent) 18%, transparent) 0 90px, transparent 135px),
+    radial-gradient(circle at 88% 78%, color-mix(in srgb, var(--fun-sky) 15%, transparent) 0 115px, transparent 160px),
+    radial-gradient(circle at 72% 12%, color-mix(in srgb, var(--fun-coral) 9%, transparent) 0 70px, transparent 110px);
+  animation: color-drift 28s ease-in-out infinite alternate;
+}
+@keyframes dots-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(9px, 13px, 0); }
+}
+@keyframes color-drift {
+  0% { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  50% { transform: translate3d(1%, 1.5%, 0) scale(1.04); }
+  100% { transform: translate3d(-.5%, 2%, 0) scale(1.01); }
 }
 
 #app { display: flex; flex: 1 0 auto; flex-direction: column; }
@@ -190,6 +226,14 @@ a { color: inherit; }
   max-width: 1120px;
   margin: 0 auto;
   padding: clamp(12px, 2vh, 32px) clamp(16px, 4vw, 32px) clamp(14px, 2.4vh, 44px);
+}
+
+/* Nur beim Seitenwechsel: die neue Seite setzt sich sanft, statt zu „springen“.
+   Antworten innerhalb einer Übung bleiben davon unberührt. */
+main.shell.page-enter { animation: page-enter .3s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .home-grid {
@@ -624,7 +668,7 @@ body[data-view="topic"] h1 { font-size: clamp(2rem, 5vh, 2.9rem); max-width: 22c
 body[data-view="topics"] .lead,
 body[data-view="topic"] .lead { font-size: .98rem; margin-bottom: clamp(8px, 1.4vh, 14px); }
 
-.topic-mix-row { margin: 0 0 4px; }
+.topic-mix-row { margin: 0 0 clamp(16px, 2.6vh, 28px); }
 .topic-areas {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -650,7 +694,7 @@ body[data-view="topic"] .lead { font-size: .98rem; margin-bottom: clamp(8px, 1.4
 .topic-card:hover { border-color: var(--ink); background: var(--surface); transform: translateY(-2px) rotate(-.4deg); }
 .topic-card:active { transform: translateY(1px); }
 .topic-card-top { display: flex; justify-content: space-between; gap: 6px; min-width: 0; font-size: .84rem; line-height: 1.15; }
-.topic-card-top strong { font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topic-card-top strong { min-width: 0; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .topic-card .panel-note { display: block; font-size: .7rem; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .topic-card-meta { display: flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--ink-soft); font-weight: 700; }
 .mini-track { display: inline-block; width: 38px; height: 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); overflow: hidden; }
@@ -740,7 +784,7 @@ body[data-view="parent"] .checkbox-line small { font-size: .8rem; }
   .stage { padding: 14px 18px; border-radius: 18px; }
   .stat-row { gap: 14px; }
   h1 { font-size: clamp(2.3rem, 11vw, 3.6rem); }
-  .topic-areas, .topic-cards, .topic-detail-grid { grid-template-columns: 1fr; }
+  .topic-areas, .topic-cards, .topic-detail-grid { grid-template-columns: minmax(0, 1fr); }
   body[data-view="topics"] h1, body[data-view="topic"] h1 { font-size: clamp(1.9rem, 8vw, 2.5rem); }
 }
 
@@ -821,4 +865,5 @@ body[data-view="parent"] .checkbox-line small { font-size: .8rem; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  body::before, body::after, main.shell.page-enter { animation: none !important; }
 }

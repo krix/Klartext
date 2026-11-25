@@ -33,7 +33,9 @@ describe('Inhalte aus Loesungen.pdf', () => {
       const ref = section.no.replaceAll('.', '-');
       const prefix = new RegExp(`^pdf(mem|ableit|err|silbe)-${ref}-`);
       const tasks = challenges.filter((task) => prefix.test(task.id));
-      expect(tasks.length, section.no).toBeGreaterThanOrEqual(2);
+      // Sehr lange Wörter bleiben Lernwortbank, bekommen aber keine Aufgabe.
+      const expected = Math.min(2, section.words.filter((word) => word.length <= 18).length);
+      expect(tasks.length, section.no).toBeGreaterThanOrEqual(expected);
       for (const task of tasks) {
         expect(task.hints.length, task.id).toBeGreaterThanOrEqual(2);
         expect(task.ruleText.length, task.id).toBeGreaterThan(10);

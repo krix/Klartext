@@ -89,6 +89,12 @@ describe('Übungssitzung', () => {
     expect(session.queue.every((id) => ['a', 'b'].includes(id))).toBe(true);
   });
 
+  it('nimmt denselben Wortlaut aus mehreren Heftstellen nur einmal in die Runde', () => {
+    const withDuplicate: Word[] = [...words, { id: 'd', word: 'Liebe', ruleId: 'ie-i', level: 1, hint: 'Tipp' }];
+    const session = createSession(withDuplicate, rules, {}, settings, () => 0.5, Date.now(), 'ie-i');
+    expect(session.poolIds).toEqual(['a', 'b']);
+  });
+
   it('bleibt auch bei folgenden Wörtern im gewählten Thema', () => {
     let session = createSession(words, rules, {}, settings, () => 0.5, Date.now(), 'ie-i');
     const seen = new Set<string>();

@@ -49,7 +49,9 @@ describe('Themen', () => {
     expect(html).toContain('Regeln zum Merken');
     expect(html).toContain('Beispiele');
     expect(html).toContain('data-action="practice-topic" data-id="ai-ei"');
-    expect(html).toContain('20 Wörter');
+    const count = words.filter((word) => word.ruleId === rule.id).length;
+    expect(count).toBeGreaterThan(0);
+    expect(html).toContain(`${count} Wörter`);
   });
 
   it('bietet in der Übersicht einen bewusst themenübergreifenden Start', () => {

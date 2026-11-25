@@ -65,7 +65,16 @@ export function createSession(
   ruleId = '',
 ): SessionState {
   // Die Wortbank der Runde steht fest – adaptive Ergänzungen bleiben dadurch im gewählten Thema.
-  const pool = words.filter((word) => !ruleId || word.ruleId === ruleId);
+  // Derselbe Wortlaut kann aus mehreren Heft-Unterkapiteln stammen; in einer Runde
+  // erscheint er trotzdem nur einmal.
+  const seenWords = new Set<string>();
+  const pool = words.filter((word) => {
+    if (ruleId && word.ruleId !== ruleId) return false;
+    const key = `${word.ruleId}|${word.word.toLocaleLowerCase('de-DE')}`;
+    if (seenWords.has(key)) return false;
+    seenWords.add(key);
+    return true;
+  });
   const chosen = selectWords(pool, progress, settings.sessionLength, { now, rng });
   const chosenIds = new Set(chosen.map((word) => word.id));
   // Reserven liegen bereits fest. Bei einer Erfolgsserie wird getauscht, nie nachgelegt –

@@ -43,7 +43,8 @@ const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 
 const rules = readJson('src/data/rules.json');
-const words = readJson('src/data/words.json');
+// Wörter aus früheren PDF-Importläufen werden unten komplett neu erzeugt.
+const words = readJson('src/data/words.json').filter((word) => !word.id.startsWith('pdf-'));
 const extraRules = [
   {
     id: 'silbenbau',
@@ -708,6 +709,9 @@ const challengeWords = [];
 function targetFor(task) {
   if (task.syllables) return task.syllables.join('');
   if (task.type === 'error') return task.answer;
+  // Bei Bausteinen ist die Antwort nur die Vorsilbe („ver-“). Geübt wird das
+  // ganze Wort, das im Prototyp als Note steht („vergessen“).
+  if (task.type === 'parts') return plain(task.note ?? '');
   if (task.answer) return task.answer;
   return task.word ?? '';
 }
@@ -993,6 +997,19 @@ const extraChallenges = [
     ['zum ersten Mal heißt „einmal“.', 'Ein Mahl ist eine Mahlzeit.'], 'Das ist das erste Mal.'),
   fill('ch-h10', 'Das', ' war reichlich.', 'Mahl', ['Mal', 'Mahl'], 'Mahl', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
     ['Ein Mahl ist das Essen.', 'Hier geht es um Essen, nicht um einen Zeitpunkt.'], 'Das Mahl war reichlich.'),
+  // Weitere Verwechslungspaare aus Unterkapitel 8.4 des Lösungshefts.
+  fill('ch-h11', 'Ich male das Bild in einem neuen', '.', 'Stil', ['Stil', 'Stiel'], 'Stil', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Stil heißt Art und Weise.', 'Ein Stiel gehört zu Besen oder Löffel.'], 'Ich male das Bild in einem neuen Stil.'),
+  fill('ch-h12', 'Der Besen hat einen langen', '.', 'Stiel', ['Stil', 'Stiel'], 'Stiel', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Der Stiel ist der Griff.', 'Stil wäre hier die Art zu malen.'], 'Der Besen hat einen langen Stiel.'),
+  fill('ch-h13', 'Die', ' meines Bleistifts ist weich.', 'Mine', ['Mine', 'Miene'], 'Mine', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Die Mine schreibt.', 'Eine Miene zeigt dein Gesicht.'], 'Die Mine meines Bleistifts ist weich.'),
+  fill('ch-h14', 'Sie macht eine fröhliche', '.', 'Miene', ['Mine', 'Miene'], 'Miene', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Die Miene gehört zum Gesicht.', 'Hier geht es ums Lächeln, nicht um den Stift.'], 'Sie macht eine fröhliche Miene.'),
+  fill('ch-h15', 'Wir singen ein fröhliches', '.', 'Lied', ['Lied', 'Lid'], 'Lied', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Ein Lied wird gesungen.', 'Das Lid gehört zum Auge.'], 'Wir singen ein fröhliches Lied.'),
+  fill('ch-h16', 'Das', ' am Auge zuckt.', 'Lid', ['Lied', 'Lid'], 'Lid', 'homophone', 'Welches Wort passt in den Satz?', HOMO_RULE,
+    ['Das Lid deckt das Auge zu.', 'Ein Lied kann nicht zucken.'], 'Das Lid am Auge zuckt.'),
 ];
 
 for (const challenge of extraChallenges) {
@@ -1012,6 +1029,14 @@ for (const challenge of extraChallenges) {
 // Nummer des Unterkapitels (Punkte durch Bindestriche ersetzt), damit jede
 // Aufgabe auf ihre Seite im Lehrwerk zurückgeführt werden kann.
 const ruleForPdf = new Map([...rules, ...extraRules].map((rule) => [rule.id, rule]));
+
+// Sehr lange Wörter bleiben in der Wortbank, bekommen aber keine Aufgabe –
+// ein 35-Buchstaben-Kompromisswort wäre für eine kurze Runde zu viel.
+const challengeable = (word) => word.length > 0 && word.length <= 18;
+const usedMemory = new Set();
+const usedDerive = new Set();
+const usedError = new Set();
+const usedBuild = new Set();
 
 function registerChallenge(challenge) {
   challenges.push(challenge);
@@ -1044,7 +1069,11 @@ for (const section of pdfSections) {
     });
   });
 
-  section.words.slice(0, 2).forEach((word, index) => {
+  const candidates = section.words.filter(challengeable);
+  const fresh = candidates.filter((word) => !usedMemory.has(`${section.rule}|${word}`));
+  const memoryWords = [...new Set([...fresh, ...candidates])].slice(0, 2);
+  memoryWords.forEach((word, index) => {
+    usedMemory.add(`${section.rule}|${word}`);
     registerChallenge(memorize(
       `pdfmem-${ref}-${index + 1}`,
       word,
@@ -1056,9 +1085,12 @@ for (const section of pdfSections) {
     ));
   });
 
-  (section.build ?? []).forEach(([word, syllables], index) => {
+  (section.build ?? []).filter(([word]) => challengeable(word)).forEach(([word, syllables]) => {
+    const key = `${section.rule}|${word}`;
+    if (usedBuild.has(key)) return;
+    usedBuild.add(key);
     registerChallenge({
-      id: `pdfsilbe-${ref}-${index + 1}`,
+      id: `pdfsilbe-${ref}-${usedBuild.size}`,
       kind: 'syllables-build',
       word,
       ruleId: section.rule,
@@ -1070,9 +1102,12 @@ for (const section of pdfSections) {
     });
   });
 
-  (section.pairs ?? []).forEach(([from, answer], index) => {
+  (section.pairs ?? []).filter(([from, answer]) => challengeable(from) && challengeable(answer)).forEach(([from, answer]) => {
+    const key = `${section.rule}|${from}|${answer}`;
+    if (usedDerive.has(key)) return;
+    usedDerive.add(key);
     registerChallenge(derive(
-      `pdfableit-${ref}-${index + 1}`,
+      `pdfableit-${ref}-${usedDerive.size}`,
       from,
       answer,
       section.rule,
@@ -1082,9 +1117,12 @@ for (const section of pdfSections) {
     ));
   });
 
-  (section.error ?? []).forEach(([wrong, answer], index) => {
+  (section.error ?? []).filter(([wrong, answer]) => challengeable(wrong) && challengeable(answer)).forEach(([wrong, answer]) => {
+    const key = `${section.rule}|${wrong}|${answer}`;
+    if (usedError.has(key)) return;
+    usedError.add(key);
     registerChallenge(mistake(
-      `pdferr-${ref}-${index + 1}`,
+      `pdferr-${ref}-${usedError.size}`,
       wrong,
       answer,
       section.rule,
