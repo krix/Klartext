@@ -13,6 +13,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Lokale Quelldateien (nicht Teil des Repositories)
+Loesungen.pdf
+
 # Dependencies / build
 node_modules/
 dist/
