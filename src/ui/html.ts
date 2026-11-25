@@ -1,3 +1,5 @@
+import logoUrl from '../assets/logo.png';
+
 /** Alle Texte aus Daten oder KI-Antworten werden vor dem Einfügen in HTML maskiert. */
 export function escapeHtml(value: unknown): string {
   return String(value ?? '')
@@ -8,9 +10,9 @@ export function escapeHtml(value: unknown): string {
     .replace(/'/g, '&#39;');
 }
 
-/** Das Logo aus public/logo.png erscheint in der Kopfleiste und in den PWA-Icons. */
+/** Das Logo erscheint in der Kopfleiste und – über npm run icons – in den PWA-Icons. */
 export function brand(): string {
-  return `<span class="brand-mark" aria-hidden="true"><img src="./logo.png" alt="" /></span>`;
+  return `<span class="brand-mark" aria-hidden="true"><img src="${logoUrl}" alt="" /></span>`;
 }
 
 export function header(parentUnlocked = false, active: 'topics' | '' = ''): string {

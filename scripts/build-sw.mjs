@@ -7,7 +7,7 @@ const template = readFileSync('scripts/sw-template.js', 'utf8');
 
 // Favicons mit einem Inhalts-Hash versehen: Browser und Service Worker dürfen
 // ein altes Icon nicht aus dem Cache weiterzeigen, wenn die Datei sich ändert.
-const iconFiles = ['icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'logo.png'];
+const iconFiles = ['icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const iconHash = createHash('sha256');
 for (const icon of iconFiles) iconHash.update(readFileSync(join(dist, icon)));
 const iconVersion = iconHash.digest('hex').slice(0, 10);

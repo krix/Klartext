@@ -9,11 +9,11 @@ const pngSize = (path: string) => {
 };
 
 describe('Logo und Icons', () => {
-  it('zeigt das Logo statt der gezeichneten Marke in der Kopfleiste', () => {
-    expect(brand()).toContain('<img src="./logo.png" alt="" />');
+  it('zeigt das gehashte Logo statt der gezeichneten Marke in der Kopfleiste', () => {
+    expect(brand()).toMatch(/<img src="[^"]*logo[^"]*\.png" alt="" \/>/);
     expect(brand()).not.toContain('<svg');
     expect(header()).toContain('brand-mark');
-    expect(header()).toContain('logo.png');
+    expect(header()).toContain('logo');
   });
 
   it('verlinkt Favicon, Apple-Icon und Manifest', () => {
@@ -36,8 +36,8 @@ describe('Logo und Icons', () => {
 
   it('liefert eine kleine Web-Kopie und quadratische Icons in den erwarteten Größen', () => {
     expect(pngSize('logo.png').width).toBeGreaterThan(512);
-    expect(pngSize('public/logo.png')).toMatchObject({ width: 256, height: 256 });
-    expect(pngSize('public/logo.png').bytes).toBeLessThan(pngSize('logo.png').bytes);
+    expect(pngSize('src/assets/logo.png')).toMatchObject({ width: 256, height: 256 });
+    expect(pngSize('src/assets/logo.png').bytes).toBeLessThan(pngSize('logo.png').bytes);
     for (const [path, size] of [
       ['public/icon-192.png', 192],
       ['public/icon-512.png', 512],
@@ -52,7 +52,7 @@ describe('Logo und Icons', () => {
   it('erzeugt Web-Logo und Icons aus dem hinterlegten Original', () => {
     const script = read('scripts/make-icons.mjs').toString('utf8');
     expect(script).toContain("const SOURCE = 'logo.png'");
-    expect(script).toContain("'public/logo.png'");
+    expect(script).toContain("'src/assets/logo.png'");
     expect(script).toContain('icon-maskable-512.png');
     expect(script).toContain('apple-touch-icon.png');
   });

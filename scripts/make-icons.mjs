@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { deflateSync, inflateSync } from 'node:zlib';
 
 /**
@@ -173,11 +173,14 @@ function makeIcon(logo, size, scale) {
 }
 
 const logo = decodeLogo(SOURCE);
-// Die Kopfleiste braucht nur wenige Pixel – das Original bleibt als Quelle erhalten.
-writeFileSync('public/logo.png', png(256, downsample(logo, 256)));
+// Die Kopfleiste braucht nur wenige Pixel. Als importiertes Asset bekommt die
+// Kopie vom Build einen Hash im Dateinamen – so kommt ein neues Logo auch bei
+// bestehendem Service Worker ohne „Aktualisieren“ an.
+mkdirSync('src/assets', { recursive: true });
+writeFileSync('src/assets/logo.png', png(256, downsample(logo, 256)));
 writeFileSync('public/icon-192.png', makeIcon(logo, 192, 0.86));
 writeFileSync('public/icon-512.png', makeIcon(logo, 512, 0.86));
 // Masken (z. B. Android) beschneiden die Ecken: Logo in der sicheren Zone.
 writeFileSync('public/icon-maskable-512.png', makeIcon(logo, 512, 0.7));
 writeFileSync('public/apple-touch-icon.png', makeIcon(logo, 180, 0.86));
-console.log('Web-Logo (256) und Icons aus logo.png erzeugt: 192, 512, maskable 512, Apple 180.');
+console.log('Web-Logo (256) in src/assets und Icons aus logo.png erzeugt: 192, 512, maskable 512, Apple 180.');
