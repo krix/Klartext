@@ -106,7 +106,10 @@ body {
      damit sich Punkte und Farbtupfer bewegen können, ohne Text zu verschieben. */
   position: relative;
   isolation: isolate;
-  background: var(--paper);
+  /* Das feine graue Punktraster ist Teil des Papiers: es bleibt fest stehen. */
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--ink) 10%, transparent) 1.2px, transparent 1.3px) 0 0 / 26px 26px fixed,
+    var(--paper);
   color: var(--ink);
   font-family: var(--font-ui);
   /* Großzügiger Abstand erleichtert das Lesen bei LRS; Wörter bleiben klar getrennt. */
@@ -116,25 +119,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Lebendiges, aber ruhiges Heftpapier: feine und bunte Punkte gleiten langsam
-   weiter, dazu zwei weiche Farbtupfer. Beide Ebenen liegen hinter dem Inhalt
-   und nehmen keine Berührungen an, damit Schreiben und Tippen ungestört bleiben. */
+/* Heftpapier mit drei Ebenen: das graue Raster liegt fest auf dem Papier,
+   die bunten Punkte wandern deutlich und bleiben dabei scharf begrenzt,
+   die weichen Farbtupfer bewegen sich behutsam darüber. Alle Ebenen liegen
+   hinter dem Inhalt und nehmen keine Berührungen an. */
 body::before,
 body::after {
   content: '';
   position: fixed;
-  inset: -24px;
+  /* Großzügiger Rand, damit die wandernden Punkte keine Kante zeigen. */
+  inset: -64px;
   z-index: -1;
   pointer-events: none;
 }
 body::before {
   background-image:
-    radial-gradient(circle, color-mix(in srgb, var(--accent) 32%, transparent) 2px, transparent 3px),
-    radial-gradient(circle, color-mix(in srgb, var(--fun-sky) 24%, transparent) 1.8px, transparent 2.8px),
-    radial-gradient(color-mix(in srgb, var(--ink) 10%, transparent) 1.2px, transparent 1.3px);
-  background-size: 156px 156px, 208px 208px, 26px 26px;
-  background-position: 24px 36px, 96px 8px, 0 0;
-  animation: dots-drift 38s ease-in-out infinite alternate;
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 42%, transparent) 2.4px, transparent 2.4px),
+    radial-gradient(circle, color-mix(in srgb, var(--fun-sky) 34%, transparent) 2px, transparent 2px);
+  background-size: 156px 156px, 208px 208px;
+  background-position: 24px 36px, 96px 8px;
+  animation: dots-drift 22s ease-in-out infinite alternate;
 }
 body::after {
   background:
@@ -145,7 +149,7 @@ body::after {
 }
 @keyframes dots-drift {
   from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(9px, 13px, 0); }
+  to { transform: translate3d(30px, 38px, 0); }
 }
 @keyframes color-drift {
   0% { transform: translate3d(-1.5%, -1%, 0) scale(1); }
